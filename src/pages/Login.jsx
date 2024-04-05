@@ -65,12 +65,12 @@ export default function Login({authenticated, setAuthenticated}) {
                                 Remember Me
                             </label>
                         </div>
-                        <a href="" className='text-primary'>Trouble logging in?</a>
+                        <a href="" className='text-muted fw-500 text-decoration-none'>Trouble logging in?</a>
                     </div>
 
                     <div className='d-flex justify-content-center py-4'>
-                        <span className='px-1 text-secondary'>New to Circles?</span>
-                        <a href="/register" className='px-1 text-primary'>Sign Up</a>
+                        <span className='px-1 text-secondary'>New to AmediProjects?</span>
+                        <a href="/register" className='px-1 text-muted fw-500 text-decoration-none'>Sign Up</a>
                     </div>
 
 

@@ -198,7 +198,7 @@ hr {
 }
 
 .auth-page-logo {
-  max-width: 105px;
+  max-width: 235px;
   width: 100%;
 }
 
@@ -225,6 +225,7 @@ hr {
 
 .project-card{
   height: 185px !important;
+  text-decoration: none !important;
 }
 
 #create-project-page-wrapper{

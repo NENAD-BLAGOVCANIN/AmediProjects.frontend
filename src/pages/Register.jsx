@@ -73,7 +73,7 @@ export default function Register({authenticated, setAuthenticated}) {
 
           <div className='d-flex justify-content-center py-4'>
             <span className='px-1 text-secondary'>Already have an account?</span>
-            <a href="/login" className='px-1 text-primary'>Log In</a>
+            <a href="/login" className='px-1 text-muted fw-500 text-decoration-none'>Log In</a>
           </div>
 
 
