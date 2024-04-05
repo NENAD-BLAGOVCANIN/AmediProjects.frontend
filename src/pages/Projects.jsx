@@ -1,8 +1,12 @@
 import React from 'react'
+import logo from '../assets/img/logo.png'
 
 function Projects() {
     return (
         <div id='create-project-page-wrapper'>
+
+            <img src={logo} className='img-fluid position-absolute' style={{height: 65, top: '1.5rem', left: '1.5rem'}} alt="" />
+
             <div className='container w-100 h-100 d-flex justify-content-center flex-column' style={{ minHeight: '100vh' }}>
                 <h5 className='mb-4 ps-2'>Existing Amedi projects</h5>
                 <div className="row">

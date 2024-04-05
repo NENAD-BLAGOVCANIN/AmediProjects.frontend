@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { getUserInfo } from '../api/user';
 import { getMyProjects, switchProject } from '../api/project';
 import CreateProjectModal from './CreateProjectModal';
+import logo from '../assets/img/icon.png'
 
 function Sidebar() {
 
@@ -43,7 +44,7 @@ function Sidebar() {
                 setSidebarActive(false);
             }
         }
-        
+
 
         window.addEventListener('resize', handleResize);
         handleResize();
@@ -81,7 +82,11 @@ function Sidebar() {
         <>
             <nav id="sidebar" className={!sidebarActive ? 'active' : ''}>
 
-                <div className="nav-item rounded card px-2 pointer" onClick={toggleDropdown}>
+                <div className='px-3 pb-3'>
+                    <img src={logo} className='img-fluid' style={{ maxWidth: 55 }} alt="" />
+                </div>
+
+                <div className="nav-item rounded px-2 pointer d-none" onClick={toggleDropdown}>
                     <div className='d-flex align-items-center justify-content-around'>
                         <div className='p-2 rounded bg-black'>
                             <FontAwesomeIcon icon={faUser} className='text-white px-1' />

@@ -1,9 +1,9 @@
 :root {
-  --color-primary: #0059be;
+  --color-primary: #F67421;
   --color-text: #393646;
   --color-secondary: #807BA0;
   --color-background: #fff;
-  --color-dark: #393646;
+  --color-dark: rgb(23, 34, 43);
   --color-danger: #cf004c;
   --color-light-gray: #f6f7f9;
   --color-gray: #e8eaee;
@@ -129,12 +129,17 @@ hr {
   opacity: 1 !important;
 }
 
+#sidebar hr {
+  border-top: 2px solid #42444b !important;
+  opacity: 1 !important;
+}
+
 #sidebar {
   min-width: var(--sidebar-width);
   max-width: var(--sidebar-width);
   width: 100%;
   min-height: 100vh;
-  background-color: var(--color-light-gray);
+  background-color: var(--color-dark);
   transition: all 0.3s;
   padding-top: 1.3rem;
   padding-bottom: 1.3rem;
@@ -155,6 +160,7 @@ hr {
 #sidebar .nav-item .nav-link {
   padding-top: .5rem;
   padding-bottom: .5rem;
+  color: #d8d8d8 !important;
 }
 
 #sidebar .nav-item.active,
@@ -168,7 +174,7 @@ hr {
 #sidebar .nav-item:hover,
 #sidebar .nav-item.active,
 #sidebar .nav-item.active {
-  background-color: white !important;
+  background-color: transparent !important;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
@@ -224,7 +230,7 @@ hr {
 #create-project-page-wrapper{
   min-height: 100vh;
   width: 100%;
-  background-image: url('./assets/img/bg-wallpaper-1.jpg');
+  background-image: url('./assets/img/bg-wallpaper-1.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
