@@ -5,7 +5,7 @@ import UpdateAssigneeDropdown from './UpdateAssigneeDropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faListCheck, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-function TaskModal({ showTasksModal, setShowTasksModal, selectedTask, setSelectedTask, tasks, setTasks, teamMembers, setTeamMembers }) {
+function TaskModal({ showTasksModal, setShowTasksModal, selectedTask, setSelectedTask, tasks, setTasks, projectMembers, setProjectMembers }) {
     const [editedTitle, setEditedTitle] = useState(selectedTask.subject);
     const [editedDescription, setEditedDescription] = useState(selectedTask.description);
 
@@ -127,7 +127,7 @@ function TaskModal({ showTasksModal, setShowTasksModal, selectedTask, setSelecte
 
                             <div className='d-flex align-items-center mt-5'>
                                 <h5 className='mb-0 pe-3'>Assignee</h5>
-                                <UpdateAssigneeDropdown teamMembers={teamMembers} selectedTask={selectedTask} setSelectedTask={setSelectedTask} tasks={tasks} setTasks={setTasks} />
+                                <UpdateAssigneeDropdown projectMembers={projectMembers} selectedTask={selectedTask} setSelectedTask={setSelectedTask} tasks={tasks} setTasks={setTasks} />
                             </div>
 
                             {selectedTask.assignee && (

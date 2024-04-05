@@ -1,12 +1,12 @@
 import { apiUrl } from './config';
 
-const getTeamMembers = async () => {
+const getProjectMembers = async () => {
 
     try {
 
         const token = localStorage.getItem('accessToken');
 
-        const response = await fetch(apiUrl + '/team/members', {
+        const response = await fetch(apiUrl + '/project/members', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -28,13 +28,13 @@ const getTeamMembers = async () => {
 }
 
 
-const getMyTeams = async () => {
+const getMyProjects = async () => {
 
     try {
 
         const token = localStorage.getItem('accessToken');
 
-        const response = await fetch(apiUrl + '/my-teams', {
+        const response = await fetch(apiUrl + '/my-projects', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -56,13 +56,13 @@ const getMyTeams = async () => {
 }
 
 
-const getTeamInfo = async () => {
+const getProjectInfo = async () => {
 
     try {
 
         const token = localStorage.getItem('accessToken');
 
-        const response = await fetch(apiUrl + '/team-info', {
+        const response = await fetch(apiUrl + '/project-info', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -83,17 +83,17 @@ const getTeamInfo = async () => {
 
 }
 
-const switchTeam = async (team_id) => {
+const switchProject = async (project_id) => {
 
     try {
 
         const token = localStorage.getItem('accessToken');
 
         const data = {
-            "team_id": team_id
+            "project_id": project_id
         }
 
-        const response = await fetch(apiUrl + '/switch-team', {
+        const response = await fetch(apiUrl + '/switch-project', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ const switchTeam = async (team_id) => {
 }
 
 
-const saveTeam = async (name, description) => {
+const saveProject = async (name, description) => {
 
     try {
 
@@ -125,7 +125,7 @@ const saveTeam = async (name, description) => {
             "description": description
         }
 
-        const response = await fetch(apiUrl + '/teams', {
+        const response = await fetch(apiUrl + '/projects', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -146,7 +146,7 @@ const saveTeam = async (name, description) => {
 }
 
 
-const updateTeamInfo = async (name, description) => {
+const updateProjectInfo = async (name, description) => {
 
     try {
 
@@ -157,7 +157,7 @@ const updateTeamInfo = async (name, description) => {
             "description": description
         }
 
-        const response = await fetch(apiUrl + '/team', {
+        const response = await fetch(apiUrl + '/project', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -177,4 +177,4 @@ const updateTeamInfo = async (name, description) => {
 
 }
 
-export { getTeamMembers, getMyTeams, saveTeam, getTeamInfo, switchTeam, updateTeamInfo }
+export { getProjectMembers, getMyProjects, saveProject, getProjectInfo, switchProject, updateProjectInfo }

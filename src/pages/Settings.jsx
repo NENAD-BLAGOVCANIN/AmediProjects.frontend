@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header'
-import { getTeamInfo, getTeamMembers, updateTeamInfo } from '../api/team'
+import { getProjectInfo, getProjectMembers, updateProjectInfo } from '../api/project'
 import placeholderProfileImage from '../assets/img/profile.svg'
 import { frontendUrl } from '../api/config'
 
 function Settings() {
 
-    const [team, setTeam] = useState([]);
-    const [teamMembers, setTeamMembers] = useState([]);
+    const [project, setProject] = useState([]);
+    const [projectMembers, setProjectMembers] = useState([]);
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -17,19 +17,19 @@ function Settings() {
         const fetchData = async () => {
             try {
 
-                const fetchedTeamInfo = await getTeamInfo();
-                setTeam(fetchedTeamInfo);
+                const fetchedProjectInfo = await getProjectInfo();
+                setProject(fetchedProjectInfo);
 
-                setName(fetchedTeamInfo.name);
-                setDescription(fetchedTeamInfo.description);
+                setName(fetchedProjectInfo.name);
+                setDescription(fetchedProjectInfo.description);
 
             } catch (error) {
                 console.error('Error fetching :', error);
             }
 
             try {
-                const fetchedTeamMembers = await getTeamMembers();
-                setTeamMembers(fetchedTeamMembers);
+                const fetchedProjectMembers = await getProjectMembers();
+                setProjectMembers(fetchedProjectMembers);
             } catch (error) {
                 console.error('Error fetching :', error);
             }
@@ -40,7 +40,7 @@ function Settings() {
     }, []);
 
     const handleUpdateChanges = async () => {
-        await updateTeamInfo(name, description);
+        await updateProjectInfo(name, description);
         window.location.reload();
     }
 
@@ -55,27 +55,27 @@ function Settings() {
 
                 <div className='main-container' style={{ maxWidth: '500px' }}>
 
-                    <h5 className="bold">Teamspace Settings</h5>
+                    <h5 className="bold">Project Settings</h5>
 
                     <label className='pb-2 mt-3'>Name</label>
                     <input type="text" className='form-control bg-gray py-2 border-0'
-                        placeholder='Teamspace name' value={name} autoComplete="new-password"
+                        placeholder='Project name' value={name} autoComplete="new-password"
                         onChange={(e) => setName(e.target.value)} />
 
                     <label className='mt-4 mb-2'>Description</label>
                     <textarea type="text" className='form-control bg-gray py-2 border-0'
-                        placeholder='Teamspace description' value={description} autoComplete="new-password"
+                        placeholder='Project description' value={description} autoComplete="new-password"
                         onChange={(e) => setDescription(e.target.value)} />
 
                     <button className='btn btn-primary rounded mt-3' onClick={handleUpdateChanges}>Save Changes</button>
 
-                    <h5 className="bold mt-5">Teamspace Members</h5>
+                    <h5 className="bold mt-5">Project Members</h5>
                     <div className='row align-items-center w-100'>
 
-                        {teamMembers.map(teamMember => (
-                            <div className='col-md-2 d-flex flex-column align-items-center pt-3 pe-2 w-fit' key={teamMember.id} >
+                        {projectMembers.map(projectMember => (
+                            <div className='col-md-2 d-flex flex-column align-items-center pt-3 pe-2 w-fit' key={projectMember.id} >
                                 <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{ maxWidth: 55 }} alt="" />
-                                <span className='small'>{teamMember.user.name.length > 10 ? teamMember.user.name.substring(0, 10) + '...' : teamMember.user.name}</span>
+                                <span className='small'>{projectMember.user.name.length > 10 ? projectMember.user.name.substring(0, 10) + '...' : projectMember.user.name}</span>
                             </div>
                         ))}
                     </div>
@@ -83,11 +83,11 @@ function Settings() {
                     <h5 className="bold mt-5">Invite Members</h5>
 
                     <label className='mt-3'>Invite Link:</label>
-                    {team && (
+                    {project && (
                         <input
                             type="text"
                             className='form-control bg-gray'
-                            value={`${frontendUrl}/teams/invite/${team.invite_code}/${team.id}`}
+                            value={`${frontendUrl}/projects/invite/${project.invite_code}/${project.id}`}
                         />
                     )}
                 </div>

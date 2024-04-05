@@ -3,20 +3,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCompass, faAddressBook, faUser, faListCheck, faUserTie, faRightFromBracket, faBars, faChevronUp, faChevronDown, faGear, faPlus, faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { getUserInfo } from '../api/user';
-import { getMyTeams, switchTeam } from '../api/team';
-import CreateTeamSpaceModal from './CreateTeamSpaceModal';
+import { getMyProjects, switchProject } from '../api/project';
+import CreateProjectModal from './CreateProjectModal';
 
 function Sidebar() {
 
     const [sidebarActive, setSidebarActive] = useState(true);
     const [currentPage, setCurrentPage] = useState(window.location.pathname);
     const [userInfo, setUserInfo] = useState(null);
-    const [showCreateTeamspaceModal, setShowCreateTeamspaceModal] = useState(false);
-    const [teamspaceDropdownOpen, setTeamspaceDropdownOpen] = useState(false);
-    const [myTeams, setMyTeams] = useState([]);
+    const [showCreateProjectModal, setShowCreateProjectModal] = useState(false);
+    const [projectDropdownOpen, setProjectDropdownOpen] = useState(false);
+    const [myProjects, setMyProjects] = useState([]);
 
     const toggleDropdown = () => {
-        setTeamspaceDropdownOpen(!teamspaceDropdownOpen);
+        setProjectDropdownOpen(!projectDropdownOpen);
     };
 
     useEffect(() => {
@@ -29,8 +29,8 @@ function Sidebar() {
             }
 
             try {
-                const fetchedMyTeams = await getMyTeams();
-                setMyTeams(fetchedMyTeams);
+                const fetchedMyProjects = await getMyProjects();
+                setMyProjects(fetchedMyProjects);
             } catch (error) {
                 console.error('Error fetching :', error);
             }
@@ -62,13 +62,13 @@ function Sidebar() {
         setSidebarActive(!sidebarActive);
     };
 
-    const handleShowCreateTeamspaceModal = () => {
-        setShowCreateTeamspaceModal(true);
+    const handleShowCreateProjectModal = () => {
+        setShowCreateProjectModal(true);
     }
 
-    const handleSwitchTeam = async (team_id) => {
+    const handleSwitchProject = async (project_id) => {
         try {
-            await switchTeam(team_id);
+            await switchProject(project_id);
             window.location.reload();
 
         } catch (error) {
@@ -86,19 +86,19 @@ function Sidebar() {
                         <div className='p-2 rounded bg-black'>
                             <FontAwesomeIcon icon={faUser} className='text-white px-1' />
                         </div>
-                        <span className='px-2'>{userInfo && userInfo.team.name}</span>
+                        <span className='px-2'>{userInfo && userInfo.project.name}</span>
                         <div className='p-2 d-flex flex-column align-items-center justify-content-center'>
                             <FontAwesomeIcon icon={faChevronUp} className='text-muted small' />
                             <FontAwesomeIcon icon={faChevronDown} className='text-muted small' />
                         </div>
                     </div>
 
-                    {teamspaceDropdownOpen && (
+                    {projectDropdownOpen && (
                         <div className="dropdown-menu border-0 shadow w-100 show" aria-labelledby="dropdownMenuButton" style={{ transform: 'translateY(50%)', left: 0 }}>
-                            <a className="dropdown-item fw-500 pb-2 small">Workspaces</a>
-                            {myTeams.map(team => (
-                                <a className="dropdown-item d-flex align-items-center py-2" onClick={() => { handleSwitchTeam(team.id) }}>
-                                    <span className='small'>{team.name}</span>
+                            <a className="dropdown-item fw-500 pb-2 small">Projects</a>
+                            {myProjects.map(project => (
+                                <a className="dropdown-item d-flex align-items-center py-2" onClick={() => { handleSwitchProject(project.id) }}>
+                                    <span className='small'>{project.name}</span>
                                     <div className='p-2 d-flex flex-column align-items-center justify-content-center'>
                                         <FontAwesomeIcon icon={faArrowRightArrowLeft} className='text-muted small' />
                                     </div>
@@ -136,10 +136,10 @@ function Sidebar() {
 
                     <hr />
 
-                    <li className='nav-item px-2 rounded' onClick={() => { handleShowCreateTeamspaceModal() }}>
+                    <li className='nav-item px-2 rounded' onClick={() => { handleShowCreateProjectModal() }}>
                         <span className='nav-link pointer'>
                             <FontAwesomeIcon icon={faPlus} />
-                            <span className='ps-3'>Create a teamspace</span>
+                            <span className='ps-3'>Create a project</span>
                         </span>
                     </li>
 
@@ -173,9 +173,9 @@ function Sidebar() {
 
             </nav>
 
-            <CreateTeamSpaceModal
-                showCreateTeamspaceModal={showCreateTeamspaceModal}
-                setShowCreateTeamspaceModal={setShowCreateTeamspaceModal}
+            <CreateProjectModal
+                showCreateProjectModal={showCreateProjectModal}
+                setShowCreateProjectModal={setShowCreateProjectModal}
             />
 
         </>

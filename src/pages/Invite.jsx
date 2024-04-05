@@ -3,12 +3,12 @@ import { useParams } from 'react-router-dom';
 import { handleInviteCode } from '../api/invite';
 
 function Invite() {
-  let { inviteCode, teamId } = useParams();
+  let { inviteCode, projectId } = useParams();
 
   useEffect(() => {
     const handleInvite = async () => {
         try {
-            await handleInviteCode(inviteCode, teamId);
+            await handleInviteCode(inviteCode, projectId);
             window.location.href = '/';
         } catch (error) {
             console.error('Error fetching :', error);

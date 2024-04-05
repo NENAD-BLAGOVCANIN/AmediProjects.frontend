@@ -1,6 +1,6 @@
 import { apiUrl } from './config';
 
-const handleInviteCode = async (code, team_id) => {
+const handleInviteCode = async (code, project_id) => {
 
     try {
 
@@ -8,7 +8,7 @@ const handleInviteCode = async (code, team_id) => {
 
         const data = {
             "code": code,
-            "team_id": team_id
+            "project_id": project_id
         }
 
         const response = await fetch(apiUrl + '/handle-invite-link', {

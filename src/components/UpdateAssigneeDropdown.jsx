@@ -4,7 +4,7 @@ import { faUserPlus, faUserXmark } from '@fortawesome/free-solid-svg-icons';
 import placeholderProfileImage from '../assets/img/profile.svg';
 import { assignTo } from '../api/tasks';
 
-function UpdateAssigneeDropdown({ teamMembers, selectedTask, setSelectedTask, tasks, setTasks }) {
+function UpdateAssigneeDropdown({ projectMembers, selectedTask, setSelectedTask, tasks, setTasks }) {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -59,11 +59,11 @@ function UpdateAssigneeDropdown({ teamMembers, selectedTask, setSelectedTask, ta
                         <div className='pb-3'>
                             <span className='pt-2 fw-500'>Assign to</span>
                         </div>
-                        {teamMembers.map(teamMember => (
-                            <li className='nav-item assignee-nav-item py-2 pe-4 pointer' key={teamMember.id} onClick={() => { handleAssignTask(teamMember.user.id) }}>
+                        {projectMembers.map(projectMember => (
+                            <li className='nav-item assignee-nav-item py-2 pe-4 pointer' key={projectMember.id} onClick={() => { handleAssignTask(projectMember.user.id) }}>
                                 <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{ maxWidth: 35 }} alt="" />
                                 <span className='ps-2'>
-                                    {teamMember.user.name}
+                                    {projectMember.user.name}
                                 </span>
                             </li>
                         ))}

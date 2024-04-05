@@ -48,7 +48,7 @@ function App() {
         <Route path="/register" element={<Register authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
         <Route path="/logout" element={<Logout />} />
 
-        <Route path="/teams/invite/:inviteCode/:teamId" element={<Invite />} />
+        <Route path="/projects/invite/:inviteCode/:projectId" element={<Invite />} />
 
       </Routes>
     </Router>
