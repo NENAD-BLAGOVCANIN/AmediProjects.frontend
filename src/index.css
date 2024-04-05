@@ -1,13 +1,210 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --color-primary: #0059be;
+  --color-text: #393646;
+  --color-secondary: #807BA0;
+  --color-background: #fff;
+  --color-dark: #393646;
+  --color-danger: #cf004c;
+  --color-light-gray: #f6f7f9;
+  --color-gray: #e8eaee;
+  --color-dark-gray: #f0f0f0;
+  --color-light: #f8f8f8;
+  --sidebar-width: 310px
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  font-family: Poppins, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-text) !important;
+  background-color: var(--color-background) !important;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.header {
+  width: 100%;
+  border-bottom: 2px solid var(--color-gray);
+  padding: 1.5rem;
+  display: flex;
+}
+
+.main-content-wrapper{
+  display: flex;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.main-container {
+  padding: 1.5rem;
+  background-color: white;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+.bg-gray {
+  background-color: var(--color-light-gray) !important;
+}
+
+.btn-primary,
+.bg-primary {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.text-primary {
+  color: var(--color-primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary) !important;
+}
+
+.text-secondary {
+  color: var(--color-secondary) !important;
+}
+
+.rounded-lg {
+  border-radius: 20px !important;
+}
+
+.fw-500 {
+  font-weight: 500 !important;
+}
+
+.small {
+  font-size: 13px !important;
+}
+
+.medium {
+  font-size: 15px !important;
+}
+
+.main-auth-page-container {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 8px
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a1a1a1;
+  border-radius: 2rem
+}
+
+.w-fit {
+  width: fit-content !important;
+}
+
+hr {
+  border-top: 2px solid var(--color-gray) !important;
+  opacity: 1 !important;
+}
+
+#sidebar {
+  min-width: var(--sidebar-width);
+  max-width: var(--sidebar-width);
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-light-gray);
+  transition: all 0.3s;
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-right: 2px solid var(--color-gray) !important
+}
+
+#sidebar.active {
+  margin-left: calc(0px - 310px);
+}
+
+#sidebar-logo {
+  max-width: 35px;
+  width: 100%;
+}
+
+#sidebar .nav-item .nav-link {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+#sidebar .nav-item.active,
+#sidebar .nav-item.active .nav-link,
+#sidebar .nav-item:hover,
+#sidebar .nav-item:hover .nav-link {
+  color: var(--color-primary) !important;
+}
+
+#sidebar .nav-item:hover,
+#sidebar .nav-item:hover,
+#sidebar .nav-item.active,
+#sidebar .nav-item.active {
+  background-color: white !important;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card {
+  background-color: transparent;
+  border: 2px solid var(--color-gray) !important;
+  border-radius: 1.2rem;
+  padding: 1rem;
+}
+
+#sidebar.active #toggleModalButton {
+  left: 0;
+  transform: translateX(0%);
+  z-index: 999 !important;
+}
+
+#toggleModalButton {
+  left: var(--sidebar-width);
+  transform: translateX(-50%);
+  bottom: 3rem;
+}
+
+.auth-page-logo {
+  max-width: 105px;
+  width: 100%;
+}
+
+.task-card:hover{
+  background-color: var(--color-light-gray);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 855px) {
+  #sidebar {
+    position: fixed !important;
+    z-index: 9999 !important;
+  }
+}
+
+.form-control{
+  border: none !important;
+  background-color: var(--color-dark-gray) !important;
+}
+
+.assignee-nav-item:hover{
+  background-color: var(--color-dark-gray);
 }
