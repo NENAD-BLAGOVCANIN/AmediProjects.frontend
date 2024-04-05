@@ -11,6 +11,7 @@ import Leads from './pages/Leads';
 import Settings from './pages/Settings';
 import Profile from './pages/Profile';
 import Invite from './pages/Invite';
+import Projects from './pages/Projects';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -36,6 +37,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={authenticated ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
+        <Route path="/projects" element={<Projects />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/contacts" element={<Contacts contacts={contacts} setContacts={setContacts} setLeads={setLeads} />} />

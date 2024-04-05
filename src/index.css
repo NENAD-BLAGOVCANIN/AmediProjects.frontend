@@ -49,8 +49,12 @@ body {
   font-weight: bold !important;
 }
 
-.bg-gray {
+.bg-gray-light {
   background-color: var(--color-light-gray) !important;
+}
+
+.bg-gray {
+  background-color: var(--color-gray) !important;
 }
 
 .btn-primary,

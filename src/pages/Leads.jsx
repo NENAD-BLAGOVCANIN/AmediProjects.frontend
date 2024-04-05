@@ -80,7 +80,7 @@ function Leads({leads, setLeads}) {
                                             <td>{lead.created_at}</td>
                                             <td>
                                                 <div className="h-100 d-flex align-items-center justify-content-center">
-                                                    <button className='btn btn-basic bg-gray text-danger shadow-sm' onClick={() => handleDeleteLead(lead.id)}>
+                                                    <button className='btn btn-basic bg-gray-light text-danger shadow-sm' onClick={() => handleDeleteLead(lead.id)}>
                                                         <FontAwesomeIcon icon={faTrash} />
                                                     </button>
                                                 </div>

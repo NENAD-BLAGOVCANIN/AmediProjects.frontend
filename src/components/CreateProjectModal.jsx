@@ -40,12 +40,12 @@ function CreateProjectModal({ showCreateProjectModal, setShowCreateProjectModal 
                         </div>
                         <div className='modal-body py-5'>
                             <label className='pb-2'>Name</label>
-                            <input type="text" className='form-control bg-gray py-2 border-0' 
+                            <input type="text" className='form-control bg-gray-light py-2 border-0' 
                                 placeholder='Project name' value={name} autoComplete="new-password"
                                 onChange={(e) => setName(e.target.value)} />
 
                             <label className='mt-4 mb-2'>Description</label>
-                            <textarea type="text" className='form-control bg-gray py-2 border-0' 
+                            <textarea type="text" className='form-control bg-gray-light py-2 border-0' 
                                 placeholder='Project description' value={description} autoComplete="new-password"
                                 onChange={(e) => setDescription(e.target.value)} />
 

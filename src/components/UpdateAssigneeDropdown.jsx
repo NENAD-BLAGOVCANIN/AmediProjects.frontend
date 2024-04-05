@@ -49,7 +49,7 @@ function UpdateAssigneeDropdown({ projectMembers, selectedTask, setSelectedTask,
         <>
             <div className="dropdown d-flex w-100" ref={dropdownRef}>
                 <button
-                    className="btn btn-basic bg-gray shadow-sm"
+                    className="btn btn-basic bg-gray-light shadow-sm"
                     onClick={toggleDropdown}
                 >
                     <FontAwesomeIcon icon={faUserPlus} />

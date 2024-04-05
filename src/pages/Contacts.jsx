@@ -100,17 +100,17 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
                                             <td>
                                                 <div className="h-100 d-flex align-items-center justify-content-center">
                                                     <div className='px-1'>
-                                                        <button className='btn btn-basic bg-gray shadow-sm' onClick={() => openViewContactModal(contact)}>
+                                                        <button className='btn btn-basic bg-gray-light shadow-sm' onClick={() => openViewContactModal(contact)}>
                                                             <FontAwesomeIcon icon={faBars} />
                                                         </button>
                                                     </div>
                                                     <div className='px-1'>
-                                                        <button className='btn btn-basic bg-gray shadow-sm' onClick={() => openEditContactModal(contact)}>
+                                                        <button className='btn btn-basic bg-gray-light shadow-sm' onClick={() => openEditContactModal(contact)}>
                                                             <FontAwesomeIcon icon={faEdit} />
                                                         </button>
                                                     </div>
                                                     <div className='px-1'>
-                                                        <button className='btn btn-basic bg-gray text-danger shadow-sm' onClick={() => handleDeleteContact(contact.id)}>
+                                                        <button className='btn btn-basic bg-gray-light text-danger shadow-sm' onClick={() => handleDeleteContact(contact.id)}>
                                                             <FontAwesomeIcon icon={faTrash} />
                                                         </button>
                                                     </div>

@@ -54,7 +54,7 @@ function Profile() {
                     <h5 className='mt-3 mb-5'>{userInfo.name}</h5>
 
 
-                    <div className='card bg-gray rounded-lg shadow-sm border-0 w-100 py-5 px-4'>
+                    <div className='card bg-gray-light rounded-lg shadow-sm border-0 w-100 py-5 px-4'>
 
                         <p>Name: {userInfo.name}</p>
                         <p>Email: {userInfo.email}</p>

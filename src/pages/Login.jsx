@@ -18,7 +18,7 @@ export default function Login({authenticated, setAuthenticated}) {
             const { success, message } = await login(email, password);
             if (success) {
                 setAuthenticated(true);
-                navigate('/');
+                navigate('/projects');
             } else {
                 setError(message || 'Login failed. Please check your credentials.');
             }

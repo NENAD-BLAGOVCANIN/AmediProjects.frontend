@@ -19,7 +19,7 @@ export default function Register({authenticated, setAuthenticated}) {
       const { success, message } = await register(name, email, password);
       if (success) {
         setAuthenticated(true);
-        navigate('/');
+        navigate('/projects');
       } else {
         setError(message || 'Registration failed. Please check your credentials.');
       }

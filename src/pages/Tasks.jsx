@@ -98,13 +98,13 @@ function Tasks() {
                                 <div className=''>
                                     <input
                                         type="text"
-                                        className='form-control bg-gray mb-2'
+                                        className='form-control bg-gray-light mb-2'
                                         placeholder='Subject'
                                         value={subject}
                                         onChange={(e) => setSubject(e.target.value)}
                                     />
                                     <textarea
-                                        className='form-control bg-gray mb-2'
+                                        className='form-control bg-gray-light mb-2'
                                         placeholder='Description'
                                         value={description}
                                         onChange={(e) => setDescription(e.target.value)}
