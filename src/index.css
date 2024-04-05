@@ -237,3 +237,11 @@ hr {
   background-size: cover;
   background-clip: border-box;
 }
+
+.transform-left-35{
+  transform: translateX(-35%);
+}
+
+.transform-left-75{
+  transform: translateX(-75%);
+}

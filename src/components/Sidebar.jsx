@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCompass, faAddressBook, faUser, faListCheck, faCalendar, faUserTie, faRightFromBracket, faBars, faChevronUp, faChevronDown, faGear, faExclamation, faArrowRightArrowLeft, faChartSimple, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
+import { faCompass, faAddressBook, faUser, faListCheck, faCalendar, faUserTie, faRightFromBracket, faUserGroup, faBars, faChevronUp, faChevronDown, faGear, faExclamation, faArrowRightArrowLeft, faChartSimple, faNoteSticky, faClock } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { getUserInfo } from '../api/user';
 import { getMyProjects, switchProject } from '../api/project';
@@ -166,7 +166,7 @@ function Sidebar() {
 
                     <li className={`nav-item px-2 rounded ${currentPage === '/clients' ? 'active' : ''}`}>
                         <Link to="/clients" className='nav-link' onClick={() => handlePageChange('/tasks')}>
-                            <FontAwesomeIcon icon={faListCheck} />
+                            <FontAwesomeIcon icon={faUserGroup} />
                             <span className='ps-3'>Clients</span>
                         </Link>
                     </li>
@@ -188,6 +188,13 @@ function Sidebar() {
                         <Link to="/tasks" className='nav-link' onClick={() => handlePageChange('/tasks')}>
                             <FontAwesomeIcon icon={faCalendar} />
                             <span className='ps-3'>Calendar</span>
+                        </Link>
+                    </li>
+
+                    <li className={`nav-item px-2 rounded ${currentPage === '/tasks' ? 'active' : ''}`}>
+                        <Link to="/tasks" className='nav-link' onClick={() => handlePageChange('/tasks')}>
+                            <FontAwesomeIcon icon={faClock} />
+                            <span className='ps-3'>Hours</span>
                         </Link>
                     </li>
 
