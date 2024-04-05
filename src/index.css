@@ -7,7 +7,7 @@
   --color-danger: #cf004c;
   --color-light-gray: #f6f7f9;
   --color-gray: #e8eaee;
-  --color-dark-gray: #f0f0f0;
+  --color-dark-gray: #e6e5e9;
   --color-light: #f8f8f8;
   --sidebar-width: 310px
 }
@@ -55,6 +55,10 @@ body {
 
 .bg-gray {
   background-color: var(--color-gray) !important;
+}
+
+.bg-gray-hover:hover {
+  background-color: var(--color-dark-gray) !important;
 }
 
 .btn-primary,
@@ -211,4 +215,18 @@ hr {
 
 .assignee-nav-item:hover{
   background-color: var(--color-dark-gray);
+}
+
+.project-card{
+  height: 185px !important;
+}
+
+#create-project-page-wrapper{
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('./assets/img/bg-wallpaper-1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: border-box;
 }
