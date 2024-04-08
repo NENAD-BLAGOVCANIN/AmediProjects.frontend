@@ -12,6 +12,7 @@ import Settings from './pages/Settings';
 import Profile from './pages/Profile';
 import Invite from './pages/Invite';
 import Projects from './pages/Projects';
+import Users from './pages/admin/Users';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -36,14 +37,17 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={authenticated ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
+        <Route path="/" element={authenticated ? <Navigate to="/admin/dashboard" /> : <Navigate to="/login" />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/contacts" element={<Contacts contacts={contacts} setContacts={setContacts} setLeads={setLeads} />} />
         <Route path="/leads" element={<Leads leads={leads} setLeads={setLeads} />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
+
+        {/* Admin Panel */}
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/users" element={<Users />} />
 
         {/* Auth */}
         <Route path="/login" element={<Login authenticated={authenticated} setAuthenticated={setAuthenticated} />} />

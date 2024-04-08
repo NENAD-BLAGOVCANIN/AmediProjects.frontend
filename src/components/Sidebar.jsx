@@ -119,26 +119,26 @@ function Sidebar() {
                     <div className='pb-2'>
                         <span className='small bold text-white'>Admin Panel</span>
                     </div>
-                    <li className={`nav-item px-2 rounded ${currentPage === '/dashboard' ? 'active' : ''}`}>
-                        <Link to="/dashboard" className='nav-link' onClick={() => handlePageChange('/dashboard')}>
+                    <li className={`nav-item px-2 rounded ${currentPage === '/admin/dashboard' ? 'active' : ''}`}>
+                        <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
                             <FontAwesomeIcon icon={faCompass} />
                             <span className='ps-3'>Dashboard</span>
                         </Link>
                     </li>
                     <li className={`nav-item px-2 rounded ${currentPage === '/user-management' ? 'active' : ''}`}>
-                        <Link to="/dashboard" className='nav-link' onClick={() => handlePageChange('/dashboard')}>
+                        <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
                             <FontAwesomeIcon icon={faCompass} />
-                            <span className='ps-3'>User Management</span>
+                            <span className='ps-3'>Users</span>
                         </Link>
                     </li>
                     <li className={`nav-item px-2 rounded ${currentPage === '/user-management' ? 'active' : ''}`}>
-                        <Link to="/dashboard" className='nav-link' onClick={() => handlePageChange('/dashboard')}>
+                        <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
                             <FontAwesomeIcon icon={faCompass} />
                             <span className='ps-3'>Roles & Permissions</span>
                         </Link>
                     </li>
                     <li className={`nav-item px-2 rounded ${currentPage === '/history' ? 'active' : ''}`}>
-                        <Link to="/dashboard" className='nav-link' onClick={() => handlePageChange('/dashboard')}>
+                        <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
                             <FontAwesomeIcon icon={faCompass} />
                             <span className='ps-3'>History</span>
                         </Link>
