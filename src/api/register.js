@@ -21,8 +21,7 @@ const register = async (name, email, password) => {
         const responseData = await response.json();
 
         if (response.ok) {
-            localStorage.setItem('accessToken', responseData.authorisation.token);
-            return { success: true, message: "Login successful" };
+            return responseData;
         } else {
             throw new Error(responseData.errors);
         }
