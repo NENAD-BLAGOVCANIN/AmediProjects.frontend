@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCompass, faAddressBook, faUser, faListCheck, faCalendar, faUserTie, faRightFromBracket, faUserGroup, faBars, faChevronUp, faChevronDown, faGear, faExclamation, faArrowRightArrowLeft, faChartSimple, faNoteSticky, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faCompass, faAddressBook, faUser, faListCheck, faCalendar, faUserTie, faRightFromBracket, faTriangleExclamation, faClock,
+        faUserGroup, faBars, faChevronUp, faChevronDown, faGear, faExclamation, faArrowRightArrowLeft, faChartSimple, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { getUserInfo } from '../api/user';
 import { getMyProjects, switchProject } from '../api/project';
@@ -121,13 +122,13 @@ function Sidebar() {
                     </li>
                     <li className={`nav-item px-2 rounded ${currentPage === '/admin/users' ? 'active' : ''}`}>
                         <Link to="/admin/users" className='nav-link' onClick={() => handlePageChange('/admin/users')}>
-                            <FontAwesomeIcon icon={faCompass} />
+                            <FontAwesomeIcon icon={faUserGroup} />
                             <span className='ps-3'>Users</span>
                         </Link>
                     </li>
                     <li className={`nav-item px-2 rounded ${currentPage === '/user-management' ? 'active' : ''}`}>
                         <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
-                            <FontAwesomeIcon icon={faCompass} />
+                            <FontAwesomeIcon icon={faTriangleExclamation} />
                             <span className='ps-3'>Roles & Permissions</span>
                         </Link>
                     </li>

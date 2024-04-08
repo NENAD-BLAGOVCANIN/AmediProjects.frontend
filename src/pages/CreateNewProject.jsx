@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { saveProject } from '../api/project';
 import logo from '../assets/img/logo.png'
+import { useNavigate } from 'react-router-dom';
 
 function CreateNewProject() {
 
@@ -8,12 +9,13 @@ function CreateNewProject() {
     const [description, setDescription] = useState('');
     const [errors, setErrors] = useState([]);
 
+    const navigate = useNavigate();
 
     const handleCreateProjectSubmit = async () => {
 
         try {
             await saveProject(name, description);
-            window.location.reload();
+            navigate("/");
         } catch (error) {
             setErrors(error.message);
         }
