@@ -125,8 +125,8 @@ function Sidebar() {
                             <span className='ps-3'>Dashboard</span>
                         </Link>
                     </li>
-                    <li className={`nav-item px-2 rounded ${currentPage === '/user-management' ? 'active' : ''}`}>
-                        <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
+                    <li className={`nav-item px-2 rounded ${currentPage === '/admin/users' ? 'active' : ''}`}>
+                        <Link to="/admin/users" className='nav-link' onClick={() => handlePageChange('/admin/users')}>
                             <FontAwesomeIcon icon={faCompass} />
                             <span className='ps-3'>Users</span>
                         </Link>
