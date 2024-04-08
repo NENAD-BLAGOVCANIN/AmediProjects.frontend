@@ -16,7 +16,7 @@ function RegistrationModal({ showRegistrationModal, setShowRegistrationModal, us
             console.log(response);
             const user = response.user;
             console.log(user);
-            setUsers([...users, user]);
+            setUsers([user, ...users]);
             setShowRegistrationModal(false);
         } catch (error) {
         setError('An error occurred while registering an account.');
