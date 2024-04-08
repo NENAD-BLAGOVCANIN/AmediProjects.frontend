@@ -1,8 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import Sidebar from '../../components/Sidebar'
 import Header from '../../components/Header'
+import { getUsers } from '../../api/user';
 
 function Users() {
+
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const fetchedUsers = await getUsers();
+                setUsers(fetchedUsers);
+            } catch (error) {
+                console.error('Error fetching :', error);
+            }
+        };
+
+        fetchUsers();
+    }, []);
 
     return (
         <div className='main-content-wrapper'>
@@ -11,21 +27,36 @@ function Users() {
 
             <div className='w-100 overflow-auto'>
 
-                <Header pageTitle="My Profile" />
+                <Header pageTitle="Users" />
 
                 <div className='main-container'>
 
-                    <div className='d-flex flex-column align-items-center pt-5'>
 
-                        <div className='card bg-gray-light rounded-lg shadow-sm border-0 w-100 py-5 px-4'>
-
-                            <p>Name:</p>
-                            <p>Email:</p>
-                            <p>Profile Created At: </p>
-                            <p className='m-0'>Email Verified: <span className='badge bagde-primary bg-danger'>No</span></p>
-
+                    <div className='m-auto d-block w-100' style={{ maxWidth: 1500, overflowX: 'auto' }}>
+                        <div className='table-responsive'>
+                            <table className='table table-striped table-hover'>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th className='text-center'>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {users.map(user => (
+                                        <tr key={user.id}>
+                                            <td>{user.id}</td>
+                                            <td>{user.name}</td>
+                                            <td>{user.email}</td>
+                                            <td>
+                                               
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
-
                     </div>
 
                 </div>

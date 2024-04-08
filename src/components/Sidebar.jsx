@@ -91,7 +91,7 @@ function Sidebar() {
                         <div className='p-2 rounded bg-black'>
                             <FontAwesomeIcon icon={faUser} className='text-white px-1' />
                         </div>
-                        <span className='px-2'>{userInfo && userInfo.project.name}</span>
+                        <span className='px-2'>{userInfo && userInfo.project && userInfo.project.name}</span>
                         <div className='p-2 d-flex flex-column align-items-center justify-content-center'>
                             <FontAwesomeIcon icon={faChevronUp} className='text-muted small' />
                             <FontAwesomeIcon icon={faChevronDown} className='text-muted small' />
