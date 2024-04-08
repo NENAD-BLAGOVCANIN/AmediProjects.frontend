@@ -185,6 +185,10 @@ hr {
   padding: 1rem;
 }
 
+.btn-basic{
+  border: 2px solid var(--color-gray) !important;
+}
+
 #sidebar.active #toggleModalButton {
   left: 0;
   transform: translateX(0%);

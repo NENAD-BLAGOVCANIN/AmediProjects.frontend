@@ -256,7 +256,7 @@ function Sidebar() {
                     </li>
                 </ul>
 
-                <div className='card w-fit position-fixed pointer' id='toggleModalButton' onClick={toggleModal}>
+                <div className='btn btn-basic bg-white w-fit position-fixed pointer' id='toggleModalButton' onClick={toggleModal}>
                     <FontAwesomeIcon icon={faBars} />
                 </div>
 
