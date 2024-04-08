@@ -4,7 +4,6 @@ import { faCompass, faAddressBook, faUser, faListCheck, faCalendar, faUserTie, f
 import { Link } from 'react-router-dom';
 import { getUserInfo } from '../api/user';
 import { getMyProjects, switchProject } from '../api/project';
-import CreateProjectModal from './CreateProjectModal';
 import logo from '../assets/img/icon.png'
 
 function Sidebar() {
@@ -12,7 +11,6 @@ function Sidebar() {
     const [sidebarActive, setSidebarActive] = useState(true);
     const [currentPage, setCurrentPage] = useState(window.location.pathname);
     const [userInfo, setUserInfo] = useState(null);
-    const [showCreateProjectModal, setShowCreateProjectModal] = useState(false);
     const [projectDropdownOpen, setProjectDropdownOpen] = useState(false);
     const [myProjects, setMyProjects] = useState([]);
 
@@ -62,10 +60,6 @@ function Sidebar() {
     const toggleModal = () => {
         setSidebarActive(!sidebarActive);
     };
-
-    const handleShowCreateProjectModal = () => {
-        setShowCreateProjectModal(true);
-    }
 
     const handleSwitchProject = async (project_id) => {
         try {
@@ -211,14 +205,14 @@ function Sidebar() {
                         <span className='small bold text-white'>Project</span>
                     </div>
 
-                    <li className='nav-item px-2 rounded' onClick={() => { handleShowCreateProjectModal() }}>
+                    <li className='nav-item px-2 rounded'>
                         <span className='nav-link pointer'>
                             <FontAwesomeIcon icon={faNoteSticky} />
                             <span className='ps-3'>Project Notes</span>
                         </span>
                     </li>
 
-                    <li className='nav-item px-2 rounded' onClick={() => { handleShowCreateProjectModal() }}>
+                    <li className='nav-item px-2 rounded'>
                         <span className='nav-link pointer'>
                             <FontAwesomeIcon icon={faChartSimple} />
                             <span className='ps-3'>Project Performance</span>
@@ -266,11 +260,6 @@ function Sidebar() {
                 </div>
 
             </nav>
-
-            <CreateProjectModal
-                showCreateProjectModal={showCreateProjectModal}
-                setShowCreateProjectModal={setShowCreateProjectModal}
-            />
 
         </>
 

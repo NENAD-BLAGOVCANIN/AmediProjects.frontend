@@ -13,6 +13,7 @@ import Profile from './pages/Profile';
 import Invite from './pages/Invite';
 import Projects from './pages/Projects';
 import Users from './pages/admin/Users';
+import CreateNewProject from './pages/CreateNewProject';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -38,12 +39,16 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={authenticated ? <Navigate to="/admin/dashboard" /> : <Navigate to="/login" />} />
-        <Route path="/projects" element={<Projects />} />
+
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/contacts" element={<Contacts contacts={contacts} setContacts={setContacts} setLeads={setLeads} />} />
         <Route path="/leads" element={<Leads leads={leads} setLeads={setLeads} />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
+
+        {/* Project Management */}
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/create" element={<CreateNewProject />} />
 
         {/* Admin Panel */}
         <Route path="/admin/dashboard" element={<Dashboard />} />
