@@ -3,13 +3,16 @@ import Sidebar from '../../components/Sidebar'
 import Header from '../../components/Header'
 import { getUsers } from '../../api/user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrash, faBars, faEdit } from '@fortawesome/free-solid-svg-icons';
 import RegistrationModal from '../../components/RegistrationModal';
+import ViewUserModal from '../../components/ViewUserModal';
 
 function Users() {
 
     const [users, setUsers] = useState([]);
     const [showRegistrationModal, setShowRegistrationModal] = useState(false);
+    const [showViewUserModal, setShowViewUserModal] = useState(false);
+    const [selectedUser, setSelectedUser] = useState([]);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -27,6 +30,11 @@ function Users() {
     const openRegistrationModal = () => {
         setShowRegistrationModal(true);
     }
+
+    const openViewUserModal = (contact) => {
+        setSelectedUser(contact);
+        setShowViewUserModal(true);
+    };
 
     return (
         <div className='page-content-wrapper'>
@@ -51,6 +59,7 @@ function Users() {
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Role</th>
                                         <th className='text-center'>Actions</th>
                                     </tr>
                                 </thead>
@@ -60,8 +69,26 @@ function Users() {
                                             <td>{user.id}</td>
                                             <td>{user.name}</td>
                                             <td>{user.email}</td>
+                                            <td><span className='badge badge-primary bg-success'>{user.role.name}</span></td>
                                             <td>
+                                                <div className="h-100 d-flex align-items-center justify-content-center">
+                                                    <div className='px-1'>
+                                                        <button className='btn btn-basic bg-gray-light shadow-sm' onClick={() => openViewUserModal(user)}>
+                                                            <FontAwesomeIcon icon={faBars} />
+                                                        </button>
+                                                    </div>
+                                                    <div className='px-1'>
+                                                        <button className='btn btn-basic bg-gray-light shadow-sm'>
+                                                            <FontAwesomeIcon icon={faEdit} />
+                                                        </button>
+                                                    </div>
+                                                    <div className='px-1'>
+                                                        <button className='btn btn-basic bg-gray-light text-danger shadow-sm'>
+                                                            <FontAwesomeIcon icon={faTrash} />
+                                                        </button>
+                                                    </div>
 
+                                                </div>
                                             </td>
                                         </tr>
                                     ))}
@@ -76,9 +103,11 @@ function Users() {
             <RegistrationModal
                 showRegistrationModal={showRegistrationModal}
                 setShowRegistrationModal={setShowRegistrationModal}
-                users={users} 
+                users={users}
                 setUsers={setUsers}
             />
+
+            <ViewUserModal showViewUserModal={showViewUserModal} setShowViewUserModal={setShowViewUserModal} selectedUser={selectedUser} />
 
         </div>
     )
