@@ -268,3 +268,7 @@ hr {
   padding-bottom: 6rem;
   text-align: center;
 }
+
+.fw-400{
+  font-weight: 400 !important;
+}
