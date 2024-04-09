@@ -40,7 +40,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={authenticated ? <Navigate to="/admin/dashboard" /> : <Navigate to="/login" />} />
+        <Route path="/" element={authenticated ? <Navigate to="/home" /> : <Navigate to="/login" />} />
 
         {/* CRM */}
         <Route path="/contacts" element={<Contacts contacts={contacts} setContacts={setContacts} setLeads={setLeads} />} />
