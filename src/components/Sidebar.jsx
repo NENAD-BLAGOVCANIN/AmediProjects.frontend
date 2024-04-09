@@ -17,7 +17,11 @@ function Sidebar() {
 
         function handleResize() {
             if (window.innerWidth < 855) {
-                setSidebarActive(false);
+                const sidebar = document.getElementById('sidebar');
+                if (!sidebar.classList.contains('active')) {
+                    sidebar.classList.toggle('active');
+                }
+                document.documentElement.style.setProperty('--sidebar-width', '0');
             }
         }
 
@@ -36,8 +40,15 @@ function Sidebar() {
     };
 
     const toggleModal = () => {
-        setSidebarActive(!sidebarActive);
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('active');
+        if (sidebar.classList.contains('active')) {
+            document.documentElement.style.setProperty('--sidebar-width', '0');
+        } else {
+            document.documentElement.style.setProperty('--sidebar-width', '310px');
+        }
     };
+
 
     return (
 
