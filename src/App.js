@@ -16,6 +16,7 @@ import Users from './pages/admin/Users';
 import CreateNewProject from './pages/CreateNewProject';
 import Home from './pages/project/Home';
 import Calendar from './pages/Calendar';
+import Products from './pages/project/Products';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -49,6 +50,7 @@ function App() {
         {/* Project */}
         <Route path="/home" element={<Home />} />
         <Route path="/tasks" element={<Tasks />} />
+        <Route path="/products" element={<Products />} />
 
         {/* Project Management */}
         <Route path="/projects" element={<Projects />} />

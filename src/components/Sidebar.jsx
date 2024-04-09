@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCompass, faAddressBook, faUser, faListCheck, faCalendar, faUserTie, faRightFromBracket, faTriangleExclamation, faClock,
     faUserGroup, faBars, faGear, faExclamation, faArrowRightArrowLeft, faChartSimple, faNoteSticky,
-    faHouse
+    faHouse,
+    faBox
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import logo from '../assets/img/icon.png'
@@ -101,6 +102,13 @@ function Sidebar() {
                             <Link to="/home" className='nav-link' onClick={() => handlePageChange('/home')}>
                                 <FontAwesomeIcon icon={faHouse} />
                                 <span className='ps-3'>Home</span>
+                            </Link>
+                        </li>
+
+                        <li className='nav-item px-2 rounded'>
+                            <Link to="/products" className='nav-link' onClick={() => handlePageChange('/products')}>
+                                <FontAwesomeIcon icon={faBox} />
+                                <span className='ps-3'>Products</span>
                             </Link>
                         </li>
 
