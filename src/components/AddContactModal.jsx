@@ -32,6 +32,17 @@ function AddContactModal({ contacts, setContacts, showAddContactsModal, setShowA
             const newContact = await saveContact(contact);
             setContacts([newContact, ...contacts]);
             setShowAddContactsModal(false);
+            
+            setName('');
+            setEmail('');
+            setTitle('');
+            setCity('');
+            setAddress('');
+            setOrganization('');
+            setDescription('');
+            setPastClient(false);
+            setErrors([]);
+
         } catch (error) {
             setErrors(error.message);
         }

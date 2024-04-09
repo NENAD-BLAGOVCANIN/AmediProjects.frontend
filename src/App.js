@@ -42,7 +42,7 @@ function App() {
 
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/contacts" element={<Contacts contacts={contacts} setContacts={setContacts} setLeads={setLeads} />} />
-        <Route path="/leads" element={<Leads leads={leads} setLeads={setLeads} />} />
+        <Route path="/leads" element={<Leads leads={leads} setLeads={setLeads} contacts={contacts} setContacts={setContacts} />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
 
