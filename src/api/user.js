@@ -57,4 +57,30 @@ const getUsers = async () => {
 }
 
 
-export { getUserInfo, getUsers }
+const deleteUser = async (user_id) => {
+
+    try {
+
+        const token = localStorage.getItem('accessToken'); 
+
+        const response = await fetch(apiUrl + '/users/' + user_id, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+        });
+
+        const responseData = await response.json();
+
+        return responseData;
+
+    } catch (error) {
+        return error;
+    }
+
+}
+
+
+export { getUserInfo, getUsers, deleteUser }

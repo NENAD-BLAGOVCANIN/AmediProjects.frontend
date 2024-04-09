@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash, faBars, faEdit } from '@fortawesome/free-solid-svg-icons';
 import RegistrationModal from '../../components/RegistrationModal';
 import ViewUserModal from '../../components/ViewUserModal';
+import { deleteUser } from '../../api/user';
 
 function Users() {
 
@@ -34,6 +35,16 @@ function Users() {
     const openViewUserModal = (contact) => {
         setSelectedUser(contact);
         setShowViewUserModal(true);
+    };
+
+    const handleDeleteUser = async (user_id) => {
+        try {
+            await deleteUser(user_id);
+            const updatedUsers = users.filter(user => user.id !== user_id);
+            setUsers(updatedUsers);
+        } catch (error) {
+            console.error('Error deleting user:', error);
+        }
     };
 
     return (
@@ -83,7 +94,7 @@ function Users() {
                                                         </button>
                                                     </div>
                                                     <div className='px-1'>
-                                                        <button className='btn btn-basic bg-gray-light text-danger shadow-sm'>
+                                                        <button className='btn btn-basic bg-gray-light text-danger shadow-sm' onClick={() => handleDeleteUser(user.id)}>
                                                             <FontAwesomeIcon icon={faTrash} />
                                                         </button>
                                                     </div>
