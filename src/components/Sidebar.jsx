@@ -98,28 +98,28 @@ function Sidebar() {
                             <span className='small bold text-white'>Project</span>
                         </div>
 
-                        <li className='nav-item px-2 rounded'>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/home' ? 'active' : ''}`}>
                             <Link to="/home" className='nav-link' onClick={() => handlePageChange('/home')}>
                                 <FontAwesomeIcon icon={faHouse} />
                                 <span className='ps-3'>Home</span>
                             </Link>
                         </li>
 
-                        <li className='nav-item px-2 rounded'>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/products' ? 'active' : ''}`}>
                             <Link to="/products" className='nav-link' onClick={() => handlePageChange('/products')}>
                                 <FontAwesomeIcon icon={faBox} />
                                 <span className='ps-3'>Products</span>
                             </Link>
                         </li>
 
-                        <li className='nav-item px-2 rounded'>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/notes' ? 'active' : ''}`}>
                             <span className='nav-link pointer'>
                                 <FontAwesomeIcon icon={faNoteSticky} />
                                 <span className='ps-3'>Notes</span>
                             </span>
                         </li>
 
-                        <li className='nav-item px-2 rounded'>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/performance' ? 'active' : ''}`}>
                             <span className='nav-link pointer'>
                                 <FontAwesomeIcon icon={faChartSimple} />
                                 <span className='ps-3'>Performance</span>
