@@ -156,22 +156,22 @@ function Sidebar() {
                         </Link>
                     </li>
 
-                    <li className={`nav-item px-2 rounded ${currentPage === '/tasks' ? 'active' : ''}`}>
-                        <Link to="/tasks" className='nav-link' onClick={() => handlePageChange('/tasks')}>
+                    <li className={`nav-item px-2 rounded ${currentPage === '/calendar' ? 'active' : ''}`}>
+                        <Link to="/calendar" className='nav-link' onClick={() => handlePageChange('/calendar')}>
                             <FontAwesomeIcon icon={faCalendar} />
                             <span className='ps-3'>Calendar</span>
                         </Link>
                     </li>
 
-                    <li className={`nav-item px-2 rounded ${currentPage === '/tasks' ? 'active' : ''}`}>
-                        <Link to="/tasks" className='nav-link' onClick={() => handlePageChange('/tasks')}>
+                    <li className={`nav-item px-2 rounded ${currentPage === '/hours' ? 'active' : ''}`}>
+                        <Link to="/hours" className='nav-link' onClick={() => handlePageChange('/hours')}>
                             <FontAwesomeIcon icon={faClock} />
                             <span className='ps-3'>Hours</span>
                         </Link>
                     </li>
 
-                    <li className={`nav-item px-2 rounded ${currentPage === '/tasks' ? 'active' : ''}`}>
-                        <Link to="/tasks" className='nav-link' onClick={() => handlePageChange('/tasks')}>
+                    <li className={`nav-item px-2 rounded ${currentPage === '/alerts' ? 'active' : ''}`}>
+                        <Link to="/alerts" className='nav-link' onClick={() => handlePageChange('/alerts')}>
                             <FontAwesomeIcon icon={faExclamation} />
                             <span className='ps-3'>Alerts</span>
                         </Link>

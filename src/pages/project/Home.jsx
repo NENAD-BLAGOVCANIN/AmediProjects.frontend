@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Header from '../../components/Header'
 import Sidebar from '../../components/Sidebar'
 import { getUserInfo } from '../../api/user';
+import MyCalendar from '../../components/MyCalendar';
 
 function Home() {
 
@@ -38,9 +39,9 @@ function Home() {
                 <div className='main-container'>
 
                     <div className='pt-3'>
-                        <h3>About the project ({userInfo ? userInfo.project.name : ''})</h3>
+                        <h4>About the project</h4>
 
-                        <p className='text-muted pt-2' style={{textAlign: 'justify'}}>
+                        <p className='text-muted medium pt-2' style={{textAlign: 'justify'}}>
                             Give your colleagues a place to learn about your team, and what you’re working on. Use the + buttons in your left-hand sidebar to add more pages, like process docs or a project roadmap.
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam deleniti debitis, magnam voluptate unde ad, quos, error maxime suscipit tenetur et. Placeat officiis, quibusdam quo voluptatem unde deleniti accusamus eligendi.
                             Give your colleagues a place to learn about your team, and what you’re working on.
@@ -49,14 +50,16 @@ function Home() {
 
                     <div className="row pt-5">
                         <div className="col-md-6">
-                            <h3>About the team</h3>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi dicta sint ipsam architecto veritatis earum placeat reiciendis modi ipsum, possimus sequi perspiciatis id in aperiam! Libero, impedit? Placeat, alias!</p>
+                            <h4>About the team</h4>
+                            <p className='medium'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi dicta sint ipsam architecto veritatis earum placeat reiciendis modi ipsum, possimus sequi perspiciatis id in aperiam! Libero, impedit? Placeat, alias!</p>
                         </div>
                         <div className="col-md-6">
-                            <h3>Resources</h3>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi dicta sint ipsam architecto veritatis earum placeat reiciendis modi ipsum, possimus sequi perspiciatis id in aperiam! Libero, impedit? Placeat, alias!</p>
+                            <h4>Resources</h4>
+                            <p className='medium'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi dicta sint ipsam architecto veritatis earum placeat reiciendis modi ipsum, possimus sequi perspiciatis id in aperiam! Libero, impedit? Placeat, alias!</p>
                         </div>
                     </div>
+
+                    <MyCalendar />
 
 
                 </div>

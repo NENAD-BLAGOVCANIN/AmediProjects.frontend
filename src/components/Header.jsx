@@ -56,7 +56,7 @@ function Header({ pageTitle }) {
     return (
         <nav className='header justify-content-between'>
             <div className='d-flex align-items-center'>
-                <h3 className='m-0'>{pageTitle}</h3>
+                <h4 className='m-0'>{pageTitle}</h4>
                 <div className='px-4'>
                     <div className="dropdown show">
                         <button className="btn btn-basic dropdown-toggle" type="button" id="projectsDropdown" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isDropdownOpen ? "true" : "false"}>
