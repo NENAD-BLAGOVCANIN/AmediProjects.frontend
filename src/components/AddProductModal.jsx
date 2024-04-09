@@ -55,7 +55,7 @@ function AddProductModal({ products, setProducts, showAddProductModal, setShowAd
                                     <input type="number" className='form-control' placeholder='Price' value={price} onChange={(e) => setPrice(e.target.value)} />
                                 </div>
                                 <div className='col-md-12 p-2'>
-                                    <textarea className='form-control' placeholder='Description' value={description} onChange={(e) => setDescription(e.target.value)} />
+                                    <textarea className='form-control' style={{height: 130}} placeholder='Description' value={description} onChange={(e) => setDescription(e.target.value)} />
                                 </div>
 
 

@@ -46,13 +46,13 @@ function Products() {
                     </div>
 
                     <div className="container">
-                        <div className="row">
+                        <div className="row pt-4">
                             {products.map(product => (
                                 <div className="col-md-3">
-                                    <div className="card">
+                                    <div className="card border-0 bg-gray bg-gray-hover pointer p-3 w-100">
                                         <h4>{product.name}</h4>
-                                        <p>{product.description}</p>
-                                        <h5 className='text-primary'>{product.price}</h5>
+                                        <p className='medium text-muted'>{product.description}</p>
+                                        <h5 className='text-success'>${product.price}</h5>
                                     </div>
                                 </div>
                             ))}
