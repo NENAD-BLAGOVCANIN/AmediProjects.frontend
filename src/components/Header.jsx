@@ -1,17 +1,55 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import profileImagePlaceholder from '../assets/img/profile.svg'
 import placeholderProfileImage1 from '../assets/img/placeholder-profile-img-1.jpeg'
 import placeholderProfileImage2 from '../assets/img/placeholder-profile-img-2.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { getUserInfo } from '../api/user';
+import { getMyProjects, switchProject } from '../api/project';
 
 function Header({ pageTitle }) {
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [myProjects, setMyProjects] = useState([]);
+    const [userInfo, setUserInfo] = useState(null);
+
+
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const fetchedUserInfo = await getUserInfo();
+                setUserInfo(fetchedUserInfo);
+                console.log(fetchedUserInfo);
+            } catch (error) {
+                console.error('Error fetching :', error);
+            }
+
+            try {
+                const fetchedMyProjects = await getMyProjects();
+                setMyProjects(fetchedMyProjects);
+                console.log(fetchedMyProjects);
+            } catch (error) {
+                console.error('Error fetching :', error);
+            }
+        };
+
+        fetchUserInfo();
+
+    }, []);
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
+
+    const handleSwitchProject = async (project_id) => {
+        try {
+            await switchProject(project_id);
+            window.location.reload();
+
+        } catch (error) {
+            console.error('Error fetching :', error);
+        }
+    }
 
 
     return (
@@ -19,14 +57,14 @@ function Header({ pageTitle }) {
             <div className='d-flex align-items-center'>
                 <h3 className='m-0'>{pageTitle}</h3>
                 <div className='px-4'>
-                    <div class="dropdown show">
+                    <div className="dropdown show">
                     <button className="btn btn-basic dropdown-toggle" type="button" id="projectsDropdown" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isDropdownOpen ? "true" : "false"}>
                             Test Project
                         </button>
                         <div className={"dropdown-menu border-0 shadow" + (isDropdownOpen ? " show" : "")} aria-labelledby="projectsDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a className="dropdown-item" href="#">Action</a>
+                            <a className="dropdown-item" href="#">Another action</a>
+                            <a className="dropdown-item" href="#">Something else here</a>
                         </div>
                     </div>
                 </div>
