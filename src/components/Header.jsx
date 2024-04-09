@@ -60,15 +60,16 @@ function Header({ pageTitle }) {
                 <div className='px-4'>
                     <div className="dropdown show">
                         <button className="btn btn-basic dropdown-toggle" type="button" id="projectsDropdown" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isDropdownOpen ? "true" : "false"}>
-                            {userInfo.project.name}
+                            {userInfo ? userInfo.project.name : ''}
                         </button>
-                        <div className={"dropdown-menu border-0 shadow" + (isDropdownOpen ? " show" : "")} aria-labelledby="projectsDropdown">
-                            <Link className="dropdown-item" to="/projects/create">
+                        <div className={"dropdown-menu border-0 shadow pt-2 pb-3" + (isDropdownOpen ? " show" : "")} aria-labelledby="projectsDropdown">
+                            <Link className="dropdown-item py-2" to="/projects/create">
                                 <FontAwesomeIcon icon={faPlus} className='pe-2' />
                                 New Project
                             </Link>
+                            <hr className='m-0 py-2' />
                             {myProjects.map(myProject => (
-                                <a className="dropdown-item" key={myProject.id} href="#">{myProject.name}</a>
+                                <a className="dropdown-item py-2" key={myProject.id} href="#">{myProject.name}</a>
                             ))}
                         </div>
                     </div>
