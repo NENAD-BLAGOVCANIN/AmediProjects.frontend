@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCompass, faAddressBook, faUser, faListCheck, faCalendar, faUserTie, faRightFromBracket, faTriangleExclamation, faClock,
-        faUserGroup, faBars, faGear, faExclamation, faArrowRightArrowLeft, faChartSimple, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCompass, faAddressBook, faUser, faListCheck, faCalendar, faUserTie, faRightFromBracket, faTriangleExclamation, faClock,
+    faUserGroup, faBars, faGear, faExclamation, faArrowRightArrowLeft, faChartSimple, faNoteSticky,
+    faHouse
+} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import logo from '../assets/img/icon.png'
 
@@ -78,6 +81,43 @@ function Sidebar() {
 
                     <hr />
 
+
+                    <div className='pb-2'>
+                        <span className='small bold text-white'>Project</span>
+                    </div>
+
+                    <li className='nav-item px-2 rounded'>
+                        <span className='nav-link pointer'>
+                            <FontAwesomeIcon icon={faHouse} />
+                            <span className='ps-3'>Home</span>
+                        </span>
+                    </li>
+
+                    <li className='nav-item px-2 rounded'>
+                        <span className='nav-link pointer'>
+                            <FontAwesomeIcon icon={faNoteSticky} />
+                            <span className='ps-3'>Notes</span>
+                        </span>
+                    </li>
+
+                    <li className='nav-item px-2 rounded'>
+                        <span className='nav-link pointer'>
+                            <FontAwesomeIcon icon={faChartSimple} />
+                            <span className='ps-3'>Performance</span>
+                        </span>
+                    </li>
+
+                    <li className={`nav-item px-2 rounded ${currentPage === '/settings' ? 'active' : ''}`}>
+                        <Link to="/settings" className='nav-link' onClick={() => handlePageChange('/settings')}>
+                            <FontAwesomeIcon icon={faGear} />
+                            <span className='ps-3'>Project Settings</span>
+                        </Link>
+                    </li>
+
+
+                    <hr />
+
+
                     <div className='pb-2'>
                         <span className='small bold text-white'>CRM</span>
                     </div>
@@ -136,34 +176,6 @@ function Sidebar() {
                             <span className='ps-3'>Alerts</span>
                         </Link>
                     </li>
-
-                    <hr />
-
-                    <div className='pb-2'>
-                        <span className='small bold text-white'>Project</span>
-                    </div>
-
-                    <li className='nav-item px-2 rounded'>
-                        <span className='nav-link pointer'>
-                            <FontAwesomeIcon icon={faNoteSticky} />
-                            <span className='ps-3'>Project Notes</span>
-                        </span>
-                    </li>
-
-                    <li className='nav-item px-2 rounded'>
-                        <span className='nav-link pointer'>
-                            <FontAwesomeIcon icon={faChartSimple} />
-                            <span className='ps-3'>Project Performance</span>
-                        </span>
-                    </li>
-
-                    <li className={`nav-item px-2 rounded ${currentPage === '/settings' ? 'active' : ''}`}>
-                        <Link to="/settings" className='nav-link' onClick={() => handlePageChange('/settings')}>
-                            <FontAwesomeIcon icon={faGear} />
-                            <span className='ps-3'>Project Settings</span>
-                        </Link>
-                    </li>
-
 
                     <hr />
 

@@ -14,6 +14,7 @@ import Invite from './pages/Invite';
 import Projects from './pages/Projects';
 import Users from './pages/admin/Users';
 import CreateNewProject from './pages/CreateNewProject';
+import Home from './pages/project/Home';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -46,9 +47,13 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
 
+        {/* Project */}
+        <Route path="/home" element={<Home />} />
+
         {/* Project Management */}
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/create" element={<CreateNewProject />} />
+        <Route path="/projects/invite/:inviteCode/:projectId" element={<Invite />} />
 
         {/* Admin Panel */}
         <Route path="/admin/dashboard" element={<Dashboard />} />
@@ -58,8 +63,6 @@ function App() {
         <Route path="/login" element={<Login authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
         <Route path="/register" element={<Register authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
         <Route path="/logout" element={<Logout />} />
-
-        <Route path="/projects/invite/:inviteCode/:projectId" element={<Invite />} />
 
       </Routes>
     </Router>
