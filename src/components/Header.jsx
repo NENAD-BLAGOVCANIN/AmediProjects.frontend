@@ -69,7 +69,7 @@ function Header({ pageTitle }) {
                             </Link>
                             <hr className='m-0 py-2' />
                             {myProjects.map(myProject => (
-                                <a className="dropdown-item py-2" key={myProject.id} href="#">{myProject.name}</a>
+                                <span className="dropdown-item py-2 pointer" key={myProject.id} onClick={() => {handleSwitchProject(myProject.id)}}>{myProject.name}</span>
                             ))}
                         </div>
                     </div>
