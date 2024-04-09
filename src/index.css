@@ -272,3 +272,7 @@ hr {
 .fw-400{
   font-weight: 400 !important;
 }
+
+.sidebar-link-group{
+  padding-bottom: 1.85rem;
+}

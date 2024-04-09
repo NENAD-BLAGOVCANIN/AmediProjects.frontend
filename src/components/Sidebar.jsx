@@ -62,158 +62,162 @@ function Sidebar() {
 
                 <ul className="list-unstyled py-4">
 
-                    <div className='pb-2'>
-                        <span className='small bold text-white'>Admin Panel</span>
-                    </div>
-                    <li className={`nav-item px-2 rounded ${currentPage === '/admin/dashboard' ? 'active' : ''}`}>
-                        <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
-                            <FontAwesomeIcon icon={faCompass} />
-                            <span className='ps-3'>Dashboard</span>
-                        </Link>
-                    </li>
-                    <li className={`nav-item px-2 rounded ${currentPage === '/admin/users' ? 'active' : ''}`}>
-                        <Link to="/admin/users" className='nav-link' onClick={() => handlePageChange('/admin/users')}>
-                            <FontAwesomeIcon icon={faUserGroup} />
-                            <span className='ps-3'>Users</span>
-                        </Link>
-                    </li>
-                    <li className={`nav-item px-2 rounded ${currentPage === '/user-management' ? 'active' : ''}`}>
-                        <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
-                            <FontAwesomeIcon icon={faTriangleExclamation} />
-                            <span className='ps-3'>Roles & Permissions</span>
-                        </Link>
-                    </li>
-                    <li className={`nav-item px-2 rounded ${currentPage === '/history' ? 'active' : ''}`}>
-                        <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
-                            <FontAwesomeIcon icon={faCompass} />
-                            <span className='ps-3'>History</span>
-                        </Link>
-                    </li>
-
-                    <hr />
-
-
-                    <div className='pb-2'>
-                        <span className='small bold text-white'>Project</span>
+                    <div className='sidebar-link-group'>
+                        <div className='pb-2'>
+                            <span className='small bold text-white'>Admin Panel</span>
+                        </div>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/admin/dashboard' ? 'active' : ''}`}>
+                            <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
+                                <FontAwesomeIcon icon={faCompass} />
+                                <span className='ps-3'>Dashboard</span>
+                            </Link>
+                        </li>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/admin/users' ? 'active' : ''}`}>
+                            <Link to="/admin/users" className='nav-link' onClick={() => handlePageChange('/admin/users')}>
+                                <FontAwesomeIcon icon={faUserGroup} />
+                                <span className='ps-3'>Users</span>
+                            </Link>
+                        </li>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/user-management' ? 'active' : ''}`}>
+                            <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
+                                <FontAwesomeIcon icon={faTriangleExclamation} />
+                                <span className='ps-3'>Roles & Permissions</span>
+                            </Link>
+                        </li>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/history' ? 'active' : ''}`}>
+                            <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
+                                <FontAwesomeIcon icon={faCompass} />
+                                <span className='ps-3'>History</span>
+                            </Link>
+                        </li>
                     </div>
 
-                    <li className='nav-item px-2 rounded'>
-                        <Link to="/home" className='nav-link' onClick={() => handlePageChange('/home')}>
-                            <FontAwesomeIcon icon={faHouse} />
-                            <span className='ps-3'>Home</span>
-                        </Link>
-                    </li>
+                    <div className='sidebar-link-group'>
+                        <div className='pb-2'>
+                            <span className='small bold text-white'>Project</span>
+                        </div>
 
-                    <li className='nav-item px-2 rounded'>
-                        <span className='nav-link pointer'>
-                            <FontAwesomeIcon icon={faNoteSticky} />
-                            <span className='ps-3'>Notes</span>
-                        </span>
-                    </li>
+                        <li className='nav-item px-2 rounded'>
+                            <Link to="/home" className='nav-link' onClick={() => handlePageChange('/home')}>
+                                <FontAwesomeIcon icon={faHouse} />
+                                <span className='ps-3'>Home</span>
+                            </Link>
+                        </li>
 
-                    <li className='nav-item px-2 rounded'>
-                        <span className='nav-link pointer'>
-                            <FontAwesomeIcon icon={faChartSimple} />
-                            <span className='ps-3'>Performance</span>
-                        </span>
-                    </li>
+                        <li className='nav-item px-2 rounded'>
+                            <span className='nav-link pointer'>
+                                <FontAwesomeIcon icon={faNoteSticky} />
+                                <span className='ps-3'>Notes</span>
+                            </span>
+                        </li>
 
-                    <li className={`nav-item px-2 rounded ${currentPage === '/settings' ? 'active' : ''}`}>
-                        <Link to="/settings" className='nav-link' onClick={() => handlePageChange('/settings')}>
-                            <FontAwesomeIcon icon={faGear} />
-                            <span className='ps-3'>Project Settings</span>
-                        </Link>
-                    </li>
+                        <li className='nav-item px-2 rounded'>
+                            <span className='nav-link pointer'>
+                                <FontAwesomeIcon icon={faChartSimple} />
+                                <span className='ps-3'>Performance</span>
+                            </span>
+                        </li>
+
+                        <li className={`nav-item px-2 rounded ${currentPage === '/settings' ? 'active' : ''}`}>
+                            <Link to="/settings" className='nav-link' onClick={() => handlePageChange('/settings')}>
+                                <FontAwesomeIcon icon={faGear} />
+                                <span className='ps-3'>Project Settings</span>
+                            </Link>
+                        </li>
+
+                    </div>
+
+                    <div className='sidebar-link-group'>
+                        <div className='pb-2'>
+                            <span className='small bold text-white'>CRM</span>
+                        </div>
 
 
-                    <hr />
+                        <li className={`nav-item px-2 rounded ${currentPage === '/contacts' ? 'active' : ''}`}>
+                            <Link to="/contacts" className='nav-link' onClick={() => handlePageChange('/contacts')}>
+                                <FontAwesomeIcon icon={faAddressBook} />
+                                <span className='ps-3'>Contacts</span>
+                            </Link>
+                        </li>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/leads' ? 'active' : ''}`}>
+                            <Link to="/leads" className='nav-link' onClick={() => handlePageChange('/leads')}>
+                                <FontAwesomeIcon icon={faUserTie} />
+                                <span className='ps-3'>Leads</span>
+                            </Link>
+                        </li>
 
-
-                    <div className='pb-2'>
-                        <span className='small bold text-white'>CRM</span>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/clients' ? 'active' : ''}`}>
+                            <Link to="/clients" className='nav-link' onClick={() => handlePageChange('/tasks')}>
+                                <FontAwesomeIcon icon={faUserGroup} />
+                                <span className='ps-3'>Clients</span>
+                            </Link>
+                        </li>
                     </div>
 
 
-                    <li className={`nav-item px-2 rounded ${currentPage === '/contacts' ? 'active' : ''}`}>
-                        <Link to="/contacts" className='nav-link' onClick={() => handlePageChange('/contacts')}>
-                            <FontAwesomeIcon icon={faAddressBook} />
-                            <span className='ps-3'>Contacts</span>
-                        </Link>
-                    </li>
-                    <li className={`nav-item px-2 rounded ${currentPage === '/leads' ? 'active' : ''}`}>
-                        <Link to="/leads" className='nav-link' onClick={() => handlePageChange('/leads')}>
-                            <FontAwesomeIcon icon={faUserTie} />
-                            <span className='ps-3'>Leads</span>
-                        </Link>
-                    </li>
+                    <div className='sidebar-link-group'>
+                        <div className='pb-2'>
+                            <span className='small bold text-white'>Work</span>
+                        </div>
 
-                    <li className={`nav-item px-2 rounded ${currentPage === '/clients' ? 'active' : ''}`}>
-                        <Link to="/clients" className='nav-link' onClick={() => handlePageChange('/tasks')}>
-                            <FontAwesomeIcon icon={faUserGroup} />
-                            <span className='ps-3'>Clients</span>
-                        </Link>
-                    </li>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/tasks' ? 'active' : ''}`}>
+                            <Link to="/tasks" className='nav-link' onClick={() => handlePageChange('/tasks')}>
+                                <FontAwesomeIcon icon={faListCheck} />
+                                <span className='ps-3'>Tasks</span>
+                            </Link>
+                        </li>
 
-                    <hr />
+                        <li className={`nav-item px-2 rounded ${currentPage === '/calendar' ? 'active' : ''}`}>
+                            <Link to="/calendar" className='nav-link' onClick={() => handlePageChange('/calendar')}>
+                                <FontAwesomeIcon icon={faCalendar} />
+                                <span className='ps-3'>Calendar</span>
+                            </Link>
+                        </li>
 
-                    <div className='pb-2'>
-                        <span className='small bold text-white'>Work</span>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/hours' ? 'active' : ''}`}>
+                            <Link to="/hours" className='nav-link' onClick={() => handlePageChange('/hours')}>
+                                <FontAwesomeIcon icon={faClock} />
+                                <span className='ps-3'>Hours</span>
+                            </Link>
+                        </li>
+
+                        <li className={`nav-item px-2 rounded ${currentPage === '/alerts' ? 'active' : ''}`}>
+                            <Link to="/alerts" className='nav-link' onClick={() => handlePageChange('/alerts')}>
+                                <FontAwesomeIcon icon={faExclamation} />
+                                <span className='ps-3'>Alerts</span>
+                            </Link>
+                        </li>
                     </div>
 
-                    <li className={`nav-item px-2 rounded ${currentPage === '/tasks' ? 'active' : ''}`}>
-                        <Link to="/tasks" className='nav-link' onClick={() => handlePageChange('/tasks')}>
-                            <FontAwesomeIcon icon={faListCheck} />
-                            <span className='ps-3'>Tasks</span>
-                        </Link>
-                    </li>
 
-                    <li className={`nav-item px-2 rounded ${currentPage === '/calendar' ? 'active' : ''}`}>
-                        <Link to="/calendar" className='nav-link' onClick={() => handlePageChange('/calendar')}>
-                            <FontAwesomeIcon icon={faCalendar} />
-                            <span className='ps-3'>Calendar</span>
-                        </Link>
-                    </li>
+                    <div className='sidebar-link-group'>
+                        <div className='pb-2'>
+                            <span className='small bold text-white'>Account</span>
+                        </div>
 
-                    <li className={`nav-item px-2 rounded ${currentPage === '/hours' ? 'active' : ''}`}>
-                        <Link to="/hours" className='nav-link' onClick={() => handlePageChange('/hours')}>
-                            <FontAwesomeIcon icon={faClock} />
-                            <span className='ps-3'>Hours</span>
-                        </Link>
-                    </li>
+                        <li className='nav-item px-2 rounded'>
+                            <Link to="/profile" className='nav-link'>
+                                <FontAwesomeIcon icon={faUser} />
+                                <span className='ps-3'>My Profile</span>
+                            </Link>
+                        </li>
 
-                    <li className={`nav-item px-2 rounded ${currentPage === '/alerts' ? 'active' : ''}`}>
-                        <Link to="/alerts" className='nav-link' onClick={() => handlePageChange('/alerts')}>
-                            <FontAwesomeIcon icon={faExclamation} />
-                            <span className='ps-3'>Alerts</span>
-                        </Link>
-                    </li>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/settings' ? 'active' : ''}`}>
+                            <Link to="/settings" className='nav-link' onClick={() => handlePageChange('/settings')}>
+                                <FontAwesomeIcon icon={faGear} />
+                                <span className='ps-3'>Settings</span>
+                            </Link>
+                        </li>
 
-                    <hr />
-
-                    <div className='pb-2'>
-                        <span className='small bold text-white'>Account</span>
+                        <li className='nav-item px-2 rounded'>
+                            <Link to="/logout" className='nav-link'>
+                                <FontAwesomeIcon icon={faRightFromBracket} />
+                                <span className='ps-3'>Logout</span>
+                            </Link>
+                        </li>
                     </div>
 
-                    <li className='nav-item px-2 rounded'>
-                        <Link to="/profile" className='nav-link'>
-                            <FontAwesomeIcon icon={faUser} />
-                            <span className='ps-3'>My Profile</span>
-                        </Link>
-                    </li>
 
-                    <li className={`nav-item px-2 rounded ${currentPage === '/settings' ? 'active' : ''}`}>
-                        <Link to="/settings" className='nav-link' onClick={() => handlePageChange('/settings')}>
-                            <FontAwesomeIcon icon={faGear} />
-                            <span className='ps-3'>Settings</span>
-                        </Link>
-                    </li>
-
-                    <li className='nav-item px-2 rounded'>
-                        <Link to="/logout" className='nav-link'>
-                            <FontAwesomeIcon icon={faRightFromBracket} />
-                            <span className='ps-3'>Logout</span>
-                        </Link>
-                    </li>
                 </ul>
 
                 <div className='btn btn-basic bg-white w-fit position-fixed pointer' id='toggleModalButton' onClick={toggleModal}>
