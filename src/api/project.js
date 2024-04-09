@@ -37,6 +37,7 @@ const getMyProjects = async () => {
         const response = await fetch(apiUrl + '/my-projects', {
             method: 'GET',
             headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
             },

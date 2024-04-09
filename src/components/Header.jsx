@@ -3,9 +3,10 @@ import profileImagePlaceholder from '../assets/img/profile.svg'
 import placeholderProfileImage1 from '../assets/img/placeholder-profile-img-1.jpeg'
 import placeholderProfileImage2 from '../assets/img/placeholder-profile-img-2.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faEnvelope, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { getUserInfo } from '../api/user';
 import { getMyProjects, switchProject } from '../api/project';
+import { Link } from 'react-router-dom';
 
 function Header({ pageTitle }) {
 
@@ -58,13 +59,17 @@ function Header({ pageTitle }) {
                 <h3 className='m-0'>{pageTitle}</h3>
                 <div className='px-4'>
                     <div className="dropdown show">
-                    <button className="btn btn-basic dropdown-toggle" type="button" id="projectsDropdown" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isDropdownOpen ? "true" : "false"}>
-                            Test Project
+                        <button className="btn btn-basic dropdown-toggle" type="button" id="projectsDropdown" onClick={toggleDropdown} aria-haspopup="true" aria-expanded={isDropdownOpen ? "true" : "false"}>
+                            {userInfo.project.name}
                         </button>
                         <div className={"dropdown-menu border-0 shadow" + (isDropdownOpen ? " show" : "")} aria-labelledby="projectsDropdown">
-                            <a className="dropdown-item" href="#">Action</a>
-                            <a className="dropdown-item" href="#">Another action</a>
-                            <a className="dropdown-item" href="#">Something else here</a>
+                            <Link className="dropdown-item" to="/projects/create">
+                                <FontAwesomeIcon icon={faPlus} className='pe-2' />
+                                New Project
+                            </Link>
+                            {myProjects.map(myProject => (
+                                <a className="dropdown-item" key={myProject.id} href="#">{myProject.name}</a>
+                            ))}
                         </div>
                     </div>
                 </div>
