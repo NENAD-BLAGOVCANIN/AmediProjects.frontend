@@ -87,10 +87,10 @@ function Sidebar() {
                     </div>
 
                     <li className='nav-item px-2 rounded'>
-                        <span className='nav-link pointer'>
+                        <Link to="/home" className='nav-link' onClick={() => handlePageChange('/home')}>
                             <FontAwesomeIcon icon={faHouse} />
                             <span className='ps-3'>Home</span>
-                        </span>
+                        </Link>
                     </li>
 
                     <li className='nav-item px-2 rounded'>

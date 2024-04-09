@@ -153,7 +153,6 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
             />
 
         </div>
-
     )
 }
 
