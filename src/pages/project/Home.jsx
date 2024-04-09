@@ -30,17 +30,32 @@ function Home() {
 
                 <Header pageTitle="🏡 Project Home" />
 
+                <div className='home-hero-section'>
+                    <h3 className='bold'>⛅ Good morning, Nenad</h3>
+                    <h5>Ready for the meeting at 10am?</h5>
+                </div>
+
                 <div className='main-container'>
 
-                    <h3 className='bold text-center py-5'>⛅ Good morning, Nenad</h3>
+                    <div className='pt-3'>
+                        <h3>About the project ({userInfo ? userInfo.project.name : ''})</h3>
 
-                    <div className='text-center m-auto' style={{ maxWidth: 950 }}>
-                        <h2>{userInfo ? userInfo.project.name : ''}</h2>
-
-                        <p className='text-muted text-justify pt-2'>
+                        <p className='text-muted pt-2' style={{textAlign: 'justify'}}>
                             Give your colleagues a place to learn about your team, and what you’re working on. Use the + buttons in your left-hand sidebar to add more pages, like process docs or a project roadmap.
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam deleniti debitis, magnam voluptate unde ad, quos, error maxime suscipit tenetur et. Placeat officiis, quibusdam quo voluptatem unde deleniti accusamus eligendi.
+                            Give your colleagues a place to learn about your team, and what you’re working on.
                         </p>
+                    </div>
+
+                    <div className="row pt-5">
+                        <div className="col-md-6">
+                            <h3>About the team</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi dicta sint ipsam architecto veritatis earum placeat reiciendis modi ipsum, possimus sequi perspiciatis id in aperiam! Libero, impedit? Placeat, alias!</p>
+                        </div>
+                        <div className="col-md-6">
+                            <h3>Resources</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi dicta sint ipsam architecto veritatis earum placeat reiciendis modi ipsum, possimus sequi perspiciatis id in aperiam! Libero, impedit? Placeat, alias!</p>
+                        </div>
                     </div>
 
 

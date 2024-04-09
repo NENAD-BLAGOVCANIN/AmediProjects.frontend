@@ -32,7 +32,7 @@ body {
   display: flex;
 }
 
-.main-content-wrapper{
+.main-content-wrapper {
   display: flex;
   position: relative;
   overflow-x: hidden;
@@ -185,7 +185,7 @@ hr {
   padding: 1rem;
 }
 
-.btn-basic{
+.btn-basic {
   border: 2px solid var(--color-gray) !important;
 }
 
@@ -206,7 +206,7 @@ hr {
   width: 100%;
 }
 
-.task-card:hover{
+.task-card:hover {
   background-color: var(--color-light-gray);
   cursor: pointer;
 }
@@ -218,21 +218,21 @@ hr {
   }
 }
 
-.form-control{
+.form-control {
   border: none !important;
   background-color: var(--color-dark-gray) !important;
 }
 
-.assignee-nav-item:hover{
+.assignee-nav-item:hover {
   background-color: var(--color-dark-gray);
 }
 
-.project-card{
+.project-card {
   height: 185px !important;
   text-decoration: none !important;
 }
 
-#create-project-page-wrapper{
+#create-project-page-wrapper {
   min-height: 100vh;
   width: 100%;
   background-image: url('./assets/img/bg-wallpaper-1.png');
@@ -242,10 +242,17 @@ hr {
   background-clip: border-box;
 }
 
-.transform-left-35{
+.transform-left-35 {
   transform: translateX(-35%);
 }
 
-.transform-left-75{
+.transform-left-75 {
   transform: translateX(-75%);
+}
+
+.home-hero-section {
+  background-image: linear-gradient(0deg, #d8eeee, #d8eeee 25%, #64adc9 65%, #005986b4 90%, #005986c9);
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  text-align: center;
 }
