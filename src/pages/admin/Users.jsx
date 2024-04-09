@@ -29,11 +29,11 @@ function Users() {
     }
 
     return (
-        <div className='main-content-wrapper'>
+        <div className='page-content-wrapper'>
 
             <Sidebar />
 
-            <div className='w-100 overflow-auto'>
+            <div className='main-content-wrapper'>
 
                 <Header pageTitle="Users" />
 

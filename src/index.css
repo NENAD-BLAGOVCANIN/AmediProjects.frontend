@@ -32,10 +32,16 @@ body {
   display: flex;
 }
 
-.main-content-wrapper {
+.page-content-wrapper {
   display: flex;
   position: relative;
   overflow-x: hidden;
+}
+
+.main-content-wrapper{
+  width: 100%;
+  overflow: auto;
+  padding-left: var(--sidebar-width);
 }
 
 .main-container {
@@ -137,8 +143,10 @@ hr {
 #sidebar {
   min-width: var(--sidebar-width);
   max-width: var(--sidebar-width);
+  position: fixed;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
   background-color: var(--color-dark);
   transition: all 0.3s;
   padding-top: 1.3rem;
