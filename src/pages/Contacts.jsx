@@ -75,15 +75,15 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
                             <table className='table table-striped table-hover'>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Title</th>
-                                        <th>City</th>
-                                        <th>Address</th>
-                                        <th>Phone</th>
-                                        <th>Organization</th>
-                                        <th className='text-center'>Actions</th>
+                                        <th className='text-secondary'>ID</th>
+                                        <th className='text-secondary'>Name</th>
+                                        <th className='text-secondary'>Email</th>
+                                        <th className='text-secondary'>Title</th>
+                                        <th className='text-secondary'>City</th>
+                                        <th className='text-secondary'>Address</th>
+                                        <th className='text-secondary'>Phone</th>
+                                        <th className='text-secondary'>Organization</th>
+                                        <th className='text-center text-secondary'>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>

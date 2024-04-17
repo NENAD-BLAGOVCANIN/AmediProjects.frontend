@@ -49,7 +49,7 @@ function Profile() {
 
                   <div className='d-flex flex-column align-items-center pt-5'>
 
-                    <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{maxWidth: 150}} alt="" />
+                    <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{maxWidth: 130}} alt="" />
 
                     <h5 className='mt-3 mb-5'>{userInfo.name}</h5>
 

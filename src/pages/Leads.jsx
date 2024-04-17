@@ -59,19 +59,19 @@ function Leads({ leads, setLeads, contacts, setContacts }) {
                                 <table className='table table-striped table-hover'>
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Title</th>
-                                            <th>City</th>
-                                            <th>Address</th>
-                                            <th>Description</th>
-                                            <th>Lead Source</th>
-                                            <th>Past Client</th>
-                                            <th>Phone</th>
-                                            <th>Organization</th>
-                                            <th>Date Added</th>
-                                            <th>Actions</th>
+                                            <th className='text-secondary'>ID</th>
+                                            <th className='text-secondary'>Name</th>
+                                            <th className='text-secondary'>Email</th>
+                                            <th className='text-secondary'>Title</th>
+                                            <th className='text-secondary'>City</th>
+                                            <th className='text-secondary'>Address</th>
+                                            <th className='text-secondary'>Description</th>
+                                            <th className='text-secondary'>Lead Source</th>
+                                            <th className='text-secondary'>Past Client</th>
+                                            <th className='text-secondary'>Phone</th>
+                                            <th className='text-secondary'>Organization</th>
+                                            <th className='text-secondary'>Date Added</th>
+                                            <th className='text-secondary'>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
