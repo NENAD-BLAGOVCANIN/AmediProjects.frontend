@@ -4,6 +4,8 @@ import Header from '../components/Header'
 import { getTasks, saveTask } from '../api/tasks'
 import TaskModal from '../components/TaskModal'
 import { getProjectMembers } from '../api/project';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
 
 function Tasks() {
 
@@ -82,19 +84,22 @@ function Tasks() {
 
                     <div className="row">
                         <div className="col-4 p-3">
-                            <div className='rounded text-center mb-3 py-2' style={{backgroundColor: '#B4EBFF'}}>
-                                TODO
-                            </div>
+                            <p className='mb-3 fw-500'>
+                                To do
+                                <span className='text-muted fw-400 medium px-2'>
+                                    3
+                                </span>
+                            </p>
                             {tasks.filter(task => task.status === 'todo').map(task => (
-                                <div key={task.id} className="task-card card mb-3" onClick={() => handleShowTaskModal(task)}>
+                                <div key={task.id} className="task-card mb-3" onClick={() => handleShowTaskModal(task)}>
                                     <div className=''>
-                                        <h5 className='pe-2'>{task.subject}</h5>
-                                        <span className='text-muted'>{task.description}</span>
+                                        <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
+                                        <span className='pe-2 medium'>{task.subject}</span>
                                     </div>
                                 </div>
                             ))}
 
-                            <div className={`task-card card mb-3 ${(showAddTaskCard || tasks.length == 0) ? '' : 'd-none'}`}>
+                            <div className={`task-card mb-3 ${(showAddTaskCard || tasks.length == 0) ? '' : 'd-none'}`}>
                                 <div className=''>
                                     <input
                                         type="text"
@@ -126,27 +131,33 @@ function Tasks() {
 
                         </div>
                         <div className="col-4 p-3">
-                            <div className='rounded text-center mb-3 py-2' style={{backgroundColor: '#EBFFB4'}}>
+                            <p className='mb-3 fw-500'>
                                 IN PROGRESS
-                            </div>
+                                <span className='text-muted fw-400 medium px-2'>
+                                    3
+                                </span>
+                            </p>
                             {tasks.filter(task => task.status === 'in_progress').map(task => (
-                                <div key={task.id} className="task-card card mb-3" onClick={() => handleShowTaskModal(task)}>
+                                <div key={task.id} className="task-card mb-3" onClick={() => handleShowTaskModal(task)}>
                                     <div className=''>
-                                        <h5 className='pe-2'>{task.subject}</h5>
-                                        <span className='text-muted'>{task.description}</span>
+                                        <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
+                                        <span className='pe-2 medium'>{task.subject}</span>
                                     </div>
                                 </div>
                             ))}
                         </div>
                         <div className="col-4 p-3">
-                            <div className='rounded text-center mb-3 py-2' style={{backgroundColor: '#B4FFD2'}}>
+                            <p className='mb-3 fw-500'>
                                 DONE
-                            </div>
+                                <span className='text-muted fw-400 medium px-2'>
+                                    3
+                                </span>
+                            </p>
                             {tasks.filter(task => task.status === 'done').map(task => (
-                                <div key={task.id} className="task-card card mb-3" onClick={() => handleShowTaskModal(task)}>
+                                <div key={task.id} className="task-card mb-3" onClick={() => handleShowTaskModal(task)}>
                                     <div className=''>
-                                        <h5 className='pe-2'>{task.subject}</h5>
-                                        <span className='text-muted'>{task.description}</span>
+                                        <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
+                                        <span className='pe-2 medium'>{task.subject}</span>
                                     </div>
                                 </div>
                             ))}
