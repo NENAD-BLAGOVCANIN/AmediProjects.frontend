@@ -87,7 +87,12 @@ function Tasks() {
                                 <span className='ps-2'>Timeline</span>
                             </>
                         }>
-                            <Timeline />
+                            <Timeline
+                                tasks={tasks} setTasks={setTasks}
+                                selectedTask={selectedTask} setSelectedTask={setSelectedTask}
+                                showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
+                                showAddTaskCard={showAddTaskCard} setShowAddTaskCard={setShowAddTaskCard}
+                            />
                         </Tab>
                         <Tab eventKey="list" title={
                             <>
@@ -95,7 +100,12 @@ function Tasks() {
                                 <span className='ps-2'>List</span>
                             </>
                         }>
-                            <List />
+                            <List
+                                tasks={tasks} setTasks={setTasks}
+                                selectedTask={selectedTask} setSelectedTask={setSelectedTask}
+                                showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
+                                showAddTaskCard={showAddTaskCard} setShowAddTaskCard={setShowAddTaskCard}
+                            />
                         </Tab>
                     </Tabs>
 

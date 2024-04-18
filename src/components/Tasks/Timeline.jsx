@@ -1,6 +1,7 @@
 import React from 'react'
 
-function Timeline() {
+function Timeline({ tasks, setTasks, setSelectedTask, selectedTask,
+  showTasksModal, setShowTasksModal, showAddTaskCard, setShowAddTaskCard }) {
   return (
     <div>Timeline</div>
   )
