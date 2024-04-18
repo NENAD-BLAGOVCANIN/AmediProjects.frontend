@@ -175,13 +175,6 @@ function Sidebar() {
                             </Link>
                         </li>
 
-                        <li className={`nav-item px-2 rounded ${currentPage === '/calendar' ? 'active' : ''}`}>
-                            <Link to="/calendar" className='nav-link' onClick={() => handlePageChange('/calendar')}>
-                                <FontAwesomeIcon icon={faCalendar} />
-                                <span className='ps-3 medium'>Calendar</span>
-                            </Link>
-                        </li>
-
                         <li className={`nav-item px-2 rounded ${currentPage === '/hours' ? 'active' : ''}`}>
                             <Link to="/hours" className='nav-link' onClick={() => handlePageChange('/hours')}>
                                 <FontAwesomeIcon icon={faClock} />

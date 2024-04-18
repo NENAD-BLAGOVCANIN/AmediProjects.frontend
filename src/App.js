@@ -15,7 +15,6 @@ import Projects from './pages/Projects';
 import Users from './pages/admin/Users';
 import CreateNewProject from './pages/CreateNewProject';
 import Home from './pages/project/Home';
-import Calendar from './pages/Calendar';
 import Products from './pages/project/Products';
 
 function App() {
@@ -64,7 +63,6 @@ function App() {
 
         {/* Personal Pages */}
         <Route path="/profile" element={<Profile />} />
-        <Route path="/calendar" element={<Calendar />} />
 
         {/* Auth */}
         <Route path="/login" element={<Login authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
