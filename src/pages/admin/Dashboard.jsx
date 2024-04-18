@@ -97,16 +97,16 @@ function Dashboard() {
           <div className="row">
             <div className="col-md-6 p-3">
               <div className="card w-100">
-                <h5 className="mb-3">Contact Management</h5>
-                <div className="m-auto" style={{ maxWidth: 400 }}>
+                <h5 className="mb-4">Contact Management</h5>
+                <div className="m-auto pb-3" style={{ maxWidth: 400 }}>
                   <Pie data={contactData} />
                 </div>
               </div>
             </div>
             <div className="col-md-6 p-3">
               <div className="card w-100">
-                <h5 className="mb-3">Task Management</h5>
-                <div className="m-auto" style={{ maxWidth: 400 }}>
+                <h5 className="mb-4">Task Management</h5>
+                <div className="m-auto pb-3" style={{ maxWidth: 400 }}>
                   <Doughnut data={taskCompletionData} />
                 </div>
               </div>

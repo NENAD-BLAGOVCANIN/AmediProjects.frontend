@@ -60,6 +60,8 @@ body {
 .main-container {
   padding: 1.5rem;
   min-height: 100vh;
+  max-width: 1200px;
+  margin: auto;
   width: 100%;
 }
 
@@ -203,8 +205,8 @@ hr {
 }
 
 .card {
-  background-color: transparent;
-  border: 2px solid var(--color-gray) !important;
+  background-color: white;
+  border: 1px solid var(--color-gray) !important;
   border-radius: 1.2rem;
   padding: 1rem;
 }
@@ -295,4 +297,16 @@ hr {
 
 .sidebar-link-group {
   padding-bottom: 1.85rem;
+}
+
+.nav-tabs .nav-item .nav-link{
+  color: var(--color-secondary);
+  border: none;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-tabs .nav-item .nav-link.active, .nav-tabs .nav-item .nav-link:hover{
+  background-color: transparent;
+  border-color: gray;
+  color: var(--color-text-lighter);
 }

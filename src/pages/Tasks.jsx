@@ -6,8 +6,10 @@ import TaskModal from '../components/TaskModal'
 import { getProjectMembers } from '../api/project';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
-import { faEllipsis, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsis, faListCheck, faPlus, faTable, faTimeline } from '@fortawesome/free-solid-svg-icons'
 import profileImagePlaceholder from '../assets/img/profile.svg'
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 function Tasks() {
 
@@ -82,7 +84,35 @@ function Tasks() {
 
                 <Header pageTitle="Tasks" />
 
-                <div className='main-container'>
+                <div className='main-container' style={{maxWidth: 'unset'}}>
+
+                    <Tabs
+                        defaultActiveKey="board"
+                        id="uncontrolled-tab-example"
+                        className="mb-3"
+                    >
+                        <Tab eventKey="board" title={
+                            <>
+                                <FontAwesomeIcon icon={faTable} />
+                                <span className='ps-2'>Board</span>
+                            </>
+                        }>
+                        </Tab>
+                        <Tab eventKey="timeline" title={
+                            <>
+                                <FontAwesomeIcon icon={faTimeline} />
+                                <span className='ps-2'>Timeline</span>
+                            </>
+                        }>
+                        </Tab>
+                        <Tab eventKey="list" title={
+                            <>
+                                <FontAwesomeIcon icon={faListCheck} />
+                                <span className='ps-2'>List</span>
+                            </>
+                        }>
+                        </Tab>
+                    </Tabs>
 
                     <div className="row">
                         <div className="col-3 p-3">

@@ -56,40 +56,40 @@ function Leads({ leads, setLeads, contacts, setContacts }) {
 
                         <div className='m-auto d-block w-100' style={{ maxWidth: 1500, overflowX: 'auto' }}>
                             <div className='table-responsive'>
-                                <table className='table table-striped table-hover'>
+                                <table className='table table-hover'>
                                     <thead>
                                         <tr>
-                                            <th className='text-secondary'>ID</th>
-                                            <th className='text-secondary'>Name</th>
-                                            <th className='text-secondary'>Email</th>
-                                            <th className='text-secondary'>Title</th>
-                                            <th className='text-secondary'>City</th>
-                                            <th className='text-secondary'>Address</th>
-                                            <th className='text-secondary'>Description</th>
-                                            <th className='text-secondary'>Lead Source</th>
-                                            <th className='text-secondary'>Past Client</th>
-                                            <th className='text-secondary'>Phone</th>
-                                            <th className='text-secondary'>Organization</th>
-                                            <th className='text-secondary'>Date Added</th>
-                                            <th className='text-secondary'>Actions</th>
+                                            <th className='text-secondary bg-transparent fw-500'>ID</th>
+                                            <th className='text-secondary bg-transparent fw-500'>Name</th>
+                                            <th className='text-secondary bg-transparent fw-500'>Email</th>
+                                            <th className='text-secondary bg-transparent fw-500'>Title</th>
+                                            <th className='text-secondary bg-transparent fw-500'>City</th>
+                                            <th className='text-secondary bg-transparent fw-500'>Address</th>
+                                            <th className='text-secondary bg-transparent fw-500'>Description</th>
+                                            <th className='text-secondary bg-transparent fw-500'>Lead Source</th>
+                                            <th className='text-secondary bg-transparent fw-500'>Past Client</th>
+                                            <th className='text-secondary bg-transparent fw-500'>Phone</th>
+                                            <th className='text-secondary bg-transparent fw-500'>Organization</th>
+                                            <th className='text-secondary bg-transparent fw-500'>Date Added</th>
+                                            <th className='text-secondary bg-transparent fw-500'>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {leads.map(lead => (
                                             <tr key={lead.id}>
-                                                <td>{lead.id}</td>
-                                                <td>{lead.contact.name}</td>
-                                                <td>{lead.contact.email}</td>
-                                                <td>{lead.contact.title}</td>
-                                                <td>{lead.contact.city}</td>
-                                                <td>{lead.contact.address}</td>
-                                                <td>{lead.contact.description}</td>
-                                                <td>{lead.contact.lead_source}</td>
-                                                <td>{lead.contact.past_client}</td>
-                                                <td>{lead.contact.phone}</td>
-                                                <td>{lead.contact.organization}</td>
-                                                <td>{lead.created_at}</td>
-                                                <td>
+                                                <td className='bg-transparent'>{lead.id}</td>
+                                                <td className='bg-transparent'>{lead.contact.name}</td>
+                                                <td className='bg-transparent'>{lead.contact.email}</td>
+                                                <td className='bg-transparent'>{lead.contact.title}</td>
+                                                <td className='bg-transparent'>{lead.contact.city}</td>
+                                                <td className='bg-transparent'>{lead.contact.address}</td>
+                                                <td className='bg-transparent'>{lead.contact.description}</td>
+                                                <td className='bg-transparent'>{lead.contact.lead_source}</td>
+                                                <td className='bg-transparent'>{lead.contact.past_client}</td>
+                                                <td className='bg-transparent'>{lead.contact.phone}</td>
+                                                <td className='bg-transparent'>{lead.contact.organization}</td>
+                                                <td className='bg-transparent'>{lead.created_at}</td>
+                                                <td className='bg-transparent'>
                                                     <div className="h-100 d-flex align-items-center justify-content-center">
                                                         <button className='btn btn-basic bg-gray text-danger shadow-sm' onClick={() => handleDeleteLead(lead.id)}>
                                                             <FontAwesomeIcon icon={faTrash} />

@@ -71,33 +71,33 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
                     </div>
 
                     <div className='m-auto d-block w-100' style={{ maxWidth: 1500, overflowX: 'auto' }}>
-                        <div className='table-responsive'>
-                            <table className='table table-striped table-hover'>
+                        <div className='table-responsive pt-3'>
+                            <table className='table table-hover'>
                                 <thead>
                                     <tr>
-                                        <th className='text-secondary'>ID</th>
-                                        <th className='text-secondary'>Name</th>
-                                        <th className='text-secondary'>Email</th>
-                                        <th className='text-secondary'>Title</th>
-                                        <th className='text-secondary'>City</th>
-                                        <th className='text-secondary'>Address</th>
-                                        <th className='text-secondary'>Phone</th>
-                                        <th className='text-secondary'>Organization</th>
-                                        <th className='text-center text-secondary'>Actions</th>
+                                        <th className='text-secondary bg-transparent fw-500'>ID</th>
+                                        <th className='text-secondary bg-transparent fw-500'>Name</th>
+                                        <th className='text-secondary bg-transparent fw-500'>Email</th>
+                                        <th className='text-secondary bg-transparent fw-500'>Title</th>
+                                        <th className='text-secondary bg-transparent fw-500'>City</th>
+                                        <th className='text-secondary bg-transparent fw-500'>Address</th>
+                                        <th className='text-secondary bg-transparent fw-500'>Phone</th>
+                                        <th className='text-secondary bg-transparent fw-500'>Organization</th>
+                                        <th className='text-center text-secondary bg-transparent fw-500'>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {contacts.map(contact => (
                                         <tr key={contact.id}>
-                                            <td>{contact.id}</td>
-                                            <td>{contact.name}</td>
-                                            <td>{contact.email}</td>
-                                            <td>{contact.title}</td>
-                                            <td>{contact.city}</td>
-                                            <td>{contact.address}</td>
-                                            <td>{contact.phone}</td>
-                                            <td>{contact.organization}</td>
-                                            <td>
+                                            <td className='bg-transparent'>{contact.id}</td>
+                                            <td className='bg-transparent'>{contact.name}</td>
+                                            <td className='bg-transparent'>{contact.email}</td>
+                                            <td className='bg-transparent'>{contact.title}</td>
+                                            <td className='bg-transparent'>{contact.city}</td>
+                                            <td className='bg-transparent'>{contact.address}</td>
+                                            <td className='bg-transparent'>{contact.phone}</td>
+                                            <td className='bg-transparent'>{contact.organization}</td>
+                                            <td className='bg-transparent'>
                                                 <div className="h-100 d-flex align-items-center justify-content-center">
                                                     <div className='px-1'>
                                                         <button className='btn btn-basic bg-gray-light shadow-sm' onClick={() => openViewContactModal(contact)}>
