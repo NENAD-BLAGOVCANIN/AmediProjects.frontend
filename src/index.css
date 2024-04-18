@@ -43,11 +43,11 @@ body {
   overflow-x: hidden;
 }
 
-.color-text{
+.color-text {
   color: var(--color-text) !important;
 }
 
-.color-text-lighter{
+.color-text-lighter {
   color: var(--color-text-lighter) !important;
 }
 
@@ -299,13 +299,14 @@ hr {
   padding-bottom: 1.85rem;
 }
 
-.nav-tabs .nav-item .nav-link{
+.nav-tabs .nav-item .nav-link {
   color: var(--color-secondary);
   border: none;
   border-bottom: 2px solid transparent;
 }
 
-.nav-tabs .nav-item .nav-link.active, .nav-tabs .nav-item .nav-link:hover{
+.nav-tabs .nav-item .nav-link.active,
+.nav-tabs .nav-item .nav-link:hover {
   background-color: transparent;
   border-color: gray;
   color: var(--color-text-lighter);

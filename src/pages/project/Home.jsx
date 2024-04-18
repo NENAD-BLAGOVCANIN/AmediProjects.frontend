@@ -34,17 +34,12 @@ function Home() {
 
                 <Header pageTitle="🏡 Project Home" />
 
-                <div className='home-hero-section'>
-                    <h3 className='bold'>⛅ Good morning, {userInfo ? userInfo.name : ''}</h3>
-                    <h5>Ready for the meeting at 10am?</h5>
-                </div>
-
                 <div className='main-container'>
 
                     <div className="container">
 
                         <div className='pt-3'>
-                            <h1 style={{ marginTop: '-5rem', fontSize: '40pt' }}>
+                            <h1 style={{ fontSize: '40pt' }}>
                                 🏡
                             </h1>
                             <h2 className='bold mt-3 mb-4'>Project Home</h2>
@@ -77,11 +72,11 @@ function Home() {
                         <div className="row pt-5">
                             <div className="col-md-6">
                                 <h4 className='bold'>About the team</h4>
-                                <p className='medium'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi dicta sint ipsam architecto veritatis earum placeat reiciendis modi ipsum, possimus sequi perspiciatis id in aperiam! Libero, impedit? Placeat, alias!</p>
+                                <p className='text-muted medium'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi dicta sint ipsam architecto veritatis earum placeat reiciendis modi ipsum, possimus sequi perspiciatis id in aperiam! Libero, impedit? Placeat, alias!</p>
                             </div>
                             <div className="col-md-6">
                                 <h4 className='bold'>Resources</h4>
-                                <p className='medium'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi dicta sint ipsam architecto veritatis earum placeat reiciendis modi ipsum, possimus sequi perspiciatis id in aperiam! Libero, impedit? Placeat, alias!</p>
+                                <p className='text-muted medium'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi dicta sint ipsam architecto veritatis earum placeat reiciendis modi ipsum, possimus sequi perspiciatis id in aperiam! Libero, impedit? Placeat, alias!</p>
                             </div>
                         </div>
 

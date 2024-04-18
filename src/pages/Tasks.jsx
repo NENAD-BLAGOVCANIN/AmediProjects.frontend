@@ -11,7 +11,7 @@ import profileImagePlaceholder from '../assets/img/profile.svg'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Board from '../components/Tasks/Board'
-import Timeline from '../components/Tasks/Timeline'
+import TasksTimeline from '../components/Tasks/Timeline'
 import List from '../components/Tasks/List'
 
 function Tasks() {
@@ -87,7 +87,7 @@ function Tasks() {
                                 <span className='ps-2'>Timeline</span>
                             </>
                         }>
-                            <Timeline
+                            <TasksTimeline
                                 tasks={tasks} setTasks={setTasks}
                                 selectedTask={selectedTask} setSelectedTask={setSelectedTask}
                                 showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
