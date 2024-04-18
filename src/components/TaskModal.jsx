@@ -34,13 +34,7 @@ function TaskModal({ showTasksModal, setShowTasksModal, selectedTask, setSelecte
     };
 
     const handleDescriptionChange = () => {
-        const selection = window.getSelection();
-        const range = selection.getRangeAt(0);
-        const caretPosition = range.startOffset;
         setEditedDescription(descriptionRef.current.innerText);
-        setTimeout(() => {
-            setCaretPosition(descriptionRef.current, caretPosition);
-        }, 0);
     };
 
 
@@ -108,6 +102,7 @@ function TaskModal({ showTasksModal, setShowTasksModal, selectedTask, setSelecte
         }
     };
 
+
     return (
         <>
             <div className={`modal fade ${showTasksModal ? 'show d-block' : ''}`} tabIndex="-1" role="dialog">
@@ -128,8 +123,12 @@ function TaskModal({ showTasksModal, setShowTasksModal, selectedTask, setSelecte
                         </div>
                         <div className='modal-body py-5'>
                             <h5>Description</h5>
-                            <div className='form-control rounded w-100 py-2' ref={descriptionRef} contentEditable suppressContentEditableWarning onBlur={handleBlur} onInput={handleDescriptionChange} dir="ltr">{editedDescription}</div>
-
+                            <textarea
+                            className='form-control rounded w-100 py-2'
+                            value={editedDescription}
+                            onChange={(e) => setEditedDescription(e.target.value)}
+                            onBlur={handleBlur}
+                        />
                             <div className='d-flex align-items-center mt-5'>
                                 <h5 className='mb-0 pe-3'>Assignee</h5>
                                 <UpdateAssigneeDropdown projectMembers={projectMembers} selectedTask={selectedTask} setSelectedTask={setSelectedTask} tasks={tasks} setTasks={setTasks} />
