@@ -1,4 +1,6 @@
 import React from 'react'
+import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function List({ tasks, setTasks, setSelectedTask, selectedTask,
   showTasksModal, setShowTasksModal, showAddTaskCard, setShowAddTaskCard }) {
@@ -13,9 +15,12 @@ function List({ tasks, setTasks, setSelectedTask, selectedTask,
             <tbody>
               {tasks.filter(task => task.status === 'todo').map(task => (
                 <tr key={task.id}>
-                  <td className='bg-transparent'>{task.subject}</td>
-                  <td className='bg-transparent'>{task.description}</td>
-                  <td className='bg-transparent'>{task.created_at}</td>
+                  <td className='bg-transparent medium color-text-lighter'>
+                    <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
+                    {task.subject}
+                  </td>
+                  <td className='bg-transparent medium color-text-lighter'>{task.description}</td>
+                  <td className='bg-transparent medium color-text-lighter'>{task.created_at}</td>
 
                 </tr>
               ))}
@@ -34,9 +39,12 @@ function List({ tasks, setTasks, setSelectedTask, selectedTask,
             <tbody>
               {tasks.filter(task => task.status === 'in_progress').map(task => (
                 <tr key={task.id}>
-                  <td className='bg-transparent'>{task.subject}</td>
-                  <td className='bg-transparent'>{task.description}</td>
-                  <td className='bg-transparent'>{task.created_at}</td>
+                  <td className='bg-transparent medium color-text-lighter'>
+                    <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
+                    {task.subject}
+                  </td>
+                  <td className='bg-transparent medium color-text-lighter'>{task.description}</td>
+                  <td className='bg-transparent medium color-text-lighter'>{task.created_at}</td>
 
                 </tr>
               ))}
@@ -55,9 +63,12 @@ function List({ tasks, setTasks, setSelectedTask, selectedTask,
             <tbody>
               {tasks.filter(task => task.status === 'on_hold').map(task => (
                 <tr key={task.id}>
-                  <td className='bg-transparent'>{task.title}</td>
-                  <td className='bg-transparent'>{task.description}</td>
-                  <td className='bg-transparent'>{task.created_at}</td>
+                  <td className='bg-transparent medium color-text-lighter'>
+                    <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
+                    {task.subject}
+                  </td>
+                  <td className='bg-transparent medium color-text-lighter'>{task.description}</td>
+                  <td className='bg-transparent medium color-text-lighter'>{task.created_at}</td>
 
                 </tr>
               ))}
@@ -67,7 +78,7 @@ function List({ tasks, setTasks, setSelectedTask, selectedTask,
         </div>
       </div>
 
-      
+
       <h5 className='color-text-lighter mt-4'>Done</h5>
 
       <div className='m-auto d-block w-100' style={{ maxWidth: 1500, overflowX: 'auto' }}>
@@ -77,9 +88,12 @@ function List({ tasks, setTasks, setSelectedTask, selectedTask,
             <tbody>
               {tasks.filter(task => task.status === 'done').map(task => (
                 <tr key={task.id}>
-                  <td className='bg-transparent'>{task.title}</td>
-                  <td className='bg-transparent'>{task.description}</td>
-                  <td className='bg-transparent'>{task.created_at}</td>
+                  <td className='bg-transparent medium color-text-lighter'>
+                    <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
+                    {task.subject}
+                  </td>
+                  <td className='bg-transparent medium color-text-lighter'>{task.description}</td>
+                  <td className='bg-transparent medium color-text-lighter'>{task.created_at}</td>
 
                 </tr>
               ))}
