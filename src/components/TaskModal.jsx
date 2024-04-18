@@ -4,10 +4,13 @@ import profileImagePlaceholder from '../assets/img/profile.svg';
 import UpdateAssigneeDropdown from './UpdateAssigneeDropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faListCheck, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { Form } from 'react-bootstrap';
 
 function TaskModal({ showTasksModal, setShowTasksModal, selectedTask, setSelectedTask, tasks, setTasks, projectMembers, setProjectMembers }) {
     const [editedTitle, setEditedTitle] = useState(selectedTask.subject);
     const [editedDescription, setEditedDescription] = useState(selectedTask.description);
+    const [statusDropdownIsOpen, setStatusDropdownIsOpen] = useState(false);
+    const [selectedStatus, setSelectedStatus] = useState(selectedTask.status);
 
     const titleRef = useRef(null);
     const descriptionRef = useRef(null);
@@ -15,6 +18,7 @@ function TaskModal({ showTasksModal, setShowTasksModal, selectedTask, setSelecte
     useEffect(() => {
         setEditedTitle(selectedTask.subject);
         setEditedDescription(selectedTask.description);
+        setSelectedStatus(selectedTask.status);
     }, [selectedTask]);
 
     const handleCloseTaskModal = () => {
@@ -38,20 +42,20 @@ function TaskModal({ showTasksModal, setShowTasksModal, selectedTask, setSelecte
             setCaretPosition(descriptionRef.current, caretPosition);
         }, 0);
     };
-    
-    
+
+
     const setCaretPosition = (element, position) => {
         const range = document.createRange();
         const selection = window.getSelection();
-    
+
         if (element.childNodes.length > 0) {
             range.setStart(element.childNodes[0], Math.min(position, element.textContent.length));
         } else {
             range.setStart(element, Math.min(position, element.textContent.length));
         }
-    
+
         range.collapse(true);
-    
+
         selection.removeAllRanges();
         selection.addRange(range);
     };
@@ -60,17 +64,17 @@ function TaskModal({ showTasksModal, setShowTasksModal, selectedTask, setSelecte
         if (editedTitle.trim() === '') {
             return;
         }
-    
+
         const updatedTask = {
             ...selectedTask,
             subject: editedTitle,
             description: editedDescription
         };
-    
+
         await updateTask(updatedTask);
-    
+
         setSelectedTask(updatedTask);
-    
+
         const updatedTasks = tasks.map(task => {
             if (task.id === updatedTask.id) {
                 return updatedTask;
@@ -81,6 +85,7 @@ function TaskModal({ showTasksModal, setShowTasksModal, selectedTask, setSelecte
     };
 
     const changeTaskStatus = async (status) => {
+        setSelectedStatus(status);
         const taskIndex = tasks.findIndex((task) => task.id === selectedTask.id);
         if (taskIndex !== -1) {
             const updatedTasks = [...tasks];
@@ -133,30 +138,24 @@ function TaskModal({ showTasksModal, setShowTasksModal, selectedTask, setSelecte
                             {selectedTask.assignee && (
                                 <div className='d-flex align-items-center pt-3'>
                                     <img src={profileImagePlaceholder} className='rounded-circle' alt="" style={{ maxHeight: 35, height: '100%' }} />
-                                    <span className='px-2'>{selectedTask.assignee.name}</span>
+                                    <span className='px-2 medium'>{selectedTask.assignee.name}</span>
                                 </div>
                             )}
 
-                        </div>
-                        <div className='modal-footer border-0'>
-                            <div className='px-1'>
-                                <button className='btn btn-basic border d-flex' onClick={() => { changeTaskStatus('todo') }}>
-                                    Move to 
-                                    <span className='d-flex align-items-center text-info ps-2'> Todo <FontAwesomeIcon className='ps-2' icon={faListCheck} /></span>
-                                </button>
+                            <div className='d-flex align-items-center mt-5'>
+                                <h5 className='mb-0 pe-3'>Status</h5>
+                                <Form>
+                                    <Form.Group controlId="exampleForm.SelectCustom">
+                                        <Form.Select custom value={selectedStatus} onChange={(e) => changeTaskStatus(e.target.value)}>
+                                            <option value="todo">To do</option>
+                                            <option value="in_progress">Doing</option>
+                                            <option value="on_hold">On hold</option>
+                                            <option value="done">Done</option>
+                                        </Form.Select>
+                                    </Form.Group>
+                                </Form>
                             </div>
-                            <div className='px-1'>
-                                <button className='btn btn-basic border d-flex' onClick={() => { changeTaskStatus('in_progress') }}>
-                                    Move to 
-                                    <span className='d-flex align-items-center text-warning ps-2'> In progress <FontAwesomeIcon className='ps-2' icon={faSpinner} /></span>
-                                </button>
-                            </div>
-                            <div className='px-1'>
-                                <button className='btn btn-basic border d-flex' onClick={() => { changeTaskStatus('done') }}>
-                                    Mark as
-                                    <span className='d-flex align-items-center text-success ps-2'> Done <FontAwesomeIcon className='ps-2' icon={faCircleCheck} /></span>
-                                </button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
