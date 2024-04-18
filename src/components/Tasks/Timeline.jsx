@@ -5,12 +5,13 @@ function TasksTimeline({ tasks }) {
 
   const options = {
     width: '100%',
-    height: '250px',
+    height: '70vh',
     stack: false,
     showMajorLabels: true,
     showCurrentTime: true,
     zoomMin: 1000000,
     type: 'background',
+    margin: { axis: 15 },
     format: {
       minorLabels: {
         minute: 'h:mma',
@@ -63,7 +64,7 @@ function TasksTimeline({ tasks }) {
         items={items} 
         groups={groups}
         itemClassNameProvider={(item) => item.className} // Use className from item for styling
-        itemStyle={(item, index) => ({ color: groupColors[item.group] })} // Set color based on group
+        itemStyle={(item, index) => ({ backgroundColor: groupColors[item.group] })} // Set color based on group
       />
     </div>
   );

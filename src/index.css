@@ -311,3 +311,24 @@ hr {
   border-color: gray;
   color: var(--color-text-lighter);
 }
+
+.vis-label .vis-inner {
+  height: 120px;
+}
+
+.vis-label {
+  height: 120px !important;
+}
+
+.vis-group {
+  height: 120px !important;
+  padding-right: 1.3rem !important;
+}
+
+.vis-item {
+  background-color: var(--color-primary) !important;
+  border-radius: .8rem;
+  padding: .5rem !important;
+}.vis-item .vis-item-overflow{
+  height: 30%;
+}
