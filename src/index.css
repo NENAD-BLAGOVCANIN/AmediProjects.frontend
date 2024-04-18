@@ -252,7 +252,7 @@ hr {
 
 .form-control {
   border: none !important;
-  background-color: var(--color-dark-gray) !important;
+  background-color: var(--color-gray) !important;
 }
 
 .assignee-nav-item:hover {

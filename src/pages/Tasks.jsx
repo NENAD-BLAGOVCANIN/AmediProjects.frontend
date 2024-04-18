@@ -6,6 +6,8 @@ import TaskModal from '../components/TaskModal'
 import { getProjectMembers } from '../api/project';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
+import { faEllipsis, faPlus } from '@fortawesome/free-solid-svg-icons'
+import profileImagePlaceholder from '../assets/img/profile.svg'
 
 function Tasks() {
 
@@ -83,31 +85,57 @@ function Tasks() {
                 <div className='main-container'>
 
                     <div className="row">
-                        <div className="col-4 p-3">
-                            <p className='mb-3 fw-500'>
-                                To do
-                                <span className='text-muted fw-400 medium px-2'>
-                                    3
-                                </span>
-                            </p>
-                            {tasks.filter(task => task.status === 'todo').map(task => (
-                                <div key={task.id} className="task-card mb-3" onClick={() => handleShowTaskModal(task)}>
-                                    <div className=''>
-                                        <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
-                                        <span className='pe-2 medium'>{task.subject}</span>
-                                    </div>
+                        <div className="col-3 p-3">
+                            <div className='d-flex justify-content-between'>
+                                <p className='mb-3 fw-500'>
+                                    To do
+                                    <span className='text-muted fw-400 medium px-2'>
+                                        3
+                                    </span>
+                                </p>
+                                <div>
+                                    <button className='px-2 btn' onClick={handleShowAddTaskCard}>
+                                        <FontAwesomeIcon icon={faPlus} className='text-muted' />
+                                    </button>
+                                    <button className='px-2 btn'>
+                                        <FontAwesomeIcon icon={faEllipsis} className='text-muted' />
+                                    </button>
                                 </div>
-                            ))}
+                            </div>
+
+                            <div className={`bg-${tasks.filter(task => task.status === 'todo').length === 0 ? 'gray py-5' : ''} w-100 rounded`}>
+                                {tasks.filter(task => task.status === 'todo').map(task => (
+                                    <div key={task.id} className="task-card mb-3" onClick={() => handleShowTaskModal(task)}>
+                                        <div className='px-1'>
+                                            <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
+                                            <span className='pe-2 medium'>{task.subject}</span>
+                                        </div>
+                                        <div className='pt-3 d-flex align-items-center'>
+                                            <div className='pe-3'>
+                                                <img src={profileImagePlaceholder} className='rounded-circle' alt="" style={{ maxHeight: 25, height: '100%' }} />
+                                            </div>
+                                            <span className='small text-muted'>
+                                                Apr 19
+                                            </span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
 
                             <div className={`task-card mb-3 ${(showAddTaskCard || tasks.length == 0) ? '' : 'd-none'}`}>
-                                <div className=''>
-                                    <input
-                                        type="text"
-                                        className='form-control bg-gray-light mb-2'
-                                        placeholder='Subject'
-                                        value={subject}
-                                        onChange={(e) => setSubject(e.target.value)}
-                                    />
+                                <div>
+                                    <div className='d-flex align-items-center pb-3'>
+                                        <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
+                                        <input
+                                            type="text"
+                                            className='border-0 rounded w-100 py-2 medium'
+                                            placeholder='Write a task name'
+                                            value={subject}
+                                            onChange={(e) => setSubject(e.target.value)}
+                                        />
+                                    </div>
+
                                     <textarea
                                         className='form-control bg-gray-light mb-2'
                                         placeholder='Description'
@@ -125,42 +153,120 @@ function Tasks() {
                                 </div>
                             </div>
 
-                            <button className='btn btn-dark py-2 rounded w-100' onClick={handleShowAddTaskCard}>
+                            <button className='btn py-2 rounded color-text-lighter w-100' onClick={handleShowAddTaskCard}>
+                                <FontAwesomeIcon icon={faPlus} className='pe-2 medium' />
                                 Add Task
                             </button>
 
                         </div>
-                        <div className="col-4 p-3">
-                            <p className='mb-3 fw-500'>
-                                IN PROGRESS
-                                <span className='text-muted fw-400 medium px-2'>
-                                    3
-                                </span>
-                            </p>
-                            {tasks.filter(task => task.status === 'in_progress').map(task => (
-                                <div key={task.id} className="task-card mb-3" onClick={() => handleShowTaskModal(task)}>
-                                    <div className=''>
-                                        <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
-                                        <span className='pe-2 medium'>{task.subject}</span>
-                                    </div>
+                        <div className="col-3 p-3">
+                            <div className='d-flex justify-content-between'>
+                                <p className='mb-3 fw-500'>
+                                    Doing
+                                    <span className='text-muted fw-400 medium px-2'>
+                                        3
+                                    </span>
+                                </p>
+                                <div>
+                                    <button className='px-2 btn' onClick={handleShowAddTaskCard}>
+                                        <FontAwesomeIcon icon={faPlus} className='text-muted' />
+                                    </button>
+                                    <button className='px-2 btn'>
+                                        <FontAwesomeIcon icon={faEllipsis} className='text-muted' />
+                                    </button>
                                 </div>
-                            ))}
+                            </div>
+                            <div className={`bg-${tasks.filter(task => task.status === 'in_progress').length === 0 ? 'gray py-5' : ''} w-100 rounded`}>
+                                {tasks.filter(task => task.status === 'in_progress').map(task => (
+                                    <div key={task.id} className="task-card mb-3" onClick={() => handleShowTaskModal(task)}>
+                                        <div className='px-1'>
+                                            <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
+                                            <span className='pe-2 medium'>{task.subject}</span>
+                                        </div>
+                                        <div className='pt-3 d-flex align-items-center'>
+                                            <div className='pe-3'>
+                                                <img src={profileImagePlaceholder} className='rounded-circle' alt="" style={{ maxHeight: 25, height: '100%' }} />
+                                            </div>
+                                            <span className='small text-muted'>
+                                                Apr 19
+                                            </span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        <div className="col-4 p-3">
-                            <p className='mb-3 fw-500'>
-                                DONE
-                                <span className='text-muted fw-400 medium px-2'>
-                                    3
-                                </span>
-                            </p>
-                            {tasks.filter(task => task.status === 'done').map(task => (
-                                <div key={task.id} className="task-card mb-3" onClick={() => handleShowTaskModal(task)}>
-                                    <div className=''>
-                                        <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
-                                        <span className='pe-2 medium'>{task.subject}</span>
-                                    </div>
+                        <div className="col-3 p-3">
+                            <div className='d-flex justify-content-between'>
+                                <p className='mb-3 fw-500'>
+                                    On Hold
+                                    <span className='text-muted fw-400 medium px-2'>
+                                        3
+                                    </span>
+                                </p>
+                                <div>
+                                    <button className='px-2 btn' onClick={handleShowAddTaskCard}>
+                                        <FontAwesomeIcon icon={faPlus} className='text-muted' />
+                                    </button>
+                                    <button className='px-2 btn'>
+                                        <FontAwesomeIcon icon={faEllipsis} className='text-muted' />
+                                    </button>
                                 </div>
-                            ))}
+                            </div>
+                            <div className={`bg-${tasks.filter(task => task.status === 'on_hold').length === 0 ? 'gray py-5' : ''} w-100 rounded`}>
+                                {tasks.filter(task => task.status === 'on_hold').map(task => (
+                                    <div key={task.id} className="task-card mb-3" onClick={() => handleShowTaskModal(task)}>
+                                        <div className='px-1'>
+                                            <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
+                                            <span className='pe-2 medium'>{task.subject}</span>
+                                        </div>
+                                        <div className='pt-3 d-flex align-items-center'>
+                                            <div className='pe-3'>
+                                                <img src={profileImagePlaceholder} className='rounded-circle' alt="" style={{ maxHeight: 25, height: '100%' }} />
+                                            </div>
+                                            <span className='small text-muted'>
+                                                Apr 19
+                                            </span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                        </div>
+                        <div className="col-3 p-3">
+                            <div className='d-flex justify-content-between'>
+                                <p className='mb-3 fw-500'>
+                                    Done
+                                    <span className='text-muted fw-400 medium px-2'>
+                                        3
+                                    </span>
+                                </p>
+                                <div>
+                                    <button className='px-2 btn' onClick={handleShowAddTaskCard}>
+                                        <FontAwesomeIcon icon={faPlus} className='text-muted' />
+                                    </button>
+                                    <button className='px-2 btn'>
+                                        <FontAwesomeIcon icon={faEllipsis} className='text-muted' />
+                                    </button>
+                                </div>
+                            </div>
+                            <div className={`bg-${tasks.filter(task => task.status === 'done').length === 0 ? 'gray py-5' : ''} w-100 rounded`}>
+                                {tasks.filter(task => task.status === 'done').map(task => (
+                                    <div key={task.id} className="task-card mb-3" onClick={() => handleShowTaskModal(task)}>
+                                        <div className='px-1'>
+                                            <FontAwesomeIcon icon={faCircleCheck} className='text-muted medium pe-2' />
+                                            <span className='pe-2 medium'>{task.subject}</span>
+                                        </div>
+                                        <div className='pt-3 d-flex align-items-center'>
+                                            <div className='pe-3'>
+                                                <img src={profileImagePlaceholder} className='rounded-circle' alt="" style={{ maxHeight: 25, height: '100%' }} />
+                                            </div>
+                                            <span className='small text-muted'>
+                                                Apr 19
+                                            </span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
