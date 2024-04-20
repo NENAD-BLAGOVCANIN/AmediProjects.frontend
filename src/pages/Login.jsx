@@ -62,18 +62,12 @@ export default function Login({ authenticated, setAuthenticated }) {
                                 <div className='d-flex justify-content-between py-2'>
                                     <div className="form-check">
                                         <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label text-secondary" htmlFor="flexCheckDefault">
+                                        <label className="form-check-label text-secondary small" htmlFor="flexCheckDefault">
                                             Remember Me
                                         </label>
                                     </div>
-                                    <a href="" className='text-muted fw-500 text-decoration-none'>Trouble logging in?</a>
+                                    <a href="" className='text-muted small fw-500 text-decoration-none'>Trouble logging in?</a>
                                 </div>
-
-                                <div className='d-flex justify-content-center py-4'>
-                                    <span className='px-1 text-secondary'>New to AmediProjects?</span>
-                                    <a href="/register" className='px-1 text-muted fw-500 text-decoration-none'>Sign Up</a>
-                                </div>
-
 
                             </form>
                         </div>
