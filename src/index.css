@@ -10,7 +10,7 @@
   --color-gray: #e8eaee;
   --color-dark-gray: #e6e5e9;
   --color-light: #f8f8f8;
-  --sidebar-width: 273px
+  --sidebar-width: 275px
 }
 
 #sidebar.active {
@@ -33,11 +33,13 @@ body {
 
 .header {
   width: 100%;
-  background-color: var(--color-light-gray);
+  background-color: #fff;
+  z-index: 999;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  padding-left: .3rem;
+  padding-left: 2rem;
   padding-right: 1rem;
+  /* border-bottom: 1px solid rgb(235, 235, 235); */
   display: flex;
 }
 
@@ -65,8 +67,6 @@ body {
   padding: 1.5rem;
   min-height: 100vh;
   margin: auto;
-  border: 1px solid rgb(235, 235, 235);
-  border-radius: 8px;
   background-color: white;
   width: 100%;
 }
@@ -167,6 +167,7 @@ hr {
   height: 100vh;
   overflow-y: auto;
   background-color: var(--color-light-gray);
+  border-right: 1px solid rgb(235, 235, 235);
   transition: all 0.3s;
   padding-top: 1.5rem;
   padding-bottom: 1.3rem;
@@ -175,7 +176,7 @@ hr {
 }
 
 #sidebar.active {
-  margin-left: calc(0px - 273px);
+  margin-left: calc(0px - 275px);
 }
 
 #sidebar-logo {

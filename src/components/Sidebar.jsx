@@ -100,10 +100,10 @@ function Sidebar() {
 
                 <div className='pb-2 pb-3'>
                     <div className="dropdown show">
-                        <div className="dropdown-toggle medium" type="button" id="projectsDropdown" onClick={toggleDropdown}
+                        <div className="dropdown-toggle medium fw-500" type="button" id="projectsDropdown" onClick={toggleDropdown}
                             aria-haspopup="true" aria-expanded={isDropdownOpen ? "true" : "false"}>
                             <img src={exampleProjectIcon} style={{ height: 15 }} className='rounded me-2' alt="" />
-                            {userInfo ? userInfo.project.name : ''}
+                            {userInfo ? userInfo.project.name.substring(0, 18) : ''}
                         </div>
                         <div className={"dropdown-menu border-0 shadow pt-2 pb-3" + (isDropdownOpen ? " show" : "")} aria-labelledby="projectsDropdown">
                             <Link className="dropdown-item medium py-2" to="/projects/create">
@@ -168,7 +168,7 @@ function Sidebar() {
                                 <FontAwesomeIcon icon={faListCheck} />
                                 <span className='ps-3 medium d-flex align-items-center'>
                                     <span className='pe-2'>Tasks</span>
-                                    <span className='badge badge-pill badge-primary bg-danger py-1' style={{paddingLeft: '.3rem', paddingRight: '.3rem'}}><span style={{fontSize: 11}}>3</span></span>
+                                    <span className='badge badge-pill badge-primary bg-danger py-1' style={{ paddingLeft: '.3rem', paddingRight: '.3rem' }}><span style={{ fontSize: 11 }}>3</span></span>
                                 </span>
                             </Link>
                         </li>
