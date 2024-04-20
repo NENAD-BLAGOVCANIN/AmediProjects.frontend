@@ -24,17 +24,17 @@ function Profile() {
     function formatDate(timestamp) {
         const date = new Date(timestamp);
         const options = {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: 'numeric',
-          second: 'numeric',
-          timeZoneName: 'short',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric',
+            timeZoneName: 'short',
         };
         return date.toLocaleDateString(undefined, options);
-      }
-      
+    }
+
 
     return (
         <div className='page-content-wrapper'>
@@ -47,23 +47,23 @@ function Profile() {
 
                 <div className='main-container'>
 
-                  <div className='d-flex flex-column align-items-center pt-5'>
+                    <div className='d-flex flex-column align-items-center m-auto pt-5' style={{ maxWidth: 800 }}>
 
-                    <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{maxWidth: 130}} alt="" />
+                        <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{ maxWidth: 105 }} alt="" />
 
-                    <h5 className='mt-3 mb-5'>{userInfo.name}</h5>
+                        <span className='mt-3 mb-5 bold'>{userInfo.name}</span>
 
 
-                    <div className='card bg-gray-light rounded-lg shadow-sm border-0 w-100 py-5 px-4'>
+                        <div className='card bg-gray-light rounded-lg shadow-sm border-0 w-100 py-5 px-4'>
 
-                        <p>Name: {userInfo.name}</p>
-                        <p>Email: {userInfo.email}</p>
-                        <p>Profile Created At: {formatDate(userInfo.created_at)}</p>
-                        <p className='m-0'>Email Verified: <span className='badge bagde-primary bg-danger'>No</span></p>
+                            <p>Name: {userInfo.name}</p>
+                            <p>Email: {userInfo.email}</p>
+                            <p>Profile Created At: {formatDate(userInfo.created_at)}</p>
+                            <p className='m-0'>Email Verified: <span className='badge bagde-primary bg-danger'>No</span></p>
+
+                        </div>
 
                     </div>
-
-                  </div>
 
                 </div>
             </div>

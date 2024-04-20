@@ -38,7 +38,7 @@ function Projects() {
     return (
         <div id='create-project-page-wrapper'>
 
-            <div className='d-flex justify-content-between' style={{ padding: '1.2rem' }}>
+            <div className='d-flex justify-content-between px-5' style={{ padding: '1.2rem' }}>
                 <img src={logo} className='img-fluid' style={{ height: 55 }} alt="" />
                 <ul className='nav'>
                     <li className='nav-item'>

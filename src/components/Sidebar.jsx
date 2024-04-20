@@ -105,25 +105,18 @@ function Sidebar() {
                             </Link>
                         </li>
 
+                        <li className={`nav-item px-2 rounded ${currentPage === '/tasks' ? 'active' : ''}`}>
+                            <Link to="/tasks" className='nav-link' onClick={() => handlePageChange('/tasks')}>
+                                <FontAwesomeIcon icon={faListCheck} />
+                                <span className='ps-3 medium'>Tasks</span>
+                            </Link>
+                        </li>
+
                         <li className={`nav-item px-2 rounded ${currentPage === '/products' ? 'active' : ''}`}>
                             <Link to="/products" className='nav-link' onClick={() => handlePageChange('/products')}>
                                 <FontAwesomeIcon icon={faBox} />
                                 <span className='ps-3 medium'>Products</span>
                             </Link>
-                        </li>
-
-                        <li className={`nav-item px-2 rounded ${currentPage === '/notes' ? 'active' : ''}`}>
-                            <span className='nav-link pointer'>
-                                <FontAwesomeIcon icon={faNoteSticky} />
-                                <span className='ps-3 medium'>Notes</span>
-                            </span>
-                        </li>
-
-                        <li className={`nav-item px-2 rounded ${currentPage === '/performance' ? 'active' : ''}`}>
-                            <span className='nav-link pointer'>
-                                <FontAwesomeIcon icon={faChartSimple} />
-                                <span className='ps-3 medium'>Performance</span>
-                            </span>
                         </li>
 
                         <li className={`nav-item px-2 rounded ${currentPage === '/settings' ? 'active' : ''}`}>
@@ -158,34 +151,6 @@ function Sidebar() {
                             <Link to="/clients" className='nav-link' onClick={() => handlePageChange('/tasks')}>
                                 <FontAwesomeIcon icon={faUserGroup} />
                                 <span className='ps-3 medium'>Clients</span>
-                            </Link>
-                        </li>
-                    </div>
-
-
-                    <div className='sidebar-link-group'>
-                        <div className='pb-2'>
-                            <span className='small bold text-white'>Work</span>
-                        </div>
-
-                        <li className={`nav-item px-2 rounded ${currentPage === '/tasks' ? 'active' : ''}`}>
-                            <Link to="/tasks" className='nav-link' onClick={() => handlePageChange('/tasks')}>
-                                <FontAwesomeIcon icon={faListCheck} />
-                                <span className='ps-3 medium'>Tasks</span>
-                            </Link>
-                        </li>
-
-                        <li className={`nav-item px-2 rounded ${currentPage === '/hours' ? 'active' : ''}`}>
-                            <Link to="/hours" className='nav-link' onClick={() => handlePageChange('/hours')}>
-                                <FontAwesomeIcon icon={faClock} />
-                                <span className='ps-3 medium'>Hours</span>
-                            </Link>
-                        </li>
-
-                        <li className={`nav-item px-2 rounded ${currentPage === '/alerts' ? 'active' : ''}`}>
-                            <Link to="/alerts" className='nav-link' onClick={() => handlePageChange('/alerts')}>
-                                <FontAwesomeIcon icon={faExclamation} />
-                                <span className='ps-3 medium'>Alerts</span>
                             </Link>
                         </li>
                     </div>

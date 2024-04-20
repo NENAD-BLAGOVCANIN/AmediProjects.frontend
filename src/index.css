@@ -23,6 +23,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--color-text) !important;
+  font-size: 14px !important;
   background-color: var(--color-background) !important;
 }
 
@@ -113,11 +114,11 @@ body {
 }
 
 .small {
-  font-size: 13px !important;
+  font-size: 12px !important;
 }
 
 .medium {
-  font-size: 15px !important;
+  font-size: 14px !important;
 }
 
 .main-auth-page-container {

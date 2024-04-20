@@ -71,11 +71,11 @@ function Home() {
 
                         <div className="row pt-5">
                             <div className="col-md-6">
-                                <h4 className='bold'>About the team</h4>
+                                <h5 className='bold'>About the team</h5>
                                 <p className='text-muted medium'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi dicta sint ipsam architecto veritatis earum placeat reiciendis modi ipsum, possimus sequi perspiciatis id in aperiam! Libero, impedit? Placeat, alias!</p>
                             </div>
                             <div className="col-md-6">
-                                <h4 className='bold'>Resources</h4>
+                                <h5 className='bold'>Resources</h5>
                                 <p className='text-muted medium'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit eligendi dicta sint ipsam architecto veritatis earum placeat reiciendis modi ipsum, possimus sequi perspiciatis id in aperiam! Libero, impedit? Placeat, alias!</p>
                             </div>
                         </div>
