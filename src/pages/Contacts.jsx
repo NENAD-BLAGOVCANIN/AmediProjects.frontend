@@ -67,7 +67,7 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
                 <div className='main-container'>
 
                     <div className='d-flex justify-content-center pt-3 pb-4'>
-                        <button className='btn btn-basic shadow-sm' onClick={openAddContactModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> New Contact</span></button>
+                        <button className='btn btn-basic shadow-sm medium' onClick={openAddContactModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> New Contact</span></button>
                     </div>
 
                     <div className='m-auto d-block w-100' style={{ maxWidth: 1500, overflowX: 'auto' }}>

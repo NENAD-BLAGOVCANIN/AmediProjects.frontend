@@ -110,7 +110,7 @@ function Board({ tasks, setTasks, setSelectedTask, selectedTask,
                     </div>
                 </div>
 
-                <button className='btn py-2 rounded color-text-lighter w-100' onClick={handleShowAddTaskCard}>
+                <button className='btn py-2 rounded color-text-lighter w-100 medium' onClick={handleShowAddTaskCard}>
                     <FontAwesomeIcon icon={faPlus} className='pe-2 medium' />
                     Add Task
                 </button>

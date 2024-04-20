@@ -1,16 +1,16 @@
 :root {
-  --color-primary: #F67421;
-  --color-text: #1e1f21;
-  --color-text-lighter: #4C4D4E;
-  --color-secondary: #807BA0;
-  --color-background: #F9F8F8;
+  --color-primary: #071535;
+  --color-text: #333;
+  --color-text-lighter: #666;
+  --color-secondary: rgb(179, 179, 179);
+  --color-background: rgb(241, 241, 241);
   --color-dark: rgb(23, 34, 43);
   --color-danger: #cf004c;
-  --color-light-gray: #f6f7f9;
+  --color-light-gray: #f8f8f8;
   --color-gray: #e8eaee;
   --color-dark-gray: #e6e5e9;
   --color-light: #f8f8f8;
-  --sidebar-width: 310px
+  --sidebar-width: 273px
 }
 
 #sidebar.active {
@@ -19,11 +19,11 @@
 
 body {
   margin: 0;
-  font-family: Poppins, sans-serif !important;
+  font-family: Inter, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--color-text) !important;
-  font-size: 14px !important;
+  font-size: 11.5pt !important;
   background-color: var(--color-background) !important;
 }
 
@@ -33,8 +33,11 @@ body {
 
 .header {
   width: 100%;
-  border-bottom: 2px solid var(--color-gray);
-  padding: 1.5rem;
+  background-color: var(--color-light-gray);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: .3rem;
+  padding-right: 1rem;
   display: flex;
 }
 
@@ -61,8 +64,10 @@ body {
 .main-container {
   padding: 1.5rem;
   min-height: 100vh;
-  max-width: 1200px;
   margin: auto;
+  border: 1px solid rgb(235, 235, 235);
+  border-radius: 8px;
+  background-color: white;
   width: 100%;
 }
 
@@ -88,9 +93,8 @@ body {
 
 .btn-primary,
 .bg-primary {
-  background: rgb(255, 95, 55);
-  background: linear-gradient(90deg, rgba(255, 95, 55, 1) 0%, rgba(255, 133, 55, 1) 28%, rgba(255, 133, 55, 1) 81%, rgba(255, 95, 55, 1) 100%);
-  border-color: var(--color-primary) !important;
+  background: rgb(12, 96, 139);
+  background: linear-gradient(90deg, rgba(12, 96, 139, 1) 0%, rgba(12, 39, 99, 1) 28%, rgba(12, 39, 99, 1) 81%, rgba(12, 96, 139, 1) 100%);
 }
 
 .text-primary {
@@ -114,11 +118,11 @@ body {
 }
 
 .small {
-  font-size: 12px !important;
+  font-size: 12.5px !important;
 }
 
 .medium {
-  font-size: 14px !important;
+  font-size: 15.3px !important;
 }
 
 .main-auth-page-container {
@@ -155,11 +159,6 @@ hr {
   opacity: 1 !important;
 }
 
-#sidebar hr {
-  border-top: 2px solid #42444b !important;
-  opacity: 1 !important;
-}
-
 #sidebar {
   min-width: var(--sidebar-width);
   max-width: var(--sidebar-width);
@@ -167,17 +166,16 @@ hr {
   width: 100%;
   height: 100vh;
   overflow-y: auto;
-  background-color: var(--color-dark);
+  background-color: var(--color-light-gray);
   transition: all 0.3s;
-  padding-top: 1.3rem;
+  padding-top: 1.5rem;
   padding-bottom: 1.3rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  border-right: 2px solid var(--color-gray) !important
 }
 
 #sidebar.active {
-  margin-left: calc(0px - 310px);
+  margin-left: calc(0px - 273px);
 }
 
 #sidebar-logo {
@@ -186,9 +184,14 @@ hr {
 }
 
 #sidebar .nav-item .nav-link {
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-  color: #d8d8d8 !important;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  font-weight: 500;
+  color: var(--color-text-lighter) !important;
+}
+
+.nav-item .nav-link svg {
+  font-size: 13px !important;
 }
 
 #sidebar .nav-item.active,
@@ -230,7 +233,7 @@ hr {
 }
 
 .auth-page-logo {
-  max-width: 235px;
+  max-width: 105px;
   width: 100%;
 }
 

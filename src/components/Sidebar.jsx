@@ -7,12 +7,41 @@ import {
     faBox
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import logo from '../assets/img/icon.png'
+import { getMyProjects, switchProject } from '../api/project';
+import { getUserInfo } from '../api/user';
+import exampleProjectIcon from '../assets/img/exampleProjectIcon.jpg'
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function Sidebar() {
 
     const [sidebarActive, setSidebarActive] = useState(true);
     const [currentPage, setCurrentPage] = useState(window.location.pathname);
+    const [myProjects, setMyProjects] = useState([]);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [userInfo, setUserInfo] = useState(null);
+
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const fetchedUserInfo = await getUserInfo();
+                setUserInfo(fetchedUserInfo);
+                console.log(fetchedUserInfo);
+            } catch (error) {
+                console.error('Error fetching :', error);
+            }
+
+            try {
+                const fetchedMyProjects = await getMyProjects();
+                setMyProjects(fetchedMyProjects);
+                console.log(fetchedMyProjects);
+            } catch (error) {
+                console.error('Error fetching :', error);
+            }
+        };
+
+        fetchUserInfo();
+
+    }, []);
 
     useEffect(() => {
 
@@ -46,18 +75,47 @@ function Sidebar() {
         if (sidebar.classList.contains('active')) {
             document.documentElement.style.setProperty('--sidebar-width', '0');
         } else {
-            document.documentElement.style.setProperty('--sidebar-width', '310px');
+            document.documentElement.style.setProperty('--sidebar-width', '236px');
         }
     };
 
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
+    const handleSwitchProject = async (project_id) => {
+        try {
+            await switchProject(project_id);
+            window.location.reload();
+
+        } catch (error) {
+            console.error('Error fetching :', error);
+        }
+    }
 
     return (
 
         <>
             <nav id="sidebar" className={!sidebarActive ? 'active' : ''}>
 
-                <div className='px-3 pb-3'>
-                    <img src={logo} className='img-fluid' style={{ maxWidth: 55 }} alt="" />
+                <div className='pb-2 pb-3'>
+                    <div className="dropdown show">
+                        <div className="dropdown-toggle medium" type="button" id="projectsDropdown" onClick={toggleDropdown}
+                            aria-haspopup="true" aria-expanded={isDropdownOpen ? "true" : "false"}>
+                            <img src={exampleProjectIcon} style={{ height: 15 }} className='rounded me-2' alt="" />
+                            {userInfo ? userInfo.project.name : ''}
+                        </div>
+                        <div className={"dropdown-menu border-0 shadow pt-2 pb-3" + (isDropdownOpen ? " show" : "")} aria-labelledby="projectsDropdown">
+                            <Link className="dropdown-item medium py-2" to="/projects/create">
+                                <FontAwesomeIcon icon={faPlus} className='pe-2' />
+                                New Project
+                            </Link>
+                            <hr className='m-0 py-2' />
+                            {myProjects.map(myProject => (
+                                <span className="dropdown-item medium py-2 pointer" key={myProject.id} onClick={() => { handleSwitchProject(myProject.id) }}>{myProject.name}</span>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
 
@@ -65,7 +123,7 @@ function Sidebar() {
 
                     <div className='sidebar-link-group'>
                         <div className='pb-2'>
-                            <span className='small bold text-white'>Admin Panel</span>
+                            <span className='small bold text-secondary'>Admin Panel</span>
                         </div>
                         <li className={`nav-item px-2 rounded ${currentPage === '/admin/dashboard' ? 'active' : ''}`}>
                             <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
@@ -95,7 +153,7 @@ function Sidebar() {
 
                     <div className='sidebar-link-group'>
                         <div className='pb-2'>
-                            <span className='small bold text-white'>Project</span>
+                            <span className='small bold text-secondary'>Project</span>
                         </div>
 
                         <li className={`nav-item px-2 rounded ${currentPage === '/home' ? 'active' : ''}`}>
@@ -106,9 +164,12 @@ function Sidebar() {
                         </li>
 
                         <li className={`nav-item px-2 rounded ${currentPage === '/tasks' ? 'active' : ''}`}>
-                            <Link to="/tasks" className='nav-link' onClick={() => handlePageChange('/tasks')}>
+                            <Link to="/tasks" className='nav-link d-flex align-items-center' onClick={() => handlePageChange('/tasks')}>
                                 <FontAwesomeIcon icon={faListCheck} />
-                                <span className='ps-3 medium'>Tasks</span>
+                                <span className='ps-3 medium d-flex align-items-center'>
+                                    <span className='pe-2'>Tasks</span>
+                                    <span className='badge badge-pill badge-primary bg-danger py-1' style={{paddingLeft: '.3rem', paddingRight: '.3rem'}}><span style={{fontSize: 11}}>3</span></span>
+                                </span>
                             </Link>
                         </li>
 
@@ -130,7 +191,7 @@ function Sidebar() {
 
                     <div className='sidebar-link-group'>
                         <div className='pb-2'>
-                            <span className='small bold text-white'>CRM</span>
+                            <span className='small bold text-secondary'>CRM</span>
                         </div>
 
 
@@ -158,7 +219,7 @@ function Sidebar() {
 
                     <div className='sidebar-link-group'>
                         <div className='pb-2'>
-                            <span className='small bold text-white'>Account</span>
+                            <span className='small bold text-secondary'>Account</span>
                         </div>
 
                         <li className='nav-item px-2 rounded'>

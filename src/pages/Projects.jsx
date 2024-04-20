@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import logo from '../assets/img/icon-dark.png'
+import logo from '../assets/img/logo.png'
 import { Link } from 'react-router-dom'
 import { getMyProjects } from '../api/project';
 import { switchProject } from '../api/project';
@@ -39,7 +39,7 @@ function Projects() {
         <div id='create-project-page-wrapper'>
 
             <div className='d-flex justify-content-between px-5' style={{ padding: '1.2rem' }}>
-                <img src={logo} className='img-fluid' style={{ height: 55 }} alt="" />
+                <img src={logo} className='img-fluid' style={{ height: 35 }} alt="" />
                 <ul className='nav'>
                     <li className='nav-item'>
                         <a href="" className='nav-link medium color-text-lighter'>Support</a>

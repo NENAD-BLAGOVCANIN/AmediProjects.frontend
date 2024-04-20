@@ -59,7 +59,7 @@ function Users() {
                 <div className='main-container'>
 
                     <div className='d-flex justify-content-center pt-3 pb-4'>
-                        <button className='btn btn-basic shadow-sm' onClick={openRegistrationModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> Register new user</span></button>
+                        <button className='btn btn-basic shadow-sm medium' onClick={openRegistrationModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> Register new user</span></button>
                     </div>
 
                     <div className='m-auto d-block w-100' style={{ maxWidth: 1500, overflowX: 'auto' }}>
@@ -67,11 +67,11 @@ function Users() {
                             <table className='table table-striped table-hover'>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th className='text-center'>Actions</th>
+                                        <th className='text-secondary bg-transparent fw-500'>ID</th>
+                                        <th className='text-secondary bg-transparent fw-500'>Name</th>
+                                        <th className='text-secondary bg-transparent fw-500'>Email</th>
+                                        <th className='text-secondary bg-transparent fw-500'>Role</th>
+                                        <th className='text-center text-secondary bg-transparent fw-500'>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
