@@ -60,7 +60,7 @@ function Board({ tasks, setTasks, setSelectedTask, selectedTask,
                     </div>
                 </div>
 
-                <div className={`bg-${tasks.filter(task => task.status === 'todo').length === 0 ? 'gray py-5' : ''} w-100 rounded`}>
+                <div className={`bg-${tasks.filter(task => task.status === 'todo').length === 0 && tasks.length > 0 ? 'gray py-5' : ''} w-100 rounded`}>
                     {tasks.filter(task => task.status === 'todo').map(task => (
                         <div key={task.id} className="task-card mb-3" onClick={() => handleShowTaskModal(task)}>
                             <div className='px-1'>

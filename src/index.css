@@ -87,7 +87,8 @@ body {
 
 .btn-primary,
 .bg-primary {
-  background-color: var(--color-primary) !important;
+  background: rgb(255, 95, 55);
+  background: linear-gradient(90deg, rgba(255, 95, 55, 1) 0%, rgba(255, 133, 55, 1) 28%, rgba(255, 133, 55, 1) 81%, rgba(255, 95, 55, 1) 100%);
   border-color: var(--color-primary) !important;
 }
 
@@ -329,6 +330,8 @@ hr {
   background-color: var(--color-primary) !important;
   border-radius: .8rem;
   padding: .5rem !important;
-}.vis-item .vis-item-overflow{
+}
+
+.vis-item .vis-item-overflow {
   height: 30%;
 }

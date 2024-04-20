@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import logo from '../assets/img/logo.png'
 import { login } from '../api/login';
 import { useNavigate } from 'react-router-dom';
+import mobileImgExample from '../assets/img/mobile-img-example.png'
 
-
-export default function Login({authenticated, setAuthenticated}) {
+export default function Login({ authenticated, setAuthenticated }) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -30,51 +30,62 @@ export default function Login({authenticated, setAuthenticated}) {
 
 
     return (
-        <div className='main-auth-page-container'>
+        <div className='main-auth-page-container' style={{ backgroundColor: '#F3F3F5' }}>
 
-            <div className="card bg-white px-5 py-5 w-100" style={{ maxWidth: 540 }}>
+            <div className="card p-0 w-100 bg-transparent" style={{ maxWidth: 'unset', minHeight: '100vh' }}>
 
-                <div className='text-center'>
-                    <div className='py-3'>
-                        <img src={logo} alt="" className='auth-page-logo' />
+                <div className="row m-0">
+                    <div className="col-md-6 bg-white d-flex align-items-center" style={{ minHeight: '100vh' }}>
+                        <div className='w-100 px-4 m-auto d-block' style={{ maxWidth: 600 }}>
+
+
+                            <div className='pt-3 pb-5'>
+                                <span className='py-3 h3 bold'>Welcome Back!</span>
+                            </div>
+
+
+                            {error && <span className='text-danger small'>{error}</span>} { }
+
+                            <form onSubmit={handleSubmit} className='w-100'>
+                                <div className='py-2'>
+                                    <label className='mb-2'>Email</label>
+                                    <input type="text" name='email' value={email} onChange={(e) => setEmail(e.target.value)} className='form-control bg-transparent py-3 border-0' style={{ backgroundColor: '#EBE9F9' }} placeholder='example@company.com' />
+                                </div>
+                                <div className='py-2'>
+                                    <label className='mb-2'>Password</label>
+                                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name='password' className='form-control bg-transparent py-3 border-0' style={{ backgroundColor: '#EBE9F9' }} placeholder='••••••••' />
+                                </div>
+                                <div className='py-4'>
+                                    <button type="submit" className='btn btn-primary w-100 py-3 border-0 bold' style={{ backgroundColor: '#EBE9F9' }}>Login</button>
+                                </div>
+
+                                <div className='d-flex justify-content-between py-2'>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                        <label className="form-check-label text-secondary" htmlFor="flexCheckDefault">
+                                            Remember Me
+                                        </label>
+                                    </div>
+                                    <a href="" className='text-muted fw-500 text-decoration-none'>Trouble logging in?</a>
+                                </div>
+
+                                <div className='d-flex justify-content-center py-4'>
+                                    <span className='px-1 text-secondary'>New to AmediProjects?</span>
+                                    <a href="/register" className='px-1 text-muted fw-500 text-decoration-none'>Sign Up</a>
+                                </div>
+
+
+                            </form>
+                        </div>
+
                     </div>
-
-                    <div className='py-3'>
-                        <span style={{ fontSize: '18pt' }} className='py-3 text-secondary'>Welcome Back!</span>
+                    <div className="col-md-6 px-0">
+                        <div style={{ minHeight: '100vh' }} className='d-flex justify-content-center align-items-center'>
+                            <img src={mobileImgExample} className='w-100 h-100' style={{ objectFit: 'cover', maxWidth: 800 }} alt="" />
+                        </div>
                     </div>
-
                 </div>
 
-                {error && <span className='text-danger small'>{error}</span>} {}
-
-                <form onSubmit={handleSubmit}>
-                    <div className='py-2'>
-                        <input type="text" name='email' value={email} onChange={(e) => setEmail(e.target.value)} className='form-control py-3 border-0' style={{ backgroundColor: '#EBE9F9' }} placeholder='Your email address' />
-                    </div>
-                    <div className='py-2'>
-                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name='password' className='form-control py-3 border-0' style={{ backgroundColor: '#EBE9F9' }} placeholder='Your password' />
-                    </div>
-                    <div className='py-2'>
-                        <button type="submit" className='btn btn-primary w-100 py-3 border-0 fw-500' style={{ backgroundColor: '#EBE9F9' }}>Login</button>
-                    </div>
-
-                    <div className='d-flex justify-content-between py-2'>
-                        <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                            <label className="form-check-label text-secondary" htmlFor="flexCheckDefault">
-                                Remember Me
-                            </label>
-                        </div>
-                        <a href="" className='text-muted fw-500 text-decoration-none'>Trouble logging in?</a>
-                    </div>
-
-                    <div className='d-flex justify-content-center py-4'>
-                        <span className='px-1 text-secondary'>New to AmediProjects?</span>
-                        <a href="/register" className='px-1 text-muted fw-500 text-decoration-none'>Sign Up</a>
-                    </div>
-
-
-                </form>
 
             </div>
 
