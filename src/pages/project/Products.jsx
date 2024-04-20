@@ -42,7 +42,7 @@ function Products() {
                 <div className='main-container'>
 
                     <div className='d-flex justify-content-center pt-3 pb-4'>
-                        <button className='btn btn-basic shadow-sm' onClick={openAddProductModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> Add Product</span></button>
+                        <button className='btn btn-basic shadow-sm medium' onClick={openAddProductModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> Add Product</span></button>
                     </div>
 
                     <div className="container">
