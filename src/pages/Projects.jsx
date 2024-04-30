@@ -5,6 +5,9 @@ import { switchProject } from '../api/project';
 import exampleProjectIcon from '../assets/img/exampleProjectIcon.jpg'
 import SocialHeader from '../components/SocialHeader';
 import rocketIcon from '../assets/img/rocket.jpg'
+import profileImagePlaceholder from '../assets/img/profile.svg'
+import placeholderProfileImage1 from '../assets/img/placeholder-profile-img-1.jpeg'
+import placeholderProfileImage2 from '../assets/img/placeholder-profile-img-2.jpg'
 
 function Projects() {
 
@@ -67,6 +70,11 @@ function Projects() {
                                             {myProject.name.length > 19 ? myProject.name.substring(0, 19) + '...' : myProject.name}
                                         </h5>
 
+                                        <div>
+                                            <img src={profileImagePlaceholder} className='rounded-circle' alt="" style={{ maxHeight: 28, height: '100%' }} />
+                                            <img src={placeholderProfileImage1} className='rounded-circle transform-left-35' alt="" style={{ maxHeight: 28, height: '100%' }} />
+                                            <img src={placeholderProfileImage2} className='rounded-circle transform-left-75' alt="" style={{ maxHeight: 28, height: '100%' }} />
+                                        </div>
                                     </div>
                                 </div>
 
