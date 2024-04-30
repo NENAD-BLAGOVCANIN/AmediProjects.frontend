@@ -109,6 +109,10 @@ body {
   color: var(--color-secondary) !important;
 }
 
+.rounded-sm {
+  border-radius: .6rem !important;
+}
+
 .rounded-lg {
   border-radius: 20px !important;
 }
@@ -268,8 +272,9 @@ hr {
 }
 
 .project-card {
-  height: 185px !important;
   text-decoration: none !important;
+  min-height: 185px;
+  height: 100%;
 }
 
 #create-project-page-wrapper {

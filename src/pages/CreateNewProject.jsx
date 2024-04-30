@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { saveProject } from '../api/project';
-import logo from '../assets/img/logo.png'
 import { useNavigate } from 'react-router-dom';
+import SocialHeader from '../components/SocialHeader';
 
 function CreateNewProject() {
 
@@ -24,7 +24,7 @@ function CreateNewProject() {
     return (
         <div id='create-project-page-wrapper'>
 
-            <img src={logo} className='img-fluid position-absolute' style={{ height: 65, top: '1.5rem', left: '1.5rem' }} alt="" />
+            <SocialHeader />
 
             <div className='container w-100 h-100 d-flex justify-content-center flex-column' style={{ minHeight: '100vh', maxWidth: 850 }}>
 
@@ -42,7 +42,7 @@ function CreateNewProject() {
                     <label className='mt-4 mb-2'>Description</label>
                     <textarea type="text" className='form-control bg-gray-light py-2 border-0'
                         placeholder='Project description' value={description} autoComplete="new-password"
-                        onChange={(e) => setDescription(e.target.value)} style={{height: 130}} />
+                        onChange={(e) => setDescription(e.target.value)} style={{ height: 130 }} />
 
                     {errors && (
                         <div className="text-danger small">
