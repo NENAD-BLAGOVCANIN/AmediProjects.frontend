@@ -70,12 +70,21 @@ function Projects() {
                                     </div>
                                 </div>
 
-                                <span className='text-muted small'>{myProject.description}</span>
+                                <span className='text-muted small' id='projectDescription'>{myProject.description}</span>
 
                                 <hr />
 
-                                <span className='bold'>4</span>
-                                <p className='small text-muted'>Members</p>
+                                <div className='row'>
+                                    <div className="col-6">
+                                        <span className='bold'>4</span>
+                                        <p className='small text-muted'>Members</p>
+                                    </div>
+                                    <div className="col-6">
+                                        <span className='bold'>23.3.2024</span>
+                                        <p className='small text-muted'>Due date</p>
+                                    </div>
+                                </div>
+
 
                             </div>
                         </div>

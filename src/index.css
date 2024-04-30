@@ -340,3 +340,7 @@ hr {
 .vis-item .vis-item-overflow {
   height: 30%;
 }
+
+#projectDescription{
+  height: 33px !important;
+}
