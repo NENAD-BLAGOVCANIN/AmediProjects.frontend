@@ -413,7 +413,7 @@ hr {
   color: #000;
 }
 
-.custom-dropdown .custom-notifications > li > a .img img {
-  width: 45px;
+.custom-dropdown .custom-notifications > li > a .notification-sender-icon img {
+  width: 52px;
   border-radius: .4rem;
 }

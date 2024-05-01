@@ -1,5 +1,6 @@
 import React from 'react'
 import profileImagePlaceholder from '../../assets/img/profile.svg'
+import amediProfileImg from '../../assets/img/amediProfileImg.webp'
 
 function NotificationsDropdown({ userInfo, setUserInfo }) {
     return (
@@ -13,14 +14,14 @@ function NotificationsDropdown({ userInfo, setUserInfo }) {
                     {userInfo.notifications.map(notification => (
                         <li className="unread" key={notification.id}>
                             <a href="#" className="d-flex">
-                                <div className="img me-3">
-                                    <img src={profileImagePlaceholder} alt="Image" className="img-fluid" />
+                                <div className="notification-sender-icon me-3">
+                                    <img src={amediProfileImg} alt="Image" className="img-fluid" />
                                 </div>
                                 <div className='text'>
                                     <strong>
                                         {notification.title}
                                     </strong>
-                                    <p>
+                                    <p className='small pt-1'>
                                         {notification.body}
                                     </p>
                                 </div>
