@@ -10,7 +10,7 @@ import NotificationsDropdown from './NotificationsDropdown';
 function Header({ pageTitle }) {
 
     const [userInfo, setUserInfo] = useState(null);
-
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -27,6 +27,11 @@ function Header({ pageTitle }) {
 
     }, []);
 
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
+
     return (
         <div className='pb-1 bg-white'>
             <nav className='header justify-content-between shadow-sm'>
@@ -42,13 +47,12 @@ function Header({ pageTitle }) {
                     </div>
 
                     <div className='px-2 mx-1 d-flex flex-column align-items-center justify-content-center'>
-                        <div class="dropdown custom-dropdown show">
-                            <a href="#" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="true">
-                                <FontAwesomeIcon icon={faBell} className='h4 text-muted m-0 pointer' />
+                        <div className="dropdown custom-dropdown">
+                            <a href="#" onClick={toggleDropdown} className="dropdown-link" aria-haspopup="true" aria-expanded={isDropdownOpen}>
+                                <FontAwesomeIcon icon={faBell} className="h4 text-muted m-0 pointer" />
                             </a>
 
-                            <NotificationsDropdown />
-
+                            {isDropdownOpen && <NotificationsDropdown />}
                         </div>
                     </div>
                     <div className='px-2 mx-1 d-flex flex-column align-items-center justify-content-center'>
