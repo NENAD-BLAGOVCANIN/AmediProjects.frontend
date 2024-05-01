@@ -10,8 +10,8 @@ const pageTitles = {
     "/home": "Home",
     "/tasks": "Tasks",
     "/products": "Products",
-    "/admin/dashboard": "Admin Dashboard",
-    "/admin/users": "Admin Users",
+    "/admin/dashboard": "Dashboard",
+    "/admin/users": "Users",
     "/profile": "Profile"
 };
 

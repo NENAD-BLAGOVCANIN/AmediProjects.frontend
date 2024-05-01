@@ -32,14 +32,15 @@ body {
 }
 
 .header {
+  max-width: calc(100% - var(--sidebar-width));
   width: 100%;
+  position: fixed;
   background-color: #fff;
   z-index: 999;
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 2rem;
   padding-right: 1rem;
-  /* border-bottom: 1px solid rgb(235, 235, 235); */
   display: flex;
 }
 
@@ -65,6 +66,7 @@ body {
 
 .main-container {
   padding: 1.5rem;
+  padding-top: 60px;
   min-height: 100vh;
   margin: auto;
   background-color: white;
