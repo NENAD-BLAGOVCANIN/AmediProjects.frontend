@@ -52,7 +52,7 @@ function Projects() {
                     <div className="col-md-3 px-3 mb-5">
                         <Link to="/projects/create" className="project-card rounded-sm p-4 card border-0 bg-white pointer w-100 d-flex align-items-center justify-content-center">
                             <h1 className='text-muted'>+</h1>
-                            <span className='fw-500 text-muted'>Add Project</span>
+                            <span className='fw-500 text-muted'>New project</span>
                         </Link>
                     </div>
                     {myProjects.map(myProject => (

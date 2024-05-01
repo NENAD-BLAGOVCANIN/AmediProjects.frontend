@@ -39,11 +39,11 @@ function Header({ pageTitle }) {
                         <img src={placeholderProfileImage1} className='rounded-circle transform-left-35' alt="" style={{ maxHeight: 28, height: '100%' }} />
                         <img src={placeholderProfileImage2} className='rounded-circle transform-left-75' alt="" style={{ maxHeight: 28, height: '100%' }} />
                     </div>
-                    <div className='px-2 d-flex flex-column align-items-center justify-content-center'>
-                        <FontAwesomeIcon icon={faBell} className='h5 m-0 pointer' />
+                    <div className='px-2 mx-1 d-flex flex-column align-items-center justify-content-center'>
+                        <FontAwesomeIcon icon={faBell} className='h4 text-muted m-0 pointer' />
                     </div>
-                    <div className='px-2 d-flex flex-column align-items-center justify-content-center'>
-                        <FontAwesomeIcon icon={faEnvelope} className='h5 m-0 pointer' />
+                    <div className='px-2 mx-1 d-flex flex-column align-items-center justify-content-center'>
+                        <img src={profileImagePlaceholder} className='rounded pointer' alt="" style={{ maxHeight: 28, height: '100%' }} />
                     </div>
                 </div>
 
