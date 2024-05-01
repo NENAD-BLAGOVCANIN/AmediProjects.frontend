@@ -12,36 +12,11 @@ import { getUserInfo } from '../api/user';
 import exampleProjectIcon from '../assets/img/exampleProjectIcon.jpg'
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-function Sidebar() {
+function Sidebar({userInfo, setUserInfo, myProjects, setMyProjects}) {
 
     const [sidebarActive, setSidebarActive] = useState(true);
     const [currentPage, setCurrentPage] = useState(window.location.pathname);
-    const [myProjects, setMyProjects] = useState([]);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [userInfo, setUserInfo] = useState(null);
-
-    useEffect(() => {
-        const fetchUserInfo = async () => {
-            try {
-                const fetchedUserInfo = await getUserInfo();
-                setUserInfo(fetchedUserInfo);
-                console.log(fetchedUserInfo);
-            } catch (error) {
-                console.error('Error fetching :', error);
-            }
-
-            try {
-                const fetchedMyProjects = await getMyProjects();
-                setMyProjects(fetchedMyProjects);
-                console.log(fetchedMyProjects);
-            } catch (error) {
-                console.error('Error fetching :', error);
-            }
-        };
-
-        fetchUserInfo();
-
-    }, []);
 
     useEffect(() => {
 
