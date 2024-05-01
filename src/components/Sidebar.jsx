@@ -172,7 +172,6 @@ function Sidebar() {
                                 <FontAwesomeIcon icon={faListCheck} />
                                 <span className='ps-3 medium d-flex align-items-center'>
                                     <span className='pe-2'>Tasks</span>
-                                    <span className='badge badge-pill badge-primary bg-danger py-1' style={{ paddingLeft: '.3rem', paddingRight: '.3rem' }}><span style={{ fontSize: 11 }}>3</span></span>
                                 </span>
                             </Link>
                         </li>
