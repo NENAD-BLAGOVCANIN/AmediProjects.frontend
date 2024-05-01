@@ -71,6 +71,10 @@ body {
   width: 100%;
 }
 
+a{
+  text-decoration: none;
+}
+
 .bold {
   font-weight: bold !important;
 }
@@ -400,4 +404,14 @@ hr {
   -o-transition: .3s margin-top ease, .3s opacity ease, .3s visibility ease;
   transition: .3s margin-top ease, .3s opacity ease, .3s visibility ease;
   max-width: 380px;
+}
+
+.custom-dropdown .custom-notifications > li > a .text strong {
+  font-weight: 700;
+  color: #000;
+}
+
+.custom-dropdown .custom-notifications > li > a .img img {
+  width: 45px;
+  border-radius: .4rem;
 }

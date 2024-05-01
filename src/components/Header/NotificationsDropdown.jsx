@@ -1,4 +1,5 @@
 import React from 'react'
+import profileImagePlaceholder from '../../assets/img/profile.svg'
 
 function NotificationsDropdown() {
     return (
@@ -7,13 +8,12 @@ function NotificationsDropdown() {
                 style={{ position: 'absolute',  transform: 'translate3d(-100%, 35px, 0px)', width: 450 }}>
                 <div class="title-wrap d-flex align-items-center">
                     <h3 class="title mb-0">Notifications</h3>
-                    <a href="#" class="small ml-auto">Mark all as read</a>
                 </div>
                 <ul class="custom-notifications">
                     <li class="unread">
                         <a href="#" class="d-flex">
-                            <div class="img mr-3">
-                                <img src="images/person_1.jpg" alt="Image" class="img-fluid" />
+                            <div class="img me-3">
+                                <img src={profileImagePlaceholder} alt="Image" class="img-fluid" />
                             </div>
                             <div class="text">
                                 <strong>Claudia Gideon</strong> marked the task done a day ago
@@ -22,8 +22,8 @@ function NotificationsDropdown() {
                     </li>
                     <li class="unread">
                         <a href="#" class="d-flex">
-                            <div class="img mr-3">
-                                <img src="images/person_2.jpg" alt="Image" class="img-fluid" />
+                            <div class="img me-3">
+                                <img src={profileImagePlaceholder} alt="Image" class="img-fluid" />
                             </div>
                             <div class="text">
                                 <strong>Alex Stafford</strong> marked the task done a day ago
@@ -32,8 +32,8 @@ function NotificationsDropdown() {
                     </li>
                     <li>
                         <a href="#" class="d-flex">
-                            <div class="img mr-3">
-                                <img src="images/person_3.jpg" alt="Image" class="img-fluid" />
+                            <div class="img me-3">
+                                <img src={profileImagePlaceholder} alt="Image" class="img-fluid" />
                             </div>
                             <div class="text">
                                 <strong>Devin Richards</strong> mentioned you in her comment on Invoices 2 days ago
@@ -42,8 +42,8 @@ function NotificationsDropdown() {
                     </li>
                     <li class="">
                         <a href="#" class="d-flex">
-                            <div class="img mr-3">
-                                <img src="images/person_2.jpg" alt="Image" class="img-fluid" />
+                            <div class="img me-3">
+                                <img src={profileImagePlaceholder} alt="Image" class="img-fluid" />
                             </div>
                             <div class="text">
                                 <strong>Alex Stafford</strong> marked the task done a day ago
@@ -52,8 +52,8 @@ function NotificationsDropdown() {
                     </li>
                     <li>
                         <a href="#" class="d-flex">
-                            <div class="img mr-3">
-                                <img src="images/person_3.jpg" alt="Image" class="img-fluid" />
+                            <div class="img me-3">
+                                <img src={profileImagePlaceholder} alt="Image" class="img-fluid" />
                             </div>
                             <div class="text">
                                 <strong>Devin Richards</strong> mentioned you in her comment on Invoices 2 days ago
