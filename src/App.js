@@ -15,6 +15,7 @@ import Users from './pages/admin/Users';
 import CreateNewProject from './pages/CreateNewProject';
 import Home from './pages/project/Home';
 import Products from './pages/project/Products';
+import AppLayout from './layouts/AppLayout';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -39,16 +40,31 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={authenticated ? <Navigate to="/home" /> : <Navigate to="/login" />} />
+        <Route path="/" element={<AppLayout />}>
 
-        {/* CRM */}
-        <Route path="/contacts" element={<Contacts contacts={contacts} setContacts={setContacts} setLeads={setLeads} />} />
-        <Route path="/leads" element={<Leads leads={leads} setLeads={setLeads} contacts={contacts} setContacts={setContacts} />} />
+          <Route index element={authenticated ? <Navigate to="/home" /> : <Navigate to="/login" />} />
 
-        {/* Project */}
-        <Route path="/home" element={<Home />} />
-        <Route path="/tasks" element={<Tasks />} />
-        <Route path="/products" element={<Products />} />
+          {/* CRM */}
+          <Route path="/contacts" element={<Contacts contacts={contacts} setContacts={setContacts} setLeads={setLeads} />} />
+          <Route path="/leads" element={<Leads leads={leads} setLeads={setLeads} contacts={contacts} setContacts={setContacts} />} />
+
+          {/* Project */}
+          <Route path="/home" element={<Home />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/products" element={<Products />} />
+
+          {/* Admin Panel */}
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/users" element={<Users />} />
+
+          {/* Personal Pages */}
+          <Route path="/profile" element={<Profile />} />
+
+        </Route>
+
+
+
+
 
         {/* Project Management */}
         <Route path="/projects" element={<Projects />} />
@@ -56,12 +72,7 @@ function App() {
         <Route path="/projects/invite/:inviteCode/:projectId" element={<Invite />} />
         <Route path="/settings" element={<Settings />} />
 
-        {/* Admin Panel */}
-        <Route path="/admin/dashboard" element={<Dashboard />} />
-        <Route path="/admin/users" element={<Users />} />
 
-        {/* Personal Pages */}
-        <Route path="/profile" element={<Profile />} />
 
         {/* Auth */}
         <Route path="/login" element={<Login authenticated={authenticated} setAuthenticated={setAuthenticated} />} />

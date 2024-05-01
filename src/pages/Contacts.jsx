@@ -48,7 +48,7 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
         setShowViewContactModal(true);
     };
 
-    
+
     const openEditContactModal = (contact) => {
         setShowEditContactsModal(true);
         setSelectedContact(contact);
@@ -56,74 +56,63 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
 
 
     return (
-        <div className='page-content-wrapper'>
 
-            <Sidebar />
+        <>
+            <div className='d-flex justify-content-center pt-3 pb-4'>
+                <button className='btn btn-basic shadow-sm medium' onClick={openAddContactModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> New Contact</span></button>
+            </div>
 
-            <div className='main-content-wrapper'>
+            <div className='m-auto d-block w-100' style={{ maxWidth: 1500, overflowX: 'auto' }}>
+                <div className='table-responsive pt-3'>
+                    <table className='table table-hover'>
+                        <thead>
+                            <tr>
+                                <th className='text-secondary bg-transparent fw-500'>ID</th>
+                                <th className='text-secondary bg-transparent fw-500'>Name</th>
+                                <th className='text-secondary bg-transparent fw-500'>Email</th>
+                                <th className='text-secondary bg-transparent fw-500'>Title</th>
+                                <th className='text-secondary bg-transparent fw-500'>City</th>
+                                <th className='text-secondary bg-transparent fw-500'>Address</th>
+                                <th className='text-secondary bg-transparent fw-500'>Phone</th>
+                                <th className='text-secondary bg-transparent fw-500'>Organization</th>
+                                <th className='text-center text-secondary bg-transparent fw-500'>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {contacts.map(contact => (
+                                <tr key={contact.id}>
+                                    <td className='bg-transparent'>{contact.id}</td>
+                                    <td className='bg-transparent'>{contact.name}</td>
+                                    <td className='bg-transparent'>{contact.email}</td>
+                                    <td className='bg-transparent'>{contact.title}</td>
+                                    <td className='bg-transparent'>{contact.city}</td>
+                                    <td className='bg-transparent'>{contact.address}</td>
+                                    <td className='bg-transparent'>{contact.phone}</td>
+                                    <td className='bg-transparent'>{contact.organization}</td>
+                                    <td className='bg-transparent'>
+                                        <div className="h-100 d-flex align-items-center justify-content-center">
+                                            <div className='px-1'>
+                                                <button className='btn btn-basic bg-gray-light shadow-sm' onClick={() => openViewContactModal(contact)}>
+                                                    <FontAwesomeIcon icon={faBars} />
+                                                </button>
+                                            </div>
+                                            <div className='px-1'>
+                                                <button className='btn btn-basic bg-gray-light shadow-sm' onClick={() => openEditContactModal(contact)}>
+                                                    <FontAwesomeIcon icon={faEdit} />
+                                                </button>
+                                            </div>
+                                            <div className='px-1'>
+                                                <button className='btn btn-basic bg-gray-light text-danger shadow-sm' onClick={() => handleDeleteContact(contact.id)}>
+                                                    <FontAwesomeIcon icon={faTrash} />
+                                                </button>
+                                            </div>
 
-                <Header pageTitle="Contacts" />
-
-                <div className='main-container'>
-
-                    <div className='d-flex justify-content-center pt-3 pb-4'>
-                        <button className='btn btn-basic shadow-sm medium' onClick={openAddContactModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> New Contact</span></button>
-                    </div>
-
-                    <div className='m-auto d-block w-100' style={{ maxWidth: 1500, overflowX: 'auto' }}>
-                        <div className='table-responsive pt-3'>
-                            <table className='table table-hover'>
-                                <thead>
-                                    <tr>
-                                        <th className='text-secondary bg-transparent fw-500'>ID</th>
-                                        <th className='text-secondary bg-transparent fw-500'>Name</th>
-                                        <th className='text-secondary bg-transparent fw-500'>Email</th>
-                                        <th className='text-secondary bg-transparent fw-500'>Title</th>
-                                        <th className='text-secondary bg-transparent fw-500'>City</th>
-                                        <th className='text-secondary bg-transparent fw-500'>Address</th>
-                                        <th className='text-secondary bg-transparent fw-500'>Phone</th>
-                                        <th className='text-secondary bg-transparent fw-500'>Organization</th>
-                                        <th className='text-center text-secondary bg-transparent fw-500'>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {contacts.map(contact => (
-                                        <tr key={contact.id}>
-                                            <td className='bg-transparent'>{contact.id}</td>
-                                            <td className='bg-transparent'>{contact.name}</td>
-                                            <td className='bg-transparent'>{contact.email}</td>
-                                            <td className='bg-transparent'>{contact.title}</td>
-                                            <td className='bg-transparent'>{contact.city}</td>
-                                            <td className='bg-transparent'>{contact.address}</td>
-                                            <td className='bg-transparent'>{contact.phone}</td>
-                                            <td className='bg-transparent'>{contact.organization}</td>
-                                            <td className='bg-transparent'>
-                                                <div className="h-100 d-flex align-items-center justify-content-center">
-                                                    <div className='px-1'>
-                                                        <button className='btn btn-basic bg-gray-light shadow-sm' onClick={() => openViewContactModal(contact)}>
-                                                            <FontAwesomeIcon icon={faBars} />
-                                                        </button>
-                                                    </div>
-                                                    <div className='px-1'>
-                                                        <button className='btn btn-basic bg-gray-light shadow-sm' onClick={() => openEditContactModal(contact)}>
-                                                            <FontAwesomeIcon icon={faEdit} />
-                                                        </button>
-                                                    </div>
-                                                    <div className='px-1'>
-                                                        <button className='btn btn-basic bg-gray-light text-danger shadow-sm' onClick={() => handleDeleteContact(contact.id)}>
-                                                            <FontAwesomeIcon icon={faTrash} />
-                                                        </button>
-                                                    </div>
-
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -152,7 +141,9 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
                 setLeads={setLeads}
             />
 
-        </div>
+        </>
+
+
     )
 }
 

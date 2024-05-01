@@ -31,41 +31,31 @@ function Products() {
 
 
     return (
-        <div className='page-content-wrapper'>
 
-            <Sidebar />
+        <>
 
-            <div className='main-content-wrapper'>
+            <div className='d-flex justify-content-center pt-3 pb-4'>
+                <button className='btn btn-basic shadow-sm medium' onClick={openAddProductModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> Add Product</span></button>
+            </div>
 
-                <Header pageTitle="Products" />
-
-                <div className='main-container'>
-
-                    <div className='d-flex justify-content-center pt-3 pb-4'>
-                        <button className='btn btn-basic shadow-sm medium' onClick={openAddProductModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> Add Product</span></button>
-                    </div>
-
-                    <div className="container">
-                        <div className="row pt-4">
-                            {products.map(product => (
-                                <div className="col-md-3">
-                                    <div className="card border-0 bg-gray bg-gray-hover pointer p-3 w-100">
-                                        <h4>{product.name}</h4>
-                                        <p className='medium text-muted'>{product.description}</p>
-                                        <h5 className='text-success'>${product.price}</h5>
-                                    </div>
-                                </div>
-                            ))}
+            <div className="container">
+                <div className="row pt-4">
+                    {products.map(product => (
+                        <div className="col-md-3">
+                            <div className="card border-0 bg-gray bg-gray-hover pointer p-3 w-100">
+                                <h4>{product.name}</h4>
+                                <p className='medium text-muted'>{product.description}</p>
+                                <h5 className='text-success'>${product.price}</h5>
+                            </div>
                         </div>
-                    </div>
-
-
+                    ))}
                 </div>
             </div>
 
+
             <AddProductModal products={products} setProducts={setProducts} showAddProductModal={showAddProductModal} setShowAddProductModal={setShowAddProductModal} />
 
-        </div>
+        </>
     )
 }
 

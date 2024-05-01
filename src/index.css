@@ -341,11 +341,12 @@ hr {
   height: 30%;
 }
 
-#projectDescription{
+#projectDescription {
   height: 33px !important;
 }
 
-.nav-item .nav-link.active, .nav-item .nav-link:hover{
+.nav-item .nav-link.active,
+.nav-item .nav-link:hover {
   font-weight: 500;
   color: var(--color-primary) !important;
 }

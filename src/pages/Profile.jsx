@@ -37,35 +37,21 @@ function Profile() {
 
 
     return (
-        <div className='page-content-wrapper'>
 
-            <Sidebar />
+        <div className='d-flex flex-column align-items-center m-auto pt-5' style={{ maxWidth: 800 }}>
 
-            <div className='main-content-wrapper'>
+            <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{ maxWidth: 105 }} alt="" />
 
-                <Header pageTitle="My Profile" />
-
-                <div className='main-container'>
-
-                    <div className='d-flex flex-column align-items-center m-auto pt-5' style={{ maxWidth: 800 }}>
-
-                        <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{ maxWidth: 105 }} alt="" />
-
-                        <span className='mt-3 mb-5 bold'>{userInfo.name}</span>
+            <span className='mt-3 mb-5 bold'>{userInfo.name}</span>
 
 
-                        <div className='card bg-gray-light rounded-lg shadow-sm border-0 w-100 py-5 px-4'>
+            <div className='card bg-gray-light rounded-lg shadow-sm border-0 w-100 py-5 px-4'>
 
-                            <p>Name: {userInfo.name}</p>
-                            <p>Email: {userInfo.email}</p>
-                            <p>Profile Created At: {formatDate(userInfo.created_at)}</p>
-                            <p className='m-0'>Email Verified: <span className='badge bagde-primary bg-danger'>No</span></p>
+                <p>Name: {userInfo.name}</p>
+                <p>Email: {userInfo.email}</p>
+                <p>Profile Created At: {formatDate(userInfo.created_at)}</p>
+                <p className='m-0'>Email Verified: <span className='badge bagde-primary bg-danger'>No</span></p>
 
-                        </div>
-
-                    </div>
-
-                </div>
             </div>
 
         </div>

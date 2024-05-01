@@ -53,66 +53,53 @@ function Tasks() {
 
 
     return (
-        <div className='page-content-wrapper'>
 
-            <Sidebar />
-
-            <div className='main-content-wrapper'>
-
-                <Header pageTitle="Tasks" />
-
-                <div className='main-container' style={{ maxWidth: 'unset' }}>
-
-                    <Tabs
-                        defaultActiveKey="board"
-                        id="uncontrolled-tab-example"
-                        className="mb-3"
-                    >
-                        <Tab eventKey="board" title={
-                            <>
-                                <FontAwesomeIcon icon={faTable} />
-                                <span className='ps-2'>Board</span>
-                            </>
-                        }>
-                            <Board
-                                tasks={tasks} setTasks={setTasks}
-                                selectedTask={selectedTask} setSelectedTask={setSelectedTask}
-                                showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
-                                showAddTaskCard={showAddTaskCard} setShowAddTaskCard={setShowAddTaskCard}
-                            />
-                        </Tab>
-                        <Tab eventKey="timeline" title={
-                            <>
-                                <FontAwesomeIcon icon={faTimeline} />
-                                <span className='ps-2'>Timeline</span>
-                            </>
-                        }>
-                            <TasksTimeline
-                                tasks={tasks} setTasks={setTasks}
-                                selectedTask={selectedTask} setSelectedTask={setSelectedTask}
-                                showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
-                                showAddTaskCard={showAddTaskCard} setShowAddTaskCard={setShowAddTaskCard}
-                            />
-                        </Tab>
-                        <Tab eventKey="list" title={
-                            <>
-                                <FontAwesomeIcon icon={faListCheck} />
-                                <span className='ps-2'>List</span>
-                            </>
-                        }>
-                            <List
-                                tasks={tasks} setTasks={setTasks}
-                                selectedTask={selectedTask} setSelectedTask={setSelectedTask}
-                                showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
-                                showAddTaskCard={showAddTaskCard} setShowAddTaskCard={setShowAddTaskCard}
-                            />
-                        </Tab>
-                    </Tabs>
-
-
-
-                </div>
-            </div>
+        <>
+            <Tabs
+                defaultActiveKey="board"
+                id="uncontrolled-tab-example"
+                className="mb-3"
+            >
+                <Tab eventKey="board" title={
+                    <>
+                        <FontAwesomeIcon icon={faTable} />
+                        <span className='ps-2'>Board</span>
+                    </>
+                }>
+                    <Board
+                        tasks={tasks} setTasks={setTasks}
+                        selectedTask={selectedTask} setSelectedTask={setSelectedTask}
+                        showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
+                        showAddTaskCard={showAddTaskCard} setShowAddTaskCard={setShowAddTaskCard}
+                    />
+                </Tab>
+                <Tab eventKey="timeline" title={
+                    <>
+                        <FontAwesomeIcon icon={faTimeline} />
+                        <span className='ps-2'>Timeline</span>
+                    </>
+                }>
+                    <TasksTimeline
+                        tasks={tasks} setTasks={setTasks}
+                        selectedTask={selectedTask} setSelectedTask={setSelectedTask}
+                        showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
+                        showAddTaskCard={showAddTaskCard} setShowAddTaskCard={setShowAddTaskCard}
+                    />
+                </Tab>
+                <Tab eventKey="list" title={
+                    <>
+                        <FontAwesomeIcon icon={faListCheck} />
+                        <span className='ps-2'>List</span>
+                    </>
+                }>
+                    <List
+                        tasks={tasks} setTasks={setTasks}
+                        selectedTask={selectedTask} setSelectedTask={setSelectedTask}
+                        showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
+                        showAddTaskCard={showAddTaskCard} setShowAddTaskCard={setShowAddTaskCard}
+                    />
+                </Tab>
+            </Tabs>
 
 
             <TaskModal
@@ -127,7 +114,8 @@ function Tasks() {
             />
 
 
-        </div>
+        </>
+
     )
 }
 
