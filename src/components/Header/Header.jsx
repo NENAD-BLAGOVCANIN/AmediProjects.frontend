@@ -35,7 +35,7 @@ function Header({ pageTitle, userInfo, setUserInfo, myProjects, setMyProjects })
                                 <FontAwesomeIcon icon={faBell} className="h4 text-muted m-0 pointer" />
                             </a>
 
-                            {isDropdownOpen && <NotificationsDropdown />}
+                            {isDropdownOpen && <NotificationsDropdown userInfo={userInfo} setUserInfo={setUserInfo} />}
                         </div>
                     </div>
                     <div className='px-2 mx-1 d-flex flex-column align-items-center justify-content-center'>
