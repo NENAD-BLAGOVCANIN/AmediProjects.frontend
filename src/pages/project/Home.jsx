@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Header from '../../components/Header'
+import Header from '../../components/Header/Header'
 import Sidebar from '../../components/Sidebar'
 import { getUserInfo } from '../../api/user';
 import MyCalendar from '../../components/MyCalendar';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
-import Header from '../components/Header'
+import Header from '../components/Header/Header'
 import { getTasks, saveTask } from '../api/tasks'
 import TaskModal from '../components/TaskModal'
 import { getProjectMembers } from '../api/project';

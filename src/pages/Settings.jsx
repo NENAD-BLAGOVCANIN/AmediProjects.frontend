@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
-import Header from '../components/Header'
+import Header from '../components/Header/Header'
 import { getProjectInfo, getProjectMembers, updateProjectInfo } from '../api/project'
 import placeholderProfileImage from '../assets/img/profile.svg'
 import { frontendUrl } from '../api/config'
