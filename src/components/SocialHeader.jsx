@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/img/logo.png'
 import { Link } from 'react-router-dom'
 import profileImagePlaceholder from '../assets/img/profile.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import NotificationsDropdown from './Header/NotificationsDropdown';
 
 function SocialHeader() {
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
+
     return (
         <div className='d-flex justify-content-between align-items-center px-5 bg-white' style={{ padding: '1.2rem' }}>
 
@@ -30,7 +39,13 @@ function SocialHeader() {
 
             <div className='d-flex align-items-center'>
                 <div className='px-2 mx-1 d-flex flex-column align-items-center justify-content-center'>
-                    <FontAwesomeIcon icon={faBell} className='h4 text-muted m-0 pointer' />
+                    <div className="dropdown custom-dropdown">
+                        <a href="#" onClick={toggleDropdown} className="dropdown-link d-flex align-items-center" aria-haspopup="true" aria-expanded={isDropdownOpen}>
+                            <FontAwesomeIcon icon={faBell} className="h4 text-muted m-0 pointer" />
+                        </a>
+
+                        {isDropdownOpen && <NotificationsDropdown />}
+                    </div>
                 </div>
                 <div className='px-2 mx-1 d-flex flex-column align-items-center justify-content-center'>
                     <img src={profileImagePlaceholder} className='rounded pointer' alt="" style={{ maxHeight: 28, height: '100%' }} />

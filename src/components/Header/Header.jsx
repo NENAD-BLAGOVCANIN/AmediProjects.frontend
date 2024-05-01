@@ -48,7 +48,7 @@ function Header({ pageTitle }) {
 
                     <div className='px-2 mx-1 d-flex flex-column align-items-center justify-content-center'>
                         <div className="dropdown custom-dropdown">
-                            <a href="#" onClick={toggleDropdown} className="dropdown-link" aria-haspopup="true" aria-expanded={isDropdownOpen}>
+                            <a href="#" onClick={toggleDropdown} className="dropdown-link d-flex align-items-center" aria-haspopup="true" aria-expanded={isDropdownOpen}>
                                 <FontAwesomeIcon icon={faBell} className="h4 text-muted m-0 pointer" />
                             </a>
 

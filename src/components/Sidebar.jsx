@@ -105,7 +105,7 @@ function Sidebar() {
                             <img src={exampleProjectIcon} style={{ height: 15 }} className='rounded me-2' alt="" />
                             {userInfo ? userInfo.project.name.substring(0, 18) : ''}
                         </div>
-                        <div className={"dropdown-menu border-0 shadow pt-2 pb-3" + (isDropdownOpen ? " show" : "")} aria-labelledby="projectsDropdown">
+                        <div className={"dropdown-menu border-0 shadow pt-2 pb-2" + (isDropdownOpen ? " show" : "")} aria-labelledby="projectsDropdown">
                             <Link className="dropdown-item medium py-2" to="/projects/create">
                                 <FontAwesomeIcon icon={faPlus} className='pe-2' />
                                 New Project
@@ -114,6 +114,10 @@ function Sidebar() {
                             {myProjects.map(myProject => (
                                 <span className="dropdown-item medium py-2 pointer" key={myProject.id} onClick={() => { handleSwitchProject(myProject.id) }}>{myProject.name}</span>
                             ))}
+                            <hr className='m-0' />
+                            <Link className="dropdown-item medium pt-2 pb-0 text-primary" to="/projects">
+                                View All
+                            </Link>
                         </div>
                     </div>
                 </div>
