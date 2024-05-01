@@ -1,14 +1,30 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 
+const pageTitles = {
+    "/": "Dashboard",
+    "/contacts": "Contacts",
+    "/leads": "Leads",
+    "/home": "Home",
+    "/tasks": "Tasks",
+    "/products": "Products",
+    "/admin/dashboard": "Admin Dashboard",
+    "/admin/users": "Admin Users",
+    "/profile": "Profile"
+};
+
 function AppLayout() {
+
+    const location = useLocation();
+    const pageTitle = pageTitles[location.pathname] || "Page Not Found";
+
     return (
         <div className="page-content-wrapper">
             <Sidebar />
             <div className="main-content-wrapper">
-                <Header pageTitle="Dashboard" />
+                <Header pageTitle={pageTitle} />
                 <div className="main-container">
                     <Outlet />
                 </div>

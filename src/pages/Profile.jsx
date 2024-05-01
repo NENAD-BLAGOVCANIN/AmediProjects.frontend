@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Sidebar from '../components/Sidebar'
-import Header from '../components/Header'
 import placeholderProfileImage from '../assets/img/profile.svg'
 import { getUserInfo } from '../api/user'
 
