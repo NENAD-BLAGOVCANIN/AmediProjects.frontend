@@ -1,5 +1,5 @@
 :root {
-  --color-primary: rgb(24, 63, 170);
+  --color-primary: rgb(16, 42, 112);
   --color-text: #333;
   --color-text-lighter: #666666;
   --color-secondary: rgb(179, 179, 179);
@@ -73,7 +73,7 @@ body {
   width: 100%;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -408,12 +408,26 @@ hr {
   max-width: 380px;
 }
 
-.custom-dropdown .custom-notifications > li > a .text strong {
+.custom-dropdown .custom-notifications>li>a .text strong {
   font-weight: 700;
   color: #000;
 }
 
-.custom-dropdown .custom-notifications > li > a .notification-sender-icon img {
+.custom-dropdown .custom-notifications>li>a .notification-sender-icon img {
   width: 52px;
   border-radius: .4rem;
+}
+
+.active>.page-link,
+.page-link.active {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.page-link {
+  color: var(--color-primary);
+}
+
+.page-link.active {
+  color: white;
 }

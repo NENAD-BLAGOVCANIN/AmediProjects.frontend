@@ -16,6 +16,7 @@ import CreateNewProject from './pages/CreateNewProject';
 import Home from './pages/project/Home';
 import Products from './pages/project/Products';
 import AppLayout from './layouts/AppLayout';
+import ProjectsManagement from './pages/admin/ProjectsManagement';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -34,7 +35,7 @@ function App() {
   }, []);
 
   if (loading) {
-    return <div>Redirecting...</div>;
+    return <div></div>;
   }
 
   return (
@@ -56,14 +57,12 @@ function App() {
           {/* Admin Panel */}
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/users" element={<Users />} />
+          <Route path="/admin/projects" element={<ProjectsManagement />} />
 
           {/* Personal Pages */}
           <Route path="/profile" element={<Profile />} />
 
         </Route>
-
-
-
 
 
         {/* Project Management */}

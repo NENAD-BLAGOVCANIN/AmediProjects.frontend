@@ -4,11 +4,11 @@ import {
     faCompass, faAddressBook, faUser, faListCheck, faCalendar, faUserTie, faRightFromBracket, faTriangleExclamation, faClock,
     faUserGroup, faBars, faGear, faExclamation, faArrowRightArrowLeft, faChartSimple, faNoteSticky,
     faHouse,
-    faBox
+    faBox,
+    faLayerGroup
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { getMyProjects, switchProject } from '../api/project';
-import { getUserInfo } from '../api/user';
+import { switchProject } from '../api/project';
 import exampleProjectIcon from '../assets/img/exampleProjectIcon.jpg'
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -114,6 +114,12 @@ function Sidebar({userInfo, setUserInfo, myProjects, setMyProjects}) {
                             <Link to="/admin/users" className='nav-link' onClick={() => handlePageChange('/admin/users')}>
                                 <FontAwesomeIcon icon={faUserGroup} />
                                 <span className='ps-3 medium'>Users</span>
+                            </Link>
+                        </li>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/admin/projects' ? 'active' : ''}`}>
+                            <Link to="/admin/projects" className='nav-link' onClick={() => handlePageChange('/admin/projects')}>
+                                <FontAwesomeIcon icon={faLayerGroup} />
+                                <span className='ps-3 medium'>Projects</span>
                             </Link>
                         </li>
                         <li className={`nav-item px-2 rounded ${currentPage === '/user-management' ? 'active' : ''}`}>
