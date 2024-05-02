@@ -15,7 +15,8 @@ const pageTitles = {
     "/admin/dashboard": "Dashboard",
     "/admin/projects": "Projects",
     "/admin/users": "Users",
-    "/profile": "Profile"
+    "/profile": "Profile",
+    "/settings": "Settings"
 };
 
 function AppLayout() {

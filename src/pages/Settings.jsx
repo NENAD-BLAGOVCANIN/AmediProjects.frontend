@@ -45,57 +45,44 @@ function Settings() {
     }
 
     return (
-        <div className='page-content-wrapper'>
 
-            <Sidebar />
 
-            <div className='main-content-wrapper'>
+        <div style={{ maxWidth: '500px' }}>
+            <h5 className="bold mt-3">Project Settings</h5>
 
-                <Header pageTitle="Settings" />
+            <label className='pb-2 mt-3'>Name</label>
+            <input type="text" className='form-control bg-gray-light py-2 border-0'
+                placeholder='Project name' value={name} autoComplete="new-password"
+                onChange={(e) => setName(e.target.value)} />
 
-                <div className='main-container'>
+            <label className='mt-4 mb-2'>Description</label>
+            <textarea type="text" className='form-control bg-gray-light py-2 border-0'
+                placeholder='Project description' value={description} autoComplete="new-password"
+                onChange={(e) => setDescription(e.target.value)} />
 
-                    <div style={{ maxWidth: '500px' }}>
-                        <h5 className="bold">Project Settings</h5>
+            <button className='btn btn-primary rounded mt-3' onClick={handleUpdateChanges}>Save Changes</button>
 
-                        <label className='pb-2 mt-3'>Name</label>
-                        <input type="text" className='form-control bg-gray-light py-2 border-0'
-                            placeholder='Project name' value={name} autoComplete="new-password"
-                            onChange={(e) => setName(e.target.value)} />
+            <h5 className="bold mt-5">Project Members</h5>
+            <div className='row align-items-center w-100'>
 
-                        <label className='mt-4 mb-2'>Description</label>
-                        <textarea type="text" className='form-control bg-gray-light py-2 border-0'
-                            placeholder='Project description' value={description} autoComplete="new-password"
-                            onChange={(e) => setDescription(e.target.value)} />
-
-                        <button className='btn btn-primary rounded mt-3' onClick={handleUpdateChanges}>Save Changes</button>
-
-                        <h5 className="bold mt-5">Project Members</h5>
-                        <div className='row align-items-center w-100'>
-
-                            {projectMembers.map(projectMember => (
-                                <div className='col-md-2 d-flex flex-column align-items-center pt-3 pe-2 w-fit' key={projectMember.id} >
-                                    <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{ maxWidth: 55 }} alt="" />
-                                    <span className='small'>{projectMember.user.name.length > 10 ? projectMember.user.name.substring(0, 10) + '...' : projectMember.user.name}</span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <h5 className="bold mt-5">Invite Members</h5>
-
-                        <label className='mt-3'>Invite Link:</label>
-                        {project && (
-                            <input
-                                type="text"
-                                className='form-control bg-gray-light'
-                                value={`${frontendUrl}/projects/invite/${project.invite_code}/${project.id}`}
-                            />
-                        )}
+                {projectMembers.map(projectMember => (
+                    <div className='col-md-2 d-flex flex-column align-items-center pt-3 pe-2 w-fit' key={projectMember.id} >
+                        <img src={placeholderProfileImage} className='img-fluid rounded-lg' style={{ maxWidth: 55 }} alt="" />
+                        <span className='small pt-1'>{projectMember.user.name.length > 8 ? projectMember.user.name.substring(0, 8) + '...' : projectMember.user.name}</span>
                     </div>
-
-                </div>
+                ))}
             </div>
 
+            <h5 className="bold mt-5">Invite Members</h5>
+
+            <label className='mt-3'>Invite Link:</label>
+            {project && (
+                <input
+                    type="text"
+                    className='form-control bg-gray-light'
+                    value={`${frontendUrl}/projects/invite/${project.invite_code}/${project.id}`}
+                />
+            )}
         </div>
     )
 }

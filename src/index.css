@@ -455,3 +455,7 @@ hr {
   right: 0 !important;
   left: unset !important;
 }
+
+.hover:hover{
+  opacity: .8;
+}

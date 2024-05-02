@@ -66,21 +66,21 @@ function Profile() {
                 <h5 className='mt-5 pb-5 bold'>Personal Info</h5>
 
                 <div style={{ maxWidth: 85 }} className='pb-3' >
-                    <img src={placeholderProfileImage} className='img-fluid rounded' alt="" />
+                    <img src={placeholderProfileImage} className='img-fluid rounded hover' alt="" />
                 </div>
 
                 <p className='text-muted'>Name: {userInfo.name}</p>
                 <p className='text-muted'>Email: {userInfo.email}</p>
                 <p className='text-muted'>Profile Created At: {formatDate(userInfo.created_at)}</p>
                 <p className='text-muted'>Email Verified: <span className='badge bagde-primary bg-danger'>No</span></p>
-                <p className='text-muted m-0'>Role: <span className='badge bagde-primary bg-success'>{userInfo.role.name}</span></p>
+                <p className='text-muted m-0'>Role: <span className='badge bagde-primary bg-success'>{userInfo.role ? userInfo.role.name : ''}</span></p>
 
 
-                <h5 className='mt-5 bold mb-4 pt-3'>My Projects</h5>
+                <h5 className='mt-5 bold mb-5 pt-3'>My Projects</h5>
                 <div className="row">
                     {myProjects.map(myProject => (
                         <div className="col-12 col-md-6 col-lg-3 col-sm-6 col-xs-6 mb-5" key={myProject.id} >
-                            <div className="project-card rounded-sm p-4 card border-0 bg-white pointer w-100 d-flex">
+                            <div className="project-card rounded-sm px-4 pt-3 pb-2 card border-0 bg-white pointer w-100 d-flex">
 
                                 <div className="row">
                                     <div className="col-4">
@@ -110,7 +110,7 @@ function Profile() {
                                     </div>
                                     <div className="col-4">
                                         <span className='bold small'>{new Date(myProject.created_at).toLocaleDateString()}</span>
-                                        <p className='small text-muted'>Date started</p>
+                                        <p className='small text-muted'>Created</p>
                                     </div>
                                     <div className="col-4">
                                         <span className='badge badge-primary w-fit p-2 mb-3 bg-warning small'>{myProject.status}</span>
@@ -124,8 +124,6 @@ function Profile() {
 
                 </div>
             </div>
-
-
 
         </>
 

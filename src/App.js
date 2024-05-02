@@ -54,7 +54,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/products" element={<Products />} />
-
+          <Route path="/settings" element={<Settings />} />
 
 
           {/* Personal Pages */}
@@ -74,8 +74,6 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/create" element={<CreateNewProject />} />
         <Route path="/projects/invite/:inviteCode/:projectId" element={<Invite />} />
-        <Route path="/settings" element={<Settings />} />
-
 
 
         {/* Auth */}
