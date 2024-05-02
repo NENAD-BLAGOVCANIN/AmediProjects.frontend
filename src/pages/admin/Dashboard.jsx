@@ -49,7 +49,7 @@ function Dashboard() {
     datasets: [
       {
         label: 'Random Data',
-        data: Array.from({ length: 12 }, () => Math.floor(Math.random() * 100)),
+        data: Array.from({ length: 12 }, () => Math.floor(Math.random() * 50)),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1,
