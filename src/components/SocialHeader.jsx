@@ -24,7 +24,7 @@ function SocialHeader() {
 
             <ul className='nav'>
                 <li className='nav-item'>
-                    <a href="/projects" className='nav-link medium color-text-lighter active'>Projects</a>
+                    <a href="/projects" className='nav-link medium color-text-lighter active'>My Projects</a>
                 </li>
                 <li className='nav-item'>
                     <a href="" className='nav-link medium color-text-lighter'>Support</a>
@@ -33,7 +33,10 @@ function SocialHeader() {
                     <a href="" className='nav-link medium color-text-lighter'>Docs</a>
                 </li>
                 <li className='nav-item'>
-                    <a href="" className='nav-link medium color-text-lighter'>Templates</a>
+                    <a href="" className='nav-link medium color-text-lighter'>Terms of Service</a>
+                </li>
+                <li className='nav-item'>
+                    <a href="" className='nav-link medium color-text-lighter'>Privacy Policy</a>
                 </li>
             </ul>
 

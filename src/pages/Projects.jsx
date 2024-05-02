@@ -46,11 +46,11 @@ function Projects() {
             <SocialHeader />
 
             <div className='container w-100 h-100 d-flex justify-content-center flex-column mt-5' style={{ minHeight: '80vh' }}>
-                <h2 className='bold ps-2'>Projects</h2>
+                <h2 className='bold ps-2'>My Projects</h2>
                 <p className='text-muted mt-2 fw-500 ps-2 mb-5'>Current existing projects</p>
                 <div className="row">
                     {myProjects.map(myProject => (
-                        <div className="col-md-3 px-3 mb-5" key={myProject.id} onClick={() => { handleSwitchProject(myProject.id) }}>
+                        <div className="col-12 col-md-6 col-lg-3 col-sm-6 col-xs-6 mb-5" key={myProject.id} onClick={() => { handleSwitchProject(myProject.id) }}>
                             <div className="project-card rounded-sm p-4 card border-0 bg-white pointer w-100 d-flex">
 
                                 <div className="row">
@@ -74,16 +74,17 @@ function Projects() {
 
                                 <span className='text-muted small' id='projectDescription'>{myProject.description}</span>
 
-                                <hr />
-
-                                <div className='row'>
-                                    <div className="col-6">
+                                <div className='row align-items-center'>
+                                    <div className="col-4">
                                         <span className='bold'>{myProject.users.length}</span>
                                         <p className='small text-muted'>Members</p>
                                     </div>
-                                    <div className="col-6">
-                                        <span className='bold'>{new Date(myProject.created_at).toLocaleDateString()}</span>
+                                    <div className="col-4">
+                                        <span className='bold small'>{new Date(myProject.created_at).toLocaleDateString()}</span>
                                         <p className='small text-muted'>Date started</p>
+                                    </div>
+                                    <div className="col-4">
+                                        <span className='badge badge-primary w-fit p-2 mb-3 bg-warning small'>{myProject.status}</span>
                                     </div>
                                 </div>
 
