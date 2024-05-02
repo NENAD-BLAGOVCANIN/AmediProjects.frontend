@@ -15,7 +15,7 @@ function CreateNewProject() {
 
         try {
             await saveProject(name, description);
-            navigate("/");
+            navigate("/admin/projects");
         } catch (error) {
             setErrors(error.message);
         }

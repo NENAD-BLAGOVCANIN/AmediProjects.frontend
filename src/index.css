@@ -283,6 +283,10 @@ hr {
   height: 100%;
 }
 
+.project-card:hover{
+  opacity: .8;
+}
+
 #create-project-page-wrapper {
   min-height: 100vh;
   width: 100%;

@@ -4,7 +4,7 @@ import { getMyProjects } from '../api/project';
 import { switchProject } from '../api/project';
 import exampleProjectIcon from '../assets/img/exampleProjectIcon.jpg'
 import SocialHeader from '../components/SocialHeader';
-import rocketIcon from '../assets/img/rocket.jpg'
+import projectPlaceholderIcon from '../assets/img/projectPlaceholderIcon.jpg'
 import profileImagePlaceholder from '../assets/img/profile.svg'
 import placeholderProfileImage1 from '../assets/img/placeholder-profile-img-1.jpeg'
 import placeholderProfileImage2 from '../assets/img/placeholder-profile-img-2.jpg'
@@ -49,12 +49,6 @@ function Projects() {
                 <h2 className='bold ps-2'>Projects</h2>
                 <p className='text-muted mt-2 fw-500 ps-2 mb-5'>Current existing projects</p>
                 <div className="row">
-                    <div className="col-md-3 px-3 mb-5">
-                        <Link to="/projects/create" className="project-card rounded-sm p-4 card border-0 bg-white pointer w-100 d-flex align-items-center justify-content-center">
-                            <h1 className='text-muted'>+</h1>
-                            <span className='fw-500 text-muted'>New project</span>
-                        </Link>
-                    </div>
                     {myProjects.map(myProject => (
                         <div className="col-md-3 px-3 mb-5" key={myProject.id} onClick={() => { handleSwitchProject(myProject.id) }}>
                             <div className="project-card rounded-sm p-4 card border-0 bg-white pointer w-100 d-flex">
@@ -62,7 +56,7 @@ function Projects() {
                                 <div className="row">
                                     <div className="col-4">
                                         <div className='card w-fit p-0 border rounded-sm mb-3'>
-                                            <img src={rocketIcon} className='rounded' style={{ height: 55, width: 55, objectFit: 'cover' }} alt="" />
+                                            <img src={projectPlaceholderIcon} className='rounded' style={{ height: 55, width: 55, objectFit: 'cover' }} alt="" />
                                         </div>
                                     </div>
                                     <div className="col-8 px-0">
@@ -84,12 +78,12 @@ function Projects() {
 
                                 <div className='row'>
                                     <div className="col-6">
-                                        <span className='bold'>4</span>
+                                        <span className='bold'>{myProject.users.length}</span>
                                         <p className='small text-muted'>Members</p>
                                     </div>
                                     <div className="col-6">
-                                        <span className='bold'>23.3.2024</span>
-                                        <p className='small text-muted'>Due date</p>
+                                        <span className='bold'>{new Date(myProject.created_at).toLocaleDateString()}</span>
+                                        <p className='small text-muted'>Date started</p>
                                     </div>
                                 </div>
 
@@ -99,10 +93,6 @@ function Projects() {
                     ))}
 
                 </div>
-
-                <p className='text-muted mt-2 fw-500 ps-2 mb-5'>Completed projects</p>
-
-
 
             </div>
         </div>
