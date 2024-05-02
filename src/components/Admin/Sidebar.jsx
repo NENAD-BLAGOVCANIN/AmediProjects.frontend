@@ -50,7 +50,7 @@ function Sidebar({ userInfo, setUserInfo }) {
     return (
 
         <>
-            <nav id="sidebar" className={!sidebarActive ? 'active' : ''}>
+            <nav id="sidebar" className={!sidebarActive ? 'active sidebar-admin' : ' sidebar-admin'}>
 
                 <ul className="list-unstyled py-4">
 
