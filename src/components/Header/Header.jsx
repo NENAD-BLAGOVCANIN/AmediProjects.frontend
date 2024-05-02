@@ -5,15 +5,20 @@ import placeholderProfileImage2 from '../../assets/img/placeholder-profile-img-2
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import NotificationsDropdown from './NotificationsDropdown';
+import UserDropdown from './UserDropdown';
 
 function Header({ pageTitle, userInfo, setUserInfo }) {
 
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isNotificationsDropdownOpen, setIsNotificationsDropdownOpen] = useState(false);
+    const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
 
-    const toggleDropdown = () => {
-        setIsDropdownOpen(!isDropdownOpen);
+    const toggleNotificationsDropdown = () => {
+        setIsNotificationsDropdownOpen(!isNotificationsDropdownOpen);
     };
 
+    const toggleUserDropdown = () => {
+        setIsUserDropdownOpen(!isUserDropdownOpen);
+    };
 
     return (
         <div className='pb-1 bg-white'>
@@ -31,15 +36,21 @@ function Header({ pageTitle, userInfo, setUserInfo }) {
 
                     <div className='px-2 mx-1 d-flex flex-column align-items-center justify-content-center'>
                         <div className="dropdown custom-dropdown">
-                            <a href="#" onClick={toggleDropdown} className="dropdown-link d-flex align-items-center" aria-haspopup="true" aria-expanded={isDropdownOpen}>
+                            <a href="#" onClick={toggleNotificationsDropdown} className="dropdown-link d-flex align-items-center" aria-haspopup="true" aria-expanded={isNotificationsDropdownOpen}>
                                 <FontAwesomeIcon icon={faBell} className="h4 text-muted m-0 pointer" />
                             </a>
 
-                            {isDropdownOpen && <NotificationsDropdown userInfo={userInfo} setUserInfo={setUserInfo} />}
+                            {isNotificationsDropdownOpen && <NotificationsDropdown userInfo={userInfo} setUserInfo={setUserInfo} />}
                         </div>
                     </div>
                     <div className='px-2 mx-1 d-flex flex-column align-items-center justify-content-center'>
-                        <img src={profileImagePlaceholder} className='rounded pointer' alt="" style={{ maxHeight: 28, height: '100%' }} />
+                        <div className="dropdown custom-dropdown">
+                            <a href="#" onClick={toggleUserDropdown} className="dropdown-link d-flex align-items-center" aria-haspopup="true" aria-expanded={isUserDropdownOpen}>
+                                <img src={profileImagePlaceholder} className='rounded pointer' alt="" style={{ maxHeight: 28, height: '100%' }} />
+                            </a>
+
+                            {isUserDropdownOpen && <UserDropdown userInfo={userInfo} setUserInfo={setUserInfo} />}
+                        </div>
                     </div>
                 </div>
 

@@ -5,10 +5,10 @@ import amediProfileImg from '../../assets/img/amediProfileImg.webp'
 function NotificationsDropdown({ userInfo, setUserInfo }) {
     return (
         <div>
-            <div className="dropdown-menu dropdown-menu-right show active" aria-labelledby="dropdownMenuButton" x-placement="bottom-end"
-                style={{ position: 'absolute', transform: 'translate3d(-100%, 35px, 0px)', width: 450 }}>
+            <div className="dropdown-menu dropdown-menu-left show active" aria-labelledby="dropdownMenuButton" x-placement="bottom-end"
+                style={{ position: 'absolute', width: 450 }}>
                 <div className="title-wrap d-flex align-items-center">
-                    <h3 className="title mb-0">Notifications</h3>
+                    <h3 className="title mb-0">NOTIFICATIONS</h3>
                 </div>
                 <ul className="custom-notifications">
                     {userInfo.notifications.map(notification => (

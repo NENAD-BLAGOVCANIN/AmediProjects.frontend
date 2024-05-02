@@ -115,6 +115,10 @@ a {
   color: var(--color-secondary) !important;
 }
 
+.text-white{
+  color: white !important;
+}
+
 .rounded-sm {
   border-radius: .6rem !important;
 }
@@ -180,15 +184,16 @@ hr {
   border: 2px solid var(--color-gray) !important;
 }
 
-.sidebar-admin{
-  background-color: var(--color-dark) !important;
+.sidebar-admin {
+  background-color: #04101f !important;
 }
 
-.sidebar-admin .nav-item .nav-link{
+.sidebar-admin .nav-item .nav-link {
   color: var(--color-secondary) !important;
 }
 
-.sidebar-admin .nav-item:hover .nav-link.active, .sidebar-admin .nav-item:hover .nav-link:hover{
+.sidebar-admin .nav-item.active .nav-link,
+.sidebar-admin .nav-item .nav-link:hover {
   color: white !important;
 }
 
@@ -212,17 +217,17 @@ hr {
   margin-left: calc(0px - 275px);
 }
 
-#sidebar .nav-item.active,
-#sidebar .nav-item.active .nav-link,
-#sidebar .nav-item:hover,
-#sidebar .nav-item:hover .nav-link {
+.nav-item.active,
+.nav-item.active .nav-link,
+.nav-item:hover,
+.nav-item:hover .nav-link {
   color: var(--color-primary) !important;
 }
 
-#sidebar .nav-item:hover,
-#sidebar .nav-item:hover,
-#sidebar .nav-item.active,
-#sidebar .nav-item.active {
+.nav-item:hover,
+.nav-item:hover,
+.nav-item.active,
+.nav-item.active {
   background-color: transparent !important;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
@@ -238,7 +243,7 @@ hr {
   width: 100%;
 }
 
-#sidebar .nav-item .nav-link {
+.nav-item .nav-link {
   padding-top: .25rem;
   padding-bottom: .25rem;
   font-weight: 500;
@@ -274,7 +279,7 @@ hr {
 }
 
 @media only screen and (max-width: 855px) {
-  #sidebar {
+  #sidebar{
     position: fixed !important;
     z-index: 9999 !important;
   }
@@ -295,7 +300,7 @@ hr {
   height: 100%;
 }
 
-.project-card:hover{
+.project-card:hover {
   opacity: .8;
 }
 
@@ -381,7 +386,6 @@ hr {
 .custom-dropdown .title {
   font-size: 12px;
   font-weight: 700;
-  text-transform: uppercase;
 }
 
 .custom-dropdown .custom-notifications {
@@ -413,11 +417,10 @@ hr {
   border: 1px solid transparent;
   -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
-  margin-top: 0px !important;
+  margin-top: 1rem !important;
   padding-top: 0;
   padding-bottom: 0;
   padding: 10px;
-  left: 0 !important;
   -webkit-transition: .3s margin-top ease, .3s opacity ease, .3s visibility ease;
   -o-transition: .3s margin-top ease, .3s opacity ease, .3s visibility ease;
   transition: .3s margin-top ease, .3s opacity ease, .3s visibility ease;
@@ -446,4 +449,9 @@ hr {
 
 .page-link.active {
   color: white;
+}
+
+.dropdown-menu-left {
+  right: 0 !important;
+  left: unset !important;
 }

@@ -55,15 +55,17 @@ function Sidebar({ userInfo, setUserInfo }) {
 
                 <ul className="list-unstyled py-4">
 
-                    <span className='d-flex align-items-center text-white'>
-                        <FontAwesomeIcon icon={faArrowLeft} className='pe-2' />
-                        Return home
-                    </span>
+                    <div className='sidebar-link-group'>
+                        <li className={`nav-item px-2 rounded`}>
+                            <Link to="/" className='nav-link'>
+                                <FontAwesomeIcon icon={faArrowLeft} className='pe-2' />
+                                <span className='ps-3 medium'>Return home</span>
+                            </Link>
+                        </li>
+                    </div>
 
                     <div className='sidebar-link-group'>
-                        <div className='pb-2 pt-4'>
-                            <span className='small bold text-secondary'>Admin Panel</span>
-                        </div>
+
                         <li className={`nav-item px-2 rounded ${currentPage === '/admin/dashboard' ? 'active' : ''}`}>
                             <Link to="/admin/dashboard" className='nav-link' onClick={() => handlePageChange('/admin/dashboard')}>
                                 <FontAwesomeIcon icon={faCompass} />
