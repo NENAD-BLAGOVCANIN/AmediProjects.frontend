@@ -6,6 +6,7 @@ import {
     faArrowLeft
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import IconLight from '../../assets/img/icon-light.png'
 
 function Sidebar({ userInfo, setUserInfo }) {
 
@@ -53,7 +54,7 @@ function Sidebar({ userInfo, setUserInfo }) {
         <>
             <nav id="sidebar" className={!sidebarActive ? 'active sidebar-admin' : ' sidebar-admin'}>
 
-                <ul className="list-unstyled py-4">
+                <ul className="list-unstyled py-2">
 
                     <div className='sidebar-link-group'>
                         <li className={`nav-item px-2 rounded`}>

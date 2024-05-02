@@ -1,10 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import placeholderProfileImage from '../assets/img/profile.svg'
 import { getUserInfo } from '../api/user'
+import { getMyProjects } from '../api/project';
+import projectPlaceholderIcon from '../assets/img/projectPlaceholderIcon.jpg'
+import profileImagePlaceholder from '../assets/img/profile.svg'
+import placeholderProfileImage1 from '../assets/img/placeholder-profile-img-1.jpeg'
+import placeholderProfileImage2 from '../assets/img/placeholder-profile-img-2.jpg'
 
 function Profile() {
 
     const [userInfo, setUserInfo] = useState([]);
+    const [myProjects, setMyProjects] = useState([]);
+
+    useEffect(() => {
+        const fetchMyProjects = async () => {
+
+            try {
+                const fetchedMyProjects = await getMyProjects();
+                setMyProjects(fetchedMyProjects);
+                console.log(fetchedMyProjects);
+            } catch (error) {
+                console.error('Error fetching :', error);
+            }
+        };
+
+        fetchMyProjects();
+
+    }, []);
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -36,23 +58,75 @@ function Profile() {
 
     return (
 
-        <div className='d-flex flex-column align-items-center m-auto pt-5' style={{ maxWidth: 800 }}>
+        <>
 
-            <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{ maxWidth: 105 }} alt="" />
+            <div className='container'>
 
-            <span className='mt-3 mb-5 bold'>{userInfo.name}</span>
+                <div className='pt-5'>
+                    <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{ maxWidth: 105 }} alt="" />
+                </div>
+
+                <h5 className='mt-3 bold mb-4'>Personal Info</h5>
+
+                <p className='text-muted'>Name: {userInfo.name}</p>
+                <p className='text-muted'>Email: {userInfo.email}</p>
+                <p className='text-muted'>Profile Created At: {formatDate(userInfo.created_at)}</p>
+                <p className='text-muted m-0'>Email Verified: <span className='badge bagde-primary bg-danger'>No</span></p>
+
+                <h5 className='mt-5 bold mb-4'>My Projects</h5>
+                <div className="row">
+                    {myProjects.map(myProject => (
+                        <div className="col-12 col-md-6 col-lg-3 col-sm-6 col-xs-6 mb-5" key={myProject.id} >
+                            <div className="project-card rounded-sm p-4 card border-0 bg-white pointer w-100 d-flex">
+
+                                <div className="row">
+                                    <div className="col-4">
+                                        <div className='card w-fit p-0 border rounded-sm mb-3'>
+                                            <img src={projectPlaceholderIcon} className='rounded' style={{ height: 55, width: 55, objectFit: 'cover' }} alt="" />
+                                        </div>
+                                    </div>
+                                    <div className="col-8 px-0">
+                                        <h5 className='fw-500 medium'>
+                                            {myProject.name.length > 19 ? myProject.name.substring(0, 19) + '...' : myProject.name}
+                                        </h5>
+
+                                        <div>
+                                            <img src={profileImagePlaceholder} className='rounded-circle' alt="" style={{ maxHeight: 28, height: '100%' }} />
+                                            <img src={placeholderProfileImage1} className='rounded-circle transform-left-35' alt="" style={{ maxHeight: 28, height: '100%' }} />
+                                            <img src={placeholderProfileImage2} className='rounded-circle transform-left-75' alt="" style={{ maxHeight: 28, height: '100%' }} />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span className='text-muted small' id='projectDescription'>{myProject.description}</span>
+
+                                <div className='row align-items-center'>
+                                    <div className="col-4">
+                                        <span className='bold'>{myProject.users.length}</span>
+                                        <p className='small text-muted'>Members</p>
+                                    </div>
+                                    <div className="col-4">
+                                        <span className='bold small'>{new Date(myProject.created_at).toLocaleDateString()}</span>
+                                        <p className='small text-muted'>Date started</p>
+                                    </div>
+                                    <div className="col-4">
+                                        <span className='badge badge-primary w-fit p-2 mb-3 bg-warning small'>{myProject.status}</span>
+                                    </div>
+                                </div>
 
 
-            <div className='card bg-gray-light rounded-lg shadow-sm border-0 w-100 py-5 px-4'>
+                            </div>
+                        </div>
+                    ))}
 
-                <p>Name: {userInfo.name}</p>
-                <p>Email: {userInfo.email}</p>
-                <p>Profile Created At: {formatDate(userInfo.created_at)}</p>
-                <p className='m-0'>Email Verified: <span className='badge bagde-primary bg-danger'>No</span></p>
-
+                </div>
             </div>
 
-        </div>
+
+
+        </>
+
+
     )
 }
 
