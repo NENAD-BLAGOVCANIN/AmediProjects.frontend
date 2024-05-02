@@ -73,7 +73,7 @@ function Sidebar({userInfo, setUserInfo, myProjects, setMyProjects}) {
         <>
             <nav id="sidebar" className={!sidebarActive ? 'active' : ''}>
 
-                <div className='pb-2 pb-3'>
+                <div className='pb-3'>
                     <div className="dropdown show">
                         <div className="dropdown-toggle medium fw-500" type="button" id="projectsDropdown" onClick={toggleDropdown}
                             aria-haspopup="true" aria-expanded={isDropdownOpen ? "true" : "false"}>

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import NotificationsDropdown from './NotificationsDropdown';
 
-function Header({ pageTitle, userInfo, setUserInfo, myProjects, setMyProjects }) {
+function Header({ pageTitle, userInfo, setUserInfo }) {
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 

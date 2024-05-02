@@ -17,6 +17,7 @@ import Home from './pages/project/Home';
 import Products from './pages/project/Products';
 import AppLayout from './layouts/AppLayout';
 import ProjectsManagement from './pages/admin/ProjectsManagement';
+import AdminLayout from './layouts/AdminLayout';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -54,14 +55,18 @@ function App() {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/products" element={<Products />} />
 
-          {/* Admin Panel */}
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-          <Route path="/admin/users" element={<Users />} />
-          <Route path="/admin/projects" element={<ProjectsManagement />} />
+
 
           {/* Personal Pages */}
           <Route path="/profile" element={<Profile />} />
 
+        </Route>
+
+        {/* Admin Panel */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/users" element={<Users />} />
+          <Route path="/admin/projects" element={<ProjectsManagement />} />
         </Route>
 
 
