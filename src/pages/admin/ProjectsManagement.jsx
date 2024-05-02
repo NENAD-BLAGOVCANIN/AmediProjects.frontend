@@ -6,10 +6,12 @@ import profileImagePlaceholder from '../../assets/img/profile.svg';
 import placeholderProfileImage1 from '../../assets/img/placeholder-profile-img-1.jpeg';
 import placeholderProfileImage2 from '../../assets/img/placeholder-profile-img-2.jpg';
 import ProjectDetailsModal from '../../components/Admin/Projects/ProjectDetailsModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 
 function ProjectsManagement() {
   const [projects, setProjects] = useState([]);
-  const [showViewProjectDetailsModal, setShowViewProjectDetailsModal] = useState([]);
+  const [showViewProjectDetailsModal, setShowViewProjectDetailsModal] = useState(false);
   const [selectedProject, setSelectedProject] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -44,6 +46,13 @@ function ProjectsManagement() {
   return (
     <>
       <div className='pt-3'>
+
+        <h2 className='bold mt-3'>
+          <FontAwesomeIcon icon={faLayerGroup} className='pe-2' />
+          Projects
+        </h2>
+        <p className='mb-5 text-muted'>Existing company projects</p>
+
         <div className="row">
           <div className="col-12 col-md-6 col-lg-3 col-sm-6 col-xs-6 px-3 mb-5">
             <Link to="/projects/create" className="project-card rounded-sm px-4 pt-4 pb-2 card border-0 bg-white pointer w-100 d-flex align-items-center justify-content-center">
@@ -53,7 +62,7 @@ function ProjectsManagement() {
           </div>
           {currentProjects.map(project => (
             <div className="col-12 col-md-6 col-lg-3 col-sm-6 col-xs-6 px-3 mb-5" key={project.id}>
-              <div className="project-card rounded-sm px-4 pt-4 pb-2 card border-0 bg-white pointer w-100 d-flex" onClick={() => {handleOpenProjectDetailsModal(project)}}>
+              <div className="project-card rounded-sm px-4 pt-4 pb-2 card border-0 bg-white pointer w-100 d-flex" onClick={() => { handleOpenProjectDetailsModal(project) }}>
 
                 <div className="row">
                   <div className="col-4">
