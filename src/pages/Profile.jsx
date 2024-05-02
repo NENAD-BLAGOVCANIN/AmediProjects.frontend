@@ -6,6 +6,8 @@ import projectPlaceholderIcon from '../assets/img/projectPlaceholderIcon.jpg'
 import profileImagePlaceholder from '../assets/img/profile.svg'
 import placeholderProfileImage1 from '../assets/img/placeholder-profile-img-1.jpeg'
 import placeholderProfileImage2 from '../assets/img/placeholder-profile-img-2.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
 
 function Profile() {
 
@@ -61,19 +63,20 @@ function Profile() {
         <>
 
             <div className='container'>
+                <h5 className='mt-5 pb-5 bold'>Personal Info</h5>
 
-                <div className='pt-5'>
-                    <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{ maxWidth: 105 }} alt="" />
+                <div style={{ maxWidth: 85 }} className='pb-3' >
+                    <img src={placeholderProfileImage} className='img-fluid rounded' alt="" />
                 </div>
-
-                <h5 className='mt-3 bold mb-4'>Personal Info</h5>
 
                 <p className='text-muted'>Name: {userInfo.name}</p>
                 <p className='text-muted'>Email: {userInfo.email}</p>
                 <p className='text-muted'>Profile Created At: {formatDate(userInfo.created_at)}</p>
-                <p className='text-muted m-0'>Email Verified: <span className='badge bagde-primary bg-danger'>No</span></p>
+                <p className='text-muted'>Email Verified: <span className='badge bagde-primary bg-danger'>No</span></p>
+                <p className='text-muted m-0'>Role: <span className='badge bagde-primary bg-success'>{userInfo.role.name}</span></p>
 
-                <h5 className='mt-5 bold mb-4'>My Projects</h5>
+
+                <h5 className='mt-5 bold mb-4 pt-3'>My Projects</h5>
                 <div className="row">
                     {myProjects.map(myProject => (
                         <div className="col-12 col-md-6 col-lg-3 col-sm-6 col-xs-6 mb-5" key={myProject.id} >
