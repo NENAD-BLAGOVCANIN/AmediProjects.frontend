@@ -6,22 +6,23 @@ import MyCalendar from '../../components/MyCalendar';
 import profileImagePlaceholder from '../../assets/img/profile.svg'
 import placeholderProfileImage1 from '../../assets/img/placeholder-profile-img-1.jpeg'
 import placeholderProfileImage2 from '../../assets/img/placeholder-profile-img-2.jpg'
+import { getProjectInfo } from '../../api/project';
 
 function Home() {
 
-    const [userInfo, setUserInfo] = useState(null);
+    const [projectInfo, setProjectInfo] = useState([]);
 
     useEffect(() => {
-        const fetchUserInfo = async () => {
+        const fetchProjectInfo = async () => {
             try {
-                const fetchedUserInfo = await getUserInfo();
-                setUserInfo(fetchedUserInfo);
+                const fetchedProjectInfo = await getProjectInfo();
+                setProjectInfo(fetchedProjectInfo);
             } catch (error) {
                 console.error('Error fetching :', error);
             }
         };
 
-        fetchUserInfo();
+        fetchProjectInfo();
 
     }, []);
 
@@ -35,7 +36,7 @@ function Home() {
                 </h1>
                 <h2 className='bold mt-3 mb-4'>Project Home</h2>
 
-                <span className='badge badge-primary bg-warning fw-400'>Status: <span className='fw-500'>In Progress</span></span>
+                <span className='badge badge-primary bg-warning fw-400'>Status: <span className='fw-500'>{projectInfo.status}</span></span>
 
                 <div className='d-flex align-items-center pt-3 pb-5'>
                     <span className='fw-500'>Team:</span>
