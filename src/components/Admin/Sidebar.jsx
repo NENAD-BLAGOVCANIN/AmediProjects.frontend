@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCompass, faTriangleExclamation,
-    faUserGroup, faBars, faLayerGroup
+    faUserGroup, faBars, faLayerGroup,
+    faArrowLeft
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
@@ -54,8 +55,13 @@ function Sidebar({ userInfo, setUserInfo }) {
 
                 <ul className="list-unstyled py-4">
 
+                    <span className='d-flex align-items-center text-white'>
+                        <FontAwesomeIcon icon={faArrowLeft} className='pe-2' />
+                        Return home
+                    </span>
+
                     <div className='sidebar-link-group'>
-                        <div className='pb-2'>
+                        <div className='pb-2 pt-4'>
                             <span className='small bold text-secondary'>Admin Panel</span>
                         </div>
                         <li className={`nav-item px-2 rounded ${currentPage === '/admin/dashboard' ? 'active' : ''}`}>
