@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import projectPlaceholderIcon from '../../../assets/img/projectPlaceholderIcon.jpg';
+import { updateProjectInfo } from '../../../api/project';
 
 function ProjectDetailsModal({ showViewProjectDetailsModal, setShowViewProjectDetailsModal, selectedProject, setSelectedProject }) {
+
+    const [selectedRole, setSelectedRole] = useState(selectedProject.status);
 
     const handleCloseProjectModal = () => {
         setShowViewProjectDetailsModal(false);
     };
+
+    const handleRoleChange = (event) => {
+        setSelectedRole(event.target.value);
+    };
+
+    const saveProjectChanges = async () => {
+        const name = document.getElementById('nameTextarea').value;
+        const description = document.getElementById('descriptionTextarea').value;
+        await updateProjectInfo(selectedProject.id, name, description, selectedRole);
+        window.location.reload();
+    }
 
     return (
         <>
@@ -24,25 +38,47 @@ function ProjectDetailsModal({ showViewProjectDetailsModal, setShowViewProjectDe
                             </div>
                             <div className="pt-3">
                                 <label className="pb-2 text-muted">Name</label>
-                                <textarea className="form-control medium m-0" name='name' rows="1">{selectedProject.name}</textarea>
+                                <textarea
+                                    id="nameTextarea"
+                                    className="form-control medium m-0"
+                                    rows="1"
+                                    defaultValue={selectedProject.name}
+                                />
                             </div>
                             <div className="pt-3">
                                 <label className="pb-2 text-muted">Description</label>
-                                <textarea className="form-control medium w-100" name="description" id="" rows="5">{selectedProject.description}</textarea>
+                                <textarea
+                                    id="descriptionTextarea"
+                                    className="form-control medium w-100"
+                                    rows="5"
+                                    defaultValue={selectedProject.description}
+                                />
                             </div>
                             <div className="pt-3">
+
                                 <label className="pb-2 text-muted">Status</label><br />
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+
+                                <select
+                                    className="form-select medium"
+                                    aria-label="Default select example"
+                                    value={selectedRole}
+                                    onChange={handleRoleChange}
+                                >
+                                    <option value="setting up">setting up</option>
+                                    <option value="measurement">measurement</option>
+                                    <option value="writing a program">writing a program</option>
+                                    <option value="production">production</option>
+                                    <option value="galvanization">galvanization</option>
+                                    <option value="installation">installation</option>
+                                    <option value="rejects">rejects</option>
+                                    <option value="delivery">delivery</option>
+                                    <option value="collection">collection</option>
                                 </select>
 
                             </div>
                         </div>
                         <div className='modal-footer border-0'>
-                            <button className='btn btn-primary rounded'>Update</button>
+                            <button className='btn btn-primary rounded' onClick={() => { saveProjectChanges() }}>Save</button>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ import Tasks from './pages/Tasks';
 import Logout from './pages/Logout';
 import Contacts from './pages/Contacts';
 import Leads from './pages/Leads';
-import Settings from './pages/Settings';
+import Team from './pages/Team';
 import Profile from './pages/Profile';
 import Invite from './pages/Invite';
 import Projects from './pages/Projects';
@@ -54,7 +54,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/team" element={<Team />} />
 
 
           {/* Personal Pages */}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChartArea, faChartSimple, faGauge, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faChartArea, faChartSimple, faGauge, faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
 function UserDropdown({ userInfo, setUserInfo }) {
@@ -23,6 +23,12 @@ function UserDropdown({ userInfo, setUserInfo }) {
                     <Link to="/profile" className='nav-link'>
                         <FontAwesomeIcon icon={faUser} />
                         <span className='ps-3 medium'>My Profile</span>
+                    </Link>
+                </li>
+                <li className='nav-item px-2 rounded'>
+                    <Link to="/logout" className='nav-link'>
+                        <FontAwesomeIcon icon={faRightFromBracket} />
+                        <span className='ps-3 medium'>Logout</span>
                     </Link>
                 </li>
 

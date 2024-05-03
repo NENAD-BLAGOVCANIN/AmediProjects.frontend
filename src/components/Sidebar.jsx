@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faCompass, faAddressBook, faUser, faListCheck, faCalendar, faUserTie, faRightFromBracket, faTriangleExclamation, faClock,
+    faCompass, faAddressBook, faUser, faUsers, faListCheck, faCalendar, faUserTie, faRightFromBracket, faTriangleExclamation, faClock,
     faUserGroup, faBars, faGear, faExclamation, faArrowRightArrowLeft, faChartSimple, faNoteSticky,
     faHouse,
     faBox,
-    faLayerGroup
+    faLayerGroup,
+    faChartLine,
+    faSliders
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { switchProject } from '../api/project';
 import exampleProjectIcon from '../assets/img/exampleProjectIcon.jpg'
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-function Sidebar({userInfo, setUserInfo, myProjects, setMyProjects}) {
+function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
 
     const [sidebarActive, setSidebarActive] = useState(true);
     const [currentPage, setCurrentPage] = useState(window.location.pathname);
@@ -128,10 +130,10 @@ function Sidebar({userInfo, setUserInfo, myProjects, setMyProjects}) {
                             </Link>
                         </li>
 
-                        <li className={`nav-item px-2 rounded ${currentPage === '/settings' ? 'active' : ''}`}>
-                            <Link to="/settings" className='nav-link' onClick={() => handlePageChange('/settings')}>
-                                <FontAwesomeIcon icon={faGear} />
-                                <span className='ps-3 medium'>Project Settings</span>
+                        <li className={`nav-item px-2 rounded ${currentPage === '/team' ? 'active' : ''}`}>
+                            <Link to="/team" className='nav-link' onClick={() => handlePageChange('/team')}>
+                                <FontAwesomeIcon icon={faUsers} />
+                                <span className='ps-3 medium'>Team</span>
                             </Link>
                         </li>
 
@@ -167,29 +169,29 @@ function Sidebar({userInfo, setUserInfo, myProjects, setMyProjects}) {
 
                     <div className='sidebar-link-group'>
                         <div className='pb-2'>
-                            <span className='small bold text-secondary'>Account</span>
+                            <span className='small bold text-secondary'>Personal</span>
                         </div>
 
                         <li className='nav-item px-2 rounded'>
                             <Link to="/profile" className='nav-link'>
-                                <FontAwesomeIcon icon={faUser} />
-                                <span className='ps-3 medium'>My Profile</span>
-                            </Link>
-                        </li>
-
-                        <li className={`nav-item px-2 rounded ${currentPage === '/settings' ? 'active' : ''}`}>
-                            <Link to="/settings" className='nav-link' onClick={() => handlePageChange('/settings')}>
-                                <FontAwesomeIcon icon={faGear} />
-                                <span className='ps-3 medium'>Settings</span>
+                                <FontAwesomeIcon icon={faCalendar} />
+                                <span className='ps-3 medium'>My schedule</span>
                             </Link>
                         </li>
 
                         <li className='nav-item px-2 rounded'>
-                            <Link to="/logout" className='nav-link'>
-                                <FontAwesomeIcon icon={faRightFromBracket} />
-                                <span className='ps-3 medium'>Logout</span>
+                            <Link to="/profile" className='nav-link'>
+                                <FontAwesomeIcon icon={faChartLine} />
+                                <span className='ps-3 medium'>Performance</span>
                             </Link>
                         </li>
+                        <li className='nav-item px-2 rounded'>
+                            <Link to="/profile" className='nav-link'>
+                                <FontAwesomeIcon icon={faSliders} />
+                                <span className='ps-3 medium'>Preferences</span>
+                            </Link>
+                        </li>
+
                     </div>
 
 

@@ -5,13 +5,10 @@ import { getProjectInfo, getProjectMembers, updateProjectInfo } from '../api/pro
 import placeholderProfileImage from '../assets/img/profile.svg'
 import { frontendUrl } from '../api/config'
 
-function Settings() {
+function Team() {
 
     const [project, setProject] = useState([]);
     const [projectMembers, setProjectMembers] = useState([]);
-
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,9 +16,6 @@ function Settings() {
 
                 const fetchedProjectInfo = await getProjectInfo();
                 setProject(fetchedProjectInfo);
-
-                setName(fetchedProjectInfo.name);
-                setDescription(fetchedProjectInfo.description);
 
             } catch (error) {
                 console.error('Error fetching :', error);
@@ -39,28 +33,10 @@ function Settings() {
         fetchData();
     }, []);
 
-    const handleUpdateChanges = async () => {
-        await updateProjectInfo(name, description);
-        window.location.reload();
-    }
-
     return (
 
 
         <div style={{ maxWidth: '500px' }}>
-            <h5 className="bold mt-3">Project Settings</h5>
-
-            <label className='pb-2 mt-3'>Name</label>
-            <input type="text" className='form-control bg-gray-light py-2 border-0'
-                placeholder='Project name' value={name} autoComplete="new-password"
-                onChange={(e) => setName(e.target.value)} />
-
-            <label className='mt-4 mb-2'>Description</label>
-            <textarea type="text" className='form-control bg-gray-light py-2 border-0'
-                placeholder='Project description' value={description} autoComplete="new-password"
-                onChange={(e) => setDescription(e.target.value)} />
-
-            <button className='btn btn-primary rounded mt-3' onClick={handleUpdateChanges}>Save Changes</button>
 
             <h5 className="bold mt-5">Project Members</h5>
             <div className='row align-items-center w-100'>
@@ -87,4 +63,4 @@ function Settings() {
     )
 }
 
-export default Settings
+export default Team

@@ -175,15 +175,17 @@ const saveProject = async (name, description) => {
 }
 
 
-const updateProjectInfo = async (name, description) => {
+const updateProjectInfo = async (id, name, description, status) => {
 
     try {
 
         const token = localStorage.getItem('accessToken');
 
         const data = {
+            "id": id,
             "name": name,
-            "description": description
+            "description": description,
+            "status": status
         }
 
         const response = await fetch(apiUrl + '/project', {

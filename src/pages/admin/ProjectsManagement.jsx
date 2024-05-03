@@ -14,9 +14,6 @@ function ProjectsManagement() {
   const [showViewProjectDetailsModal, setShowViewProjectDetailsModal] = useState(false);
   const [selectedProject, setSelectedProject] = useState([]);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const projectsPerPage = 7;
-
   const handleOpenProjectDetailsModal = (project) => {
     setSelectedProject(project);
     setShowViewProjectDetailsModal(true);
@@ -35,13 +32,6 @@ function ProjectsManagement() {
     fetchProjects();
   }, []);
 
-  // Calculate the indexes of the first and last projects to display
-  const indexOfLastProject = currentPage * projectsPerPage;
-  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
-
-  // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -60,7 +50,7 @@ function ProjectsManagement() {
               <span className='fw-500 text-muted'>New project</span>
             </Link>
           </div>
-          {currentProjects.map(project => (
+          {projects.map(project => (
             <div className="col-12 col-md-6 col-lg-3 col-sm-6 col-xs-6 px-3 mb-5" key={project.id}>
               <div className="project-card rounded-sm px-4 pt-4 pb-2 card border-0 bg-white pointer w-100 d-flex" onClick={() => { handleOpenProjectDetailsModal(project) }}>
 
@@ -105,16 +95,6 @@ function ProjectsManagement() {
             </div>
           ))}
         </div>
-        {/* Pagination */}
-        <ul className="pagination justify-content-center">
-          {Array.from({ length: Math.ceil(projects.length / projectsPerPage) }).map((_, index) => (
-            <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-              <button onClick={() => paginate(index + 1)} className="page-link">
-                {index + 1}
-              </button>
-            </li>
-          ))}
-        </ul>
       </div>
 
       <ProjectDetailsModal
