@@ -370,6 +370,7 @@ hr {
 
 #projectDescription {
   height: 33px !important;
+  overflow: hidden;
 }
 
 .nav-item .nav-link.active,
