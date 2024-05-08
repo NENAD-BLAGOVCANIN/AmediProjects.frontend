@@ -76,7 +76,7 @@ function ProjectsManagement() {
                 <span className='text-muted small' id='projectDescription'>{project.description}</span>
 
 
-                <div className='row align-items-center'>
+                <div className='row align-items-center pt-3'>
                   <div className="col-4">
                     <span className='bold'>{project.users.length}</span>
                     <p className='small text-muted'>Members</p>

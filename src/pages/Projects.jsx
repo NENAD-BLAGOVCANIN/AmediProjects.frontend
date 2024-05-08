@@ -41,10 +41,6 @@ function Projects() {
 
     return (
         <div>
-
-
-            <SocialHeader />
-
             <div className='container w-100 h-100 d-flex justify-content-center flex-column mt-5' style={{ minHeight: '80vh' }}>
                 <h2 className='bold ps-2'>My Projects</h2>
                 <p className='text-muted mt-2 fw-500 ps-2 mb-5'>Current existing projects</p>
@@ -74,7 +70,7 @@ function Projects() {
 
                                 <span className='text-muted small' id='projectDescription'>{myProject.description}</span>
 
-                                <div className='row align-items-center'>
+                                <div className='row align-items-center pt-3'>
                                     <div className="col-4">
                                         <span className='bold'>{myProject.users.length}</span>
                                         <p className='small text-muted'>Members</p>

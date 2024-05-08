@@ -18,6 +18,7 @@ import Products from './pages/project/Products';
 import AppLayout from './layouts/AppLayout';
 import ProjectsManagement from './pages/admin/ProjectsManagement';
 import AdminLayout from './layouts/AdminLayout';
+import LandingLayout from './layouts/LandingLayout';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -71,10 +72,11 @@ function App() {
 
 
         {/* Project Management */}
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/create" element={<CreateNewProject />} />
+        <Route path="/" element={<LandingLayout />}>
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/create" element={<CreateNewProject />} />
+        </Route>
         <Route path="/projects/invite/:inviteCode/:projectId" element={<Invite />} />
-
 
         {/* Auth */}
         <Route path="/login" element={<Login authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
