@@ -44,12 +44,35 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<AppLayout />}>
-
-          <Route index element={authenticated ? <Navigate to="/home" /> : <Navigate to="/login" />} />
+          <Route
+            index
+            element={
+              authenticated ? <Navigate to="/home" /> : <Navigate to="/login" />
+            }
+          />
 
           {/* CRM */}
-          <Route path="/contacts" element={<Contacts contacts={contacts} setContacts={setContacts} setLeads={setLeads} />} />
-          <Route path="/leads" element={<Leads leads={leads} setLeads={setLeads} contacts={contacts} setContacts={setContacts} />} />
+          <Route
+            path="/contacts"
+            element={
+              <Contacts
+                contacts={contacts}
+                setContacts={setContacts}
+                setLeads={setLeads}
+              />
+            }
+          />
+          <Route
+            path="/leads"
+            element={
+              <Leads
+                leads={leads}
+                setLeads={setLeads}
+                contacts={contacts}
+                setContacts={setContacts}
+              />
+            }
+          />
 
           {/* Project */}
           <Route path="/home" element={<Home />} />
@@ -57,10 +80,9 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/team" element={<Team />} />
 
-
           {/* Personal Pages */}
+          <Route path="/notifications" element={<Profile />} />
           <Route path="/profile" element={<Profile />} />
-
         </Route>
 
         {/* Admin Panel */}
@@ -70,18 +92,27 @@ function App() {
           <Route path="/admin/projects" element={<ProjectsManagement />} />
         </Route>
 
-
         {/* Project Management */}
         <Route path="/" element={<LandingLayout />}>
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/create" element={<CreateNewProject />} />
         </Route>
-        <Route path="/projects/invite/:inviteCode/:projectId" element={<Invite />} />
+        <Route
+          path="/projects/invite/:inviteCode/:projectId"
+          element={<Invite />}
+        />
 
         {/* Auth */}
-        <Route path="/login" element={<Login authenticated={authenticated} setAuthenticated={setAuthenticated} />} />
+        <Route
+          path="/login"
+          element={
+            <Login
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          }
+        />
         <Route path="/logout" element={<Logout />} />
-
       </Routes>
     </Router>
   );

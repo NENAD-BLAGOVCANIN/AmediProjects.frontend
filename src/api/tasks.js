@@ -27,36 +27,33 @@ const getTasks = async () => {
 
 }
 
-const saveTask = async (subject, description) => {
+const saveTask = async (subject, description, due_date) => {
+  const data = {
+    subject: subject,
+    description: description,
+    due_date,
+  };
 
-    const data = {
-        "subject": subject,
-        "description": description
-    }
+  try {
+    const token = localStorage.getItem("accessToken");
 
-    try {
+    const response = await fetch(apiUrl + "/tasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(data),
+    });
 
-        const token = localStorage.getItem('accessToken'); 
+    const responseData = await response.json();
 
-        const response = await fetch(apiUrl + '/tasks', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': 'Bearer ' + token
-            },
-            body: JSON.stringify(data)
-        });
-
-        const responseData = await response.json();
-
-        return responseData;
-
-    } catch (error) {
-        return error;
-    }
-
-}
+    return responseData;
+  } catch (error) {
+    return error;
+  }
+};
 
 const assignTo = async (user_id, task_id) => {
 

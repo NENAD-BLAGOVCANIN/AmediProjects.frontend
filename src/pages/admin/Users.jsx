@@ -48,72 +48,95 @@ function Users() {
     };
 
     return (
+      <>
+        <div className="d-flex justify-content-center pt-3 pb-4">
+          <button
+            className="btn btn-basic shadow-sm medium"
+            onClick={openRegistrationModal}
+          >
+            <span className="text-primary">
+              <FontAwesomeIcon icon={faPlus} className="pe-1" /> Register new
+              user
+            </span>
+          </button>
+        </div>
 
-        <>
+        <div
+          className="m-auto d-block w-100"
+          style={{ maxWidth: 1500, overflowX: "auto" }}
+        >
+          <div className="table-responsive">
+            <table className="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th className="text-secondary bg-transparent fw-500">ID</th>
+                  <th className="text-secondary bg-transparent fw-500">Name</th>
+                  <th className="text-secondary bg-transparent fw-500">
+                    Email
+                  </th>
+                  <th className="text-secondary bg-transparent fw-500">Role</th>
+                  <th className="text-center text-secondary bg-transparent fw-500">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user) => (
+                  <tr key={user.id}>
+                    <td>{user.id}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>
+                      <span className="badge badge-primary bg-success">
+                        {user?.role?.name}
+                      </span>
+                    </td>
+                    <td>
+                      <div className="h-100 d-flex align-items-center justify-content-center">
+                        <div className="px-1">
+                          <button
+                            className="btn btn-basic bg-gray-light shadow-sm"
+                            onClick={() => openViewUserModal(user)}
+                          >
+                            <FontAwesomeIcon icon={faBars} />
+                          </button>
+                        </div>
+                        <div className="px-1">
+                          <button className="btn btn-basic bg-gray-light shadow-sm">
+                            <FontAwesomeIcon icon={faEdit} />
+                          </button>
+                        </div>
+                        <div className="px-1">
+                          <button
+                            className="btn btn-basic bg-gray-light text-danger shadow-sm"
+                            onClick={() => handleDeleteUser(user.id)}
+                          >
+                            <FontAwesomeIcon icon={faTrash} />
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-            <div className='d-flex justify-content-center pt-3 pb-4'>
-                <button className='btn btn-basic shadow-sm medium' onClick={openRegistrationModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> Register new user</span></button>
-            </div>
+        <RegistrationModal
+          showRegistrationModal={showRegistrationModal}
+          setShowRegistrationModal={setShowRegistrationModal}
+          users={users}
+          setUsers={setUsers}
+        />
 
-            <div className='m-auto d-block w-100' style={{ maxWidth: 1500, overflowX: 'auto' }}>
-                <div className='table-responsive'>
-                    <table className='table table-striped table-hover'>
-                        <thead>
-                            <tr>
-                                <th className='text-secondary bg-transparent fw-500'>ID</th>
-                                <th className='text-secondary bg-transparent fw-500'>Name</th>
-                                <th className='text-secondary bg-transparent fw-500'>Email</th>
-                                <th className='text-secondary bg-transparent fw-500'>Role</th>
-                                <th className='text-center text-secondary bg-transparent fw-500'>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map(user => (
-                                <tr key={user.id}>
-                                    <td>{user.id}</td>
-                                    <td>{user.name}</td>
-                                    <td>{user.email}</td>
-                                    <td><span className='badge badge-primary bg-success'>{user.role.name}</span></td>
-                                    <td>
-                                        <div className="h-100 d-flex align-items-center justify-content-center">
-                                            <div className='px-1'>
-                                                <button className='btn btn-basic bg-gray-light shadow-sm' onClick={() => openViewUserModal(user)}>
-                                                    <FontAwesomeIcon icon={faBars} />
-                                                </button>
-                                            </div>
-                                            <div className='px-1'>
-                                                <button className='btn btn-basic bg-gray-light shadow-sm'>
-                                                    <FontAwesomeIcon icon={faEdit} />
-                                                </button>
-                                            </div>
-                                            <div className='px-1'>
-                                                <button className='btn btn-basic bg-gray-light text-danger shadow-sm' onClick={() => handleDeleteUser(user.id)}>
-                                                    <FontAwesomeIcon icon={faTrash} />
-                                                </button>
-                                            </div>
-
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <RegistrationModal
-                showRegistrationModal={showRegistrationModal}
-                setShowRegistrationModal={setShowRegistrationModal}
-                users={users}
-                setUsers={setUsers}
-            />
-
-            <ViewUserModal showViewUserModal={showViewUserModal} setShowViewUserModal={setShowViewUserModal} selectedUser={selectedUser} />
-            
-        </>
-
-
-    )
+        <ViewUserModal
+          showViewUserModal={showViewUserModal}
+          setShowViewUserModal={setShowViewUserModal}
+          selectedUser={selectedUser}
+        />
+      </>
+    );
 }
 
 export default Users
