@@ -10,7 +10,7 @@
   --color-gray: #e8eaee;
   --color-dark-gray: #e6e5e9;
   --color-light: #f8f8f8;
-  --sidebar-width: 275px
+  --sidebar-width: 275px;
 }
 
 #sidebar.active {
@@ -100,7 +100,13 @@ a {
 .btn-primary,
 .bg-primary {
   background: rgb(12, 96, 139);
-  background: linear-gradient(90deg, rgba(12, 96, 139, 1) 0%, rgba(12, 39, 99, 1) 28%, rgba(12, 39, 99, 1) 81%, rgba(12, 96, 139, 1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(12, 96, 139, 1) 0%,
+    rgba(12, 39, 99, 1) 28%,
+    rgba(12, 39, 99, 1) 81%,
+    rgba(12, 96, 139, 1) 100%
+  );
 }
 
 .text-primary {
@@ -115,12 +121,12 @@ a {
   color: var(--color-secondary) !important;
 }
 
-.text-white{
+.text-white {
   color: white !important;
 }
 
 .rounded-sm {
-  border-radius: .6rem !important;
+  border-radius: 0.6rem !important;
 }
 
 .rounded-lg {
@@ -152,16 +158,16 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 8px
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: transparent
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #a1a1a1;
-  border-radius: 2rem
+  border-radius: 2rem;
 }
 
 .w-fit {
@@ -244,8 +250,8 @@ hr {
 }
 
 .nav-item .nav-link {
-  padding-top: .25rem;
-  padding-bottom: .25rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   font-weight: 500;
   color: var(--color-text-lighter);
 }
@@ -280,7 +286,7 @@ hr {
 }
 
 @media only screen and (max-width: 855px) {
-  #sidebar{
+  #sidebar {
     position: fixed !important;
     z-index: 9999 !important;
   }
@@ -302,7 +308,7 @@ hr {
 }
 
 .project-card:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 #create-project-page-wrapper {
@@ -319,7 +325,14 @@ hr {
 }
 
 .home-hero-section {
-  background-image: linear-gradient(0deg, #d8eeee, #d8eeee 25%, #64adc9 65%, #005986b4 90%, #005986c9);
+  background-image: linear-gradient(
+    0deg,
+    #d8eeee,
+    #d8eeee 25%,
+    #64adc9 65%,
+    #005986b4 90%,
+    #005986c9
+  );
   padding-top: 6rem;
   padding-bottom: 6rem;
   text-align: center;
@@ -361,8 +374,8 @@ hr {
 
 .vis-item {
   background-color: var(--color-primary) !important;
-  border-radius: .8rem;
-  padding: .5rem !important;
+  border-radius: 0.8rem;
+  padding: 0.5rem !important;
 }
 
 .vis-item .vis-item-overflow {
@@ -399,17 +412,17 @@ hr {
   border-bottom: 1px solid #efefef;
 }
 
-.custom-dropdown .custom-notifications>li {
+.custom-dropdown .custom-notifications > li {
   display: block;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
-.custom-dropdown .custom-notifications>li.unread a {
+.custom-dropdown .custom-notifications > li.unread a {
   background: #fffaef;
 }
 
-.custom-dropdown .custom-notifications>li>a {
+.custom-dropdown .custom-notifications > li > a {
   display: block;
   padding: 20px;
   color: #bfbfbf;
@@ -423,23 +436,24 @@ hr {
   padding-top: 0;
   padding-bottom: 0;
   padding: 10px;
-  -webkit-transition: .3s margin-top ease, .3s opacity ease, .3s visibility ease;
-  -o-transition: .3s margin-top ease, .3s opacity ease, .3s visibility ease;
-  transition: .3s margin-top ease, .3s opacity ease, .3s visibility ease;
+  -webkit-transition: 0.3s margin-top ease, 0.3s opacity ease,
+    0.3s visibility ease;
+  -o-transition: 0.3s margin-top ease, 0.3s opacity ease, 0.3s visibility ease;
+  transition: 0.3s margin-top ease, 0.3s opacity ease, 0.3s visibility ease;
   max-width: 380px;
 }
 
-.custom-dropdown .custom-notifications>li>a .text strong {
+.custom-dropdown .custom-notifications > li > a .text strong {
   font-weight: 700;
   color: #000;
 }
 
-.custom-dropdown .custom-notifications>li>a .notification-sender-icon img {
+.custom-dropdown .custom-notifications > li > a .notification-sender-icon img {
   width: 52px;
-  border-radius: .4rem;
+  border-radius: 0.4rem;
 }
 
-.active>.page-link,
+.active > .page-link,
 .page-link.active {
   background-color: var(--color-primary) !important;
   border-color: var(--color-primary) !important;
@@ -458,6 +472,27 @@ hr {
   left: unset !important;
 }
 
-.hover:hover{
-  opacity: .8;
+.hover:hover {
+  opacity: 0.8;
+}
+
+.notification-row {
+  color: var(--color-text);
+  display: block;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
+.notification-row p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.notification-row:hover,
+.notification-row.active {
+  background-color: var(--color-background) !important;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }

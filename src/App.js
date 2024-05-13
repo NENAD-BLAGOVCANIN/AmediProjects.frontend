@@ -11,14 +11,16 @@ import Team from './pages/Team';
 import Profile from './pages/Profile';
 import Invite from './pages/Invite';
 import Projects from './pages/Projects';
-import Users from './pages/admin/Users';
-import CreateNewProject from './pages/CreateNewProject';
-import Home from './pages/project/Home';
-import Products from './pages/project/Products';
-import AppLayout from './layouts/AppLayout';
-import ProjectsManagement from './pages/admin/ProjectsManagement';
-import AdminLayout from './layouts/AdminLayout';
-import LandingLayout from './layouts/LandingLayout';
+import Notifications from "./pages/Notifications";
+import Notification from "./pages/Notification";
+import Users from "./pages/admin/Users";
+import CreateNewProject from "./pages/CreateNewProject";
+import Home from "./pages/project/Home";
+import Products from "./pages/project/Products";
+import AppLayout from "./layouts/AppLayout";
+import ProjectsManagement from "./pages/admin/ProjectsManagement";
+import AdminLayout from "./layouts/AdminLayout";
+import LandingLayout from "./layouts/LandingLayout";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -81,7 +83,8 @@ function App() {
           <Route path="/team" element={<Team />} />
 
           {/* Personal Pages */}
-          <Route path="/notifications" element={<Profile />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/notifications/:id" element={<Notification />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
 
