@@ -183,17 +183,6 @@ function TaskModal({
               />
             </div>
 
-            <div className="d-flex align-items-center mt-5">
-              <h5 className="mb-0 pe-3">Due date</h5>
-              <input
-                type="date"
-                className="form-control rounded py-2 w-50"
-                value={editedDueDate}
-                onChange={(e) => setEditedDueDate(e.target.value)}
-                onBlur={handleBlur}
-              />
-            </div>
-
             {selectedTask.assignee && (
               <div className="d-flex align-items-center pt-3">
                 <img
@@ -207,6 +196,18 @@ function TaskModal({
                 </span>
               </div>
             )}
+
+
+            <div className="d-flex align-items-center mt-5">
+              <h5 className="mb-0 pe-3">Due date</h5>
+              <input
+                type="date"
+                className="form-control rounded py-2 w-50"
+                value={editedDueDate}
+                onChange={(e) => setEditedDueDate(e.target.value)}
+                onBlur={handleBlur}
+              />
+            </div>
 
             <div className="d-flex align-items-center mt-5">
               <h5 className="mb-0 pe-3">Status</h5>
