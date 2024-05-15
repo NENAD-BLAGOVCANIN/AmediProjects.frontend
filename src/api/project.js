@@ -190,7 +190,7 @@ const updateProjectImage = async (file, current_project_id) => {
     }
 
     const formData = new FormData();
-    formData.append("profile_image", file);
+    formData.append("image", file);
     formData.append("project_id", current_project_id);
 
     const response = await fetch(apiUrl + "/projects/image", {

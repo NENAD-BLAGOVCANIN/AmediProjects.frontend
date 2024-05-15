@@ -47,7 +47,12 @@ function Header({ pageTitle, userInfo, setUserInfo }) {
                   key={member?.id}
                   className="rounded-circle"
                   alt=""
-                  style={{ maxHeight: 28, height: "100%" }}
+                  style={{
+                    maxHeight: 28,
+                    aspectRatio: 1,
+                    objectFit: "cover",
+                    height: "100%",
+                  }}
                 />
               );
             })}
@@ -89,7 +94,12 @@ function Header({ pageTitle, userInfo, setUserInfo }) {
                   src={userInfo?.profile_image ?? profileImagePlaceholder}
                   className="rounded pointer"
                   alt=""
-                  style={{ maxHeight: 28, height: "100%" }}
+                  style={{
+                    maxHeight: 28,
+                    aspectRatio: 1,
+                    objectFit: "cover",
+                    height: "100%",
+                  }}
                 />
               </a>
 

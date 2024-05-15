@@ -66,12 +66,21 @@ function Profile() {
         <img
           src={userInfo?.profile_image ?? placeholderProfileImage}
           className="img-fluid rounded hover"
+          style={{ aspectRatio: 1, objectFit: "cover" }}
           alt=""
         />
       </div>
 
-      <div className="mt-2 pb-5">
-        <input type="file" onChange={handleFileChange} />
+      <div className="mt-2 pb-5 d-flex flex-column">
+        <label className="mb-1" htmlFor="profile-image-upload">
+          Change image
+        </label>
+        <input
+          type="file"
+          id="profile-image-upload"
+          placeholder="Change image"
+          onChange={handleFileChange}
+        />
       </div>
 
       <p className="text-muted">Name: {userInfo.name}</p>
