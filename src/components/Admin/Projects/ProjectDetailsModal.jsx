@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import projectPlaceholderIcon from "../../../assets/img/projectPlaceholderIcon.jpg";
 import { updateProjectImage, updateProjectInfo } from "../../../api/project";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
 
 function ProjectDetailsModal({
   showViewProjectDetailsModal,
@@ -90,7 +90,7 @@ function ProjectDetailsModal({
                 className="project-image-overlay"
                 onClick={() => inputRef?.current?.click()}
               >
-                <FontAwesomeIcon icon={faPlus} />
+                <FontAwesomeIcon icon={faCamera} className="text-white" />
               </button>
             </div>
             <div className="pt-3">

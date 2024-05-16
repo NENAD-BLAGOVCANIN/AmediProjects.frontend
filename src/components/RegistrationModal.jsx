@@ -31,13 +31,13 @@ const handleCloseRegistrationModal = () => {
 return (
     <>
         <div className={`modal fade ${showRegistrationModal ? 'show d-block' : ''}`} tabIndex="-1" role="dialog">
-            <div className="modal-dialog modal-dialog-centered" role="document" style={{ maxWidth: 800, padding: '1.7rem' }}>
-                <div className="modal-content py-3 px-4 border-0 shadow-lg" style={{ maxHeight: 800, overflow: 'auto' }}>
+            <div className="modal-dialog modal-dialog-centered" role="document" style={{ maxWidth: 650, padding: '1.7rem' }}>
+                <div className="modal-content py-3 px-4 border-0 shadow-lg" style={{ maxHeight: 650, overflow: 'auto' }}>
                     <div className="modal-header pb-0 border-0 d-flex align-items-center">
                         <div>
-                            <h4 className="modal-title bold m-0">Register An Account</h4>
+                            <h5 className="modal-title bold m-0">Create new user</h5>
                         </div>
-                        <span type="button" className="close ms-auto m-0 text-secondary" onClick={handleCloseRegistrationModal} style={{ fontSize: '25pt', fontWeight: '100' }}>
+                        <span type="button" className="close ms-auto m-0 text-secondary" onClick={handleCloseRegistrationModal} style={{ fontSize: '23pt', fontWeight: '300' }}>
                             <span aria-hidden="true">&times;</span>
                         </span>
                     </div>
@@ -56,21 +56,7 @@ return (
                                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name='password' className='form-control py-3 border-0' style={{ backgroundColor: '#EBE9F9' }} placeholder='Initial password' />
                             </div>
                             <div className='py-2'>
-                                <button type="submit" className='btn btn-primary w-100 py-3 border-0 fw-500' style={{ backgroundColor: '#EBE9F9' }}>Sign Up</button>
-                            </div>
-
-                            <div className='d-flex justify-content-between py-2'>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label text-secondary" htmlFor="flexCheckDefault">
-                                        Remember Me
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div className='d-flex justify-content-center py-4'>
-                                <span className='px-1 text-secondary'>Already have an account?</span>
-                                <a href="/login" className='px-1 text-muted fw-500 text-decoration-none'>Log In</a>
+                                <button type="submit" className='btn btn-primary w-100 py-3 border-0 fw-500' style={{ backgroundColor: '#EBE9F9' }}>Create</button>
                             </div>
 
                         </form>

@@ -93,24 +93,22 @@ function ProjectsManagement() {
                     </h5>
 
                     <div>
-                      <img
-                        src={profileImagePlaceholder}
-                        className="rounded-circle"
-                        alt=""
-                        style={{ maxHeight: 28, height: "100%" }}
-                      />
-                      <img
-                        src={placeholderProfileImage1}
-                        className="rounded-circle transform-left-35"
-                        alt=""
-                        style={{ maxHeight: 28, height: "100%" }}
-                      />
-                      <img
-                        src={placeholderProfileImage2}
-                        className="rounded-circle transform-left-75"
-                        alt=""
-                        style={{ maxHeight: 28, height: "100%" }}
-                      />
+                      {project.users?.map((member) => {
+                        return (
+                          <img
+                            src={member?.profile_image ?? profileImagePlaceholder}
+                            key={member?.id}
+                            className="rounded-circle"
+                            alt=""
+                            style={{
+                              maxHeight: 26,
+                              aspectRatio: 1,
+                              objectFit: "cover",
+                              height: "100%",
+                            }}
+                          />
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -120,17 +118,13 @@ function ProjectsManagement() {
                 </span>
 
                 <div className="row align-items-center pt-3">
-                  <div className="col-4">
-                    <span className="bold">{project.users.length}</span>
-                    <p className="small text-muted">Members</p>
-                  </div>
-                  <div className="col-4">
+                  <div className="col-6">
                     <span className="bold">
                       {new Date(project.created_at).toLocaleDateString()}
                     </span>
                     <p className="small text-muted">Date started</p>
                   </div>
-                  <div className="col-4">
+                  <div className="col-6">
                     <span className="badge badge-primary w-fit p-2 mb-3 bg-warning small">
                       {project.status}
                     </span>

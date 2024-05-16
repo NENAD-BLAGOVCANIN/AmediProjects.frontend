@@ -40,7 +40,7 @@ function List({ tasks, setTasks, setSelectedTask, selectedTask,
                     {task.subject}
                   </td>
                   <td className='bg-transparent medium color-text-lighter'>
-                    {task.description.length > 28 ? `${task.description.slice(0, 28)}...` : task.description}
+                    {task.description}
                   </td>
                   <td className='bg-transparent medium color-text-lighter'>{task.created_at}</td>
 
