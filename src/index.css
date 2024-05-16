@@ -403,7 +403,7 @@ hr {
   font-weight: 700;
 }
 
-.custom-dropdown .custom-notifications {
+.custom-notifications {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -412,17 +412,17 @@ hr {
   border-bottom: 1px solid #efefef;
 }
 
-.custom-dropdown .custom-notifications > li {
+.custom-notifications > li {
   display: block;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
-.custom-dropdown .custom-notifications > li.unread a {
+.custom-notifications > li.unread a {
   background: #fffaef;
 }
 
-.custom-dropdown .custom-notifications > li > a {
+.custom-notifications > li > a {
   display: block;
   padding: 20px;
   color: #bfbfbf;
@@ -443,12 +443,12 @@ hr {
   max-width: 380px;
 }
 
-.custom-dropdown .custom-notifications > li > a .text strong {
+.custom-notifications > li > a .text strong {
   font-weight: 700;
   color: #000;
 }
 
-.custom-dropdown .custom-notifications > li > a .notification-sender-icon img {
+.custom-notifications > li > a .notification-sender-icon img {
   width: 52px;
   border-radius: 0.4rem;
 }
