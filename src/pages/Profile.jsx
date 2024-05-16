@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import placeholderProfileImage from "../assets/img/profile.svg";
 import { getUserInfo, updateProfileImage } from "../api/user";
 import { getMyProjects } from "../api/project";
@@ -6,10 +6,13 @@ import projectPlaceholderIcon from "../assets/img/projectPlaceholderIcon.jpg";
 import profileImagePlaceholder from "../assets/img/profile.svg";
 import placeholderProfileImage1 from "../assets/img/placeholder-profile-img-1.jpeg";
 import placeholderProfileImage2 from "../assets/img/placeholder-profile-img-2.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
 
 function Profile() {
   const [userInfo, setUserInfo] = useState([]);
   const [myProjects, setMyProjects] = useState([]);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     const fetchMyProjects = async () => {
@@ -62,25 +65,29 @@ function Profile() {
     <div className="container">
       <h5 className="mt-5 pb-5 bold">Personal Info</h5>
 
-      <div style={{ maxWidth: 85 }} className="pb-3">
+      <div
+        style={{ maxWidth: 85 }}
+        className="mb-3 position-relative profile-image"
+      >
         <img
           src={userInfo?.profile_image ?? placeholderProfileImage}
           className="img-fluid rounded hover"
           style={{ aspectRatio: 1, objectFit: "cover" }}
           alt=""
         />
-      </div>
-
-      <div className="mt-2 pb-5 d-flex flex-column">
-        <label className="mb-1" htmlFor="profile-image-upload">
-          Change image
-        </label>
         <input
-          type="file"
-          id="profile-image-upload"
-          placeholder="Change image"
+          ref={inputRef}
           onChange={handleFileChange}
+          type="file"
+          style={{ height: 0, width: 0 }}
+          className="invisible position-absolute"
         />
+        <button
+          className="project-image-overlay"
+          onClick={() => inputRef?.current?.click()}
+        >
+          <FontAwesomeIcon icon={faCamera} className="text-white" />
+        </button>
       </div>
 
       <p className="text-muted">Name: {userInfo.name}</p>

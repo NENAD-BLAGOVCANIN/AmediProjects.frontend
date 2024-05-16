@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { getNotifications } from "../api/notifications";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faSpinner, faTrash } from "@fortawesome/free-solid-svg-icons";
+import amediProfileImg from "../assets/img/amediProfileImg.webp";
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
@@ -26,18 +27,46 @@ const Notifications = () => {
 
   return (
     <div className="container">
-      {notifications?.map((notif) => {
-        return (
-          <a
-            href={`/notifications/${notif.id}`}
-            key={notif.id}
-            className="py-2 px-1 notification-row rounded"
-          >
-            <h2 className="medium">{notif.title}</h2>
-            <p className="text-muted">{notif.body}</p>
-          </a>
-        );
-      })}
+      <ul className="notifications-page">
+        {notifications?.map((notif) => {
+          return (
+            <li className="unread" key={notif.id}>
+              <a
+                href={`/notifications/${notif.id}`}
+                className="d-flex justify-content-between"
+              >
+                <div className="d-flex gap-4 justify-content-between flex-column flex-md-row">
+                  <div
+                    style={{ minWidth: "52px" }}
+                    className="notification-sender-icon"
+                  >
+                    <img
+                      src={amediProfileImg}
+                      alt="notification"
+                      className="img-fluid"
+                    />
+                  </div>
+                  <div className="text">
+                    <strong>{notif.title}</strong>
+                    <div
+                      className="small pt-1"
+                      dangerouslySetInnerHTML={{ __html: notif.body }}
+                    ></div>
+                  </div>
+                </div>
+                <div className="px-1">
+                  <button
+                    className="btn btn-basic bg-gray-light text-danger shadow-sm"
+                    onClick={() => {}}
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
       {!noMore && (
         <div className="d-flex justify-content-center pt-3 pb-4">
           <button

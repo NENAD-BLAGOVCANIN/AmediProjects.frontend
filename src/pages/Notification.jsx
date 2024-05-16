@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getNotification } from "../api/notifications";
+import MarkupRender from "../components/MarkupRender/MarkupRender";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
 
 const Notification = () => {
   let { id } = useParams();
@@ -19,8 +22,15 @@ const Notification = () => {
 
   return (
     <div className="container">
-      <h3 className="pb-4">{notification.title}</h3>
-      <p className="text-muted medium pb-4">{notification.body}</p>
+      <h3 className="pb-4">
+        <span>
+          <FontAwesomeIcon icon={faBell} />
+        </span>{" "}
+        {notification.title}
+      </h3>
+      <div className="pb-4">
+        <MarkupRender html={notification.body} />
+      </div>
       <p className="text-muted medium">
         Created at: {formatDateTime(notification.created_at)}
       </p>
