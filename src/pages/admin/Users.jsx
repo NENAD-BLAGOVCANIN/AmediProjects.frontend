@@ -95,20 +95,20 @@ function Users() {
                       <div className="h-100 d-flex align-items-center justify-content-center">
                         <div className="px-1">
                           <button
-                            className="btn btn-basic bg-gray-light shadow-sm"
+                            className="btn btn-basic bg-gray-light"
                             onClick={() => openViewUserModal(user)}
                           >
                             <FontAwesomeIcon icon={faBars} />
                           </button>
                         </div>
                         <div className="px-1">
-                          <button className="btn btn-basic bg-gray-light shadow-sm">
+                          <button className="btn btn-basic bg-gray-light">
                             <FontAwesomeIcon icon={faEdit} />
                           </button>
                         </div>
                         <div className="px-1">
                           <button
-                            className="btn btn-basic bg-gray-light text-danger shadow-sm"
+                            className="btn btn-basic bg-gray-light text-danger"
                             onClick={() => handleDeleteUser(user.id)}
                           >
                             <FontAwesomeIcon icon={faTrash} />

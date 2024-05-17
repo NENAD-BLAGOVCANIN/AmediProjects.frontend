@@ -7,7 +7,7 @@
   --color-dark: rgb(23, 34, 43);
   --color-danger: #cf004c;
   --color-light-gray: #f8f8f8;
-  --color-gray: #e8eaee;
+  --color-gray: #F1F5F9;
   --color-dark-gray: #e6e5e9;
   --color-light: #f8f8f8;
   --sidebar-width: 275px;
@@ -429,7 +429,7 @@ hr {
 .notifications-page>li>a {
   display: block;
   padding: 20px;
-  color: #bfbfbf;
+  color: #393939;
 }
 
 .custom-dropdown .dropdown-menu {
@@ -483,8 +483,17 @@ hr {
   left: unset !important;
 }
 
+.hover,
+.hover-lg {
+  transition: opacity 0.2s ease;
+}
+
 .hover:hover {
   opacity: 0.8;
+}
+
+.hover-lg:hover {
+  opacity: 0.6;
 }
 
 .notification-row {
@@ -547,4 +556,8 @@ hr {
 
 .react-calendar {
   font-family: Inter, sans-serif !important;
+}
+
+.react-calendar button {
+  border-radius: .5rem !important;
 }

@@ -59,7 +59,7 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
 
         <>
             <div className='d-flex justify-content-center pt-3 pb-4'>
-                <button className='btn btn-basic shadow-sm medium' onClick={openAddContactModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> New Contact</span></button>
+                <button className='btn btn-basic bg-white shadow-sm medium' onClick={openAddContactModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> New Contact</span></button>
             </div>
 
             <div className='m-auto d-block w-100' style={{ maxWidth: 1500, overflowX: 'auto' }}>
@@ -92,17 +92,17 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
                                     <td className='bg-transparent'>
                                         <div className="h-100 d-flex align-items-center justify-content-center">
                                             <div className='px-1'>
-                                                <button className='btn btn-basic bg-gray-light shadow-sm' onClick={() => openViewContactModal(contact)}>
+                                                <button className='btn btn-basic bg-gray-light' onClick={() => openViewContactModal(contact)}>
                                                     <FontAwesomeIcon icon={faBars} />
                                                 </button>
                                             </div>
                                             <div className='px-1'>
-                                                <button className='btn btn-basic bg-gray-light shadow-sm' onClick={() => openEditContactModal(contact)}>
+                                                <button className='btn btn-basic bg-gray-light' onClick={() => openEditContactModal(contact)}>
                                                     <FontAwesomeIcon icon={faEdit} />
                                                 </button>
                                             </div>
                                             <div className='px-1'>
-                                                <button className='btn btn-basic bg-gray-light text-danger shadow-sm' onClick={() => handleDeleteContact(contact.id)}>
+                                                <button className='btn btn-basic bg-gray-light text-danger' onClick={() => handleDeleteContact(contact.id)}>
                                                     <FontAwesomeIcon icon={faTrash} />
                                                 </button>
                                             </div>

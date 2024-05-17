@@ -8,7 +8,6 @@ function NotificationsDropdown({ userInfo, setUserInfo }) {
       <div
         className="dropdown-menu dropdown-menu-left show active"
         aria-labelledby="dropdownMenuButton"
-        x-placement="bottom-end"
         style={{ position: "absolute", width: 450 }}
       >
         <div className="title-wrap d-flex align-items-center">
@@ -16,12 +15,11 @@ function NotificationsDropdown({ userInfo, setUserInfo }) {
         </div>
         <ul className="custom-notifications">
           {userInfo.notifications.map((notification) => (
-            <li className="unread" key={notification.id}>
+            <li className="hover-lg unread" key={notification.id}>
               <a href={`/notifications/${notification.id}`} className="d-flex">
                 <div className="notification-sender-icon me-3">
                   <img
                     src={amediProfileImg}
-                    alt="Image"
                     className="img-fluid"
                   />
                 </div>
@@ -35,8 +33,8 @@ function NotificationsDropdown({ userInfo, setUserInfo }) {
             </li>
           ))}
         </ul>
-        <p className="text-center m-0 p-0">
-          <a href="/notifications" className="small">
+        <p className="text-center m-0 py-2">
+          <a href="/notifications" className="small text-primary">
             View All
           </a>
         </p>

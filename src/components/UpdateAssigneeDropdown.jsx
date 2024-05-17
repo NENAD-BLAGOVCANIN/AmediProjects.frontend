@@ -46,37 +46,35 @@ function UpdateAssigneeDropdown({ projectMembers, selectedTask, setSelectedTask,
     }, []);
 
     return (
-        <>
-            <div className="dropdown d-flex w-100" ref={dropdownRef}>
-                <button
-                    className="btn btn-basic bg-gray-light shadow-sm"
-                    onClick={toggleDropdown}
-                >
-                    <FontAwesomeIcon icon={faUserPlus} />
-                </button>
-                {isOpen && (
-                    <div className="dropdown-menu show p-3 border-0 shadow" aria-labelledby="dropdownMenuButton">
-                        <div className='pb-3'>
-                            <span className='pt-2 fw-500'>Assign to</span>
-                        </div>
-                        {projectMembers.map(projectMember => (
-                            <li className='nav-item assignee-nav-item py-2 pe-4 pointer' key={projectMember.id} onClick={() => { handleAssignTask(projectMember.user.id) }}>
-                                <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{ maxWidth: 35 }} alt="" />
-                                <span className='ps-2'>
-                                    {projectMember.user.name}
-                                </span>
-                            </li>
-                        ))}
-
-                        <li className='nav-item assignee-nav-item py-2 px-2 pointer' onClick={() => { handleAssignTask(null) }}>
-                            <FontAwesomeIcon icon={faUserXmark} />
-                            <span className='ps-2'>Unset Assignee</span>
-                        </li>
-
+        <div className="dropdown d-flex w-100" ref={dropdownRef}>
+            <button
+                className="btn btn-basic bg-gray-light"
+                onClick={toggleDropdown}
+            >
+                <FontAwesomeIcon icon={faUserPlus} />
+            </button>
+            {isOpen && (
+                <div className="dropdown-menu show p-3 border-0 shadow" aria-labelledby="dropdownMenuButton">
+                    <div className='pb-3'>
+                        <span className='pt-2 fw-500'>Assign to</span>
                     </div>
-                )}
-            </div>
-        </>
+                    {projectMembers.map(projectMember => (
+                        <li className='nav-item assignee-nav-item py-2 pe-4 pointer' key={projectMember.id} onClick={() => { handleAssignTask(projectMember.user.id) }}>
+                            <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{ maxWidth: 35 }} alt="" />
+                            <span className='ps-2'>
+                                {projectMember.user.name}
+                            </span>
+                        </li>
+                    ))}
+
+                    <li className='nav-item assignee-nav-item py-2 px-2 pointer' onClick={() => { handleAssignTask(null) }}>
+                        <FontAwesomeIcon icon={faUserXmark} />
+                        <span className='ps-2'>Unset Assignee</span>
+                    </li>
+
+                </div>
+            )}
+        </div>
     );
 }
 

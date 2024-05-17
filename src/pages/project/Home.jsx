@@ -39,7 +39,7 @@ function Home() {
         <div className="container">
 
             <div className='pt-3'>
-                <h3 className='mt-3 mb-4 fw-500'>Welcome, {userInfo && userInfo.name.split(" ")[0]}!</h3>
+                <h3 className='mt-3 mb-3 fw-500'>Welcome, {userInfo && userInfo.name.split(" ")[0]}!</h3>
 
 
             </div>

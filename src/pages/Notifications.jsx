@@ -39,7 +39,7 @@ const Notifications = () => {
           const formattedDate = formatDate(notification.created_at);
 
           return (
-            <li key={notification.id}>
+            <li key={notification.id} className="bg-white hover-lg">
               <a
                 href={`/notifications/${notification.id}`}
                 className="d-flex justify-content-between"
@@ -64,7 +64,7 @@ const Notifications = () => {
                     <span>{formattedDate}</span>
                   </div>
                 </div>
-                <div className="px-1">
+                <div className="px-1 text-dark">
                   <button
                     className="btn btn-basic bg-gray-light text-danger shadow-sm"
                     onClick={() => { }}
@@ -80,7 +80,7 @@ const Notifications = () => {
       {!noMore && (
         <div className="d-flex justify-content-center pt-3 pb-4">
           <button
-            className="btn btn-basic shadow-sm medium"
+            className="btn btn-basic bg-white shadow-sm medium"
             onClick={fetchAndSetNotifications}
           >
             <span className="text-primary">

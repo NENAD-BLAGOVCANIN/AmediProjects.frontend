@@ -35,13 +35,13 @@ function Products() {
         <>
 
             <div className='d-flex justify-content-center pt-3 pb-4'>
-                <button className='btn btn-basic shadow-sm medium' onClick={openAddProductModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> Add Product</span></button>
+                <button className='btn btn-basic bg-white shadow-sm medium' onClick={openAddProductModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> Add Product</span></button>
             </div>
 
             <div className="container">
                 <div className="row pt-4">
                     {products.map(product => (
-                        <div className="col-md-3">
+                        <div className="col-md-3" key={product.id}>
                             <div className="card border-0 bg-gray bg-gray-hover pointer p-3 w-100">
                                 <h4>{product.name}</h4>
                                 <p className='medium text-muted'>{product.description}</p>
