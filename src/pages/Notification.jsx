@@ -23,9 +23,6 @@ const Notification = () => {
   return (
     <div className="container">
       <h3 className="pb-4">
-        <span>
-          <FontAwesomeIcon icon={faBell} />
-        </span>{" "}
         {notification.title}
       </h3>
       <div className="pb-4">

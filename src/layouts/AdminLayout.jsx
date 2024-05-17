@@ -40,7 +40,7 @@ function AdminLayout() {
             <Sidebar userInfo={userInfo} setUserInfo={setUserInfo} />
             <div className="main-content-wrapper">
                 <Header pageTitle={pageTitle} userInfo={userInfo} setUserInfo={setUserInfo} />
-                <div className="main-container">
+                <div className="main-container container-light">
                     <Outlet />
                 </div>
             </div>

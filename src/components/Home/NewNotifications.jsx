@@ -5,11 +5,11 @@ import { convertHtmlToText } from "../Header/NotificationsDropdown";
 function NewNotifications({ userInfo }) {
   return (
     <div className="bg-white rounded p-3 shadow-sm">
-      <h6 className="bold mb-3">Alerts</h6>
+      <h6 className="bold mb-3">New Notifications</h6>
 
-      <ul className="custom-notifications">
+      <ul className="custom-notifications" style={{height: 'unset'}}>
         {userInfo?.notifications?.map((notification) => (
-          <li className="unread" key={notification.id}>
+          <li key={notification.id}>
             <a
               href={`/notifications/${notification.id}`}
               className="d-flex gap-3"
@@ -31,11 +31,6 @@ function NewNotifications({ userInfo }) {
           </li>
         ))}
       </ul>
-      <p className="text-center m-0 p-0">
-        <a href="/notifications" className="small">
-          View All
-        </a>
-      </p>
     </div>
   );
 }

@@ -51,7 +51,7 @@ function Users() {
       <>
         <div className="d-flex justify-content-center pt-3 pb-4">
           <button
-            className="btn btn-basic shadow-sm medium"
+            className="btn btn-basic bg-white shadow-sm medium"
             onClick={openRegistrationModal}
           >
             <span className="text-primary">
@@ -65,7 +65,7 @@ function Users() {
           className="m-auto d-block w-100"
           style={{ maxWidth: 1500, overflowX: "auto" }}
         >
-          <div className="table-responsive">
+          <div className="table-responsive bg-white">
             <table className="table table-striped table-hover">
               <thead>
                 <tr>

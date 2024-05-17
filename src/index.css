@@ -539,3 +539,7 @@ hr {
   border-color: var(--color-secondary) !important;
   
 }
+
+.container-light{
+  background-color: #F1F5F9 !important;
+}

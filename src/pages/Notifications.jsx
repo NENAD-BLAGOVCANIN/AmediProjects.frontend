@@ -25,14 +25,23 @@ const Notifications = () => {
     fetchAndSetNotifications();
   }, []);
 
+  const formatDate = (dateString) => {
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-GB', options).format(date);
+  };
+
   return (
     <div className="container">
       <ul className="notifications-page">
-        {notifications?.map((notif) => {
+        {notifications?.map((notification) => {
+
+          const formattedDate = formatDate(notification.created_at);
+
           return (
-            <li className="unread" key={notif.id}>
+            <li key={notification.id}>
               <a
-                href={`/notifications/${notif.id}`}
+                href={`/notifications/${notification.id}`}
                 className="d-flex justify-content-between"
               >
                 <div className="d-flex gap-4 justify-content-between flex-column flex-md-row">
@@ -47,17 +56,18 @@ const Notifications = () => {
                     />
                   </div>
                   <div className="text">
-                    <strong>{notif.title}</strong>
+                    <strong>{notification.title}</strong>
                     <div
-                      className="small pt-1"
-                      dangerouslySetInnerHTML={{ __html: notif.body }}
+                      className="pt-1"
+                      dangerouslySetInnerHTML={{ __html: notification.body }}
                     ></div>
+                    <span>{formattedDate}</span>
                   </div>
                 </div>
                 <div className="px-1">
                   <button
                     className="btn btn-basic bg-gray-light text-danger shadow-sm"
-                    onClick={() => {}}
+                    onClick={() => { }}
                   >
                     <FontAwesomeIcon icon={faTrash} />
                   </button>

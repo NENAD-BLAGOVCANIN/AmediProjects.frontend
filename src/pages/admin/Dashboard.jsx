@@ -44,25 +44,39 @@ function Dashboard() {
     ],
   };
 
-  const lineChartData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    datasets: [
-      {
-        label: 'Random Data',
-        data: Array.from({ length: 12 }, () => Math.floor(Math.random() * 50)),
-        fill: false,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1,
-      },
-    ],
-  };
+
+    // Helper function to generate smoother data
+    function generateSmoothData(base, variation) {
+      return Array.from({ length: 12 }, (_, i) => base + (Math.sin(i) * variation));
+    }
+
+    const lineChartData = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      datasets: [
+        {
+          label: 'Smooth Data 1',
+          data: generateSmoothData(25, 10),
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.4, // Increased tension for smoother curves
+        },
+        {
+          label: 'Smooth Data 2',
+          data: generateSmoothData(20, 8),
+          fill: false,
+          borderColor: 'rgb(255, 99, 132)',
+          tension: 0.4, // Increased tension for smoother curves
+        },
+      ],
+    };
+
 
   return (
 
     <>
       <div className="row">
         <div className="col-md-4 p-3">
-          <div className="card">
+          <div className="bg-white p-3 rounded">
             <span className="small">Projects Completed</span>
             <div className="d-flex align-items-center">
               <h2 className="m-0 pe-2">{stats.contactCount}</h2>
@@ -71,7 +85,7 @@ function Dashboard() {
           </div>
         </div>
         <div className="col-md-4 p-3">
-          <div className="card">
+          <div className="bg-white p-3 rounded">
             <span className="small">Active Clients</span>
             <div className="d-flex align-items-center">
               <h2 className="m-0 pe-2">{stats.leadCount}</h2>
@@ -80,7 +94,7 @@ function Dashboard() {
           </div>
         </div>
         <div className="col-md-4 p-3">
-          <div className="card">
+          <div className="bg-white p-3 rounded">
             <span className="small">Monthy Earnings</span>
             <div className="d-flex align-items-center">
               <h2 className="m-0 pe-2">${stats.taskCount}K</h2>
@@ -90,8 +104,18 @@ function Dashboard() {
         </div>
       </div>
       <div className="row">
+        <div className="col-md-12 p-3">
+          <div className="bg-white p-3 rounded d-flex justify-content-center flex-column w-100">
+            <h5 className="mb-3">Monthly Earnings</h5>
+            <div className="m-auto w-100 h-100 d-flex justify-content-center text-center">
+              <Line data={lineChartData} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="row">
         <div className="col-md-6 p-3">
-          <div className="card w-100">
+          <div className="bg-white p-3 rounded d-flex justify-content-center flex-column w-100">
             <h5 className="mb-4">Contact Management</h5>
             <div className="m-auto pb-3" style={{ maxWidth: 400 }}>
               <Pie data={contactData} />
@@ -99,7 +123,7 @@ function Dashboard() {
           </div>
         </div>
         <div className="col-md-6 p-3">
-          <div className="card w-100">
+          <div className="bg-white p-3 rounded d-flex justify-content-center flex-column w-100">
             <h5 className="mb-4">Task Management</h5>
             <div className="m-auto pb-3" style={{ maxWidth: 400 }}>
               <Doughnut data={taskCompletionData} />
@@ -109,9 +133,9 @@ function Dashboard() {
       </div>
       <div className="row">
         <div className="col-md-12 p-3">
-          <div className="card w-100">
+          <div className="bg-white p-3 rounded d-flex justify-content-center flex-column w-100">
             <h5 className="mb-3">Monthly Earnings</h5>
-            <div className="m-auto w-100 h-100 d-flex justify-content-center text-center" style={{ maxWidth: 1200 }}>
+            <div className="m-auto w-100 h-100 d-flex justify-content-center text-center">
               <Line data={lineChartData} />
             </div>
           </div>
