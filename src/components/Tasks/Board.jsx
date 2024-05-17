@@ -57,7 +57,7 @@ function Board({
         <div className="d-flex justify-content-between">
           <p className="mb-3 fw-500">
             To do
-            <span className="text-muted fw-400 medium px-2">3</span>
+            <span className="text-muted fw-400 medium px-2">{tasks.filter((task) => task.status === "todo").length}</span>
           </p>
           <div>
             <button className="px-2 btn" onClick={handleShowAddTaskCard}>
@@ -113,7 +113,7 @@ function Board({
         <div className="d-flex justify-content-between">
           <p className="mb-3 fw-500">
             Doing
-            <span className="text-muted fw-400 medium px-2">3</span>
+            <span className="text-muted fw-400 medium px-2">{tasks.filter((task) => task.status === "in_progress").length}</span>
           </p>
           <div>
             <button className="px-2 btn" onClick={handleShowAddTaskCard}>
@@ -146,7 +146,7 @@ function Board({
         <div className="d-flex justify-content-between">
           <p className="mb-3 fw-500">
             On Hold
-            <span className="text-muted fw-400 medium px-2">3</span>
+            <span className="text-muted fw-400 medium px-2">{tasks.filter((task) => task.status === "on_hold").length}</span>
           </p>
           <div>
             <button className="px-2 btn" onClick={handleShowAddTaskCard}>
@@ -179,7 +179,7 @@ function Board({
         <div className="d-flex justify-content-between">
           <p className="mb-3 fw-500">
             Done
-            <span className="text-muted fw-400 medium px-2">3</span>
+            <span className="text-muted fw-400 medium px-2">{tasks.filter((task) => task.status === "done").length}</span>
           </p>
           <div>
             <button className="px-2 btn" onClick={handleShowAddTaskCard}>

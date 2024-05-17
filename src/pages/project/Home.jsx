@@ -35,6 +35,12 @@ function Home() {
 
     }, []);
 
+    const formatDate = (dateString) => {
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        const date = new Date(dateString);
+        return new Intl.DateTimeFormat('en-GB', options).format(date);
+    };
+
     return (
         <div className="container">
 
@@ -47,22 +53,10 @@ function Home() {
             <div className="row pt-5">
                 <div className="col-md-6">
                     <div className="bg-white rounded p-3 shadow-sm">
-                        <h6 className='bold mb-3'>Project overview</h6>
-                        <div className='d-flex'>
-                            <img
-                                src={projectInfo?.image ?? projectPlaceholderIcon}
-                                className="rounded"
-                                style={{ height: 55, width: 55, objectFit: "cover" }}
-                                alt=""
-                            />
-                            <div className='ps-3 d-flex flex-column'>
-                                <span className='fw-500'>{projectInfo.name}</span>
-                                <span className='small text-muted pb-3 pt-1'>{projectInfo.description}</span>
-                                <span className='badge badge-primary bg-warning fw-400'>Status: <span className='fw-500'>{projectInfo.status}</span></span>
-                            </div>
+                        <h6 className='bold mb-3'>Project status</h6>
 
-                        </div>
-
+                        <p className='badge badge-primary bg-warning py-2'>Status: {projectInfo.status}</p>
+                        <p>Due date: {projectInfo.created_at && formatDate(projectInfo.created_at)}</p>
 
                     </div>
                 </div>

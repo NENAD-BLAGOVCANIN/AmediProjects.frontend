@@ -9,7 +9,7 @@ function NewNotifications({ userInfo }) {
 
       <ul className="custom-notifications" style={{height: 'unset'}}>
         {userInfo?.notifications?.map((notification) => (
-          <li key={notification.id}>
+          <li key={notification.id} className='hover-lg'>
             <a
               href={`/notifications/${notification.id}`}
               className="d-flex gap-3"

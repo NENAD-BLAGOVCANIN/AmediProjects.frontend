@@ -21,16 +21,17 @@ const Notification = () => {
   if (!notification) return <></>;
 
   return (
-    <div className="container">
-      <h3 className="pb-4">
+    <div className="container pt-3">
+      <h3 className="bold">
         {notification.title}
       </h3>
+      <p className="text-muted medium pb-4">
+        {formatDateTime(notification.created_at)}
+      </p>
       <div className="pb-4">
         <MarkupRender html={notification.body} />
       </div>
-      <p className="text-muted medium">
-        Created at: {formatDateTime(notification.created_at)}
-      </p>
+      
     </div>
   );
 };
