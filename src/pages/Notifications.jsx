@@ -5,6 +5,7 @@ import { faPlus, faSpinner, faTrash } from "@fortawesome/free-solid-svg-icons";
 import amediProfileImg from "../assets/img/amediProfileImg.webp";
 import { faEnvelopeOpen } from "@fortawesome/free-regular-svg-icons";
 import { TooltipWrapper } from "../components/widgets/Tooltip";
+import { Link } from "react-router-dom";
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
@@ -42,8 +43,8 @@ const Notifications = () => {
 
           return (
             <li key={notification.id} className="bg-white hover-lg">
-              <a
-                href={`/notifications/${notification.id}`}
+              <Link
+                to={`/notifications/${notification.id}`}
                 className="d-flex justify-content-between"
               >
                 <div className="d-flex gap-4 justify-content-between flex-column flex-md-row">
@@ -90,7 +91,7 @@ const Notifications = () => {
 
                   </div>
                 </div>
-              </a>
+              </Link>
             </li>
           );
         })}
