@@ -5,6 +5,7 @@ import { getProducts } from '../../api/products';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash, faBars, faEdit } from '@fortawesome/free-solid-svg-icons';
 import AddProductModal from '../../components/AddProductModal';
+import productExampleImage from '../../assets/img/product-example-image.jpg';
 
 function Products() {
 
@@ -42,10 +43,13 @@ function Products() {
                 <div className="row pt-4">
                     {products.map(product => (
                         <div className="col-md-3" key={product.id}>
-                            <div className="card border-0 bg-gray bg-gray-hover pointer p-3 w-100">
-                                <h4>{product.name}</h4>
-                                <p className='medium text-muted'>{product.description}</p>
-                                <h5 className='text-success'>${product.price}</h5>
+                            <div className="rounded bg-white border-0 hover-lg pointer w-100">
+                                <img src={productExampleImage} className='product-card-image' alt="" />
+                                <div className='p-3'>
+                                    <h5>{product.name}</h5>
+                                    <p className='medium text-muted'>{product.description}</p>
+                                    <h5 className='text-primary' style={{ fontWeight: '600' }}>${product.price}</h5>
+                                </div>
                             </div>
                         </div>
                     ))}
