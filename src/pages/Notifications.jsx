@@ -97,7 +97,7 @@ const Notifications = () => {
         })}
       </ul>
       {!noMore && (
-        <div className="d-flex justify-content-center pt-3 pb-4">
+        <div className="d-flex justify-content-center pt-3 pb-4 d-none">
           <button
             className="btn btn-basic bg-white shadow-sm medium"
             onClick={fetchAndSetNotifications}

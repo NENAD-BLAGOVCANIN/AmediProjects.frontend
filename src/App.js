@@ -21,12 +21,14 @@ import AppLayout from "./layouts/AppLayout";
 import ProjectsManagement from "./pages/admin/ProjectsManagement";
 import AdminLayout from "./layouts/AdminLayout";
 import LandingLayout from "./layouts/LandingLayout";
+import Clients from './pages/Clients';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [contacts, setContacts] = useState([]);
   const [leads, setLeads] = useState([]);
+  const [clients, setClients] = useState([]);
 
   useEffect(() => {
     const checkAuthentication = async () => {
@@ -70,6 +72,18 @@ function App() {
               <Leads
                 leads={leads}
                 setLeads={setLeads}
+                contacts={contacts}
+                setContacts={setContacts}
+              />
+            }
+          />
+
+          <Route
+            path="/clients"
+            element={
+              <Clients
+                clients={clients}
+                setClients={setClients}
                 contacts={contacts}
                 setContacts={setContacts}
               />

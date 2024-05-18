@@ -18,6 +18,7 @@ const pageTitles = {
   "/profile": "Profile",
   "/team": "Team",
   "/notifications": "Notifications",
+  "/clients": "Clients"
 };
 
 function AppLayout() {
