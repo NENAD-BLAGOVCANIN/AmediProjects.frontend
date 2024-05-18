@@ -3,6 +3,8 @@ import { getNotifications } from "../api/notifications";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSpinner, faTrash } from "@fortawesome/free-solid-svg-icons";
 import amediProfileImg from "../assets/img/amediProfileImg.webp";
+import { faEnvelopeOpen } from "@fortawesome/free-regular-svg-icons";
+import { TooltipWrapper } from "../components/widgets/Tooltip";
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
@@ -64,13 +66,29 @@ const Notifications = () => {
                     <span>{formattedDate}</span>
                   </div>
                 </div>
-                <div className="px-1 text-dark">
-                  <button
-                    className="btn btn-basic bg-gray-light text-danger shadow-sm"
-                    onClick={() => { }}
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
+                <div className="d-flex">
+                  <div className="px-1">
+                    <TooltipWrapper text="Mark as read" placement="top">
+                      <button
+                        className="btn btn-basic bg-gray-light shadow-sm"
+                        onClick={() => { }}
+                      >
+                        <FontAwesomeIcon icon={faEnvelopeOpen} />
+                      </button>
+                    </TooltipWrapper>
+
+                  </div>
+                  <div className="px-1 text-dark">
+                    <TooltipWrapper text="Delete" placement="top">
+                      <button
+                        className="btn btn-basic bg-gray-light text-danger shadow-sm"
+                        onClick={() => { }}
+                      >
+                        <FontAwesomeIcon icon={faTrash} />
+                      </button>
+                    </TooltipWrapper>
+
+                  </div>
                 </div>
               </a>
             </li>
