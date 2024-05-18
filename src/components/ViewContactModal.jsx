@@ -28,7 +28,7 @@ function ViewContactModal({ showViewContactModal, setShowViewContactModal, selec
                             <div>
                                 <h4 className="modal-title bold m-0">{selectedContact.name}</h4>
                             </div>
-                            <span type="button" className="close ms-auto m-0 text-secondary" onClick={handleCloseViewContactModal} style={{ fontSize: '25pt', fontWeight: '100' }}>
+                            <span type="button" className="close ms-auto m-0 text-secondary" onClick={handleCloseViewContactModal} style={{ fontSize: '25pt', fontWeight: '300' }}>
                                 <span aria-hidden="true">&times;</span>
                             </span>
                         </div>

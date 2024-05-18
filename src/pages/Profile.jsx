@@ -110,7 +110,7 @@ function Profile() {
       <div className="row">
         {myProjects.map((myProject) => (
           <div
-            className="col-12 col-md-6 col-lg-3 col-sm-6 col-xs-6 mb-5"
+            className="col-12 col-md-4 col-sm-6 col-xs-6 mb-5"
             key={myProject.id}
           >
             <div className="project-card rounded-sm px-4 pt-3 pb-2 card border-0 bg-white pointer w-100 d-flex">

@@ -46,7 +46,7 @@ function Projects() {
                 <p className='text-muted mt-2 fw-500 ps-2 mb-5'>Current existing projects</p>
                 <div className="row">
                     {myProjects.map(myProject => (
-                        <div className="col-12 col-md-6 col-lg-3 col-sm-6 col-xs-6 mb-5" key={myProject.id} onClick={() => { handleSwitchProject(myProject.id) }}>
+                        <div className="col-12 col-md-4 col-sm-6 col-xs-6 mb-5" key={myProject.id} onClick={() => { handleSwitchProject(myProject.id) }}>
                             <div className="project-card rounded-sm p-4 card border-0 bg-white pointer w-100 d-flex">
 
                                 <div className="row">

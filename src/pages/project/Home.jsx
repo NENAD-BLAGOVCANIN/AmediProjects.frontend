@@ -45,12 +45,10 @@ function Home() {
         <div className="container">
 
             <div className='pt-3'>
-                <h3 className='mt-3 mb-3 fw-500'>Welcome, {userInfo && userInfo.name.split(" ")[0]}!</h3>
-
-
+                <h3 className='mt-3 fw-500'>Welcome, {userInfo && userInfo.name.split(" ")[0]}!</h3>
             </div>
 
-            <div className="row pt-5">
+            <div className="row pt-3">
                 <div className="col-md-6">
                     <div className="bg-white rounded p-3 shadow-sm">
                         <h6 className='bold mb-3'>Project status</h6>

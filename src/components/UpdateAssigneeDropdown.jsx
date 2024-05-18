@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus, faUserXmark } from '@fortawesome/free-solid-svg-icons';
-import placeholderProfileImage from '../assets/img/profile.svg';
 import { assignTo } from '../api/tasks';
+import profileImagePlaceholder from "../assets/img/profile.svg";
 
 function UpdateAssigneeDropdown({ projectMembers, selectedTask, setSelectedTask, tasks, setTasks }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -60,7 +60,7 @@ function UpdateAssigneeDropdown({ projectMembers, selectedTask, setSelectedTask,
                     </div>
                     {projectMembers.map(projectMember => (
                         <li className='nav-item assignee-nav-item py-2 pe-4 pointer' key={projectMember.id} onClick={() => { handleAssignTask(projectMember.user.id) }}>
-                            <img src={placeholderProfileImage} className='img-fluid rounded-circle' style={{ maxWidth: 35 }} alt="" />
+                            <img src={projectMember?.user?.profile_image ?? profileImagePlaceholder} className='img-fluid rounded-circle' style={{ width: 35, height: 35, objectFit: 'cover' }} alt="" />
                             <span className='ps-2'>
                                 {projectMember.user.name}
                             </span>

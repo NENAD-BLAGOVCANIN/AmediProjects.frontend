@@ -48,7 +48,7 @@ function Header({ pageTitle, userInfo, setUserInfo }) {
                   className="rounded-circle"
                   alt=""
                   style={{
-                    maxHeight: 28,
+                    maxHeight: 26,
                     aspectRatio: 1,
                     objectFit: "cover",
                     height: "100%",

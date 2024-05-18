@@ -21,10 +21,10 @@ const TaskCard = ({ task, handleShowTaskModal }) => {
       <div className="pt-3 d-flex align-items-center">
         <div className="pe-3">
           <img
-            src={profileImagePlaceholder}
-            className="rounded-circle"
+            src={task?.assignee?.profile_image}
+            className="rounded-circle w-100"
             alt=""
-            style={{ maxHeight: 25, height: "100%" }}
+            style={{ height: 25, maxWidth: 25, objectFit: 'cover' }}
           />
         </div>
         <span className="small text-muted">

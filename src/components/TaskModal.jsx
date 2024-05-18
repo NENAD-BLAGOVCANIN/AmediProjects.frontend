@@ -159,7 +159,7 @@ function TaskModal({
               type="button"
               className="close ms-auto m-0 text-secondary"
               onClick={handleCloseTaskModal}
-              style={{ fontSize: "25pt", fontWeight: "100" }}
+              style={{ fontSize: "25pt", fontWeight: "300" }}
             >
               <span aria-hidden="true">&times;</span>
             </span>
@@ -186,10 +186,10 @@ function TaskModal({
             {selectedTask.assignee && (
               <div className="d-flex align-items-center pt-3">
                 <img
-                  src={profileImagePlaceholder}
+                  src={selectedTask?.assignee?.profile_image ?? profileImagePlaceholder}
                   className="rounded-circle"
                   alt=""
-                  style={{ maxHeight: 35, height: "100%" }}
+                  style={{ width: 35, height: 35, objectFit: 'cover' }}
                 />
                 <span className="px-2 medium">
                   {selectedTask.assignee.name}

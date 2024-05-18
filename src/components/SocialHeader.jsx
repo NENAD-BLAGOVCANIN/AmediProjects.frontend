@@ -98,7 +98,7 @@ function SocialHeader({ userInfo, setUserInfo }) {
                   className="rounded pointer"
                   alt=""
                   style={{
-                    maxHeight: 28,
+                    maxHeight: 26,
                     aspectRatio: 1,
                     objectFit: "cover",
                     height: "100%",
