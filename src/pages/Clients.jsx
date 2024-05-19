@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { getClients } from '../api/clients';
 import { deleteClient } from '../api/clients';
-import AddLeadModal from '../components/CRM/Leads/AddLeadModal';
+import AddClientModal from '../components/CRM/Clients/AddClientModal';
 
 function Clients({ contacts, setContacts, clients, setClients }) {
 
-    const [showAddLeadModal, setShowAddLeadModal] = useState(false);
+    const [showAddClientModal, setShowAddClientModal] = useState(false);
 
     useEffect(() => {
         const fetchClients = async () => {
@@ -33,7 +33,7 @@ function Clients({ contacts, setContacts, clients, setClients }) {
     };
 
     const openAddClientModal = () => {
-        setShowAddLeadModal(true);
+        setShowAddClientModal(true);
     };
 
     return (
@@ -64,17 +64,17 @@ function Clients({ contacts, setContacts, clients, setClients }) {
                         <tbody>
                             {clients.map(client => (
                                 <tr key={client.id}>
-                                    <td className='bg-transparent'>{clients.id}</td>
-                                    <td className='bg-transparent'>{clients.contact.name}</td>
-                                    <td className='bg-transparent'>{clients.contact.email}</td>
-                                    <td className='bg-transparent'>{clients.contact.title}</td>
-                                    <td className='bg-transparent'>{clients.contact.city}</td>
-                                    <td className='bg-transparent'>{clients.contact.address}</td>
-                                    <td className='bg-transparent'>{clients.contact.description}</td>
-                                    <td className='bg-transparent'>{clients.contact.past_client}</td>
-                                    <td className='bg-transparent'>{clients.contact.phone}</td>
-                                    <td className='bg-transparent'>{clients.contact.organization}</td>
-                                    <td className='bg-transparent'>{clients.created_at}</td>
+                                    <td className='bg-transparent'>{client.id}</td>
+                                    <td className='bg-transparent'>{client?.contact?.name}</td>
+                                    <td className='bg-transparent'>{client?.contact?.email}</td>
+                                    <td className='bg-transparent'>{client?.contact?.title}</td>
+                                    <td className='bg-transparent'>{client?.contact?.city}</td>
+                                    <td className='bg-transparent'>{client?.contact?.address}</td>
+                                    <td className='bg-transparent'>{client?.contact?.description}</td>
+                                    <td className='bg-transparent'>{client?.contact?.past_client}</td>
+                                    <td className='bg-transparent'>{client?.contact?.phone}</td>
+                                    <td className='bg-transparent'>{client?.contact?.organization}</td>
+                                    <td className='bg-transparent'>{client?.created_at}</td>
                                     <td className='bg-transparent'>
                                         <div className="h-100 d-flex align-items-center justify-content-center">
                                             <button className='btn btn-basic bg-gray text-danger shadow-sm' onClick={() => handleDeleteClient(client.id)}>
@@ -89,11 +89,11 @@ function Clients({ contacts, setContacts, clients, setClients }) {
                 </div>
             </div>
 
-            <AddLeadModal
+            <AddClientModal
                 clients={clients}
                 setClients={setClients}
-                showAddLeadModal={showAddLeadModal}
-                setShowAddLeadModal={setShowAddLeadModal}
+                showAddClientModal={showAddClientModal}
+                setShowAddClientModal={setShowAddClientModal}
                 contacts={contacts}
                 setContacts={setContacts}
             />
