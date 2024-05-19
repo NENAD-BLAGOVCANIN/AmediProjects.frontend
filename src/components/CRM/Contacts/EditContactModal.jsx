@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { saveContact } from '../api/contacts';
+import React, { useState, useEffect } from 'react';
+import { updateContact } from '../../../api/contacts';
 
-function AddContactModal({ contacts, setContacts, showAddContactsModal, setShowAddContactsModal }) {
+function EditContactModal({ contacts, setContacts, showEditContactsModal, setShowEditContactsModal, selectedContact, setSelectedContact }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [title, setTitle] = useState('');
@@ -12,12 +12,26 @@ function AddContactModal({ contacts, setContacts, showAddContactsModal, setShowA
     const [pastClient, setPastClient] = useState(false);
     const [errors, setErrors] = useState([]);
 
-    const handleCloseAddContactsModal = () => {
-        setShowAddContactsModal(false);
+    useEffect(() => {
+        if (selectedContact) {
+            setName(selectedContact.name || '');
+            setEmail(selectedContact.email || '');
+            setTitle(selectedContact.title || '');
+            setCity(selectedContact.city || '');
+            setAddress(selectedContact.address || '');
+            setOrganization(selectedContact.organization || '');
+            setDescription(selectedContact.description || '');
+            setPastClient(selectedContact.pastClient || false);
+        }
+    }, [selectedContact]);
+
+    const handleCloseEditContactsModal = () => {
+        setShowEditContactsModal(false);
     };
 
     const handleSubmit = async () => {
         const contact = {
+            "id": selectedContact.id,
             "name": name,
             "email": email,
             "title": title,
@@ -29,20 +43,15 @@ function AddContactModal({ contacts, setContacts, showAddContactsModal, setShowA
         };
 
         try {
-            const newContact = await saveContact(contact);
-            setContacts([newContact, ...contacts]);
-            setShowAddContactsModal(false);
-            
-            setName('');
-            setEmail('');
-            setTitle('');
-            setCity('');
-            setAddress('');
-            setOrganization('');
-            setDescription('');
-            setPastClient(false);
-            setErrors([]);
+            const updatedContact = await updateContact(contact);
+            setSelectedContact(updatedContact);
 
+            const updatedContacts = contacts.map(contact =>
+                contact.id === updatedContact.id ? updatedContact : contact
+            );
+            setContacts(updatedContacts);
+
+            setShowEditContactsModal(false);
         } catch (error) {
             setErrors(error.message);
         }
@@ -50,14 +59,14 @@ function AddContactModal({ contacts, setContacts, showAddContactsModal, setShowA
 
     return (
         <>
-            <div className={`modal fade ${showAddContactsModal ? 'show d-block' : ''}`} tabIndex="-1" role="dialog">
+            <div className={`modal fade ${showEditContactsModal ? 'show d-block' : ''}`} tabIndex="-1" role="dialog">
                 <div className="modal-dialog modal-dialog-centered" role="document" style={{ maxWidth: 800, padding: '1.7rem' }}>
                     <div className="modal-content py-3 px-4 border-0 shadow-lg" style={{ maxHeight: 800, overflow: 'auto' }}>
                         <div className="modal-header pb-0 border-0 d-flex align-items-center">
                             <div>
-                                <h4 className="modal-title bold m-0">Add Contact</h4>
+                                <h4 className="modal-title bold m-0">Edit Contact</h4>
                             </div>
-                            <span type="button" className="close ms-auto m-0 text-secondary" onClick={handleCloseAddContactsModal} style={{ fontSize: '25pt', fontWeight: '300' }}>
+                            <span type="button" className="close ms-auto m-0 text-secondary" onClick={handleCloseEditContactsModal} style={{ fontSize: '25pt', fontWeight: '300' }}>
                                 <span aria-hidden="true">&times;</span>
                             </span>
                         </div>
@@ -102,7 +111,7 @@ function AddContactModal({ contacts, setContacts, showAddContactsModal, setShowA
                             </div>
                         </div>
                         <div className='modal-footer border-0'>
-                            <button className='btn btn-primary rounded' onClick={handleSubmit}>Save</button>
+                            <button className='btn btn-primary rounded' onClick={handleSubmit}>Save Changes</button>
                         </div>
                     </div>
                 </div>
@@ -111,4 +120,4 @@ function AddContactModal({ contacts, setContacts, showAddContactsModal, setShowA
     );
 }
 
-export default AddContactModal;
+export default EditContactModal;

@@ -4,10 +4,10 @@ import Header from '../components/Header/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash, faBars, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { getContacts } from '../api/contacts';
-import AddContactModal from '../components/AddContactModal';
-import EditContactModal from '../components/EditContactModal';
+import AddContactModal from '../components/CRM/Contacts/AddContactModal';
+import EditContactModal from '../components/CRM/Contacts/EditContactModal';
 import { deleteContact } from '../api/contacts';
-import ViewContactModal from '../components/ViewContactModal';
+import ViewContactModal from '../components/CRM/Contacts/ViewContactModal';
 
 function Contacts({ contacts, setContacts, leads, setLeads }) {
 

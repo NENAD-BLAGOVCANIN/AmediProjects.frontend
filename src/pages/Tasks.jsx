@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header/Header'
 import { getTasks, saveTask } from '../api/tasks'
-import TaskModal from '../components/TaskModal'
+import TaskModal from '../components/Tasks/TaskModal'
 import { getProjectMembers } from '../api/project';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'

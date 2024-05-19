@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus, faUserXmark } from '@fortawesome/free-solid-svg-icons';
-import { assignTo } from '../api/tasks';
-import profileImagePlaceholder from "../assets/img/profile.svg";
+import { assignTo } from '../../api/tasks';
+import profileImagePlaceholder from "../../assets/img/profile.svg";
 
 function UpdateAssigneeDropdown({ projectMembers, selectedTask, setSelectedTask, tasks, setTasks }) {
     const [isOpen, setIsOpen] = useState(false);

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { saveLead } from '../api/leads';
-import { getContacts } from '../api/contacts';
+import { saveLead } from '../../../api/leads';
+import { getContacts } from '../../../api/contacts';
 
 function AddLeadModal({ leads, setLeads, showAddLeadModal, setShowAddLeadModal, contacts, setContacts }) {
 

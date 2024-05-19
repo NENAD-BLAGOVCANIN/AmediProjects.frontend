@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { getLeads } from '../api/leads';
 import { deleteLead } from '../api/leads';
-import AddLeadModal from '../components/AddLeadModal';
+import AddLeadModal from '../components/CRM/Leads/AddLeadModal';
 
 function Leads({ leads, setLeads, contacts, setContacts }) {
 

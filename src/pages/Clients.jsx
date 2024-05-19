@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { getClients } from '../api/clients';
 import { deleteClient } from '../api/clients';
-import AddLeadModal from '../components/AddLeadModal';
+import AddLeadModal from '../components/CRM/Leads/AddLeadModal';
 
 function Clients({ contacts, setContacts, clients, setClients }) {
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { updateTask } from "../api/tasks";
-import profileImagePlaceholder from "../assets/img/profile.svg";
+import { updateTask } from "../../api/tasks";
+import profileImagePlaceholder from "../../assets/img/profile.svg";
 import UpdateAssigneeDropdown from "./UpdateAssigneeDropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
