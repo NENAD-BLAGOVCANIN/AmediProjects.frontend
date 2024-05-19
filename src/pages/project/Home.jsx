@@ -4,8 +4,23 @@ import projectPlaceholderIcon from '../../assets/img/projectPlaceholderIcon.jpg'
 import { getProjectInfo } from '../../api/project';
 import NewNotifications from '../../components/Home/NewNotifications';
 import Calendar from 'react-calendar';
+import { Chart, ArcElement, Tooltip, Legend } from 'chart.js/auto';
+import { Pie, Doughnut, Line } from 'react-chartjs-2';
 
 function Home() {
+
+    const lineChartData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        datasets: [
+            {
+                label: 'Smooth Data 1',
+                data: [1, 3, 10, 7, 8, 12, 15, 20, 17, 18, 28, 28, 30, 28, 35],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.4, // Increased tension for smoother curves
+            },
+        ],
+    };
 
     const [projectInfo, setProjectInfo] = useState([]);
     const [userInfo, setUserInfo] = useState(null);
@@ -51,23 +66,34 @@ function Home() {
             <div className="row pt-3">
                 <div className="col-md-6">
                     <div className="bg-white rounded p-3 shadow-sm">
-                        <h6 className='bold mb-3'>Project status</h6>
+                        <h6 className='bold mb-3'>Employee performance</h6>
 
-                        <p className='badge badge-primary bg-warning py-2'>Status: {projectInfo.status}</p>
-                        <p>Due date: {projectInfo.created_at && formatDate(projectInfo.created_at)}</p>
+                        <Line data={lineChartData} />
 
                     </div>
-                </div>
-                <div className="col-md-6">
-                    <NewNotifications userInfo={userInfo} />
-                </div>
-            </div>
 
-            <div className="row pt-5">
-                <div className="col-md-6">
+                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
+                        <h6 className='bold mb-3'>Late tasks</h6>
+
+                        <p className='py-5 text-center'>You have no late tasks 😊</p>
+
+                    </div>
+
+                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
+                        <h6 className='bold mb-3'>Today's meetings</h6>
+
+                        <p className='py-5 text-center'>You have no meetings for today 😔</p>
+
+                    </div>
+
+
+
                 </div>
                 <div className="col-md-6">
-                    <div className="bg-white rounded p-3 shadow-sm">
+
+                    <NewNotifications userInfo={userInfo} />
+
+                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
                         <h6 className='bold mb-3'>My calendar</h6>
                         <Calendar onChange={onChange} value={value} className="w-100 border-0 px-4 my-4" />
                     </div>
