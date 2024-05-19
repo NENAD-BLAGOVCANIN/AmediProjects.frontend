@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { getUserInfo } from '../../api/user';
-import projectPlaceholderIcon from '../../assets/img/projectPlaceholderIcon.jpg'
 import { getProjectInfo } from '../../api/project';
 import NewNotifications from '../../components/Home/NewNotifications';
 import Calendar from 'react-calendar';
@@ -23,20 +22,16 @@ function Home() {
         ],
     };
 
-    const config = {
-        type: 'line',
-        data: lineChartData,
-        options: {
-            scales: {
-                x: {
-                    grid: {
-                        display: false, // Disable grid lines on x-axis
-                    },
+    const options = {
+        scales: {
+            x: {
+                grid: {
+                    display: false, // Disable grid lines on x-axis
                 },
-                y: {
-                    grid: {
-                        display: false, // Disable grid lines on y-axis
-                    },
+            },
+            y: {
+                grid: {
+                    display: false, // Disable grid lines on y-axis
                 },
             },
         },
@@ -88,7 +83,7 @@ function Home() {
                     <div className="bg-white rounded p-3 shadow-sm">
                         <h6 className='bold mb-3'>Employee performance</h6>
 
-                        <Line data={lineChartData} options={config} />
+                        <Line data={lineChartData} options={options} />
 
                     </div>
 
