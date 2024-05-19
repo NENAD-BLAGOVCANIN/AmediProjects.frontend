@@ -16,12 +16,14 @@ function UserDropdown({ userInfo, setUserInfo }) {
                 </div>
 
 
+                {userInfo?.role?.can_access_admin_panel && (
                 <li className='nav-item px-2 rounded'>
                     <Link to="/admin/dashboard" className='nav-link'>
                         <FontAwesomeIcon icon={faChartSimple} />
                         <span className='ps-3 medium'>Admin Panel</span>
                     </Link>
                 </li>
+                )}
                 <li className='nav-item px-2 rounded'>
                     <Link to="/profile" className='nav-link'>
                         <FontAwesomeIcon icon={faUser} />
