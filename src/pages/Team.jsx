@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header/Header'
 import { getProjectInfo, getProjectMembers, updateProjectInfo } from '../api/project'
-import placeholderProfileImage from '../assets/img/profile.svg'
 import { frontendUrl } from '../api/config'
+import profileImagePlaceholder from "../assets/img/profile.svg";
 
 function Team() {
 
@@ -46,7 +46,11 @@ function Team() {
 
                         {projectMembers.map(projectMember => (
                             <div className='col-md-2 d-flex flex-column align-items-center pt-3 pe-2 w-fit' key={projectMember.id} >
-                                <img src={placeholderProfileImage} className='img-fluid hover-lg rounded-lg' style={{ maxWidth: 55 }} alt="" />
+                                <img
+                                    src={projectMember?.user?.profile_image ?? profileImagePlaceholder}
+                                    className='img-fluid hover-lg rounded-lg' style={{ maxWidth: 55 }}
+                                    alt=""
+                                />
                                 <span className='small pt-1'>{projectMember.user.name.length > 8 ? projectMember.user.name.substring(0, 8) + '...' : projectMember.user.name}</span>
                             </div>
                         ))}
