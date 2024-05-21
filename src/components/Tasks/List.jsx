@@ -2,6 +2,7 @@ import React from 'react'
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck as solidCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 function List({ tasks, setTasks, setSelectedTask, selectedTask,
   showTasksModal, setShowTasksModal, showAddTaskCard, setShowAddTaskCard }) {

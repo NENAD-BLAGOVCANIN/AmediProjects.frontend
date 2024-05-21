@@ -1,6 +1,7 @@
 import React from 'react'
 import amediProfileImg from '../../assets/img/amediProfileImg.webp'
 import { convertHtmlToText } from "../Header/NotificationsDropdown";
+import { useTranslation } from 'react-i18next';
 
 function NewNotifications({ userInfo }) {
   return (

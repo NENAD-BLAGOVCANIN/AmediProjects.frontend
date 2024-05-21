@@ -1,5 +1,5 @@
 import React from "react";
-import profileImagePlaceholder from "../../assets/img/profile.svg";
+import { useTranslation } from 'react-i18next';
 import amediProfileImg from "../../assets/img/amediProfileImg.webp";
 
 function NotificationsDropdown({ userInfo, setUserInfo }) {

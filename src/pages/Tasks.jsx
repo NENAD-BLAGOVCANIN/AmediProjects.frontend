@@ -13,6 +13,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Board from '../components/Tasks/Board'
 import TasksTimeline from '../components/Tasks/Timeline'
 import List from '../components/Tasks/List'
+import { useTranslation } from 'react-i18next';
 
 function Tasks() {
 

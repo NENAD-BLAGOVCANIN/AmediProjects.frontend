@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import profileImagePlaceholder from "../../assets/img/profile.svg";
 import { TaskPropType } from "../../lib/propTypes";
+import { useTranslation } from 'react-i18next';
 
 const TaskCard = ({ task, handleShowTaskModal }) => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next';
 
 function ViewUserModal({ showViewUserModal, setShowViewUserModal, selectedUser }) {
-
 
     const handleCloseAddContactsModal = () => {
         setShowViewUserModal(false);

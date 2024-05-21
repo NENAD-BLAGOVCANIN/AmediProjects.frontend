@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import NotificationsDropdown from './Header/NotificationsDropdown';
 import UserDropdown from './Header/UserDropdown';
+import { useTranslation } from 'react-i18next';
 
 function SocialHeader({ userInfo, setUserInfo }) {
 

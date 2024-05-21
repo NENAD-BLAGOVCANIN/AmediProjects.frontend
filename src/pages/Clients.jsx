@@ -4,6 +4,7 @@ import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { getClients } from '../api/clients';
 import { deleteClient } from '../api/clients';
 import AddClientModal from '../components/CRM/Clients/AddClientModal';
+import { useTranslation } from 'react-i18next';
 
 function Clients({ contacts, setContacts, clients, setClients }) {
 

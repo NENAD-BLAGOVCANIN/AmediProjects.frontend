@@ -3,6 +3,7 @@ import projectPlaceholderIcon from "../../../assets/img/projectPlaceholderIcon.j
 import { updateProjectImage, updateProjectInfo } from "../../../api/project";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from 'react-i18next';
 
 function ProjectDetailsModal({
   showViewProjectDetailsModal,

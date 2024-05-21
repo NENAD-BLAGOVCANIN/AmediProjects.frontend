@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { saveTask } from "../../api/tasks";
 import TaskCard from "./TaskCard";
 import CreateTaskCard from "./CreateTaskCard";
+import { useTranslation } from 'react-i18next';
 
 function Board({
   tasks,

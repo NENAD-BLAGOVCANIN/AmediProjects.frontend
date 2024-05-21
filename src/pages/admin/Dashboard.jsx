@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowTrendUp } from '@fortawesome/free-solid-svg-icons';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js/auto';
 import { Pie, Doughnut, Line } from 'react-chartjs-2';
+import { useTranslation } from 'react-i18next';
 
 function Dashboard() {
   const [stats] = useState({
@@ -45,30 +46,33 @@ function Dashboard() {
   };
 
 
-    // Helper function to generate smoother data
-    function generateSmoothData(base, variation) {
-      return Array.from({ length: 12 }, (_, i) => base + (Math.sin(i) * variation));
-    }
+  function generateSmoothData(base, variation) {
+    return Array.from({ length: 12 }, (_, i) => base + (Math.sin(i) * variation));
+  }
 
-    const lineChartData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      datasets: [
-        {
-          label: 'Smooth Data 1',
-          data: generateSmoothData(25, 10),
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.4, // Increased tension for smoother curves
+  const lineChartData = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    datasets: [
+      {
+        label: 'Smooth Data 1',
+        data: [1, 3, 10, 7, 8, 12, 15, 20, 17, 18, 28, 28, 30, 28, 35],
+        fill: true,
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.4,
+      },
+    ],
+  };
+
+  const options = {
+    scales: {
+      x: {
+        grid: {
+          display: false,
         },
-        {
-          label: 'Smooth Data 2',
-          data: generateSmoothData(20, 8),
-          fill: false,
-          borderColor: 'rgb(255, 99, 132)',
-          tension: 0.4, // Increased tension for smoother curves
-        },
-      ],
-    };
+      },
+    },
+  };
 
 
   return (
@@ -108,7 +112,7 @@ function Dashboard() {
           <div className="bg-white p-3 rounded d-flex justify-content-center flex-column w-100">
             <h5 className="mb-3">Monthly Earnings</h5>
             <div className="m-auto w-100 h-100 d-flex justify-content-center text-center">
-              <Line data={lineChartData} />
+              <Line data={lineChartData} options={options} />
             </div>
           </div>
         </div>
@@ -136,7 +140,7 @@ function Dashboard() {
           <div className="bg-white p-3 rounded d-flex justify-content-center flex-column w-100">
             <h5 className="mb-3">Monthly Earnings</h5>
             <div className="m-auto w-100 h-100 d-flex justify-content-center text-center">
-              <Line data={lineChartData} />
+              <Line data={lineChartData} options={options} />
             </div>
           </div>
         </div>

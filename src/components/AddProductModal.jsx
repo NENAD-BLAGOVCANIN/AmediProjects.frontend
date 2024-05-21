@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { saveProduct } from '../api/products';
+import { useTranslation } from 'react-i18next';
 
 function AddProductModal({ products, setProducts, showAddProductModal, setShowAddProductModal }) {
     const [name, setName] = useState('');

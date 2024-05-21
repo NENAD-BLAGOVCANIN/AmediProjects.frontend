@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import Sidebar from '../components/Sidebar'
-import Header from '../components/Header/Header'
-import { getProjectInfo, getProjectMembers, updateProjectInfo } from '../api/project'
+import { getProjectInfo, getProjectMembers } from '../api/project'
 import { frontendUrl } from '../api/config'
 import profileImagePlaceholder from "../assets/img/profile.svg";
+import { useTranslation } from 'react-i18next';
 
 function Team() {
 

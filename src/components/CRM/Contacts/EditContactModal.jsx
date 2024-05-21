@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { updateContact } from '../../../api/contacts';
+import { useTranslation } from 'react-i18next';
 
 function EditContactModal({ contacts, setContacts, showEditContactsModal, setShowEditContactsModal, selectedContact, setSelectedContact }) {
     const [name, setName] = useState('');

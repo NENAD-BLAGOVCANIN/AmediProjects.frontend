@@ -8,6 +8,7 @@ import placeholderProfileImage2 from "../../assets/img/placeholder-profile-img-2
 import ProjectDetailsModal from "../../components/Admin/Projects/ProjectDetailsModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLayerGroup } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from 'react-i18next';
 
 function ProjectsManagement() {
   const [projects, setProjects] = useState([]);

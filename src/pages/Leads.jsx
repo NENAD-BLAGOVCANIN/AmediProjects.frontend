@@ -6,6 +6,7 @@ import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { getLeads } from '../api/leads';
 import { deleteLead } from '../api/leads';
 import AddLeadModal from '../components/CRM/Leads/AddLeadModal';
+import { useTranslation } from 'react-i18next';
 
 function Leads({ leads, setLeads, contacts, setContacts }) {
 

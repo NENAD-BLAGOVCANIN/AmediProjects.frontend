@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { TaskPropType } from "../../lib/propTypes";
 import { faCalendar, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from 'react-i18next';
 
 const CreateTaskCard = ({
   showAddTaskCard,

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { register } from '../api/register';
+import { useTranslation } from 'react-i18next';
 
 function RegistrationModal({ showRegistrationModal, setShowRegistrationModal, users, setUsers }) {
 

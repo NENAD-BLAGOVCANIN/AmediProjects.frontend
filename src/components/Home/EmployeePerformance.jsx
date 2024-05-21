@@ -1,6 +1,7 @@
 import React from 'react'
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js/auto';
 import { Pie, Doughnut, Line } from 'react-chartjs-2';
+import { useTranslation } from 'react-i18next';
 
 function EmployeePerformance() {
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartArea, faChartSimple, faGauge, faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next';
 
 function UserDropdown({ userInfo, setUserInfo }) {
 

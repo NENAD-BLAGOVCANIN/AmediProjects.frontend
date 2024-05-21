@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { saveLead } from '../../../api/leads';
+import { useTranslation } from 'react-i18next';
 
 function ViewContactModal({ showViewContactModal, setShowViewContactModal, selectedContact, setSelectedContact, leads, setLeads }) {
 

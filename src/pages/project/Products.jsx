@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash, faBars, faEdit } from '@fortawesome/free-solid-svg-icons';
 import AddProductModal from '../../components/AddProductModal';
 import productExampleImage from '../../assets/img/product-example-image.jpg';
+import { useTranslation } from 'react-i18next';
 
 function Products() {
 

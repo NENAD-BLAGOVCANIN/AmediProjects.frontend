@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { saveProject } from '../api/project';
 import { useNavigate } from 'react-router-dom';
 import SocialHeader from '../components/SocialHeader';
+import { useTranslation } from 'react-i18next';
 
 function CreateNewProject() {
 

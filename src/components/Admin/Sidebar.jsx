@@ -6,7 +6,7 @@ import {
     faArrowLeft
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import IconLight from '../../assets/img/icon-light.png'
+import { useTranslation } from 'react-i18next';
 
 function Sidebar({ userInfo, setUserInfo }) {
 

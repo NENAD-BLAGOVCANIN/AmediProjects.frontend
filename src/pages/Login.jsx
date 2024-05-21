@@ -3,6 +3,7 @@ import logo from '../assets/img/logo.png'
 import { login } from '../api/login';
 import { useNavigate } from 'react-router-dom';
 import mobileImgExample from '../assets/img/mobile-img-example.png'
+import { useTranslation } from 'react-i18next';
 
 export default function Login({ authenticated, setAuthenticated }) {
 

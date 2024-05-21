@@ -4,8 +4,7 @@ import { getUserInfo, updateProfileImage } from "../api/user";
 import { getMyProjects } from "../api/project";
 import projectPlaceholderIcon from "../assets/img/projectPlaceholderIcon.jpg";
 import profileImagePlaceholder from "../assets/img/profile.svg";
-import placeholderProfileImage1 from "../assets/img/placeholder-profile-img-1.jpeg";
-import placeholderProfileImage2 from "../assets/img/placeholder-profile-img-2.jpg";
+import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 

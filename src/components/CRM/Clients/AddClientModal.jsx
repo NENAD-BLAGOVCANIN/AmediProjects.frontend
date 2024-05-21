@@ -3,6 +3,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { saveClient } from '../../../api/clients';
 import { getContacts } from '../../../api/contacts';
+import { useTranslation } from 'react-i18next';
 
 function AddClientModal({ clients, setClients, showAddClientModal, setShowAddClientModal, contacts, setContacts }) {
 

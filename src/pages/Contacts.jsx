@@ -8,6 +8,7 @@ import AddContactModal from '../components/CRM/Contacts/AddContactModal';
 import EditContactModal from '../components/CRM/Contacts/EditContactModal';
 import { deleteContact } from '../api/contacts';
 import ViewContactModal from '../components/CRM/Contacts/ViewContactModal';
+import { useTranslation } from 'react-i18next';
 
 function Contacts({ contacts, setContacts, leads, setLeads }) {
 

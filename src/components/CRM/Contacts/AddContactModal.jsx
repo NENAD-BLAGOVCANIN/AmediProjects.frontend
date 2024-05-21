@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { saveContact } from '../../../api/contacts';
+import { useTranslation } from 'react-i18next';
 
 function AddContactModal({ contacts, setContacts, showAddContactsModal, setShowAddContactsModal }) {
     const [name, setName] = useState('');

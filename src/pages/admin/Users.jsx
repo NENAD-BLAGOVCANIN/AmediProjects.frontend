@@ -7,6 +7,7 @@ import { faPlus, faTrash, faBars, faEdit } from '@fortawesome/free-solid-svg-ico
 import RegistrationModal from '../../components/RegistrationModal';
 import ViewUserModal from '../../components/ViewUserModal';
 import { deleteUser } from '../../api/user';
+import { useTranslation } from 'react-i18next';
 
 function Users() {
 

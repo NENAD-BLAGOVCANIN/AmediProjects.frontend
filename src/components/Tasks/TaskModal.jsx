@@ -9,6 +9,7 @@ import {
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 import { Form } from "react-bootstrap";
+import { useTranslation } from 'react-i18next';
 
 function TaskModal({
   showTasksModal,
