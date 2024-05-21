@@ -307,7 +307,6 @@ hr {
 .project-card {
   text-decoration: none !important;
   min-height: 185px;
-  height: 100%;
 }
 
 .project-card:hover {

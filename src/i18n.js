@@ -29,6 +29,13 @@ i18n
             my_calendar: "My calendar",
           }
         }
+      },
+      sr: {
+        translation: {
+          greeting: {
+            welcome: "Dobrodošli"
+          }
+        }
       }
     }
   });
