@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function Login({ authenticated, setAuthenticated }) {
 
+    const { t } = useTranslation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -41,7 +42,7 @@ export default function Login({ authenticated, setAuthenticated }) {
 
 
                             <div className='pt-3 pb-5'>
-                                <span className='py-3 h3 bold'>Welcome Back!</span>
+                                <span className='py-3 h3 bold'>{t('greeting.welcome_back')}!</span>
                             </div>
 
 
@@ -49,25 +50,25 @@ export default function Login({ authenticated, setAuthenticated }) {
 
                             <form onSubmit={handleSubmit} className='w-100'>
                                 <div className='py-2'>
-                                    <label className='mb-2'>Email</label>
+                                    <label className='mb-2'>{t('login.email')}</label>
                                     <input type="text" name='email' value={email} onChange={(e) => setEmail(e.target.value)} className='form-control bg-transparent py-3 border-0' style={{ backgroundColor: '#EBE9F9' }} placeholder='example@company.com' />
                                 </div>
                                 <div className='py-2'>
-                                    <label className='mb-2'>Password</label>
+                                    <label className='mb-2'>{t('login.password')}</label>
                                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name='password' className='form-control bg-transparent py-3 border-0' style={{ backgroundColor: '#EBE9F9' }} placeholder='••••••••' />
                                 </div>
                                 <div className='py-4'>
-                                    <button type="submit" className='btn btn-primary w-100 py-3 border-0 bold' style={{ backgroundColor: '#EBE9F9' }}>Login</button>
+                                    <button type="submit" className='btn btn-primary w-100 py-3 border-0 bold hover-lg' style={{ backgroundColor: '#EBE9F9' }}>{t('login.login')}</button>
                                 </div>
 
                                 <div className='d-flex justify-content-between py-2'>
                                     <div className="form-check">
                                         <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                                         <label className="form-check-label text-secondary small" htmlFor="flexCheckDefault">
-                                            Remember Me
+                                            {t('login.remember_me')}
                                         </label>
                                     </div>
-                                    <a href="" className='text-muted small fw-500 text-decoration-none'>Trouble logging in?</a>
+                                    <a href="" className='text-muted small fw-500 text-decoration-none'>{t('login.trouble_logging_in')}</a>
                                 </div>
 
                             </form>

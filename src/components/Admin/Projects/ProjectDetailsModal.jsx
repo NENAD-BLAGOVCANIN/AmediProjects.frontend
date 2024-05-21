@@ -11,6 +11,8 @@ function ProjectDetailsModal({
   selectedProject,
   setSelectedProject,
 }) {
+  
+  const { t } = useTranslation();
   const [selectedRole, setSelectedRole] = useState(selectedProject.status);
   const [projectImage, setProjectImage] = useState(null);
   const inputRef = useRef(null);

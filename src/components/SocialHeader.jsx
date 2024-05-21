@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logo from '../assets/img/logo.png'
+import logo from '../assets/img/company-logo.png'
 import { Link } from 'react-router-dom'
 import profileImagePlaceholder from '../assets/img/profile.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

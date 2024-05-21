@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 function Sidebar({ userInfo, setUserInfo }) {
 
+    const { t } = useTranslation();
     const [sidebarActive, setSidebarActive] = useState(true);
     const [currentPage, setCurrentPage] = useState(window.location.pathname);
 

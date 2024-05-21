@@ -1,5 +1,5 @@
 :root {
-  --color-primary: rgb(16, 42, 112);
+  --color-primary: rgb(239, 119, 38);
   --color-text: #333;
   --color-text-lighter: #666666;
   --color-secondary: rgb(179, 179, 179);
@@ -104,12 +104,16 @@ a {
 
 .btn-primary,
 .bg-primary {
-  background: rgb(12, 96, 139);
+  background: rgb(239, 119, 38);
   background: linear-gradient(90deg,
-      rgba(12, 96, 139, 1) 0%,
-      rgba(12, 39, 99, 1) 28%,
-      rgba(12, 39, 99, 1) 81%,
-      rgba(12, 96, 139, 1) 100%);
+      rgb(239, 119, 38) 0%,
+      rgb(216, 107, 35) 28%,
+      rgb(179, 88, 28) 81%,
+      rgba(239, 119, 38, 1) 100%);
+}
+
+.btn-primary{
+  border-color: var(--color-primary) !important;
 }
 
 .text-primary {
@@ -230,12 +234,10 @@ hr {
 .nav-item.active .nav-link,
 .nav-item:hover,
 .nav-item:hover .nav-link {
-  color: var(--color-primary) !important;
+  color: var(--color-dark) !important;
 }
 
 .nav-item:hover,
-.nav-item:hover,
-.nav-item.active,
 .nav-item.active {
   background-color: transparent !important;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -390,7 +392,7 @@ hr {
 .nav-item .nav-link.active,
 .nav-item .nav-link:hover {
   font-weight: 500;
-  color: var(--color-primary) !important;
+  color: var(--color-dark) !important;
 }
 
 .custom-dropdown .title-wrap {

@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 function Home() {
 
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [projectInfo, setProjectInfo] = useState([]);
     const [userInfo, setUserInfo] = useState(null);
     const [value, onChange] = useState(new Date());

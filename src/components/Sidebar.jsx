@@ -1,29 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCompass,
-  faAddressBook,
-  faUser,
-  faUsers,
-  faListCheck,
-  faCalendar,
-  faUserTie,
-  faRightFromBracket,
-  faTriangleExclamation,
-  faClock,
-  faUserGroup,
-  faBars,
-  faGear,
-  faExclamation,
-  faArrowRightArrowLeft,
-  faChartSimple,
-  faNoteSticky,
-  faHouse,
-  faBox,
-  faLayerGroup,
-  faChartLine,
-  faSliders,
-  faBell,
+  faAddressBook, faUsers, faListCheck, faCalendar, faUserTie, faUserGroup, faBars, faHouse, faBox, faChartLine, faSliders, faBell,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { switchProject } from "../api/project";
@@ -35,6 +13,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
   const [sidebarActive, setSidebarActive] = useState(true);
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     function handleResize() {
@@ -142,9 +121,8 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
           </div>
 
           <li
-            className={`nav-item px-2 rounded ${
-              currentPage === "/home" ? "active" : ""
-            }`}
+            className={`nav-item px-2 rounded ${currentPage === "/home" ? "active" : ""
+              }`}
           >
             <Link
               to="/home"
@@ -152,14 +130,13 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               onClick={() => handlePageChange("/home")}
             >
               <FontAwesomeIcon icon={faHouse} />
-              <span className="ps-3 medium">Home</span>
+              <span className="ps-3 medium">{t('sidebar.home')}</span>
             </Link>
           </li>
 
           <li
-            className={`nav-item px-2 rounded ${
-              currentPage === "/tasks" ? "active" : ""
-            }`}
+            className={`nav-item px-2 rounded ${currentPage === "/tasks" ? "active" : ""
+              }`}
           >
             <Link
               to="/tasks"
@@ -168,15 +145,14 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
             >
               <FontAwesomeIcon icon={faListCheck} />
               <span className="ps-3 medium d-flex align-items-center">
-                <span className="pe-2">Tasks</span>
+                <span className="pe-2 medium">{t('sidebar.tasks')}</span>
               </span>
             </Link>
           </li>
 
           <li
-            className={`nav-item px-2 rounded ${
-              currentPage === "/products" ? "active" : ""
-            }`}
+            className={`nav-item px-2 rounded ${currentPage === "/products" ? "active" : ""
+              }`}
           >
             <Link
               to="/products"
@@ -184,14 +160,13 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               onClick={() => handlePageChange("/products")}
             >
               <FontAwesomeIcon icon={faBox} />
-              <span className="ps-3 medium">Products</span>
+              <span className="ps-3 medium">{t('sidebar.products')}</span>
             </Link>
           </li>
 
           <li
-            className={`nav-item px-2 rounded ${
-              currentPage === "/team" ? "active" : ""
-            }`}
+            className={`nav-item px-2 rounded ${currentPage === "/team" ? "active" : ""
+              }`}
           >
             <Link
               to="/team"
@@ -199,7 +174,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               onClick={() => handlePageChange("/team")}
             >
               <FontAwesomeIcon icon={faUsers} />
-              <span className="ps-3 medium">Team</span>
+              <span className="ps-3 medium">{t('sidebar.team')}</span>
             </Link>
           </li>
         </div>
@@ -210,9 +185,8 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
           </div>
 
           <li
-            className={`nav-item px-2 rounded ${
-              currentPage === "/contacts" ? "active" : ""
-            }`}
+            className={`nav-item px-2 rounded ${currentPage === "/contacts" ? "active" : ""
+              }`}
           >
             <Link
               to="/contacts"
@@ -220,13 +194,12 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               onClick={() => handlePageChange("/contacts")}
             >
               <FontAwesomeIcon icon={faAddressBook} />
-              <span className="ps-3 medium">Contacts</span>
+              <span className="ps-3 medium">{t('sidebar.contacts')}</span>
             </Link>
           </li>
           <li
-            className={`nav-item px-2 rounded ${
-              currentPage === "/leads" ? "active" : ""
-            }`}
+            className={`nav-item px-2 rounded ${currentPage === "/leads" ? "active" : ""
+              }`}
           >
             <Link
               to="/leads"
@@ -234,14 +207,13 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               onClick={() => handlePageChange("/leads")}
             >
               <FontAwesomeIcon icon={faUserTie} />
-              <span className="ps-3 medium">Leads</span>
+              <span className="ps-3 medium">{t('sidebar.leads')}</span>
             </Link>
           </li>
 
           <li
-            className={`nav-item px-2 rounded ${
-              currentPage === "/clients" ? "active" : ""
-            }`}
+            className={`nav-item px-2 rounded ${currentPage === "/clients" ? "active" : ""
+              }`}
           >
             <Link
               to="/clients"
@@ -249,7 +221,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               onClick={() => handlePageChange("/tasks")}
             >
               <FontAwesomeIcon icon={faUserGroup} />
-              <span className="ps-3 medium">Clients</span>
+              <span className="ps-3 medium">{t('sidebar.clients')}</span>
             </Link>
           </li>
         </div>
@@ -262,27 +234,27 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
           <li className="nav-item px-2 rounded">
             <Link to="/notifications" className="nav-link">
               <FontAwesomeIcon icon={faBell} />
-              <span className="ps-3 medium">Notifications</span>
+              <span className="ps-3 medium">{t('sidebar.notifications')}</span>
             </Link>
           </li>
 
           <li className="nav-item px-2 rounded">
             <Link to="/profile" className="nav-link">
               <FontAwesomeIcon icon={faCalendar} />
-              <span className="ps-3 medium">My schedule</span>
+              <span className="ps-3 medium">{t('sidebar.my_schedule')}</span>
             </Link>
           </li>
 
           <li className="nav-item px-2 rounded">
             <Link to="/profile" className="nav-link">
               <FontAwesomeIcon icon={faChartLine} />
-              <span className="ps-3 medium">Performance</span>
+              <span className="ps-3 medium">{t('sidebar.performance')}</span>
             </Link>
           </li>
           <li className="nav-item px-2 rounded">
             <Link to="/profile" className="nav-link">
               <FontAwesomeIcon icon={faSliders} />
-              <span className="ps-3 medium">Preferences</span>
+              <span className="ps-3 medium">{t('sidebar.preferences')}</span>
             </Link>
           </li>
         </div>
