@@ -30,7 +30,7 @@ i18n
           }
         }
       },
-      sr: {
+      he: {
         translation: {
           greeting: {
             welcome: "Dobrodošli"

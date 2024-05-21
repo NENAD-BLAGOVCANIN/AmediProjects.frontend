@@ -9,12 +9,12 @@ import { getProjectMembers } from "../../api/project";
 
 const lngs = {
   en: { nativeName: 'English' },
-  sr: { nativeName: 'Serbian' }
+  he: { nativeName: 'Hebrew' }
 };
 
 const flagMapping = {
   English: "https://flagicons.lipis.dev/flags/4x3/us.svg",
-  Serbian: "https://flagicons.lipis.dev/flags/4x3/il.svg",
+  Hebrew: "https://flagicons.lipis.dev/flags/4x3/il.svg",
 };
 
 
