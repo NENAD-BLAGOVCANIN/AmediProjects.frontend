@@ -61,12 +61,48 @@ i18n
       },
       he: {
         translation: {
+          sidebar: {
+            home: "בית",
+            tasks: "משימות",
+            products: "מוצרים",
+            team: "צוות",
+            contacts: "אנשי קשר",
+            leads: "לידים",
+            clients: "לקוחות",
+            notifications: "התראות",
+            my_schedule: "לוח זמנים",
+            performance: "תפוקה",
+            preferences: "העדפות",
+            project: "פרוייקט",
+            crm: "ניהול לוחות",
+            personal: "איזור אישי",
+          },
           greeting: {
-            welcome: "Dobrodošli"
+            welcome: "ברוכים הבאים",
+            welcome_back: "ברוך הבא",
+          },
+          card_title: {
+            employee_performance: "תפוקת עובדים",
+            late_tasks: "משימות עתידיות",
+            todays_meetings: "פגישות היום",
+            my_calendar: "יומן",
+          },
+          login: {
+            remember_me: "זכור אותי",
+            trouble_logging_in: "לא מצליח להתחבר?",
+            login: "התחבר",
+            email: "אימייל",
+            password: "סיסמא",
+          },
+          user_dropdown: {
+            admin_panel: "פאנל פרוייקטים",
+            my_profile: "הפרופיל שלי",
+            logout: "התנתק"
           }
-        }
+        },
       }
     }
-  });
+  }
+  );
 
 export default i18n;
