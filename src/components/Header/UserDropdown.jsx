@@ -7,13 +7,14 @@ import { useTranslation } from 'react-i18next';
 function UserDropdown({ userInfo, setUserInfo }) {
 
     const userName = userInfo ? userInfo.name : '';
+    const { t } = useTranslation();
 
     return (
         <div>
             <div className="dropdown-menu dropdown-menu-left show active" aria-labelledby="accountDropdown"
                 style={{ position: 'absolute', width: 250 }}>
                 <div className="title-wrap d-flex align-items-center pb-4">
-                    <h3 className="title text-center justify-content-center w-100 mb-0">Hello, {userName}</h3>
+                    <h3 className="title text-center justify-content-center w-100 mb-0">{t('greeting.welcome')}, {userName}</h3>
                 </div>
 
 
@@ -21,7 +22,7 @@ function UserDropdown({ userInfo, setUserInfo }) {
                     <li className='nav-item px-2 rounded'>
                         <Link to="/admin/dashboard" className='nav-link'>
                             <FontAwesomeIcon icon={faChartSimple} />
-                            <span className='ps-3 medium'>Admin Panel</span>
+                            <span className='ps-3 medium'>{t('user_dropdown.admin_panel')}</span>
                         </Link>
                     </li>
                 ) : null}
@@ -29,13 +30,13 @@ function UserDropdown({ userInfo, setUserInfo }) {
                 <li className='nav-item px-2 rounded'>
                     <Link to="/profile" className='nav-link'>
                         <FontAwesomeIcon icon={faUser} />
-                        <span className='ps-3 medium'>My Profile</span>
+                        <span className='ps-3 medium'>{t('user_dropdown.my_profile')}</span>
                     </Link>
                 </li>
                 <li className='nav-item px-2 rounded'>
                     <Link to="/logout" className='nav-link'>
                         <FontAwesomeIcon icon={faRightFromBracket} />
-                        <span className='ps-3 medium'>Logout</span>
+                        <span className='ps-3 medium'>{t('user_dropdown.logout')}</span>
                     </Link>
                 </li>
 

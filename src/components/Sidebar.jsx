@@ -117,7 +117,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
       <ul className="list-unstyled py-4">
         <div className="sidebar-link-group">
           <div className="pb-2">
-            <span className="small bold text-secondary">Project</span>
+            <span className="small bold text-secondary">{t('sidebar.project')}</span>
           </div>
 
           <li
@@ -181,7 +181,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
 
         <div className="sidebar-link-group">
           <div className="pb-2">
-            <span className="small bold text-secondary">CRM</span>
+            <span className="small bold text-secondary">{t('sidebar.crm')}</span>
           </div>
 
           <li
@@ -228,7 +228,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
 
         <div className="sidebar-link-group">
           <div className="pb-2">
-            <span className="small bold text-secondary">Personal</span>
+            <span className="small bold text-secondary">{t('sidebar.personal')}</span>
           </div>
 
           <li className="nav-item px-2 rounded">

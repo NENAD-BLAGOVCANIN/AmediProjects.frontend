@@ -30,7 +30,10 @@ i18n
             notifications: "Notifications",
             my_schedule: "My schedule",
             performance: "Performance",
-            preferences: "Preferences"
+            preferences: "Preferences",
+            project: "Project",
+            crm: "CRM",
+            personal: "Personal",
           },
           greeting: {
             welcome: "Welcome",
@@ -48,6 +51,11 @@ i18n
             login: "Login",
             email: "Email",
             password: "Password",
+          },
+          user_dropdown: {
+            admin_panel: "Admin Panel",
+            my_profile: "My Profile",
+            logout: "Logout"
           }
         }
       },
