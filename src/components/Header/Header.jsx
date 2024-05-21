@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from "react";
 import profileImagePlaceholder from "../../assets/img/profile.svg";
-import placeholderProfileImage1 from "../../assets/img/placeholder-profile-img-1.jpeg";
-import placeholderProfileImage2 from "../../assets/img/placeholder-profile-img-2.jpg";
+import { useTranslation, Trans } from 'react-i18next';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import NotificationsDropdown from "./NotificationsDropdown";
 import UserDropdown from "./UserDropdown";
 import { getProjectMembers } from "../../api/project";
 
+const lngs = {
+  en: { nativeName: 'English' },
+  sr: { nativeName: 'Serbian' }
+};
+
+const flagMapping = {
+  English: "https://flagicons.lipis.dev/flags/4x3/us.svg",
+  Serbian: "https://flagicons.lipis.dev/flags/4x3/il.svg",
+};
+
+
 function Header({ pageTitle, userInfo, setUserInfo }) {
-  const [isNotificationsDropdownOpen, setIsNotificationsDropdownOpen] =
-    useState(false);
+  const [isNotificationsDropdownOpen, setIsNotificationsDropdownOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [projectMembers, setProjectMembers] = useState([]);
+  const { t, i18n } = useTranslation();
 
   const toggleNotificationsDropdown = () => {
     setIsNotificationsDropdownOpen(!isNotificationsDropdownOpen);
@@ -39,6 +49,15 @@ function Header({ pageTitle, userInfo, setUserInfo }) {
         </div>
 
         <div className="d-flex align-items-center">
+          <div>
+            {Object.keys(lngs).map((lng) => (
+              <button key={lng} className="btn border-0" type="submit" onClick={() => {
+                i18n.changeLanguage(lng);
+              }}>
+                <img src={flagMapping[lngs[lng].nativeName]} style={{ height: 15 }} />
+              </button>
+            ))}
+          </div>
           <div className="px-5">
             {projectMembers?.map((member) => {
               return (
