@@ -4,9 +4,11 @@ import { getProjectInfo } from '../../api/project';
 import NewNotifications from '../../components/Home/NewNotifications';
 import Calendar from 'react-calendar';
 import EmployeePerformance from '../../components/Home/EmployeePerformance';
+import { useTranslation } from 'react-i18next';
 
 function Home() {
 
+    const { t, i18n } = useTranslation();
     const [projectInfo, setProjectInfo] = useState([]);
     const [userInfo, setUserInfo] = useState(null);
     const [value, onChange] = useState(new Date());
@@ -45,7 +47,7 @@ function Home() {
         <div className="container">
 
             <div className='pt-3'>
-                <h3 className='mt-3 fw-500'>Welcome, {userInfo && userInfo.name.split(" ")[0]}!</h3>
+                <h3 className='mt-3 fw-500'>{t('greeting.welcome')}, {userInfo && userInfo.name.split(" ")[0]}!</h3>
             </div>
 
             <div className="row pt-3">

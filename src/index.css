@@ -27,6 +27,11 @@ body {
   background-color: var(--color-background) !important;
 }
 
+body[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
 #root {
   min-height: 100vh;
 }
