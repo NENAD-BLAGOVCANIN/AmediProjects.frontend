@@ -212,7 +212,7 @@ function TaskModal({
 
             <div className="d-flex align-items-center mt-5">
               <h5 className="mb-0 pe-3">Status</h5>
-              <Form>
+              <Form className="m-0">
                 <Form.Group controlId="exampleForm.SelectCustom">
                   <Form.Select
                     custom
