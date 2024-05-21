@@ -21,6 +21,12 @@ i18n
         translation: {
           greeting: {
             welcome: "Welcome"
+          },
+          card_title: {
+            employee_performance: "Employee performance",
+            late_tasks: "Late tasks",
+            todays_meetings: "Today's meetings",
+            my_calendar: "My calendar",
           }
         }
       }

@@ -53,21 +53,21 @@ function Home() {
             <div className="row pt-3">
                 <div className="col-md-6">
                     <div className="bg-white rounded p-3 shadow-sm">
-                        <h6 className='bold mb-3'>Employee performance</h6>
+                        <h6 className='bold mb-3'>{t('card_title.employee_performance')}</h6>
 
                         <EmployeePerformance />
 
                     </div>
 
                     <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <h6 className='bold mb-3'>Late tasks</h6>
+                        <h6 className='bold mb-3'>{t('card_title.late_tasks')}</h6>
 
                         <p className='py-5 text-center'>You have no late tasks 😊</p>
 
                     </div>
 
                     <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <h6 className='bold mb-3'>Today's meetings</h6>
+                        <h6 className='bold mb-3'>{t('card_title.todays_meetings')}</h6>
 
                         <p className='py-5 text-center'>You have no meetings for today 😔</p>
 
@@ -81,7 +81,7 @@ function Home() {
                     <NewNotifications userInfo={userInfo} />
 
                     <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <h6 className='bold mb-3'>My calendar</h6>
+                        <h6 className='bold mb-3'>{t('card_title.my_calendar')}</h6>
                         <Calendar onChange={onChange} value={value} className="w-100 border-0 px-4 my-4" />
                     </div>
                 </div>
