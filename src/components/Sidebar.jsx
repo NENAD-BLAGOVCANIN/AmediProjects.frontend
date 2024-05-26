@@ -75,7 +75,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
             <img
               src={userInfo?.project?.image ?? exampleProjectIcon}
               style={{ height: 15 }}
-              className="rounded me-2"
+              className="rounded me-2 m-1"
               alt=""
             />
             {userInfo ? userInfo.project.name.substring(0, 18) : ""}
@@ -87,10 +87,10 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
             }
             aria-labelledby="projectsDropdown"
           >
-            <Link className="dropdown-item medium py-2" to="/projects/create">
+            {/* <Link className="dropdown-item medium py-2" to="/projects/create">
               <FontAwesomeIcon icon={faPlus} className="pe-2" />
               New Project
-            </Link>
+            </Link> */}
             <hr className="m-0 py-2" />
             {myProjects.map((myProject) => (
               <span
@@ -108,7 +108,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               className="dropdown-item medium pt-2 pb-0 text-primary"
               to="/projects"
             >
-              View All
+              צפה בכל הפרוייקטים
             </Link>
           </div>
         </div>
@@ -130,7 +130,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               onClick={() => handlePageChange("/home")}
             >
               <FontAwesomeIcon icon={faHouse} />
-              <span className="ps-3 medium">{t('sidebar.home')}</span>
+              <span className="ps-3 medium p-2">{t('sidebar.home')}</span>
             </Link>
           </li>
 
@@ -160,7 +160,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               onClick={() => handlePageChange("/products")}
             >
               <FontAwesomeIcon icon={faBox} />
-              <span className="ps-3 medium">{t('sidebar.products')}</span>
+              <span className="ps-3 medium p-2">{t('sidebar.products')}</span>
             </Link>
           </li>
 
@@ -174,7 +174,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               onClick={() => handlePageChange("/team")}
             >
               <FontAwesomeIcon icon={faUsers} />
-              <span className="ps-3 medium">{t('sidebar.team')}</span>
+              <span className="ps-3 medium p-2">{t('sidebar.team')}</span>
             </Link>
           </li>
         </div>
@@ -194,7 +194,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               onClick={() => handlePageChange("/contacts")}
             >
               <FontAwesomeIcon icon={faAddressBook} />
-              <span className="ps-3 medium">{t('sidebar.contacts')}</span>
+              <span className="ps-3 medium p-2">{t('sidebar.contacts')}</span>
             </Link>
           </li>
           <li
@@ -207,7 +207,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               onClick={() => handlePageChange("/leads")}
             >
               <FontAwesomeIcon icon={faUserTie} />
-              <span className="ps-3 medium">{t('sidebar.leads')}</span>
+              <span className="ps-3 medium p-2">{t('sidebar.leads')}</span>
             </Link>
           </li>
 
@@ -221,7 +221,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               onClick={() => handlePageChange("/tasks")}
             >
               <FontAwesomeIcon icon={faUserGroup} />
-              <span className="ps-3 medium">{t('sidebar.clients')}</span>
+              <span className="ps-3 medium p-2">{t('sidebar.clients')}</span>
             </Link>
           </li>
         </div>
@@ -234,7 +234,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
           <li className="nav-item px-2 rounded">
             <Link to="/notifications" className="nav-link">
               <FontAwesomeIcon icon={faBell} />
-              <span className="ps-3 medium">{t('sidebar.notifications')}</span>
+              <span className="ps-3 medium p-2">{t('sidebar.notifications')}</span>
             </Link>
           </li>
 
@@ -246,15 +246,15 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
           </li>
 
           <li className="nav-item px-2 rounded">
-            <Link to="/profile" className="nav-link">
+            <Link to="/collection" className="nav-link">
               <FontAwesomeIcon icon={faChartLine} />
-              <span className="ps-3 medium">{t('sidebar.performance')}</span>
+              <span className="ps-3 medium  p-2">{t('sidebar.collection')}</span>
             </Link>
           </li>
           <li className="nav-item px-2 rounded">
-            <Link to="/profile" className="nav-link">
+            <Link to="/projects" className="nav-link">
               <FontAwesomeIcon icon={faSliders} />
-              <span className="ps-3 medium">{t('sidebar.preferences')}</span>
+              <span className="ps-3 medium p-2">{t('sidebar.projects')}</span>
             </Link>
           </li>
         </div>

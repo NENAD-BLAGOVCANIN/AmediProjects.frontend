@@ -36,10 +36,11 @@ function Projects() {
     }
 
     return (
+        <>
         <div>
-            <div className='container w-100 h-100 d-flex justify-content-center flex-column mt-5' style={{ minHeight: '80vh' }}>
-                <h2 className='bold ps-2'>My Projects</h2>
-                <p className='text-muted mt-2 fw-500 ps-2 mb-5'>Current existing projects</p>
+            <div className='container'>
+                <h2 className='bold ps-2'>פרוייקטים שלי</h2>
+                <p className='text-muted mt-2 fw-500 ps-2 mb-5'>פרוייקטים קיימים</p>
                 <div className="row">
                     {myProjects.map(myProject => (
                         <div className="col-12 col-md-4 col-sm-6 col-xs-6 mb-5" key={myProject.id} onClick={() => { handleSwitchProject(myProject.id) }}>
@@ -103,7 +104,7 @@ function Projects() {
 
             </div>
         </div>
-
+        </>
     )
 }
 

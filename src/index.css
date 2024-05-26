@@ -1,12 +1,12 @@
 :root {
   --color-primary: rgb(239, 119, 38);
-  --color-text: #333;
-  --color-text-lighter: #666666;
+  --color-text: #000000;
+  --color-text-lighter: #afafaf;
   --color-secondary: rgb(179, 179, 179);
   --color-background: rgb(241, 241, 241);
   --color-dark: rgb(23, 34, 43);
   --color-danger: #cf004c;
-  --color-light-gray: #f8f8f8;
+  --color-light-gray: #242930;
   --color-gray: #F1F5F9;
   --color-dark-gray: #e6e5e9;
   --color-light: #f8f8f8;
@@ -66,9 +66,9 @@ body[dir="rtl"] {
 .main-content-wrapper {
   width: 100%;
   overflow: auto;
-  padding-left: var(--sidebar-width);
+  padding-right: var(--sidebar-width);
 }
-
+div#projectsDropdown {color: #C4611F;}
 .main-container {
   padding: 1.5rem;
   padding-top: 70px;
@@ -145,11 +145,11 @@ a {
 }
 
 .small {
-  font-size: 12.5px !important;
+  font-size: 15.5px !important;
 }
 
 .medium {
-  font-size: 15.3px !important;
+  font-size: 18.3px !important;
 }
 
 .main-auth-page-container {
@@ -196,6 +196,10 @@ hr {
 .btn-basic {
   border: 2px solid var(--color-gray) !important;
 }
+.sidebar {
+  margin-inline-start: 1rem; /* Instead of margin-left */
+  margin-inline-end: 1rem;   /* Instead of margin-right */
+}
 
 .sidebar-admin {
   background-color: #04101f !important;
@@ -234,7 +238,7 @@ hr {
 .nav-item.active .nav-link,
 .nav-item:hover,
 .nav-item:hover .nav-link {
-  color: var(--color-dark) !important;
+  color: var(--color-light) !important;
 }
 
 .nav-item:hover,
@@ -286,7 +290,7 @@ hr {
 }
 
 .task-card:hover {
-  background-color: var(--color-light-gray);
+  background-color: var(--color-light);
   cursor: pointer;
 }
 
@@ -349,7 +353,7 @@ hr {
 }
 
 .nav-tabs .nav-item .nav-link {
-  color: var(--color-secondary);
+  color: var(--color-text);
   border: none;
   border-bottom: 2px solid transparent;
 }
@@ -357,8 +361,8 @@ hr {
 .nav-tabs .nav-item .nav-link.active,
 .nav-tabs .nav-item .nav-link:hover {
   background-color: transparent;
-  border-color: gray;
-  color: var(--color-text-lighter);
+  border-color: rgb(48, 48, 48);
+  color: var(--color-text);
 }
 
 .vis-label .vis-inner {
@@ -392,7 +396,7 @@ hr {
 .nav-item .nav-link.active,
 .nav-item .nav-link:hover {
   font-weight: 500;
-  color: var(--color-dark) !important;
+  color: #C4611F !important;
 }
 
 .custom-dropdown .title-wrap {

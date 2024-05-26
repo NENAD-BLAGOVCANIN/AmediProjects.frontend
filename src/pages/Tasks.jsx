@@ -56,6 +56,8 @@ function Tasks() {
     return (
 
         <>
+        <div className="container p-2">
+
             <Tabs
                 defaultActiveKey="board"
                 id="uncontrolled-tab-example"
@@ -64,7 +66,7 @@ function Tasks() {
                 <Tab eventKey="board" title={
                     <>
                         <FontAwesomeIcon icon={faTable} />
-                        <span className='ps-2'>Board</span>
+                        <span className='p-2'>לוח</span>
                     </>
                 }>
                     <Board
@@ -77,7 +79,7 @@ function Tasks() {
                 <Tab eventKey="timeline" title={
                     <>
                         <FontAwesomeIcon icon={faTimeline} />
-                        <span className='ps-2'>Timeline</span>
+                        <span className='p-2'>זמנים</span>
                     </>
                 }>
                     <TasksTimeline
@@ -90,10 +92,10 @@ function Tasks() {
                 <Tab eventKey="list" title={
                     <>
                         <FontAwesomeIcon icon={faListCheck} />
-                        <span className='ps-2'>List</span>
+                        <span className='p-2'>רשימה</span>
                     </>
                 }>
-                    <List
+                    <List className='p-2'
                         tasks={tasks} setTasks={setTasks}
                         selectedTask={selectedTask} setSelectedTask={setSelectedTask}
                         showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
@@ -103,7 +105,7 @@ function Tasks() {
             </Tabs>
 
 
-            <TaskModal
+            <TaskModal className='p-2'
                 showTasksModal={showTasksModal}
                 setShowTasksModal={setShowTasksModal}
                 selectedTask={selectedTask}
@@ -113,6 +115,7 @@ function Tasks() {
                 projectMembers={projectMembers}
                 setProjectMembers={setProjectMembers}
             />
+        </div>
 
 
         </>

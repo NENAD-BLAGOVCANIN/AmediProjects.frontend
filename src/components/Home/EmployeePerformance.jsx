@@ -13,8 +13,8 @@ function EmployeePerformance() {
                 label: 'Performance points',
                 data: [1, 3, 10, 7, 8, 12, 15, 20, 17, 18, 28, 28, 30, 28, 35],
                 fill: true, // Enable fill below the line
-                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Background color with transparency
-                borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: 'rgba(0,158,253, 0.2)', // Background color with transparency
+                borderColor: 'rgb(0,158,253)',
                 tension: 0.4, // Increased tension for smoother curves
             },
         ],
