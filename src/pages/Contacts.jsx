@@ -59,7 +59,9 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
     return (
 
         <>
-            <div className='d-flex justify-content-center pt-3 pb-4'>
+        <div className="container">
+
+            <div className=' d-flex justify-content-center pt-3 pb-4'>
                 <button className='btn btn-basic bg-white shadow-sm medium' onClick={openAddContactModal}><span className='text-primary'><FontAwesomeIcon icon={faPlus} className='pe-1' /> New Contact</span></button>
             </div>
 
@@ -141,6 +143,7 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
                 leads={leads}
                 setLeads={setLeads}
             />
+        </div>
 
         </>
 

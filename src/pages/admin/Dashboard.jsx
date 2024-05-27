@@ -4,6 +4,7 @@ import { faArrowTrendUp } from '@fortawesome/free-solid-svg-icons';
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js/auto';
 import { Pie, Doughnut, Line } from 'react-chartjs-2';
 import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n';
 
 function Dashboard() {
   const [stats] = useState({
@@ -57,8 +58,8 @@ function Dashboard() {
         label: 'Smooth Data 1',
         data: [1, 3, 10, 7, 8, 12, 15, 20, 17, 18, 28, 28, 30, 28, 35],
         fill: true,
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgb(75, 192, 192)',
+        backgroundColor: 'rgba(0,158,253, 0.2)',
+        borderColor: 'rgb(0,158,253)',
         tension: 0.4,
       },
     ],
@@ -73,12 +74,17 @@ function Dashboard() {
       },
     },
   };
-
+  useEffect(() => {
+    const isRTL = i18n.language === 'he';
+    document.body.dir = isRTL ? 'rtl' : 'ltr';
+}, [i18n.language]);
 
   return (
 
     <>
-      <div className="row">
+    <div className="container">
+
+      <div className="row" dir={i18n.language === 'he' ? 'rtl' : 'ltr'}>
         <div className="col-md-4 p-3">
           <div className="bg-white p-3 rounded">
             <span className="small">Projects Completed</span>
@@ -145,6 +151,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
+    </div>
     </>
 
   );

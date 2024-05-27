@@ -50,7 +50,9 @@ function Users() {
 
     return (
       <>
-        <div className="d-flex justify-content-center pt-3 pb-4">
+      <div className="container">
+
+        <div className="d-flex justify-content-center pt-3  pb-4">
           <button
             className="btn btn-basic bg-white shadow-sm medium"
             onClick={openRegistrationModal}
@@ -123,7 +125,6 @@ function Users() {
             </table>
           </div>
         </div>
-
         <RegistrationModal
           showRegistrationModal={showRegistrationModal}
           setShowRegistrationModal={setShowRegistrationModal}
@@ -136,6 +137,8 @@ function Users() {
           setShowViewUserModal={setShowViewUserModal}
           selectedUser={selectedUser}
         />
+      </div>
+
       </>
     );
 }

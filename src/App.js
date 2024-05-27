@@ -15,8 +15,12 @@ import Notifications from "./pages/Notifications";
 import Notification from "./pages/Notification";
 import Users from "./pages/admin/Users";
 import CreateNewProject from "./pages/CreateNewProject";
-import Home from "./pages/project/Home";
-import Products from "./pages/project/Products";
+import Home from "./pages/salesman/Home";
+import Planner from "./pages/planner/Home";
+import ProjectManagement from "./pages/projectManagement/Home";
+import Collection from "./pages/collection/Home";
+import DashboardProject from "./pages/dashboard/Home";
+import Products from "./pages/salesman/Products";
 import AppLayout from "./layouts/AppLayout";
 import ProjectsManagement from "./pages/admin/ProjectsManagement";
 import AdminLayout from "./layouts/AdminLayout";
@@ -77,6 +81,50 @@ function App() {
               />
             }
           />
+          <Route
+            path="/dashboardProject"
+            element={
+              <DashboardProject
+                leads={leads}
+                setLeads={setLeads}
+                contacts={contacts}
+                setContacts={setContacts}
+              />
+            }
+          />
+          <Route
+            path="/planner"
+            element={
+              <Planner
+                leads={leads}
+                setLeads={setLeads}
+                contacts={contacts}
+                setContacts={setContacts}
+              />
+            }
+          />
+          <Route
+            path="/projectManagement"
+            element={
+              <ProjectManagement
+                leads={leads}
+                setLeads={setLeads}
+                contacts={contacts}
+                setContacts={setContacts}
+              />
+            }
+          />
+          <Route
+            path="/collection"
+            element={
+              <Collection
+                leads={leads}
+                setLeads={setLeads}
+                contacts={contacts}
+                setContacts={setContacts}
+              />
+            }
+          />
 
           <Route
             path="/clients"
@@ -110,7 +158,7 @@ function App() {
         </Route>
 
         {/* Project Management */}
-        <Route path="/" element={<LandingLayout />}>
+        <Route path="/" element={<AppLayout />}>
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/create" element={<CreateNewProject />} />
         </Route>

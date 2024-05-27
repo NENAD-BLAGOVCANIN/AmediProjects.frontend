@@ -4,6 +4,7 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header/Header';
 import { getUserInfo } from '../api/user';
 import { getMyProjects } from '../api/project';
+import i18n from '../i18n';
 
 const pageTitles = {
   "/": "Dashboard",
@@ -50,10 +51,14 @@ function AppLayout() {
     };
 
     fetchUserInfo();
-  }, []);
+    
+
+    const isRTL = i18n.language === 'he';
+    document.body.dir = isRTL ? 'rtl' : 'ltr';
+  }, [i18n.language]);
 
   return (
-    <div className="page-content-wrapper">
+    <div className="page-content-wrapper" dir={i18n.language === 'he' ? 'rtl' : 'ltr'}>
       <Sidebar
         userInfo={userInfo}
         setUserInfo={setUserInfo}

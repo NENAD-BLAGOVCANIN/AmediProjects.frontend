@@ -58,24 +58,7 @@ function Header({ pageTitle, userInfo, setUserInfo }) {
               </button>
             ))}
           </div>
-          <div className="px-5">
-            {projectMembers?.map((member) => {
-              return (
-                <img
-                  src={member?.profile_image ?? profileImagePlaceholder}
-                  key={member?.id}
-                  className="rounded-circle"
-                  alt=""
-                  style={{
-                    maxHeight: 26,
-                    aspectRatio: 1,
-                    objectFit: "cover",
-                    height: "100%",
-                  }}
-                />
-              );
-            })}
-          </div>
+
 
           <div className="px-2 mx-1 d-flex flex-column align-items-center justify-content-center">
             <div className="dropdown custom-dropdown">

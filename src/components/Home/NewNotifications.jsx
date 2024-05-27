@@ -4,9 +4,10 @@ import { convertHtmlToText } from "../Header/NotificationsDropdown";
 import { useTranslation } from 'react-i18next';
 
 function NewNotifications({ userInfo }) {
+  const { t } = useTranslation();
   return (
     <div className="bg-white rounded p-3 shadow-sm">
-      <h6 className="bold mb-3">New Notifications</h6>
+      <h6 className="bold mb-3">{t('Notifications.New_Notifications')}</h6>
 
       <ul className="custom-notifications" style={{height: 'unset'}}>
         {userInfo?.notifications?.map((notification) => (

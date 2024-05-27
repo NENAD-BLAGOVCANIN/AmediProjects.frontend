@@ -1,0 +1,14 @@
+/* rtl.css */
+body[dir="rtl"] {
+  direction: rtl;
+}
+
+.page-content-wrapper[dir="rtl"] {
+  /* Add any specific styles for RTL layout */
+}
+
+.main-content-wrapper[dir="rtl"] {
+  /* Add any specific styles for RTL layout */
+}
+
+/* Add other RTL-specific styles as needed */

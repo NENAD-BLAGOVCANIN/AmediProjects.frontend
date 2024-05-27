@@ -36,7 +36,7 @@ function Team() {
 
         <>
 
-            <div className='bg-white w-100 p-4 rounded'>
+            <div className=' container bg-white w-100 p-4 rounded'>
 
                 <div style={{ maxWidth: '500px' }}>
 
