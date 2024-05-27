@@ -35,7 +35,8 @@ i18n
             crm: "CRM",
             personal: "Personal",
             projects:"projects",
-            collection:"collection"
+            collection:"collection",
+            salesman:"sales",
           },
           greeting: {
             welcome: "Welcome",
@@ -110,6 +111,9 @@ i18n
             personal: "איזור אישי",
             projects:'ניהול פרוייקטים',
             collection:'גבייה',
+            salesman:'מכירות',
+            planning:' תכנון ומדידה',
+            projectManagement:'ניהול פרוייקט'
           },
           greeting: {
             welcome: "ברוכים הבאים",

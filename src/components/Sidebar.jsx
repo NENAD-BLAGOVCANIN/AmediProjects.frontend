@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faAddressBook, faUsers, faListCheck, faCalendar, faUserTie, faUserGroup, faBars, faHouse, faBox, faChartLine, faSliders, faBell,
+  faAddressBook, faUsers, faListCheck, faCalendar, faRulerVertical,faUserTie,faMoneyBill, faUserGroup, faBars, faHouse, faBox, faChartLine, faSliders, faBell,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { switchProject } from "../api/project";
 import exampleProjectIcon from "../assets/img/exampleProjectIcon.jpg";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from 'react-i18next';
+import mobileImgExample from '../assets/img/amedi-logo.jpg'
 
 function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
   const [sidebarActive, setSidebarActive] = useState(true);
@@ -134,21 +135,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
             </Link>
           </li>
 
-          <li
-            className={`nav-item px-2 rounded ${currentPage === "/tasks" ? "active" : ""
-              }`}
-          >
-            <Link
-              to="/tasks"
-              className="nav-link d-flex align-items-center"
-              onClick={() => handlePageChange("/tasks")}
-            >
-              <FontAwesomeIcon icon={faListCheck} />
-              <span className="ps-3 medium d-flex align-items-center">
-                <span className="pe-2 medium">{t('sidebar.tasks')}</span>
-              </span>
-            </Link>
-          </li>
+
 
           <li
             className={`nav-item px-2 rounded ${currentPage === "/products" ? "active" : ""
@@ -163,18 +150,51 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
               <span className="ps-3 medium p-2">{t('sidebar.products')}</span>
             </Link>
           </li>
-
           <li
-            className={`nav-item px-2 rounded ${currentPage === "/team" ? "active" : ""
+            className={`nav-item px-2 rounded ${currentPage === "/salesman" ? "active" : ""
               }`}
           >
             <Link
-              to="/team"
+              to="/salesman"
               className="nav-link"
-              onClick={() => handlePageChange("/team")}
+              onClick={() => handlePageChange("/salesman")}
             >
-              <FontAwesomeIcon icon={faUsers} />
-              <span className="ps-3 medium p-2">{t('sidebar.team')}</span>
+              <FontAwesomeIcon icon={faMoneyBill} />
+              <span className="ps-3 medium p-2">{t('sidebar.salesman')}</span>
+            </Link>
+          </li>
+          <li
+            className={`nav-item px-2 rounded ${currentPage === "/salesman" ? "active" : ""
+              }`}
+          >
+            <Link
+              to="/Planner"
+              className="nav-link"
+              onClick={() => handlePageChange("/Planner")}
+            >
+              <FontAwesomeIcon icon={faRulerVertical} />
+              <span className="ps-3 medium p-2">{t('sidebar.planning')}</span>
+            </Link>
+          </li>
+          <li
+            className={`nav-item px-2 rounded ${currentPage === "/salesman" ? "active" : ""
+              }`}
+          >
+            <Link
+              to="/projectManagement"
+              className="nav-link"
+              onClick={() => handlePageChange("/projectManagement")}
+            >
+              <FontAwesomeIcon icon={faSliders} />
+              <span className="ps-3 medium p-2">{t('sidebar.projectManagement')}</span>
+            </Link>
+          </li>
+
+
+          <li className="nav-item px-2 rounded">
+            <Link to="/collection" className="nav-link">
+              <FontAwesomeIcon icon={faChartLine} />
+              <span className="ps-3 medium  p-2">{t('sidebar.collection')}</span>
             </Link>
           </li>
         </div>
@@ -241,20 +261,43 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
           <li className="nav-item px-2 rounded">
             <Link to="/profile" className="nav-link">
               <FontAwesomeIcon icon={faCalendar} />
-              <span className="ps-3 medium">{t('sidebar.my_schedule')}</span>
+              <span className="ps-3 medium p-2">{t('sidebar.my_schedule')}</span>
             </Link>
           </li>
 
-          <li className="nav-item px-2 rounded">
-            <Link to="/collection" className="nav-link">
-              <FontAwesomeIcon icon={faChartLine} />
-              <span className="ps-3 medium  p-2">{t('sidebar.collection')}</span>
-            </Link>
-          </li>
+
           <li className="nav-item px-2 rounded">
             <Link to="/projects" className="nav-link">
               <FontAwesomeIcon icon={faSliders} />
               <span className="ps-3 medium p-2">{t('sidebar.projects')}</span>
+            </Link>
+          </li>
+          <li
+            className={`nav-item px-2 rounded ${currentPage === "/team" ? "active" : ""
+              }`}
+          >
+            <Link
+              to="/team"
+              className="nav-link"
+              onClick={() => handlePageChange("/team")}
+            >
+              <FontAwesomeIcon icon={faUsers} />
+              <span className="ps-3 medium p-2">{t('sidebar.team')}</span>
+            </Link>
+          </li>
+          <li
+            className={`nav-item px-2 rounded ${currentPage === "/tasks" ? "active" : ""
+              }`}
+          >
+            <Link
+              to="/tasks"
+              className="nav-link d-flex align-items-center"
+              onClick={() => handlePageChange("/tasks")}
+            >
+              <FontAwesomeIcon icon={faListCheck} />
+              <span className="ps-3 medium d-flex align-items-center">
+                <span className="pe-2 medium">{t('sidebar.tasks')}</span>
+              </span>
             </Link>
           </li>
         </div>
@@ -267,6 +310,8 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
       >
         <FontAwesomeIcon icon={faBars} />
       </div>
+      <img src={mobileImgExample} className='' style={{ objectFit: 'cover', maxWidth: 240 }} alt="אמדי לוגו" />
+
     </nav>
   );
 }

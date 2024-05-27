@@ -3,7 +3,8 @@ import { getUserInfo } from '../../api/user';
 import { getProjectInfo } from '../../api/project';
 import NewNotifications from '../../components/Home/NewNotifications';
 import Calendar from 'react-calendar';
-import EmployeePerformance from '../../components/Home/EmployeePerformance';
+import { getMyProjects } from '../../api/project';
+
 import AddNewProject from '../../components/Home/addNewProject';
 import LeadsTable from "../../components/Home/leadsTable";
 import { useTranslation } from 'react-i18next';
@@ -14,7 +15,7 @@ function Home() {
     const [projectInfo, setProjectInfo] = useState([]);
     const [userInfo, setUserInfo] = useState(null);
     const [value, onChange] = useState(new Date());
-
+    const [myProjects, setMyProjects] = useState([]);
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
@@ -33,7 +34,18 @@ function Home() {
                 console.error('Error fetching :', error);
             }
         };
+        const fetchMyProjects = async () => {
 
+            try {
+                const fetchedMyProjects = await getMyProjects();
+                setMyProjects(fetchedMyProjects);
+                console.log("fetchedMyProjects",fetchedMyProjects);
+            } catch (error) {
+                console.error('Error fetching :', error);
+            }
+        };
+
+        fetchMyProjects();
         fetchUserInfo();
         fetchProjectInfo();
 
@@ -88,7 +100,7 @@ const leadsData = [
             <div className="col-md-12 p-3">
                     <div className="bg-white p-3 rounded d-flex justify-content-center flex-column w-100">
                         <h5 className="mb-3">{t('addNewProject.projectCreated')}</h5>
-                        <div className="m-auto w-100 h-100 d-flex justify-content-center text-center">
+                        <div className="m-auto w-100 h-50 d-flex justify-content-center text-center">
                         <Line data={lineChartData} options={options} />
                         </div>
                     </div>
@@ -114,7 +126,7 @@ const leadsData = [
                     {/* </div> */}
                         <div className="bg-white rounded p-3 shadow-sm">
                         <h6 className='bold mb-3'>{t('card_title.current_project')}</h6>
-
+                        myProjects.map(myProject => ())
                         {/* <EmployeePerformance /> */}
 
                     </div>

@@ -15,7 +15,8 @@ import Notifications from "./pages/Notifications";
 import Notification from "./pages/Notification";
 import Users from "./pages/admin/Users";
 import CreateNewProject from "./pages/CreateNewProject";
-import Home from "./pages/salesman/Home";
+import Salesman from "./pages/salesman/Home";
+import Home from "./pages/dashboard/Home";
 import Planner from "./pages/planner/Home";
 import ProjectManagement from "./pages/projectManagement/Home";
 import Collection from "./pages/collection/Home";
@@ -143,6 +144,7 @@ function App() {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/products" element={<Products />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/salesman" element={<Salesman />} />
 
           {/* Personal Pages */}
           <Route path="/notifications" element={<Notifications />} />

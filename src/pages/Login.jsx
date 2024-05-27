@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from '../assets/img/logo.png'
 import { login } from '../api/login';
 import { useNavigate } from 'react-router-dom';
-import mobileImgExample from '../assets/img/mobile-img-example.png'
+import mobileImgExample from '../assets/img/amedi-logo.jpg'
 import { useTranslation } from 'react-i18next';
 
 export default function Login({ authenticated, setAuthenticated }) {
@@ -32,7 +32,7 @@ export default function Login({ authenticated, setAuthenticated }) {
 
 
     return (
-        <div className='main-auth-page-container' style={{ backgroundColor: '#F3F3F5' }}>
+        <div dir="rtl" className='main-auth-page-container' style={{ backgroundColor: '#F3F3F5' }}>
 
             <div className="card p-0 w-100 bg-transparent" style={{ maxWidth: 'unset', minHeight: '100vh' }}>
 

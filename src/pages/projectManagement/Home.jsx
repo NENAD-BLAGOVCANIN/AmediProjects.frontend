@@ -99,7 +99,28 @@ const projectData = [
             </div>
 
             <div className="row pt-3">
-           
+            <div className="col-md-4">
+                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
+                        <ProductionTable datas={leadsData} />
+                    </div>
+                </div>
+            <div className="col-md-4">
+                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
+                        <InstallTable datas={leadsData} />
+                    </div>
+                </div>
+                <div className="col-md-4">
+                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
+                        <ShippingTable datas={leadsData} />
+                    </div>
+                </div>
+
+                <div className="col-md-4">
+                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
+                        <ProjectDoneTable leads={leadsData} />
+                    </div>
+
+                </div>
             <div className="col-md-4">
 
                 <div className="bg-white rounded p-3 mt-3 shadow-sm">
@@ -127,35 +148,8 @@ const projectData = [
                         <SendProject />
                     </div>
                 </div>
-                {/* </div><div className="row pt-3"> */}
 
-                {/* <div className="col-md-4">
-                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <PlaningTable leads={leadsData} />
-                    </div>
-                </div> */}
-                <div className="col-md-4">
-                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <ProductionTable datas={leadsData} />
-                    </div>
-                </div>
-                <div className="col-md-4">
-                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <ShippingTable datas={leadsData} />
-                    </div>
-                </div>
-                {/* <div className="col-md-4">
-                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <MeasuringTable leads={leadsData} />
-                    </div>
-
-                </div> */}
-                <div className="col-md-4">
-                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <ProjectDoneTable leads={leadsData} />
-                    </div>
-
-                </div>
+            
               
             </div>
 

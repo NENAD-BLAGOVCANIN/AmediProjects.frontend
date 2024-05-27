@@ -104,14 +104,14 @@ const projectData = [
                         <SalesTable datas={leadsData} />
                     </div>
                 </div>
-            <div className="col-md-3">
-                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <ProjectManagmentTable datas={leadsData} />
-                    </div>
-                </div>
                 <div className="col-md-3">
                     <div className="bg-white rounded p-3 mt-3 shadow-sm">
                         <PlaningTable datas={leadsData} />
+                    </div>
+                </div>
+            <div className="col-md-3">
+                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
+                        <ProjectManagmentTable datas={leadsData} />
                     </div>
                 </div>
                 <div className="col-md-3">

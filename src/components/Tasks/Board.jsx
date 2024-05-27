@@ -57,7 +57,7 @@ function Board({
       <div className="col-3 p-3">
         <div className="d-flex justify-content-between">
           <p className="mb-3 fw-500">
-            To do
+            משימות לביצוע
             <span className="text-muted fw-400 medium px-2">{tasks.filter((task) => task.status === "todo").length}</span>
           </p>
           <div>
@@ -107,13 +107,13 @@ function Board({
           onClick={handleShowAddTaskCard}
         >
           <FontAwesomeIcon icon={faPlus} className="pe-2 medium" />
-          Add Task
+          הוסף משימה
         </button>
       </div>
       <div className="col-3 p-3">
         <div className="d-flex justify-content-between">
           <p className="mb-3 fw-500">
-            Doing
+            בעבודה
             <span className="text-muted fw-400 medium px-2">{tasks.filter((task) => task.status === "in_progress").length}</span>
           </p>
           <div>
@@ -146,7 +146,7 @@ function Board({
       <div className="col-3 p-3">
         <div className="d-flex justify-content-between">
           <p className="mb-3 fw-500">
-            On Hold
+            הקפאה
             <span className="text-muted fw-400 medium px-2">{tasks.filter((task) => task.status === "on_hold").length}</span>
           </p>
           <div>
@@ -179,7 +179,7 @@ function Board({
       <div className="col-3 p-3">
         <div className="d-flex justify-content-between">
           <p className="mb-3 fw-500">
-            Done
+            הסתיים
             <span className="text-muted fw-400 medium px-2">{tasks.filter((task) => task.status === "done").length}</span>
           </p>
           <div>
