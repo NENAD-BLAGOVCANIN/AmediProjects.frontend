@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './pages/admin/Dashboard';
 import Login from './pages/Login';
-import { isLoggedIn } from './utils/auth';
 import Tasks from './pages/Tasks';
 import Logout from './pages/Logout';
 import Contacts from './pages/Contacts';
@@ -53,9 +52,9 @@ function App() {
 
           <Route index element={<Navigate to="/home" />} />
 
-          <Route path="/" element={<AppLayout />}>
+          <Route element={<PrivateRoutes />}>
 
-            <Route element={<PrivateRoutes />}>
+            <Route path="/" element={<AppLayout />}>
 
               {/* CRM */}
               <Route
@@ -151,22 +150,23 @@ function App() {
             </Route>
           </Route>
 
-          {/* Admin Panel */}
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route element={<PrivateRoutes />}>
+          <Route element={<PrivateRoutes />}>
+            {/* Admin Panel */}
+            <Route path="/admin" element={<AdminLayout />}>
               <Route path="/admin/dashboard" element={<Dashboard />} />
               <Route path="/admin/users" element={<Users />} />
               <Route path="/admin/projects" element={<ProjectsManagement />} />
             </Route>
           </Route>
 
-          {/* Project Management */}
-          <Route path="/" element={<AppLayout />}>
-            <Route element={<PrivateRoutes />}>
+          <Route element={<PrivateRoutes />}>
+            {/* Project Management */}
+            <Route path="/" element={<AppLayout />}>
               <Route path="/projects" element={<Projects />} />
               <Route path="/projects/create" element={<CreateNewProject />} />
             </Route>
           </Route>
+          
           <Route
             path="/projects/invite/:inviteCode/:projectId"
             element={<Invite />}
@@ -180,6 +180,9 @@ function App() {
             }
           />
           <Route path="/logout" element={<Logout />} />
+
+          <Route path="*" element={<Navigate to="/" />} />
+
         </Routes>
       </AuthProvider>
     </Router>
