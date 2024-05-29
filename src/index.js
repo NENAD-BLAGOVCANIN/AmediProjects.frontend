@@ -7,12 +7,15 @@ import './index.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'react-calendar/dist/Calendar.css';
 import './i18n.js';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <>
     <App />
-  </React.StrictMode>
+    <ToastContainer />
+  </>
 );
 
 reportWebVitals();

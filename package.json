@@ -30,6 +30,7 @@
     "react-i18next": "^14.1.1",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
+    "react-toastify": "^10.0.5",
     "react-visjs-timeline": "^1.6.0",
     "vis": "^4.21.0-EOL",
     "vis-timeline": "^7.7.3",

@@ -21,7 +21,7 @@ const register = async (name, email, password) => {
         const responseData = await response.json();
 
         if (response.ok) {
-            return responseData;
+            return { success: true, message: "Login successful" };
         } else {
             throw new Error(responseData.errors);
         }

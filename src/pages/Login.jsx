@@ -1,32 +1,30 @@
 import React, { useState } from 'react';
 import logo from '../assets/img/logo.png'
-import { login } from '../api/login';
 import { useNavigate } from 'react-router-dom';
 import mobileImgExample from '../assets/img/amedi-logo.jpg'
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../contexts/AuthContext';
+import { toast } from 'react-toastify';
 
-export default function Login({ authenticated, setAuthenticated }) {
+export default function Login() {
 
     const { t } = useTranslation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const { login } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
 
-        try {
-            const { success, message } = await login(email, password);
-            if (success) {
-                setAuthenticated(true);
-                navigate('/projects');
-            } else {
-                setError(message || 'Login failed. Please check your credentials.');
-            }
-        } catch (error) {
-            setError('Wrong email or password');
-            console.error(error);
+        const response = await login(email, password);
+        if (response.success) {
+            toast.success('Successfully logged in!');
+            navigate('/home');
+        } else {
+            setError(response.message);
         }
     };
 

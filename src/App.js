@@ -27,160 +27,161 @@ import ProjectsManagement from "./pages/admin/ProjectsManagement";
 import AdminLayout from "./layouts/AdminLayout";
 import LandingLayout from "./layouts/LandingLayout";
 import Clients from './pages/Clients';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { Outlet } from 'react-router-dom';
+
+const PrivateRoutes = () => {
+  const { authenticated, loading } = useAuth();
+
+  if (loading) {
+    return <div>Loading...</div>; // or a more sophisticated loading indicator
+  }
+
+  return authenticated ? <Outlet /> : <Navigate to="/login" />;
+};
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true);
+
   const [contacts, setContacts] = useState([]);
   const [leads, setLeads] = useState([]);
   const [clients, setClients] = useState([]);
 
-  useEffect(() => {
-    const checkAuthentication = async () => {
-      const loggedIn = isLoggedIn();
-      setAuthenticated(loggedIn);
-      setLoading(false);
-    };
-
-    checkAuthentication();
-  }, []);
-
-  if (loading) {
-    return <div></div>;
-  }
-
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<AppLayout />}>
+      <AuthProvider>
+        <Routes>
+
+          <Route index element={<Navigate to="/home" />} />
+
+          <Route path="/" element={<AppLayout />}>
+
+            <Route element={<PrivateRoutes />}>
+
+              {/* CRM */}
+              <Route
+                path="/contacts"
+                element={
+                  <Contacts
+                    contacts={contacts}
+                    setContacts={setContacts}
+                    setLeads={setLeads}
+                  />
+                }
+              />
+              <Route
+                path="/leads"
+                element={
+                  <Leads
+                    leads={leads}
+                    setLeads={setLeads}
+                    contacts={contacts}
+                    setContacts={setContacts}
+                  />
+                }
+              />
+              <Route
+                path="/dashboardProject"
+                element={
+                  <DashboardProject
+                    leads={leads}
+                    setLeads={setLeads}
+                    contacts={contacts}
+                    setContacts={setContacts}
+                  />
+                }
+              />
+              <Route
+                path="/planner"
+                element={
+                  <Planner
+                    leads={leads}
+                    setLeads={setLeads}
+                    contacts={contacts}
+                    setContacts={setContacts}
+                  />
+                }
+              />
+              <Route
+                path="/projectManagement"
+                element={
+                  <ProjectManagement
+                    leads={leads}
+                    setLeads={setLeads}
+                    contacts={contacts}
+                    setContacts={setContacts}
+                  />
+                }
+              />
+              <Route
+                path="/collection"
+                element={
+                  <Collection
+                    leads={leads}
+                    setLeads={setLeads}
+                    contacts={contacts}
+                    setContacts={setContacts}
+                  />
+                }
+              />
+
+              <Route
+                path="/clients"
+                element={
+                  <Clients
+                    clients={clients}
+                    setClients={setClients}
+                    contacts={contacts}
+                    setContacts={setContacts}
+                  />
+                }
+              />
+
+              {/* Project */}
+              <Route path="/home" element={<Home />} />
+              <Route path="/tasks" element={<Tasks />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/salesman" element={<Salesman />} />
+
+              {/* Personal Pages */}
+              <Route path="/notifications" element={<Notifications />} />
+              <Route path="/notifications/:id" element={<Notification />} />
+              <Route path="/profile" element={<Profile />} />
+
+            </Route>
+          </Route>
+
+          {/* Admin Panel */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route element={<PrivateRoutes />}>
+              <Route path="/admin/dashboard" element={<Dashboard />} />
+              <Route path="/admin/users" element={<Users />} />
+              <Route path="/admin/projects" element={<ProjectsManagement />} />
+            </Route>
+          </Route>
+
+          {/* Project Management */}
+          <Route path="/" element={<AppLayout />}>
+            <Route element={<PrivateRoutes />}>
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/create" element={<CreateNewProject />} />
+            </Route>
+          </Route>
           <Route
-            index
-            element={
-              authenticated ? <Navigate to="/home" /> : <Navigate to="/login" />
-            }
+            path="/projects/invite/:inviteCode/:projectId"
+            element={<Invite />}
           />
 
-          {/* CRM */}
+          {/* Auth */}
           <Route
-            path="/contacts"
+            path="/login"
             element={
-              <Contacts
-                contacts={contacts}
-                setContacts={setContacts}
-                setLeads={setLeads}
-              />
+              <Login />
             }
           />
-          <Route
-            path="/leads"
-            element={
-              <Leads
-                leads={leads}
-                setLeads={setLeads}
-                contacts={contacts}
-                setContacts={setContacts}
-              />
-            }
-          />
-          <Route
-            path="/dashboardProject"
-            element={
-              <DashboardProject
-                leads={leads}
-                setLeads={setLeads}
-                contacts={contacts}
-                setContacts={setContacts}
-              />
-            }
-          />
-          <Route
-            path="/planner"
-            element={
-              <Planner
-                leads={leads}
-                setLeads={setLeads}
-                contacts={contacts}
-                setContacts={setContacts}
-              />
-            }
-          />
-          <Route
-            path="/projectManagement"
-            element={
-              <ProjectManagement
-                leads={leads}
-                setLeads={setLeads}
-                contacts={contacts}
-                setContacts={setContacts}
-              />
-            }
-          />
-          <Route
-            path="/collection"
-            element={
-              <Collection
-                leads={leads}
-                setLeads={setLeads}
-                contacts={contacts}
-                setContacts={setContacts}
-              />
-            }
-          />
-
-          <Route
-            path="/clients"
-            element={
-              <Clients
-                clients={clients}
-                setClients={setClients}
-                contacts={contacts}
-                setContacts={setContacts}
-              />
-            }
-          />
-
-          {/* Project */}
-          <Route path="/home" element={<Home />} />
-          <Route path="/tasks" element={<Tasks />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/salesman" element={<Salesman />} />
-
-          {/* Personal Pages */}
-          <Route path="/notifications" element={<Notifications />} />
-          <Route path="/notifications/:id" element={<Notification />} />
-          <Route path="/profile" element={<Profile />} />
-        </Route>
-
-        {/* Admin Panel */}
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-          <Route path="/admin/users" element={<Users />} />
-          <Route path="/admin/projects" element={<ProjectsManagement />} />
-        </Route>
-
-        {/* Project Management */}
-        <Route path="/" element={<AppLayout />}>
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/create" element={<CreateNewProject />} />
-        </Route>
-        <Route
-          path="/projects/invite/:inviteCode/:projectId"
-          element={<Invite />}
-        />
-
-        {/* Auth */}
-        <Route
-          path="/login"
-          element={
-            <Login
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
-          }
-        />
-        <Route path="/logout" element={<Logout />} />
-      </Routes>
+          <Route path="/logout" element={<Logout />} />
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 }
