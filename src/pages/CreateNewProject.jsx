@@ -13,9 +13,9 @@ function CreateNewProject() {
     const navigate = useNavigate();
 
     const handleCreateProjectSubmit = async () => {
-
+        const project = [name, description];
         try {
-            await saveProject(name, description);
+            await saveProject(project);
             navigate("/admin/projects");
         } catch (error) {
             setErrors(error.message);

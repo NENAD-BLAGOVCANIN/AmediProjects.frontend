@@ -156,14 +156,20 @@ i18n
             company_name:"שם חברה",
             project_name:"שם פרוייקט",
             place:"מיקום",
+            phone:"טלפון",
             contact_person:"איש קשר",
-            details:"details",
+            description:"עוד פרטים",
             upload_file:"עלאת חוזה",
             products:"מוצרים",
             filter_products:"בחירת מוצרים",
             add_product:"הוספת מוצר",
             submit:"יצירת פרוייקט",
-            projectCreated:"פרויקטים שנוצרו"
+            projectCreated:"פרויקטים שנוצרו",
+            filter_users:'הוספת משתמשים',
+            file:'הוספת חוזה',
+            success_message:'הפרוייקט נוצר בהצלחה',
+            error_message:'יש שגיאה במערכת, נא לפנות למפתח',
+            
           },
           user_dropdown: {
             admin_panel: "פאנל פרוייקטים",

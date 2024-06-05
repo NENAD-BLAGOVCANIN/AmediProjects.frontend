@@ -126,7 +126,9 @@ const leadsData = [
                     {/* </div> */}
                         <div className="bg-white rounded p-3 shadow-sm">
                         <h6 className='bold mb-3'>{t('card_title.current_project')}</h6>
-                        myProjects.map(myProject => ())
+                        {myProjects.map((myProject) => (
+                <div key={myProject.id}>שם פרוייקט {myProject.name} , סטטוס {myProject.status}</div> 
+              ))}
                         {/* <EmployeePerformance /> */}
 
                     </div>

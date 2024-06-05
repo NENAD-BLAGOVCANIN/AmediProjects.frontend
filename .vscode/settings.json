@@ -1,3 +1,10 @@
 {
-    "nuxt.isNuxtApp": false
+    "workbench.colorCustomizations":{
+        "titleBar.activeBackground": "#D46922",
+        "titleBar.border": "#D46922",
+        "titleBar.inactiveBackground":"#D46922",
+        "panelTitle.activeForeground": "#D46922",
+        "panelTitle.inactiveForeground": "#D46922",
+        "statusBar.background": "#D46922"
+      }
 }
