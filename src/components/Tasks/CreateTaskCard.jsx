@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { TaskPropType } from "../../lib/propTypes";
-import { faCalendar, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faCircleCheck, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from 'react-i18next';
 
@@ -14,6 +14,10 @@ const CreateTaskCard = ({
   setDueDate,
   description,
   setDescription,
+  email,
+  setEmail,
+  phone,
+  setPhone,
   handleHideAddTaskCard,
   handleSaveTask,
 }) => {
@@ -32,7 +36,7 @@ const CreateTaskCard = ({
           <input
             type="text"
             className="border-0 rounded w-100 py-2 medium"
-            placeholder="Write a task name"
+            placeholder="הכנס שם משימה"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           />
@@ -46,15 +50,43 @@ const CreateTaskCard = ({
           <input
             type="date"
             className="border-0 rounded w-100 py-2 medium"
-            placeholder="Due date"
+            placeholder="תאריך יעד"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
           />
         </div>
 
+        <div className="d-flex align-items-center pb-3">
+          <FontAwesomeIcon
+            icon={faEnvelope}
+            className="text-muted medium pe-2"
+          />
+          <input
+            type="email"
+            className="border-0 rounded w-100 py-2 medium"
+            placeholder="אימייל"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+
+        <div className="d-flex align-items-center pb-3">
+          <FontAwesomeIcon
+            icon={faPhone}
+            className="text-muted medium pe-2"
+          />
+          <input
+            type="tel"
+            className="border-0 rounded w-100 py-2 medium"
+            placeholder="פלאפון"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+        </div>
+
         <textarea
           className="form-control bg-gray-light mb-2"
-          placeholder="Description"
+          placeholder="פרטי המשימה"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
@@ -64,7 +96,7 @@ const CreateTaskCard = ({
               className="btn btn-basic border"
               onClick={handleHideAddTaskCard}
             >
-              Dismiss
+              ביטול
             </button>
           </div>
           <div className="ps-1">
@@ -72,7 +104,7 @@ const CreateTaskCard = ({
               className="btn btn-primary"
               onClick={() => handleSaveTask()}
             >
-              Save
+              שמירה
             </button>
           </div>
         </div>
@@ -92,6 +124,10 @@ CreateTaskCard.propTypes = {
   setDueDate: PropTypes.func,
   description: PropTypes.string,
   setDescription: PropTypes.func,
+  email: PropTypes.string,
+  setEmail: PropTypes.func,
+  phone: PropTypes.string,
+  setPhone: PropTypes.func,
   handleHideAddTaskCard: PropTypes.func,
   handleSaveTask: PropTypes.func,
 };
