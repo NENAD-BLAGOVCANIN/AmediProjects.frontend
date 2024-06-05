@@ -124,14 +124,11 @@ const switchProject = async (project_id) => {
   }
 };
 
-const saveProject = async (name, description) => {
+const saveProject = async (project) => {
   try {
     const token = localStorage.getItem("accessToken");
 
-    const data = {
-      name: name,
-      description: description,
-    };
+  
 
     const response = await fetch(apiUrl + "/projects", {
       method: "POST",
@@ -140,7 +137,7 @@ const saveProject = async (name, description) => {
         Accept: "application/json",
         Authorization: "Bearer " + token,
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(project),
     });
 
     const responseData = await response.json();

@@ -6,7 +6,7 @@ function NotificationsDropdown({ userInfo, setUserInfo }) {
   return (
     <div>
       <div
-        className="dropdown-menu dropdown-menu-left show active"
+        className="dropdown-menu dropdown-menu-right show active"
         aria-labelledby="dropdownMenuButton"
         style={{ position: "absolute", width: 450 }}
       >
