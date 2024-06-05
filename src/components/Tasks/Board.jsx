@@ -103,7 +103,7 @@ function Board({
         />
 
         <button
-          className="btn py-2 rounded color-text-lighter w-100 medium"
+          className="btn btn-primary py-2 rounded  w-100 medium"
           onClick={handleShowAddTaskCard}
         >
           <FontAwesomeIcon icon={faPlus} className="pe-2 medium" />

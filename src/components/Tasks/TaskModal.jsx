@@ -21,11 +21,13 @@ function TaskModal({
   projectMembers,
   setProjectMembers,
 }) {
+  const { t } = useTranslation();
+
   const [editedTitle, setEditedTitle] = useState(selectedTask.subject);
-  const [editedDescription, setEditedDescription] = useState(
-    selectedTask.description
-  );
+  const [editedDescription, setEditedDescription] = useState(selectedTask.description);
   const [editedDueDate, setEditedDueDate] = useState(selectedTask.due_date);
+  const [editedPhone, setEditedPhone] = useState(selectedTask.phone);
+  const [editedEmail, setEditedEmail] = useState(selectedTask.email);
   const [statusDropdownIsOpen, setStatusDropdownIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState(selectedTask.status);
 
@@ -40,6 +42,8 @@ function TaskModal({
     setEditedDueDate(selectedTask.due_date);
     setEditedDescription(selectedTask.description);
     setEditedTitle(selectedTask.subject);
+    setEditedPhone(selectedTask.phone);
+    setEditedEmail(selectedTask.email);
     setSelectedStatus(selectedTask.status);
   }, [selectedTask]);
 
@@ -84,6 +88,8 @@ function TaskModal({
       subject: editedTitle,
       description: editedDescription,
       due_date: editedDueDate,
+      phone: editedPhone,
+      email: editedEmail,
     };
 
     await updateTask(updatedTask);
@@ -166,7 +172,7 @@ function TaskModal({
             </span>
           </div>
           <div className="modal-body py-5">
-            <h5>Description</h5>
+            <h5>פירוט משימה</h5>
             <textarea
               className="form-control rounded w-100 py-2"
               value={editedDescription}
@@ -174,7 +180,7 @@ function TaskModal({
               onBlur={handleBlur}
             />
             <div className="d-flex align-items-center mt-5">
-              <h5 className="mb-0 pe-3">Assignee</h5>
+              <h5 className="mb-0 pe-3">שיוך משימה</h5>
               <UpdateAssigneeDropdown
                 projectMembers={projectMembers}
                 selectedTask={selectedTask}
@@ -198,9 +204,8 @@ function TaskModal({
               </div>
             )}
 
-
             <div className="d-flex align-items-center mt-5">
-              <h5 className="mb-0 pe-3">Due date</h5>
+              <h5 className="mb-0 pe-3">תאריך יעד</h5>
               <input
                 type="date"
                 className="form-control rounded py-2 w-50"
@@ -211,7 +216,29 @@ function TaskModal({
             </div>
 
             <div className="d-flex align-items-center mt-5">
-              <h5 className="mb-0 pe-3">Status</h5>
+              <h5 className="mb-0 pe-3">טלפון</h5>
+              <input
+                type="tel"
+                className="form-control rounded py-2 w-50"
+                value={editedPhone}
+                onChange={(e) => setEditedPhone(e.target.value)}
+                onBlur={handleBlur}
+              />
+            </div>
+
+            <div className="d-flex align-items-center mt-5">
+              <h5 className="mb-0 pe-3">דוא"ל</h5>
+              <input
+                type="email"
+                className="form-control rounded py-2 w-50"
+                value={editedEmail}
+                onChange={(e) => setEditedEmail(e.target.value)}
+                onBlur={handleBlur}
+              />
+            </div>
+
+            <div className="d-flex align-items-center mt-5">
+              <h5 className="mb-0 pe-3">סטטוס</h5>
               <Form className="m-0">
                 <Form.Group controlId="exampleForm.SelectCustom">
                   <Form.Select
@@ -219,13 +246,16 @@ function TaskModal({
                     value={selectedStatus}
                     onChange={(e) => changeTaskStatus(e.target.value)}
                   >
-                    <option value="todo">To do</option>
-                    <option value="in_progress">Doing</option>
-                    <option value="on_hold">On hold</option>
-                    <option value="done">Done</option>
+                    <option value="todo">צריך לעשות</option>
+                    <option value="in_progress">בעבודה</option>
+                    <option value="on_hold">הקפאה</option>
+                    <option value="done">הסתיים</option>
                   </Form.Select>
                 </Form.Group>
               </Form>
+            </div>
+            <div className="pt-3">
+              <button className="btn btn-primary" onClick={handleCloseTaskModal}>שמירה</button>
             </div>
           </div>
         </div>
