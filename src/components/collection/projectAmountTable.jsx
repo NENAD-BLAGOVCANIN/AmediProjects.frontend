@@ -6,33 +6,54 @@ import UpdateCollectionModal from '../UpdateCollectionModal';
 function ProjectAmountTable() {
   const { t } = useTranslation();
   const [projects, setProjects] = useState([]);
-  const [collections, setCollections] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [showUpdateCollectionModal, setShowUpdateCollectionModal] = useState(false);
   const [currentCollection, setCurrentCollection] = useState(null);
 
   useEffect(() => {
     const fetchCollections = async () => {
-        try {
-            const fetchedCollections = await getCollections();
-            setCollections(fetchedCollections);
-            setProjects(fetchedCollections);
-        } catch (error) {
-            console.error('Error fetching collections:', error);
-        }
+      try {
+        const fetchedCollections = await getCollections();
+        setProjects(fetchedCollections);
+        setFilteredProjects(fetchedCollections);
+      } catch (error) {
+        console.error('Error fetching collections:', error);
+      }
     };
 
     fetchCollections();
   }, []);
+
+  useEffect(() => {
+    const results = projects.filter(project =>
+      Object.values(project).some(
+        value => value && value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+    setFilteredProjects(results);
+  }, [searchTerm, projects]);
 
   const handleShowUpdateCollectionModal = (collection) => {
     setCurrentCollection(collection);
     setShowUpdateCollectionModal(true);
   };
 
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <>
       <div>
         <button className="btn btn-primary" onClick={() => handleShowUpdateCollectionModal(null)}>הוספת גבייה</button>
+        <input 
+          type="text" 
+          placeholder="חיפוש" 
+          value={searchTerm} 
+          onChange={handleSearch} 
+          className="form-control my-3" 
+        />
       </div>
       <div className="bg-white rounded p-3 shadow-sm">
         <h6 className="bold mb-3">{t('projects.delivered_projects')}</h6>
@@ -51,7 +72,7 @@ function ProjectAmountTable() {
             </tr>
           </thead>
           <tbody>
-            {projects.map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <tr key={index} onClick={() => handleShowUpdateCollectionModal(project)}>
                 <td>{project.project_name}</td>
                 <td>{project.project_manager_mobile}</td>
@@ -71,12 +92,11 @@ function ProjectAmountTable() {
       </div>
       {showUpdateCollectionModal && (
         <UpdateCollectionModal 
-            collections={collections} 
-            setCollections={setCollections} 
-            showUpdateCollectionModal={showUpdateCollectionModal} 
-            setShowUpdateCollectionModal={setShowUpdateCollectionModal} 
-            currentCollection={currentCollection} 
-            setCurrentCollection={setCurrentCollection} 
+          collections={filteredProjects} 
+          showUpdateCollectionModal={showUpdateCollectionModal} 
+          setShowUpdateCollectionModal={setShowUpdateCollectionModal} 
+          currentCollection={currentCollection} 
+          setCurrentCollection={setCurrentCollection} 
         />
       )}
     </>
