@@ -19,6 +19,11 @@ i18n
     resources: {
       en: {
         translation: {
+          "tasks_for_selected_day": "Tasks for Selected Day",
+          "no_tasks_for_this_day": "No tasks for this day",
+          "task": "Task",
+          "due_date": "Due Date",
+          "close": "Close",
           sidebar: {
             home: "Home",
             tasks: "Tasks",
@@ -190,6 +195,30 @@ i18n
             company_name:"חברה",
             last_contact:"פעם אחרונה שנוצר קשר",
           },
+          "tasks_for_selected_day": "משימות לתאריך הזה",
+          "no_tasks_for_this_day": "אין משימות לתאריך הזה",
+          "task": "משימה",
+          "due_date": "תאריך יעד",
+          "close": "סגירה",
+          "edit_collection": "עריכת גבייה",
+          "create_collection": "יצירת גבייה",
+          "project_name": "שם פרוייקט",
+          "project_manager_mobile": "נייד מנהל פרוייקט",
+          "accounting_manager_mobile": "נייד מנהל חשבונות",
+          "email": "אימייל",
+          "last_execution_date": "תאריך ביצוע אחרון",
+          "agreed_payment_date": "מועד תשלום מוסכם",
+          "contact_person": "איש קשר",
+          "debt": "חוב",
+          "first_line_sent_whatsapp": "נשלח קו ראשון- וואטסאפ",
+          "details": "פירוט",
+          "second_line_sent_email_details": "נשלח מייל- קו שני מייל",
+          "details_2": "פירוט 2",
+          "call_2_created": "נוצרה שיחה 2",
+          "collected_amount": "מה נגבה",
+          "remaining_amount_to_collect": "מה נותר לגבייה",
+          "update": "עדכן",
+          "save": "שמור"
         },
       },
       isRTL: true

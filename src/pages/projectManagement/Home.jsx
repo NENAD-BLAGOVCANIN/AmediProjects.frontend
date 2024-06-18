@@ -7,7 +7,7 @@ import PlaningTable from "../../components/planner/planingTable";
 import SendProject from '../../components/projectManagement/doneProject';
 import ProjectDoneTable from '../../components/projectManagement/projectDoneTable';
 import InstallTable from '../../components/projectManagement/installTable';
-import ProductionTable from '../../components/projectManagement/productionTable';
+import ProductionTable from '../../components/projectManagement/ProductionTable';
 import ShippingTable from '../../components/projectManagement/shippingTable';
 
 import MeasuringTable from '../../components/planner/measuringTable'
@@ -99,12 +99,12 @@ const projectData = [
             </div>
 
             <div className="row pt-3">
-            <div className="col-md-4">
+            <div className="col-md-5">
                     <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <ProductionTable datas={leadsData} />
+                        <ProductionTable  />
                     </div>
                 </div>
-            <div className="col-md-4">
+            <div className="col-md-5">
                     <div className="bg-white rounded p-3 mt-3 shadow-sm">
                         <InstallTable datas={leadsData} />
                     </div>

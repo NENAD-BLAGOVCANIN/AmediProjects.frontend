@@ -27,7 +27,7 @@ function List({ tasks, setTasks, setSelectedTask, selectedTask,
         </div>
       </div>
 
-      <h5 className='color-text-lighter'>To do</h5>
+      <h5 className='color-text-lighter'>לעשות</h5>
 
       <div className='m-auto d-block w-100' style={{ maxWidth: 1500, overflowX: 'auto' }}>
         <div className='table-responsive pt-3'>
