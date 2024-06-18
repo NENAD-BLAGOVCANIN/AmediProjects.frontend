@@ -33,14 +33,6 @@ function ProjectAmountTable() {
     <>
       <div>
         <button className="btn btn-primary" onClick={() => handleShowUpdateCollectionModal(null)}>הוספת גבייה</button>
-        <UpdateCollectionModal 
-            collections={collections} 
-            setCollections={setCollections} 
-            showUpdateCollectionModal={showUpdateCollectionModal} 
-            setShowUpdateCollectionModal={setShowUpdateCollectionModal} 
-            currentCollection={currentCollection} 
-            setCurrentCollection={setCurrentCollection} 
-        />
       </div>
       <div className="bg-white rounded p-3 shadow-sm">
         <h6 className="bold mb-3">{t('projects.delivered_projects')}</h6>
@@ -60,7 +52,7 @@ function ProjectAmountTable() {
           </thead>
           <tbody>
             {projects.map((project, index) => (
-              <tr key={index}>
+              <tr key={index} onClick={() => handleShowUpdateCollectionModal(project)}>
                 <td>{project.project_name}</td>
                 <td>{project.project_manager_mobile}</td>
                 <td>{project.accounting_manager_mobile}</td>
@@ -77,6 +69,16 @@ function ProjectAmountTable() {
           </tbody>
         </table>
       </div>
+      {showUpdateCollectionModal && (
+        <UpdateCollectionModal 
+            collections={collections} 
+            setCollections={setCollections} 
+            showUpdateCollectionModal={showUpdateCollectionModal} 
+            setShowUpdateCollectionModal={setShowUpdateCollectionModal} 
+            currentCollection={currentCollection} 
+            setCurrentCollection={setCurrentCollection} 
+        />
+      )}
     </>
   );
 }

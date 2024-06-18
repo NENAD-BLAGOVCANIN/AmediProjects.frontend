@@ -1,5 +1,5 @@
 :root {
-  --color-primary: rgb(239, 119, 38);
+  --color-primary: #ef7726;
   --color-text: #000000;
   --color-text-lighter: #afafaf;
   --color-secondary: rgb(179, 179, 179);
@@ -12,7 +12,14 @@
   --color-light: #f8f8f8;
   --sidebar-width: 275px;
 }
-
+.react-calendar__tile .dot {
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: #ef7726;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+}
 #sidebar.active {
   --sidebar-width: 0;
 }
