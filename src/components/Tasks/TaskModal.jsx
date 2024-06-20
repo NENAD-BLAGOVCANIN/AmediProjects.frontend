@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { updateTask } from "../../api/tasks";
+import { updateTask, saveTask, getTaskableItems } from "../../api/tasks";
 import profileImagePlaceholder from "../../assets/img/profile.svg";
 import UpdateAssigneeDropdown from "./UpdateAssigneeDropdown";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleCheck,
-  faListCheck,
-  faSpinner,
-} from "@fortawesome/free-solid-svg-icons";
 import { Form } from "react-bootstrap";
 import { useTranslation } from 'react-i18next';
 
@@ -28,7 +22,9 @@ function TaskModal({
   const [editedDueDate, setEditedDueDate] = useState(selectedTask.due_date);
   const [editedPhone, setEditedPhone] = useState(selectedTask.phone);
   const [editedEmail, setEditedEmail] = useState(selectedTask.email);
-  const [statusDropdownIsOpen, setStatusDropdownIsOpen] = useState(false);
+  const [selectedTaskableType, setSelectedTaskableType] = useState(selectedTask.taskable_type || '');
+  const [selectedTaskableId, setSelectedTaskableId] = useState(selectedTask.taskable_id || '');
+  const [taskableItems, setTaskableItems] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState(selectedTask.status);
 
   const titleRef = useRef(null);
@@ -45,7 +41,24 @@ function TaskModal({
     setEditedPhone(selectedTask.phone);
     setEditedEmail(selectedTask.email);
     setSelectedStatus(selectedTask.status);
+    setSelectedTaskableType(selectedTask.taskable_type || '');
+    setSelectedTaskableId(selectedTask.taskable_id || '');
   }, [selectedTask]);
+
+  useEffect(() => {
+    if (selectedTaskableType) {
+      fetchTaskableItems(selectedTaskableType);
+    }
+  }, [selectedTaskableType]);
+
+  const fetchTaskableItems = async (taskableType) => {
+    try {
+      const items = await getTaskableItems(taskableType);
+      setTaskableItems(items);
+    } catch (error) {
+      console.error("Failed to fetch taskable items:", error);
+    }
+  };
 
   const handleTitleChange = () => {
     const caretPosition = window.getSelection().getRangeAt(0).startOffset;
@@ -90,6 +103,8 @@ function TaskModal({
       due_date: editedDueDate,
       phone: editedPhone,
       email: editedEmail,
+      taskable_type: selectedTaskableType,
+      taskable_id: selectedTaskableId,
     };
 
     await updateTask(updatedTask);
@@ -128,6 +143,12 @@ function TaskModal({
       setSelectedTask(updatedTask);
     }
   };
+
+  const taskableTypes = [
+    { value: 'App\\Models\\Contact', label: 'Contact' },
+    { value: 'App\\Models\\Collection', label: 'Collection' },
+    { value: 'App\\Models\\Lead', label: 'Lead' },
+  ];
 
   return (
     <div
@@ -236,6 +257,44 @@ function TaskModal({
                 onBlur={handleBlur}
               />
             </div>
+
+            {/* <div className="d-flex align-items-center mt-5">
+              <h5 className="mb-0 pe-3">סוג שיוך משימה</h5>
+              <Form className="m-0 w-50">
+                <Form.Group controlId="taskableTypeSelect">
+                  <Form.Select
+                    value={selectedTaskableType}
+                    onChange={(e) => setSelectedTaskableType(e.target.value)}
+                  >
+                    <option value="">Select Taskable Type</option>
+                    {taskableTypes.map((type) => (
+                      <option key={type.value} value={type.value}>
+                        {type.label}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Form>
+            </div>
+
+            <div className="d-flex align-items-center mt-5">
+              <h5 className="mb-0 pe-3">ID שיוך משימה</h5>
+              <Form className="m-0 w-50">
+                <Form.Group controlId="taskableIdSelect">
+                  <Form.Select
+                    value={selectedTaskableId}
+                    onChange={(e) => setSelectedTaskableId(e.target.value)}
+                  >
+                    <option value="">Select Taskable Item</option>
+                    {taskableItems.map((item) => (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Form>
+            </div> */}
 
             <div className="d-flex align-items-center mt-5">
               <h5 className="mb-0 pe-3">סטטוס</h5>

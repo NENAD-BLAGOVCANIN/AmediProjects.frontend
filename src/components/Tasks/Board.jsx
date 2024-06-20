@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import {
-  faCalendar,
   faEllipsis,
-  faListCheck,
   faPlus,
-  faTable,
-  faTimeline,
 } from "@fortawesome/free-solid-svg-icons";
-import profileImagePlaceholder from "../../assets/img/profile.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { saveTask } from "../../api/tasks";
 import TaskCard from "./TaskCard";
@@ -28,6 +22,8 @@ function Board({
   const [subject, setSubject] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [description, setDescription] = useState("");
+  const [email, setEmail] = useState(""); // Define email state
+  const [phone, setPhone] = useState(""); // Define phone state
 
   const handleShowTaskModal = (task) => {
     setSelectedTask(task);
@@ -49,6 +45,8 @@ function Board({
       setShowAddTaskCard(false);
       setSubject("");
       setDescription("");
+      setEmail(""); // Clear email state
+      setPhone(""); // Clear phone state
     } catch {}
   };
 
@@ -96,6 +94,10 @@ function Board({
           setSubject={setSubject}
           dueDate={dueDate}
           setDueDate={setDueDate}
+          email={email}
+          setEmail={setEmail}
+          phone={phone}
+          setPhone={setPhone}
           description={description}
           setDescription={setDescription}
           handleHideAddTaskCard={handleHideAddTaskCard}
