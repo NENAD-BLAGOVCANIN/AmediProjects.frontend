@@ -27,12 +27,14 @@ const getTasks = async () => {
 
 }
 
-const saveTask = async (subject, description, due_date) => {
-  const data = {
-    subject: subject,
-    description: description,
-    due_date,
-  };
+const saveTask = async (subject, description, due_date, taskable_type, taskable_id) => {
+    const data = {
+      subject,
+      description,
+      due_date,
+      taskable_type,
+      taskable_id,
+    };
 
   try {
     const token = localStorage.getItem("accessToken");
@@ -140,6 +142,28 @@ const deleteTask = async (contact_id) => {
     }
 
 }
+const getTaskableItems = async (taskableType) => {
+    try {
+      const token = localStorage.getItem('accessToken');
+  
+      const response = await fetch(`${apiUrl}/taskable-items?taskable_type=${taskableType}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+  
+      const responseData = await response.json();
+  
+      if (response.ok) {
+        return responseData;
+      } else {
+        throw new Error(responseData.errors);
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
 
-
-export { getTasks, saveTask, updateTask, assignTo, deleteTask };
+export { getTasks, saveTask, updateTask, assignTo, deleteTask , getTaskableItems };
