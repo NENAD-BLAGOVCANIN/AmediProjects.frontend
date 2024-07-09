@@ -10,11 +10,14 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from 'react-i18next';
 import mobileImgExample from '../assets/img/amedi-logo.jpg'
 
+
 function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
+
   const [sidebarActive, setSidebarActive] = useState(true);
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { t } = useTranslation();
+
 
   useEffect(() => {
     function handleResize() {
@@ -26,7 +29,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
         document.documentElement.style.setProperty("--sidebar-width", "0");
       }
     }
-
+    
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => {

@@ -32,8 +32,11 @@ const TaskCard = ({ task, handleShowTaskModal }) => {
     return `${baseUrl}?action=TEMPLATE&text=${subject}&details=${details}&sf=true&output=xml`;
   };
 
+
+
   return (
     <div className="task-card mb-3">
+   
       <button
         className="task-card-button"
         onClick={() => handleShowTaskModal(task)}
@@ -69,6 +72,7 @@ const TaskCard = ({ task, handleShowTaskModal }) => {
       >
         הוספה לגוגל
       </a>
+   
     </div>
   );
 };

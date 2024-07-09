@@ -15,6 +15,7 @@ export const AuthProvider = ({ children }) => {
     const [authenticated, setAuthenticated] = useState(false);
     const [email, setEmail] = useState('');
     const [token, setToken] = useState('');
+    const [role, setRole] = useState('');
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
@@ -25,6 +26,7 @@ export const AuthProvider = ({ children }) => {
             const decodedToken = jwtDecode(response.authorisation.token);
             setAuthenticated(true);
             setEmail(email);
+            setRole(decodedToken.role);
             setToken(response.authorisation.token);
             localStorage.setItem('accessToken', response.authorisation.token);
             navigate('/');
@@ -38,6 +40,7 @@ export const AuthProvider = ({ children }) => {
         setAuthenticated(false);
         setEmail('');
         setToken('');
+        setRole('');
         localStorage.removeItem('accessToken');
         navigate('/');
     };
@@ -46,6 +49,8 @@ export const AuthProvider = ({ children }) => {
         const decodedToken = jwtDecode(token);
         if (decodedToken.exp * 1000 < Date.now()) {
             handleLogout();
+        }{
+            setRole(decodedToken.role);  
         }
     };
 
@@ -55,6 +60,8 @@ export const AuthProvider = ({ children }) => {
             checkTokenExpiration(storedToken);
             setAuthenticated(true);
             setToken(storedToken);
+            const decodedToken = jwtDecode(storedToken);
+            setRole(decodedToken.role);
             setEmail(jwtDecode(storedToken).email);
         }
         setLoading(false);
@@ -64,6 +71,7 @@ export const AuthProvider = ({ children }) => {
         authenticated,
         email,
         token,
+        role,
         login: handleLogin,
         logout: handleLogout,
         loading

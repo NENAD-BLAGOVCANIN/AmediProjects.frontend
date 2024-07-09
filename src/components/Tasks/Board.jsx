@@ -49,9 +49,20 @@ function Board({
       setPhone(""); // Clear phone state
     } catch {}
   };
+  // Google Calendar main page URL
+  const googleCalendarUrl = "https://calendar.google.com";
 
   return (
     <div className="row">
+      <a
+        href={googleCalendarUrl}
+        target="_blank"
+        rel="noopener noreferrer" 
+        className="btn btn-google mt-2 "
+      >
+
+         פתיחת יומן 
+      </a>
       <div className="col-3 p-3">
         <div className="d-flex justify-content-between">
           <p className="mb-3 fw-500">

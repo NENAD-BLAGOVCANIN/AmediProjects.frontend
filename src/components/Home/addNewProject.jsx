@@ -97,19 +97,35 @@ function AddNewProject({ userInfo }) {
           <input type="text" className="form-control" id="companyName" />
         </div>
         <div className="mb-3">
+          <label htmlFor="companyId" className="form-label">ח.פ</label>
+          <input type="text" className="form-control" id="companyId" />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="collectionPhone" className="form-label">טלפון הנהלת חשבונות</label>
+          <input type="text" className="form-control" id="collectionPhone" />
+        </div>
+        <div className="mb-3">
           <label htmlFor="projectName" className="form-label">{t('addNewProject.project_name')}</label>
           <input type="text" className="form-control" id="projectName" />
         </div>
         <div className="mb-3">
-          <label htmlFor="place" className="form-label">{t('addNewProject.place')}</label>
+          <label htmlFor="place" className="form-label">מיקום החברה</label>
           <input type="text" className="form-control" id="place" />
         </div>
         <div className="mb-3">
-          <label htmlFor="contactPerson" className="form-label">{t('addNewProject.contact_person')}</label>
+          <label htmlFor="workspace" className="form-label">מיקום האתר</label>
+          <input type="text" className="form-control" id="workspace" />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">אימייל לשליחת חשבונות</label>
+          <input type="text" className="form-control" id="email" />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="contactPerson" className="form-label">מנהל פרוייקטים</label>
           <input type="text" className="form-control" id="contactPerson" />
         </div>
         <div className="mb-3">
-          <label htmlFor="phone" className="form-label">{t('addNewProject.phone')}</label>
+          <label htmlFor="phone" className="form-label">טלפון מנהל פרוייקטים</label>
           <input type="text" className="form-control" id="phone" />
         </div>
         <div className="mb-3">
@@ -121,8 +137,8 @@ function AddNewProject({ userInfo }) {
           <input type="file" className="form-control" id="file" accept=".pdf,.doc,.docx" />
         </div>
         <div className="mb-3">
-          <label htmlFor="productInput" className="form-label">{t('addNewProject.products')}</label>
-          <input 
+          {/* <label htmlFor="productInput" className="form-label">{t('addNewProject.products')}</label> */}
+          {/* <input 
             type="text" 
             className="form-control mb-2" 
             id="productInput" 
@@ -130,27 +146,27 @@ function AddNewProject({ userInfo }) {
             onChange={(e) => setProductInput(e.target.value)} 
             list="productList"
             placeholder={t('addNewProject.filter_products')}
-          />
-          <datalist id="productList">
+          /> */}
+          {/* <datalist id="productList">
             {availableProducts.map((product, index) => (
               <option key={index} value={product.name} />
             ))}
-          </datalist>
+          </datalist> */}
          
-          <button type="button" className="btn btn-primary mb-3" onClick={handleAddProduct}>{t('addNewProject.add_product')}</button>
-          <ul className="list-group">
+          {/* <button type="button" className="btn btn-primary mb-3" onClick={handleAddProduct}>{t('addNewProject.add_product')}</button> */}
+          {/* <ul className="list-group">
             {products.map((product, index) => (
               <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
                 {product}
                 <button type="button" className="btn btn-danger btn-sm" onClick={() => handleRemoveProduct(product)}>&times;</button>
               </li>
             ))}
-          </ul>
+          </ul> */}
           
         </div>
         <div className="mb-3">
-          <label htmlFor="UsersInput" className="form-label">{t('addNewProject.filter_users')}</label>
-          <input 
+          {/* <label htmlFor="UsersInput" className="form-label">{t('addNewProject.filter_users')}</label> */}
+          {/* <input 
             type="text" 
             className="form-control mb-2" 
             id="UsersInput" 
@@ -158,22 +174,22 @@ function AddNewProject({ userInfo }) {
             onChange={(e) => setUsersInput(e.target.value)} 
             list="UsersInput"
             placeholder={t('addNewProject.filter_users')}
-          />
-          <datalist id="UsersInput">
+          /> */}
+          {/* <datalist id="UsersInput">
             {availableUsers.map((user, index) => (
               <option key={index} value={user.name} />
             ))}
-          </datalist>
+          </datalist> */}
          {/* add user */}
-          <button type="button" className="btn btn-primary mb-3" onClick={handleAddUser}>{t('addNewProject.filter_users')}</button>
-          <ul className="list-group">
+          {/* <button type="button" className="btn btn-primary mb-3" onClick={handleAddUser}>{t('addNewProject.filter_users')}</button> */}
+          {/* <ul className="list-group">
             {usersList.map((user, index) => (
               <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
                 {user}
                 <button type="button" className="btn btn-danger btn-sm" onClick={() => handleRemoveUsers(user)}>&times;</button>
               </li>
             ))}
-          </ul>
+          </ul> */}
 
         </div>
         <button type="submit" className="btn btn-success">{t('addNewProject.submit')}</button>

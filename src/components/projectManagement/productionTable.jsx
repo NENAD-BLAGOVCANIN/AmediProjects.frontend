@@ -9,21 +9,21 @@ function ProductionTable() {
   const [filteredProductions, setFilteredProductions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(5); // Set default items per page to 5
   const [showUpdateProductionModal, setShowUpdateProductionModal] = useState(false);
   const [currentProduction, setCurrentProduction] = useState(null);
-  const itemsPerPage = 5;
+
+  const fetchProductions = async () => {
+    try {
+      const fetchedProductions = await getProductions();
+      setProductions(fetchedProductions);
+      setFilteredProductions(fetchedProductions.filter(production => production.status === 'measuring'));
+    } catch (error) {
+      console.error('Error fetching productions:', error);
+    }
+  };
 
   useEffect(() => {
-    const fetchProductions = async () => {
-      try {
-        const fetchedProductions = await getProductions();
-        setProductions(fetchedProductions);
-        setFilteredProductions(fetchedProductions);
-      } catch (error) {
-        console.error('Error fetching productions:', error);
-      }
-    };
-
     fetchProductions();
   }, []);
 
@@ -33,7 +33,7 @@ function ProductionTable() {
         value => value && value.toString().toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
-    setFilteredProductions(results);
+    setFilteredProductions(results.filter(production => production.status === 'measuring'));
     setCurrentPage(1); // Reset to the first page on new search
   }, [searchTerm, productions]);
 
@@ -46,17 +46,20 @@ function ProductionTable() {
     setSearchTerm(e.target.value);
   };
 
+  const handleItemsPerPageChange = (e) => {
+    setItemsPerPage(parseInt(e.target.value));
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredProductions.slice(indexOfFirstItem, indexOfLastItem);
-
-  const handleClickNext = () => {
-    setCurrentPage(currentPage + 1);
-  };
-
-  const handleClickPrevious = () => {
-    setCurrentPage(currentPage - 1);
-  };
+  const totalPages = Math.ceil(filteredProductions.length / itemsPerPage);
 
   return (
     <>
@@ -70,7 +73,7 @@ function ProductionTable() {
           className="form-control my-3" 
         />
       </div>
-      <div className="bg-white rounded p-3 shadow-sm">
+      <div className="bg-white rounded p-3 shadow-sm" style={{ overflowX: 'auto' }}>
         <h6 className="bold mb-3">פרויקטים בייצור</h6>
         <table className="table table-striped">
           <thead>
@@ -86,7 +89,7 @@ function ProductionTable() {
           </thead>
           <tbody>
             {currentItems.map((production, index) => (
-              <tr key={index} onClick={() => handleShowUpdateProductionModal(production)}>
+              <tr key={index}>
                 <td>{production.company}</td>
                 <td>{production.site_city}</td>
                 <td>{production.item}</td>
@@ -94,19 +97,34 @@ function ProductionTable() {
                 <td>{production.performed_by}</td>
                 <td>{production.notes}</td>
                 <td>
-                  <button className="btn btn-secondary" onClick={() => handleShowUpdateProductionModal(production)}>עריכה</button>
+                  <button className="btn btn-secondary" onClick={(e) => { e.stopPropagation(); handleShowUpdateProductionModal(production); }}>עריכה</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <div className="d-flex justify-content-between">
-          <button className="btn btn-primary" onClick={handleClickPrevious} disabled={currentPage === 1}>
-            הקודם
-          </button>
-          <button className="btn btn-primary" onClick={handleClickNext} disabled={indexOfLastItem >= filteredProductions.length}>
-            הבא
-          </button>
+        <div className="d-flex flex-column justify-content-between mb-3">
+          <div className="col-md-3 ml-1">
+            <label>כמות פרוייקטים להציג</label>
+            <select value={itemsPerPage} onChange={handleItemsPerPageChange} className="form-select">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+            </select>
+          </div>
+          <label className="mr-2 mt-2">מעבר בין עמודים</label>
+          <div className="d-flex flex-row col-md-8 mt-2">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index}
+                className={`btn ${currentPage === index + 1 ? 'btn-primary' : 'btn-light'}`}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+          <div></div>
         </div>
       </div>
       {showUpdateProductionModal && (

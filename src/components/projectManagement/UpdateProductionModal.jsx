@@ -8,7 +8,7 @@ function UpdateProductionModal({ productions, setProductions, showUpdateProducti
     company: '',
     site_city: '',
     item: '',
-    status: '',
+    status: 'measuring', // Default to 'measuring'
     performed_by: '',
     notes: ''
   });
@@ -17,11 +17,21 @@ function UpdateProductionModal({ productions, setProductions, showUpdateProducti
   useEffect(() => {
     if (currentProduction) {
       setProductionData(currentProduction);
+    } else {
+      setProductionData({
+        company: '',
+        site_city: '',
+        item: '',
+        status: 'measuring', // Default to 'measuring'
+        performed_by: '',
+        notes: ''
+      });
     }
   }, [currentProduction]);
 
   const handleCloseUpdateProductionModal = () => {
     setShowUpdateProductionModal(false);
+    setCurrentProduction(null);
   };
 
   const handleChange = (e) => {
@@ -38,18 +48,10 @@ function UpdateProductionModal({ productions, setProductions, showUpdateProducti
         updatedProduction = await saveProduction(productionData);
         setProductions([updatedProduction, ...productions]);
       }
-      setShowUpdateProductionModal(false);
-      setProductionData({
-        company: '',
-        site_city: '',
-        item: '',
-        status: '',
-        performed_by: '',
-        notes: ''
-      });
+      handleCloseUpdateProductionModal();
       setErrors([]);
     } catch (error) {
-      setErrors(error.message);
+      setErrors([error.message]);
     }
   };
 
@@ -57,18 +59,10 @@ function UpdateProductionModal({ productions, setProductions, showUpdateProducti
     try {
       await deleteProduction(currentProduction.id);
       setProductions(productions.filter(prod => prod.id !== currentProduction.id));
-      setShowUpdateProductionModal(false);
-      setProductionData({
-        company: '',
-        site_city: '',
-        item: '',
-        status: '',
-        performed_by: '',
-        notes: ''
-      });
+      handleCloseUpdateProductionModal();
       setErrors([]);
     } catch (error) {
-      setErrors(error.message);
+      setErrors([error.message]);
     }
   };
 
@@ -79,7 +73,7 @@ function UpdateProductionModal({ productions, setProductions, showUpdateProducti
           <div className="modal-content py-3 px-4 border-0 shadow-lg" style={{ maxHeight: 800, overflow: 'auto' }}>
             <div className="modal-header pb-0 border-0 d-flex align-items-center">
               <div>
-                <h4 className="modal-title bold m-0">Update Production</h4>
+                <h4 className="modal-title bold m-0">עדכון תכנון ומדידה</h4>
               </div>
               <span type="button" className="close ms-auto m-0 text-secondary" onClick={handleCloseUpdateProductionModal} style={{ fontSize: '25pt', fontWeight: '300' }}>
                 <span aria-hidden="true">&times;</span>
@@ -97,13 +91,16 @@ function UpdateProductionModal({ productions, setProductions, showUpdateProducti
                   <input type="text" className='form-control' placeholder='Item' name='item' value={productionData.item} onChange={handleChange} />
                 </div>
                 <div className='col-md-6 p-2'>
-                  <input type="text" className='form-control' placeholder='Status' name='status' value={productionData.status} onChange={handleChange} />
+                  <select className='form-control' name='status' value={productionData.status} onChange={handleChange}>
+                    <option value='measuring'>מדידה</option>
+                    <option value='planning'>תכנון</option>
+                  </select>
                 </div>
                 <div className='col-md-6 p-2'>
-                  <input type="text" className='form-control' placeholder='Performed By' name='performed_by' value={productionData.performed_by} onChange={handleChange} />
+                  <input type="text" className='form-control' placeholder='בוצע על ידי' name='performed_by' value={productionData.performed_by} onChange={handleChange} />
                 </div>
                 <div className='col-md-12 p-2'>
-                  <textarea className='form-control' style={{ height: 130 }} placeholder='Notes' name='notes' value={productionData.notes} onChange={handleChange} />
+                  <textarea className='form-control' style={{ height: 130 }} placeholder='הערות' name='notes' value={productionData.notes} onChange={handleChange} />
                 </div>
 
                 {errors && (
@@ -116,8 +113,8 @@ function UpdateProductionModal({ productions, setProductions, showUpdateProducti
               </div>
             </div>
             <div className='modal-footer border-0'>
-              <button className='btn btn-primary rounded' onClick={handleSubmit}>Save</button>
-              {currentProduction && <button className='btn btn-danger rounded' onClick={handleDelete}>Delete</button>}
+              <button className='btn btn-primary rounded' onClick={handleSubmit}>שמירה</button>
+              {currentProduction && <button className='btn btn-secondary rounded' onClick={handleCloseUpdateProductionModal}>סגירה</button>}
             </div>
           </div>
         </div>
