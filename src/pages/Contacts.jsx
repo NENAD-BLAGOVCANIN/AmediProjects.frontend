@@ -87,15 +87,16 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
                         <table className="table table-hover">
                             <thead>
                                 <tr>
-                                    <th className="text-secondary bg-transparent fw-500">ID</th>
-                                    <th className="text-secondary bg-transparent fw-500">Name</th>
-                                    <th className="text-secondary bg-transparent fw-500">Email</th>
-                                    <th className="text-secondary bg-transparent fw-500">Title</th>
-                                    <th className="text-secondary bg-transparent fw-500">City</th>
-                                    <th className="text-secondary bg-transparent fw-500">Address</th>
-                                    <th className="text-secondary bg-transparent fw-500">Phone</th>
-                                    <th className="text-secondary bg-transparent fw-500">Organization</th>
-                                    <th className="text-center text-secondary bg-transparent fw-500">Actions</th>
+                                    <th className="text-secondary bg-transparent fw-500">מספר</th>
+                                    <th className="text-secondary bg-transparent fw-500">שם</th>
+                                    <th className="text-secondary bg-transparent fw-500">אימייל</th>
+                                    <th className="text-secondary bg-transparent fw-500">תפקיד</th>
+                                    <th className="text-secondary bg-transparent fw-500">סטטוס</th>
+                                    <th className="text-secondary bg-transparent fw-500">עיר</th>
+                                    <th className="text-secondary bg-transparent fw-500">רחוב</th>
+                                    <th className="text-secondary bg-transparent fw-500">טלפון</th>
+                                    <th className="text-secondary bg-transparent fw-500">שם חברה</th>
+                                    <th className="text-center text-secondary bg-transparent fw-500">פעולות</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -105,6 +106,7 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
                                         <td className="bg-transparent">{contact.name}</td>
                                         <td className="bg-transparent">{contact.email}</td>
                                         <td className="bg-transparent">{contact.title}</td>
+                                        <td className="bg-transparent">{contact.status}</td>
                                         <td className="bg-transparent">{contact.city}</td>
                                         <td className="bg-transparent">{contact.address}</td>
                                         <td className="bg-transparent">{contact.phone}</td>

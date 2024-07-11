@@ -77,53 +77,66 @@ function ProjectAmountTable() {
         <table className="table table-striped">
           <thead>
             <tr>
+              <th>מספר</th>
               <th>שם חברה</th>
-              <th>אחראי גבייה</th>
-              <th>נייד מנהל פרוייקט</th>
-              <th>אימייל</th>
-              <th>נייד מנהל חשבונות</th>
-
               <th>מנהל פרוייקט</th>
               <th>שם פרוייקט</th>
+              <th>נייד מנהל פרוייקט</th>
+              
+              <th>אחראי גבייה</th>
+              <th>אימייל</th>
+              <th>תנאי תשלום</th>
+              <th>נייד מנהל חשבונות</th>
               <th>תאריך הוצאת חשבונית אחרון</th>
-              <th>יתרה לתשלום</th>
-              <th>תנאי גבייה</th>
 
               <th>חוב</th>
               <th>תאריך גבייה אחרון</th>
               <th>עכבון 5%</th>
               <th>קיזוז מצטבר</th>
-              <th>צורת תשלום</th>
+              <th>קיזוז במקום ערבות</th>
 
-              <th>תקשורת אחרונה</th>
-              <th>מתי נוצרה</th>
+              <th>ערבות ביצוע עם תאריך סיום</th>
+              <th>אופן צורת תשלום</th>
+              <th>תאריך שליחת פירוט אחרון</th>
+              <th>תאריך הוצאת חשונות אחרון</th>
+              <th>תאריך תשלום עדיתי</th>
+
               <th>פעולות</th>
             </tr>
           </thead>
           <tbody>
             {currentItems.map((project, index) => (
               <tr key={index}>
+                <td>{project.id}</td>
                 <td>{project.company_name}</td>
-                <td>{project.collection_contact}</td>
-                <td>{project.project_manager_mobile}</td>
-                <td>{project.email}</td>
-                <td>{project.accounting_manager_mobile}</td>
-
                 <td>{project.contact_person}</td>
                 <td>{project.project_name}</td>
+                <td>{project.project_manager_mobile}</td>
+
+                <td>{project.collection_contact}</td>
+                <td>{project.email}</td>
+                <td>{project.paymnet_plus}</td>
+                <td>{project.accounting_manager_mobile}</td>
                 <td>{project.last_invoice_issuance_date}</td>
-                <td>{project.remaining_amount_to_collect}</td>
-                <td>{project.agreed_payment_date}</td>
 
                 <td>{project.debt}</td>
                 <td>{project.last_execution_date}</td>
+                <td>{project.amount_collected_this_month}</td> 
                 <td>{project.retention_5}</td>
                 <td>{project.cumulative_offset}</td>
-                <td>{project.offset_instead_of_guarantee}</td>
-                
+                <td>{project.Offset_instead_of_guarantee_before_vat}</td>
                 <td>{project.payment_status}</td>
-                <td>{project.last_connection}</td>
-                <td>{project.last_execution_date}</td>
+                <td>{project.guarantee_end_date}</td>
+                <td>{project.Last_detail_sent_date}</td>
+                <td>{project.Last_invoice_issue_date}</td>
+                <td>{project.agreed_payment_date}</td>
+
+
+                {/*  */}
+
+
+                {/* <td>{project.offset_instead_of_guarantee}</td>  */}
+                
                 <td>
                   <button className="btn btn-secondary" onClick={(e) => { e.stopPropagation(); handleShowUpdateCollectionModal(project); }}>עריכה</button>
                 </td>
