@@ -28,6 +28,8 @@ import LandingLayout from "./layouts/LandingLayout";
 import Clients from './pages/Clients';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { Outlet } from 'react-router-dom';
+import AddNotification from '../src/components/Notification/addNotification';
+import SummaryDay from '../src/components/collection/summaryDay';
 
 const PrivateRoutes = () => {
   const { authenticated, loading } = useAuth();
@@ -171,7 +173,8 @@ function App() {
             path="/projects/invite/:inviteCode/:projectId"
             element={<Invite />}
           />
-
+        <Route path="/add-notification" element={<AddNotification />} />  
+        <Route path="/daySummary" element={<SummaryDay />} />  
           {/* Auth */}
           <Route
             path="/login"
