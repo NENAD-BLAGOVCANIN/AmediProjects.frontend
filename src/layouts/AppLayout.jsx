@@ -24,7 +24,7 @@ const pageTitles = {
 
 function AppLayout() {
   const location = useLocation();
-  let pageTitle = pageTitles[location.pathname] || "Page Not Found";
+  let pageTitle = pageTitles[location.pathname] || "";
   if (location.pathname.startsWith("/notifications/"))
     pageTitle = "Notification";
 
@@ -36,7 +36,6 @@ function AppLayout() {
       try {
         const fetchedUserInfo = await getUserInfo();
         setUserInfo(fetchedUserInfo);
-        console.log(fetchedUserInfo);
       } catch (error) {
         console.error("Error fetching :", error);
       }
@@ -44,7 +43,6 @@ function AppLayout() {
       try {
         const fetchedMyProjects = await getMyProjects();
         setMyProjects(fetchedMyProjects);
-        console.log(fetchedMyProjects);
       } catch (error) {
         console.error("Error fetching :", error);
       }

@@ -2,11 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
-import profileImagePlaceholder from "../../assets/img/profile.svg";
 import { TaskPropType } from "../../lib/propTypes";
 import { useTranslation } from 'react-i18next';
 
-const TaskCard = ({ task, handleShowTaskModal }) => {
+const TaskCard = ({ task, handleShowTaskModal, handleArchive }) => {
   const { t } = useTranslation();
 
   // Function to generate Google Calendar URL
@@ -33,27 +32,22 @@ const TaskCard = ({ task, handleShowTaskModal }) => {
   };
 
   return (
-    <div className="task-card mb-3">
+    <div className="task-card mb-2">
       <button
         className="task-card-button"
         onClick={() => handleShowTaskModal(task)}
       >
-        <div className="px-1 d-flex align-items-start">
-          <FontAwesomeIcon
-            icon={faCircleCheck}
-            className="text-muted medium pe-2"
-          />
-          <span className="pe-2 medium">{task.subject}</span>
-        </div>
-        <div className="pt-3 d-flex align-items-center">
-          <div className="pe-3">
-            <img
-              src={task?.assignee?.profile_image ?? profileImagePlaceholder}
-              className="rounded-circle w-100"
-              alt=""
-              style={{ height: 25, maxWidth: 25, objectFit: 'cover' }}
+        <div className="px-1 d-flex align-items-start justify-content-between">
+          <div>
+            <FontAwesomeIcon
+              icon={faCircleCheck}
+              className="text-muted medium pe-2"
             />
+            <span className="pe-2 medium">{task.subject}</span>
           </div>
+          
+        </div>
+        <div className="pt-3">
           <span className="small text-muted">
             {task?.due_date
               ? new Date(task.due_date).toDateString()
@@ -61,14 +55,24 @@ const TaskCard = ({ task, handleShowTaskModal }) => {
           </span>
         </div>
       </button>
+        <div className="d-flex justify-content-evenly  align-self-start">
       <a
         href={generateGoogleCalendarUrl(task)}
         target="_blank"
         rel="noopener noreferrer"
-        className="btn btn-primary mt-2"
+        className="btn btn-primary m-2 bi bi-google "
       >
+      
         הוספה לגוגל
       </a>
+      
+            <button
+              className="btn btn-sm btn-danger m-2  "
+              onClick={(e) => { e.stopPropagation(); handleArchive(task.id); }}
+            >
+              לארכיון
+            </button>
+          </div>
     </div>
   );
 };
@@ -76,6 +80,7 @@ const TaskCard = ({ task, handleShowTaskModal }) => {
 TaskCard.propTypes = {
   task: TaskPropType,
   handleShowTaskModal: PropTypes.func.isRequired,
+  handleArchive: PropTypes.func.isRequired, // Added handleArchive prop type
 };
 
 export default TaskCard;

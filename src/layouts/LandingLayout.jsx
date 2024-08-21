@@ -12,7 +12,6 @@ function LandingLayout() {
             try {
                 const fetchedUserInfo = await getUserInfo();
                 setUserInfo(fetchedUserInfo);
-                console.log(fetchedUserInfo);
             } catch (error) {
                 console.error('Error fetching :', error);
             }

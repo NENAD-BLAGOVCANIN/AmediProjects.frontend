@@ -50,6 +50,7 @@ const getUsers = async () => {
   }
 };
 
+
 const deleteUser = async (user_id) => {
   try {
     const token = localStorage.getItem("accessToken");
@@ -104,4 +105,4 @@ const updateProfileImage = async (file) => {
   }
 };
 
-export { getUserInfo, getUsers, deleteUser, updateProfileImage };
+export { getUserInfo, getUsers, deleteUser, updateProfileImage  };

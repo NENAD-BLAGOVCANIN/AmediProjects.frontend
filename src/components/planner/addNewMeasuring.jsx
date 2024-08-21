@@ -38,6 +38,7 @@ function AddNewMeasuring({ userInfo }) {
           <label htmlFor="fileUpload" className="form-label">{t('addNewProject.upload_file')}</label>
           <input type="file" className="form-control" id="fileUpload" accept=".pdf,.doc,.docx" />
         </div>
+        
         <div className="mb-3">
           <label htmlFor="productInput" className="form-label">{t('addNewProject.products')}</label>
           <input 

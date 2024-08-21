@@ -308,7 +308,7 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
         id="toggleModalButton"
         onClick={toggleModal}
       >
-        <FontAwesomeIcon icon={faBars} />
+        <FontAwesomeIcon icon={faBars} />סגירת תפריט
       </div>
       <img src={mobileImgExample} className='' style={{ objectFit: 'cover', maxWidth: 240 }} alt="אמדי לוגו" />
 

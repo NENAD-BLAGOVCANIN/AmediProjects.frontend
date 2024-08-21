@@ -108,7 +108,7 @@ i18n
             leads: "לידים",
             clients: "לקוחות",
             notifications: "התראות",
-            my_schedule: "לוח זמנים",
+            my_schedule: "יומן ",
             performance: "תפוקה",
             preferences: "העדפות",
             project: "פרוייקט",
@@ -218,7 +218,12 @@ i18n
           "collected_amount": "מה נגבה",
           "remaining_amount_to_collect": "מה נותר לגבייה",
           "update": "עדכן",
-          "save": "שמור"
+          "email": "דואר אלקטרוני",
+          "save": "שמור",
+          "offset_instead_of_guarantee":"קיזוז במקום ערבות",
+          "payment_status":"אופן צורת תשלום",
+          "cumulative_offset":"קיזוז מצטבר",
+          "last_connection":"פעם אחרונה נוצר קשר"
         },
       },
       isRTL: true

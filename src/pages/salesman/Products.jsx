@@ -47,7 +47,7 @@ function Products() {
                                 <div className='p-3'>
                                     <h5>{product.name}</h5>
                                     <p className='medium text-muted'>{product.description}</p>
-                                    <h5 className='text-primary' style={{ fontWeight: '600' }}>${product.price}</h5>
+                                    <h5 className='text-primary' style={{ fontWeight: '600' }}>{product.price}</h5>
                                 </div>
                             </div>
                         </div>

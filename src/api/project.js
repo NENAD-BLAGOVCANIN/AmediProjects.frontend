@@ -128,8 +128,6 @@ const saveProject = async (project) => {
   try {
     const token = localStorage.getItem("accessToken");
 
-  
-
     const response = await fetch(apiUrl + "/projects", {
       method: "POST",
       headers: {
@@ -210,7 +208,128 @@ const updateProjectImage = async (file, current_project_id) => {
     throw new Error(error);
   }
 };
+const updateArchiveStatus = async (id, data) => {
+  try {
+    const token = localStorage.getItem("accessToken");
 
+    const response = await fetch(`${apiUrl}/projects/${id}/archive`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(data),
+    });
+
+    const responseData = await response.json();
+
+    if (response.ok) {
+      return responseData;
+    } else {
+      throw new Error(responseData.errors);
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+const getProjectDetails = async (id) => {
+  try {
+    const token = localStorage.getItem("accessToken");
+
+    const response = await fetch(`${apiUrl}/project-details/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+
+    const responseData = await response.json();
+
+    if (response.ok) {
+      return responseData;
+    } else {
+      throw new Error(responseData.errors);
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+// here
+const getProjectsStartedPerMonth = async () => {
+  try {
+      const token = localStorage.getItem("accessToken");
+
+      const response = await fetch(`${apiUrl}/projects-started`, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token
+          },
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+          return responseData;
+      } else {
+          throw new Error(responseData.errors);
+      }
+  } catch (error) {
+      throw new Error(error.message);
+  }
+};
+
+export const getDetailedProjects = async () => {
+  try {
+      const token = localStorage.getItem('accessToken');
+
+      const response = await fetch(`${apiUrl}/projects`, {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
+          },
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+          return responseData;
+      } else {
+          throw new Error(responseData.errors);
+      }
+  } catch (error) {
+      console.error('Error fetching projects:', error);
+      throw error;
+  }
+};
+export const getProjectCollectionsSummary = async () => {
+  try {
+      const token = localStorage.getItem('accessToken');
+
+      const response = await fetch(`${apiUrl}/project-collections-summary`, {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
+          },
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+          return responseData;
+      } else {
+          throw new Error(responseData.errors);
+      }
+  } catch (error) {
+      console.error('Error fetching project collections summary:', error);
+      throw error;
+  }
+};
 export {
   getProjectMembers,
   getMyProjects,
@@ -220,4 +339,8 @@ export {
   updateProjectInfo,
   getProjects,
   updateProjectImage,
+  getProjectDetails,
+  updateArchiveStatus, // Add this line
+  getProjectsStartedPerMonth,
+  
 };

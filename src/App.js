@@ -18,6 +18,7 @@ import Salesman from "./pages/salesman/Home";
 import Home from "./pages/dashboard/Home";
 import Planner from "./pages/planner/Home";
 import ProjectManagement from "./pages/projectManagement/Home";
+import ProjectManage from "./pages/projectManagement/ProjectManage";
 import Collection from "./pages/collection/Home";
 import DashboardProject from "./pages/dashboard/Home";
 import Products from "./pages/salesman/Products";
@@ -30,6 +31,9 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { Outlet } from 'react-router-dom';
 import AddNotification from '../src/components/Notification/addNotification';
 import SummaryDay from '../src/components/collection/summaryDay';
+import BonusesForm from '../src/components/Home/bonues';
+import SummaryPlannerForm from '../src/components/Home/SummaryPlannerForm';
+import NewProject from "./pages/newProject/home";
 
 const PrivateRoutes = () => {
   const { authenticated, loading } = useAuth();
@@ -53,7 +57,10 @@ function App() {
         <Routes>
 
           <Route index element={<Navigate to="/home" />} />
-
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/Bonuses" element={<BonusesForm />} />
+          <Route path="/SummaryPlanner" element={<SummaryPlannerForm />} />
+        
           <Route element={<PrivateRoutes />}>
 
             <Route path="/" element={<AppLayout />}>
@@ -143,12 +150,16 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/team" element={<Team />} />
               <Route path="/salesman" element={<Salesman />} />
+              <Route path="/newProject" element={<NewProject />} />
+              <Route path="/projects/create" element={<CreateNewProject />} />
 
               {/* Personal Pages */}
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/notifications/:id" element={<Notification />} />
-              <Route path="/profile" element={<Profile />} />
-
+              {/* <Route path="/profile" element={<Profile />} /> */}
+              <Route path="/add-notification" element={<AddNotification />} />  
+              <Route path="/daySummary" element={<SummaryDay />} />  
+              <Route path="/ProjectManage" element={<ProjectManage />} />
             </Route>
           </Route>
 
@@ -165,7 +176,7 @@ function App() {
             {/* Project Management */}
             <Route path="/" element={<AppLayout />}>
               <Route path="/projects" element={<Projects />} />
-              <Route path="/projects/create" element={<CreateNewProject />} />
+             
             </Route>
           </Route>
           
@@ -173,8 +184,7 @@ function App() {
             path="/projects/invite/:inviteCode/:projectId"
             element={<Invite />}
           />
-        <Route path="/add-notification" element={<AddNotification />} />  
-        <Route path="/daySummary" element={<SummaryDay />} />  
+     
           {/* Auth */}
           <Route
             path="/login"

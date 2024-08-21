@@ -14,9 +14,9 @@ function RegistrationModal({ showRegistrationModal, setShowRegistrationModal, us
 
         try {
             const response = await register(name, email, password);
-            console.log(response);
+  
             const user = response.user;
-            console.log(user);
+  
             setUsers([user, ...users]);
             setShowRegistrationModal(false);
         } catch (error) {

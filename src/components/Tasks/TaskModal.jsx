@@ -305,7 +305,7 @@ function TaskModal({
                     value={selectedStatus}
                     onChange={(e) => changeTaskStatus(e.target.value)}
                   >
-                    <option value="todo">צריך לעשות</option>
+                    <option value="todo">תחילת עבודה </option>
                     <option value="in_progress">בעבודה</option>
                     <option value="on_hold">הקפאה</option>
                     <option value="done">הסתיים</option>

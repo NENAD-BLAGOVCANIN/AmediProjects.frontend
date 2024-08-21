@@ -55,7 +55,7 @@ function Board({
       <div className="col-3 p-3">
         <div className="d-flex justify-content-between">
           <p className="mb-3 fw-500">
-            משימות לביצוע
+           תחילת עבודה
             <span className="text-muted fw-400 medium px-2">{tasks.filter((task) => task.status === "todo").length}</span>
           </p>
           <div>
@@ -181,7 +181,7 @@ function Board({
       <div className="col-3 p-3">
         <div className="d-flex justify-content-between">
           <p className="mb-3 fw-500">
-            הסתיים
+            הסתיימו
             <span className="text-muted fw-400 medium px-2">{tasks.filter((task) => task.status === "done").length}</span>
           </p>
           <div>

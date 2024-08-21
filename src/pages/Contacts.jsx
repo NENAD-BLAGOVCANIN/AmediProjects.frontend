@@ -87,24 +87,24 @@ function Contacts({ contacts, setContacts, leads, setLeads }) {
                         <table className="table table-hover">
                             <thead>
                                 <tr>
-                                    <th className="text-secondary bg-transparent fw-500">ID</th>
-                                    <th className="text-secondary bg-transparent fw-500">Name</th>
-                                    <th className="text-secondary bg-transparent fw-500">Email</th>
-                                    <th className="text-secondary bg-transparent fw-500">Title</th>
-                                    <th className="text-secondary bg-transparent fw-500">City</th>
-                                    <th className="text-secondary bg-transparent fw-500">Address</th>
-                                    <th className="text-secondary bg-transparent fw-500">Phone</th>
-                                    <th className="text-secondary bg-transparent fw-500">Organization</th>
+                                    <th className="text-secondary bg-transparent fw-500">שם</th>
+                                    <th className="text-secondary bg-transparent fw-500">אימייל</th>
+                                    <th className="text-secondary bg-transparent fw-500">תפקיד</th>
+                                    <th className="text-secondary bg-transparent fw-500">חברה</th>
+                                    <th className="text-secondary bg-transparent fw-500">עיר</th>
+                                    <th className="text-secondary bg-transparent fw-500">כתובת</th>
+                                    <th className="text-secondary bg-transparent fw-500">טלפון</th>
+                                    <th className="text-secondary bg-transparent fw-500">חברה</th>
                                     <th className="text-center text-secondary bg-transparent fw-500">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {filteredContacts.map(contact => (
                                     <tr key={contact.id}>
-                                        <td className="bg-transparent">{contact.id}</td>
                                         <td className="bg-transparent">{contact.name}</td>
                                         <td className="bg-transparent">{contact.email}</td>
                                         <td className="bg-transparent">{contact.title}</td>
+                                        <td className="bg-transparent">{contact.status}</td>
                                         <td className="bg-transparent">{contact.city}</td>
                                         <td className="bg-transparent">{contact.address}</td>
                                         <td className="bg-transparent">{contact.phone}</td>
