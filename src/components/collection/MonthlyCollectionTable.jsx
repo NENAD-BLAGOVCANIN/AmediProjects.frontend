@@ -81,7 +81,7 @@ function MonthlyCollectionTable() {
           <FontAwesomeIcon icon={faBars} />  סגירה / פתיחת תפריט צד
         </button>
         <button className="btn btn-primary" onClick={() => handleShowMonthlyCollectionModal(null)}>
-          הוסף גבייה חודשית
+        הוסף גבייה חדשה לפרויקט ללא גבייה
         </button>
       </div>
       <div className="bg-white rounded p-3 shadow-sm" style={{ overflowX: 'auto' }}>

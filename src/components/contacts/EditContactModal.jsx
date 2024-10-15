@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { updateContact } from '../../api/contacts'; // Ensure this path is correct
+import { saveTask } from '../../api/tasks'; // Import the saveTask function for task creation
 import { useTranslation } from 'react-i18next';
+import { ToastContainer, toast } from 'react-toastify'; // Import toast components
+import 'react-toastify/dist/ReactToastify.css'; // Import toast CSS
 
 function EditContactModal({ contacts, setContacts, selectedContact, setSelectedContact, showEditContactModal, setShowEditContactModal }) {
     const { t } = useTranslation();
@@ -13,6 +16,11 @@ function EditContactModal({ contacts, setContacts, selectedContact, setSelectedC
     const [phone, setPhone] = useState('');
     const [organization, setOrganization] = useState('');
     const [errors, setErrors] = useState([]);
+    
+    // Task-related states
+    const [subject, setTaskSubject] = useState('');
+    const [taskDueDate, setTaskDueDate] = useState('');
+    const [taskDescription, setTaskDescription] = useState('');
 
     useEffect(() => {
         if (selectedContact) {
@@ -31,7 +39,7 @@ function EditContactModal({ contacts, setContacts, selectedContact, setSelectedC
         setShowEditContactModal(false);
     };
 
-    const handleSubmit = async () => {
+    const handleSubmitContact = async () => {
         const contact = {
             id: selectedContact.id,
             name,
@@ -55,6 +63,29 @@ function EditContactModal({ contacts, setContacts, selectedContact, setSelectedC
         }
     };
 
+    const handleSubmitTask = async () => {
+
+        const task = {
+            subject: subject,
+            due_date: taskDueDate,
+            description: taskDescription,
+            email: email, // Using the contact's email
+            phone: phone ,// Using the contact's phone
+        };
+
+        try {
+            await saveTask(task );
+            setTaskSubject('');
+            setTaskDueDate('');
+            setTaskDescription('');
+            setErrors([]);
+            setShowEditContactModal(false); // Close the modal after task creation
+            toast.success('המשימה נוצרה'); // Show success toast
+        } catch (error) {
+            setErrors(error.message);
+        }
+    };
+
     return (
         <>
             <div className={`modal fade ${showEditContactModal ? 'show d-block' : ''}`} tabIndex="-1" role="dialog">
@@ -71,41 +102,41 @@ function EditContactModal({ contacts, setContacts, selectedContact, setSelectedC
                         <div className='modal-body'>
                             <div className='row'>
                                 <div className='col-md-6 p-2'>
-                                <label>שם</label>
+                                    <label>שם</label>
                                     <input type="text" className='form-control' placeholder="שם" value={name} onChange={(e) => setName(e.target.value)} />
                                 </div>
                                 <div className='col-md-6 p-2'>
-                                <label>דואר אלקטרוני</label>
+                                    <label>דואר אלקטרוני</label>
                                     <input type="email" className='form-control' placeholder="דואר אלקטרוני" value={email} onChange={(e) => setEmail(e.target.value)} />
                                 </div>
                                 <div className='col-md-6 p-2'>
-                                <label>תפקיד</label>
+                                    <label>תפקיד</label>
                                     <input type="text" className='form-control' placeholder="תפקיד" value={title} onChange={(e) => setTitle(e.target.value)} />
                                 </div>
                                 <div className='col-md-6 p-2'>
-                                <label>עיר</label>
+                                    <label>עיר</label>
                                     <input type="text" className='form-control' placeholder="עיר" value={city} onChange={(e) => setCity(e.target.value)} />
                                 </div>
                                 <div className='col-md-6 p-2'>
                                     <label>סטטוס</label>
                                     <select className='form-control' name='status' value={status} onChange={e => setStatus(e.target.value)} >
                                         <option value=''>בחירת סטטוס</option>
-                                        <option value='ענה'>ענה</option>
-                                        <option value='לא ענה'>לא ענה</option>
-                                        <option value='פולו אפ'>פולואפ</option>
                                         <option value='לא רלוונטי'>לא רלוונטי</option>
+                                        <option value='לקוח פוטנציאלי'>לקוח פוטנציאלי</option>
+                                        <option value='לקוח עם פרויקט'>לקוח עם פרויקט</option>
+                                        <option value='לקוח במשא ומתן'>לקוח במשא ומתן</option>
                                     </select>
                                 </div>
                                 <div className='col-md-6 p-2'>
-                                <label>כתובת</label>
+                                    <label>כתובת</label>
                                     <input type="text" className='form-control' placeholder="כתובת" value={address} onChange={(e) => setAddress(e.target.value)} />
                                 </div>
                                 <div className='col-md-6 p-2'>
-                                <label>טלפון</label>
+                                    <label>טלפון</label>
                                     <input type="text" className='form-control' placeholder="טלפון" value={phone} onChange={(e) => setPhone(e.target.value)} />
                                 </div>
                                 <div className='col-md-6 p-2'>
-                                <label>חברה</label>
+                                    <label>חברה</label>
                                     <input type="text" className='form-control' placeholder="חברה" value={organization} onChange={(e) => setOrganization(e.target.value)} />
                                 </div>
                                 {errors && (
@@ -116,13 +147,33 @@ function EditContactModal({ contacts, setContacts, selectedContact, setSelectedC
                                     </div>
                                 )}
                             </div>
+
+                            <hr className="my-4" />
+
+                            <h5>יצירת משימה חדשה</h5>
+                            <div className='row'>
+                                <div className='col-md-6 p-2'>
+                                    <label>שם משימה</label>
+                                    <input type="text" className='form-control' placeholder="שם משימה" value={subject} onChange={(e) => setTaskSubject(e.target.value)} />
+                                </div>
+                                <div className='col-md-6 p-2'>
+                                    <label>תאריך יעד</label>
+                                    <input type="date" className='form-control' value={taskDueDate} onChange={(e) => setTaskDueDate(e.target.value)} />
+                                </div>
+                                <div className='col-12 p-2'>
+                                    <label>פרטי משימה</label>
+                                    <textarea className='form-control' placeholder="פרטי משימה" value={taskDescription} onChange={(e) => setTaskDescription(e.target.value)} />
+                                </div>
+                            </div>
                         </div>
                         <div className='modal-footer border-0'>
-                            <button className='btn btn-primary rounded' onClick={handleSubmit}>שמירה</button>
+                            <button className='btn btn-primary rounded' onClick={handleSubmitContact}>שמירה</button>
+                            <button className='btn btn-secondary rounded' onClick={handleSubmitTask}>יצירת משימה</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </>
     );
 }

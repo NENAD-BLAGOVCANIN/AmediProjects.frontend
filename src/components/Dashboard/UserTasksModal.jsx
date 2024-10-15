@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
 const statusTranslation = {
-  'in_progress': 'בעשייה',
+  'in_progress': 'עבודה',
   'todo': 'לביצוע',
   'done': 'הושלם',
   // Add other status translations here as needed

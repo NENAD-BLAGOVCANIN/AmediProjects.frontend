@@ -50,7 +50,7 @@ export default function SummaryPlannerForm() {
         date: date,
         worker_name: workerName,
         employee_comments: employeeComments,
-        bonuses: selectedBonuses
+        bonuses: JSON.stringify(selectedBonuses),
       });
       toast.success('הסיכום נשמר בהצלחה');
       navigate('/dashboard'); // Adjust the navigation as needed

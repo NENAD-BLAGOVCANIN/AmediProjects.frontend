@@ -258,10 +258,13 @@ function Sidebar({ userInfo, setUserInfo, myProjects, setMyProjects }) {
             </Link>
           </li>
 
-          <li className="nav-item px-2 rounded">
-            <Link to="/profile" className="nav-link">
-              <FontAwesomeIcon icon={faCalendar} />
-              <span className="ps-3 medium p-2">{t('sidebar.my_schedule')}</span>
+          <li
+            className={`nav-item px-2 rounded ${currentPage === "/statistics" ? "active" : ""
+              }`}
+          >
+            <Link to="/statistics" className="nav-link">
+              <FontAwesomeIcon icon={faChartLine} />
+              <span className="ps-3 medium p-2">דוחות</span>
             </Link>
           </li>
 

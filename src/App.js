@@ -16,10 +16,12 @@ import Users from "./pages/admin/Users";
 import CreateNewProject from "./pages/CreateNewProject";
 import Salesman from "./pages/salesman/Home";
 import Home from "./pages/dashboard/Home";
+import StatisticsProject from "./components/StatisticsProject/StatisticsProject";
 import Planner from "./pages/planner/Home";
 import ProjectManagement from "./pages/projectManagement/Home";
 import ProjectManage from "./pages/projectManagement/ProjectManage";
 import Collection from "./pages/collection/Home";
+import PdfFormPage from "./pages/collection/PdfFormPage";
 import DashboardProject from "./pages/dashboard/Home";
 import Products from "./pages/salesman/Products";
 import AppLayout from "./layouts/AppLayout";
@@ -32,9 +34,12 @@ import { Outlet } from 'react-router-dom';
 import AddNotification from '../src/components/Notification/addNotification';
 import SummaryDay from '../src/components/collection/summaryDay';
 import BonusesForm from '../src/components/Home/bonues';
+import BillingDetailsForm from '../src/components/Home/bilingdetailsform';
 import SummaryPlannerForm from '../src/components/Home/SummaryPlannerForm';
 import NewProject from "./pages/newProject/home";
-
+import AccountDetailsPage from "./pages/AccountDetailsPage/AccountDetailsPage";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const PrivateRoutes = () => {
   const { authenticated, loading } = useAuth();
 
@@ -59,6 +64,7 @@ function App() {
           <Route index element={<Navigate to="/home" />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/Bonuses" element={<BonusesForm />} />
+
           <Route path="/SummaryPlanner" element={<SummaryPlannerForm />} />
         
           <Route element={<PrivateRoutes />}>
@@ -91,6 +97,17 @@ function App() {
                 path="/dashboardProject"
                 element={
                   <DashboardProject
+                    leads={leads}
+                    setLeads={setLeads}
+                    contacts={contacts}
+                    setContacts={setContacts}
+                  />
+                }
+              />
+              <Route
+                path="/Statistics"
+                element={
+                  <StatisticsProject
                     leads={leads}
                     setLeads={setLeads}
                     contacts={contacts}
@@ -151,8 +168,10 @@ function App() {
               <Route path="/team" element={<Team />} />
               <Route path="/salesman" element={<Salesman />} />
               <Route path="/newProject" element={<NewProject />} />
+              <Route path="/AccountDetailsPage" element={<AccountDetailsPage />} />
               <Route path="/projects/create" element={<CreateNewProject />} />
-
+              <Route path="/BillingDetailsForm" element={<BillingDetailsForm />} />
+              <Route path="/pdfFormPage" element={<PdfFormPage />} />
               {/* Personal Pages */}
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/notifications/:id" element={<Notification />} />

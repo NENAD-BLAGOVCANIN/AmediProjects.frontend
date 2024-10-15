@@ -32,11 +32,9 @@ const saveProduction = async (production) => {
     const response = await fetch(apiUrl + "/productions", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: "Bearer " + token,
+        'Authorization': 'Bearer ' + token,  // No Content-Type header here
       },
-      body: JSON.stringify(production),
+      body: production,  // Pass the FormData directly
     });
 
     const responseData = await response.json();
@@ -47,27 +45,44 @@ const saveProduction = async (production) => {
   }
 };
 
-const updateProduction = async (production) => {
+
+const updateProduction = async (production, id) => {
   try {
     const token = localStorage.getItem("accessToken");
 
-    const response = await fetch(apiUrl + "/productions/" + production.id, {
-      method: "PUT",
+    // Append _method: 'PUT' to the FormData
+    if (!(production instanceof FormData)) {
+      throw new Error('production must be a FormData instance');
+    }
+    production.append('_method', 'PUT');
+
+    const response = await fetch(`${apiUrl}/productions/${id}`, {
+      method: "POST",  // Use POST method for method spoofing
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: "Bearer " + token,
+        'Authorization': 'Bearer ' + token,  // Do not set 'Content-Type' header
       },
-      body: JSON.stringify(production),
+      body: production,  // Pass the FormData directly
     });
 
     const responseData = await response.json();
 
+    if (!response.ok) {
+      throw new Error(responseData.errors || 'Failed to update production');
+    }
+
     return responseData;
   } catch (error) {
-    return error;
+    console.error('Error updating production:', error);
+    throw error;
   }
 };
+
+
+
+
+
+
+
 
 const deleteProduction = async (productionId) => {
   try {
@@ -76,9 +91,8 @@ const deleteProduction = async (productionId) => {
     const response = await fetch(apiUrl + "/productions/" + productionId, {
       method: "DELETE",
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: "Bearer " + token,
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
       },
     });
 
@@ -115,7 +129,7 @@ const getActivePlanningProductions = async () => {
 export {
   getProductions,
   saveProduction,
-  updateProduction,
   deleteProduction,
-  getActivePlanningProductions 
+  getActivePlanningProductions ,
+  updateProduction
 };

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { updateTask, saveTask, getTaskableItems } from "../../api/tasks";
+import { updateTask, getTaskableItems } from "../../api/tasks";
+import { getProjects } from '../../api/project';
 import profileImagePlaceholder from "../../assets/img/profile.svg";
 import UpdateAssigneeDropdown from "./UpdateAssigneeDropdown";
 import { Form } from "react-bootstrap";
@@ -26,6 +27,10 @@ function TaskModal({
   const [selectedTaskableId, setSelectedTaskableId] = useState(selectedTask.taskable_id || '');
   const [taskableItems, setTaskableItems] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState(selectedTask.status);
+  const [projects, setProjects] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
@@ -51,6 +56,10 @@ function TaskModal({
     }
   }, [selectedTaskableType]);
 
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
   const fetchTaskableItems = async (taskableType) => {
     try {
       const items = await getTaskableItems(taskableType);
@@ -58,6 +67,36 @@ function TaskModal({
     } catch (error) {
       console.error("Failed to fetch taskable items:", error);
     }
+  };
+
+  const fetchProjects = async () => {
+    try {
+      const projectsData = await getProjects();
+      setProjects(projectsData);
+      setFilteredProjects(projectsData); // Show all projects initially
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+    }
+  };
+
+  const handleSearchChange = (e) => {
+    const searchValue = e.target.value;
+    setSearchTerm(searchValue);
+
+    // Filter the projects based on the search input
+    const filtered = projects.filter(project =>
+      project.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredProjects(filtered);
+
+    // Show the dropdown when there are results
+    setShowDropdown(filtered.length > 0);
+  };
+
+  const handleProjectSelect = (project) => {
+    setSelectedTaskableId(project.id);
+    setSearchTerm(project.name); // Set the search term to the selected project name
+    setShowDropdown(false); // Hide the dropdown after selection
   };
 
   const handleTitleChange = () => {
@@ -143,12 +182,6 @@ function TaskModal({
       setSelectedTask(updatedTask);
     }
   };
-
-  const taskableTypes = [
-    { value: 'App\\Models\\Contact', label: 'Contact' },
-    { value: 'App\\Models\\Collection', label: 'Collection' },
-    { value: 'App\\Models\\Lead', label: 'Lead' },
-  ];
 
   return (
     <div
@@ -258,43 +291,35 @@ function TaskModal({
               />
             </div>
 
-            {/* <div className="d-flex align-items-center mt-5">
-              <h5 className="mb-0 pe-3">סוג שיוך משימה</h5>
+            {/* Project Autocomplete Dropdown */}
+            <div className="d-flex align-items-center mt-5">
+              <h5 className="mb-0 pe-3">שיוך פרוייקט</h5>
               <Form className="m-0 w-50">
-                <Form.Group controlId="taskableTypeSelect">
-                  <Form.Select
-                    value={selectedTaskableType}
-                    onChange={(e) => setSelectedTaskableType(e.target.value)}
-                  >
-                    <option value="">Select Taskable Type</option>
-                    {taskableTypes.map((type) => (
-                      <option key={type.value} value={type.value}>
-                        {type.label}
-                      </option>
-                    ))}
-                  </Form.Select>
+                <Form.Group controlId="projectSearch">
+                  <Form.Control
+                    type="text"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    placeholder="הכנס שם פרוייקט"
+                    autoComplete="off"
+                    onFocus={() => setShowDropdown(true)}
+                  />
+                  {showDropdown && (
+                    <div className="autocomplete-dropdown">
+                      {filteredProjects.map(project => (
+                        <div
+                          key={project.id}
+                          className="autocomplete-item"
+                          onClick={() => handleProjectSelect(project)}
+                        >
+                          {project.name}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </Form.Group>
               </Form>
             </div>
-
-            <div className="d-flex align-items-center mt-5">
-              <h5 className="mb-0 pe-3">ID שיוך משימה</h5>
-              <Form className="m-0 w-50">
-                <Form.Group controlId="taskableIdSelect">
-                  <Form.Select
-                    value={selectedTaskableId}
-                    onChange={(e) => setSelectedTaskableId(e.target.value)}
-                  >
-                    <option value="">Select Taskable Item</option>
-                    {taskableItems.map((item) => (
-                      <option key={item.id} value={item.id}>
-                        {item.name}
-                      </option>
-                    ))}
-                  </Form.Select>
-                </Form.Group>
-              </Form>
-            </div> */}
 
             <div className="d-flex align-items-center mt-5">
               <h5 className="mb-0 pe-3">סטטוס</h5>
@@ -305,8 +330,7 @@ function TaskModal({
                     value={selectedStatus}
                     onChange={(e) => changeTaskStatus(e.target.value)}
                   >
-                    <option value="todo">תחילת עבודה </option>
-                    <option value="in_progress">בעבודה</option>
+                    <option value="in_progress">עבודה</option>
                     <option value="on_hold">הקפאה</option>
                     <option value="done">הסתיים</option>
                   </Form.Select>

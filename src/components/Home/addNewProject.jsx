@@ -11,8 +11,13 @@ function AddNewProject({ userInfo }) {
   const [productInput, setProductInput] = useState('');
   const [priceInput, setPriceInput] = useState('');
   const [availableProducts, setAvailableProducts] = useState([]);
+  const [items, setItems] = useState([
+    { product_name: '', type: '', quantity: 1 , price: ''},
+    { product_name: '', type: '', quantity: 1 , price: '' }
+  ]);  // Start with 4 items
 
   useEffect(() => {
+
     fetchProducts();
   }, []);
 
@@ -24,6 +29,19 @@ function AddNewProject({ userInfo }) {
       console.error('Error fetching products:', error);
     }
   };
+  const handleItemChange = (index, field, value) => {
+    const updatedItems = [...items];
+    updatedItems[index][field] = value;
+    setItems(updatedItems);
+  };
+
+  const handleAddItem = () => {
+    if (items.length < 10) {
+      setItems([...items, { product_name: '', type: '', quantity: 1 , price:'' }]);  // Add new item
+    }
+  };
+
+
 
   const [formData, setFormData] = useState({
     company_name: '',
@@ -43,19 +61,20 @@ function AddNewProject({ userInfo }) {
     image: '',
     description: '',
     file_url: null,
+    items:items,
   });
 
-  const handleAddProduct = () => {
-    if (productInput && priceInput && !products.some(p => p.name === productInput)) {
-      setProducts([...products, { name: productInput, price: priceInput }]);
-      setProductInput('');
-      setPriceInput('');
-    }
-  };
+  // const handleAddProduct = () => {
+  //   if (productInput && priceInput && !products.some(p => p.name === productInput)) {
+  //     setProducts([...products, { name: productInput, price: priceInput }]);
+  //     setProductInput('');
+  //     setPriceInput('');
+  //   }
+  // };
 
-  const handleRemoveProduct = (product) => {
-    setProducts(products.filter(p => p.name !== product.name));
-  };
+  // const handleRemoveProduct = (product) => {
+  //   setProducts(products.filter(p => p.name !== product.name));
+  // };
 
   const handleFileChange = (e) => {
     setFormData({ ...formData, file: e.target.files[0] });
@@ -89,6 +108,26 @@ function AddNewProject({ userInfo }) {
     <div className="bg-white rounded p-3 shadow-sm">
       <h6 className="bold mb-3">{t('addNewProject.add_new_project')}</h6>
       <form onSubmit={handleSubmit}>
+      <div className="mb-3">
+          <label htmlFor="name" className="form-label">{t('addNewProject.project_name')}</label>
+          <input 
+            type="text" 
+            className="form-control" 
+            id="name" 
+            value={formData.name} 
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })} 
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="location" className="form-label">כתובת האתר</label>
+          <input 
+            type="text" 
+            className="form-control" 
+            id="location" 
+            value={formData.location} 
+            onChange={(e) => setFormData({ ...formData, location: e.target.value })} 
+          />
+        </div>
         <div className="mb-3">
           <label htmlFor="company_name" className="form-label">{t('addNewProject.company_name')}</label>
           <input 
@@ -110,7 +149,7 @@ function AddNewProject({ userInfo }) {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="amount" className="form-label">סכום</label>
+          <label htmlFor="amount" className="form-label">סכום חוזה</label>
           <input 
             type="text" 
             className="form-control" 
@@ -130,7 +169,7 @@ function AddNewProject({ userInfo }) {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="company_address" className="form-label">כתובת החברה</label>
+          <label htmlFor="company_address" className="form-label">כתובת משרדי חברה לאיסוף צקים</label>
           <input 
             type="text" 
             className="form-control" 
@@ -159,34 +198,16 @@ function AddNewProject({ userInfo }) {
             onChange={(e) => setFormData({ ...formData, accountEmail: e.target.value })} 
           />
         </div>
+
+
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">{t('addNewProject.project_name')}</label>
+          <label htmlFor="project_manager_name" className="form-label">מנהל פרוייקט</label>
           <input 
             type="text" 
             className="form-control" 
-            id="name" 
-            value={formData.name} 
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })} 
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="location" className="form-label">כתובת האתר</label>
-          <input 
-            type="text" 
-            className="form-control" 
-            id="location" 
-            value={formData.location} 
-            onChange={(e) => setFormData({ ...formData, location: e.target.value })} 
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="project_manager_phone" className="form-label">מנהל פרוייקט</label>
-          <input 
-            type="text" 
-            className="form-control" 
-            id="project_manager_phone" 
-            value={formData.project_manager_phone} 
-            onChange={(e) => setFormData({ ...formData, project_manager_phone: e.target.value })} 
+            id="project_manager_name" 
+            value={formData.project_manager_name} 
+            onChange={(e) => setFormData({ ...formData, project_manager_name: e.target.value })} 
           />
         </div>
         <div className="mb-3">
@@ -200,7 +221,17 @@ function AddNewProject({ userInfo }) {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="phone" className="form-label">טלפון מנהל פרוייקט</label>
+          <label htmlFor="project_manager_phone" className="form-label">טלפון מנהל פרוייקט</label>
+          <input 
+            type="text" 
+            className="form-control" 
+            id="project_manager_phone" 
+            value={formData.project_manager_phone} 
+            onChange={(e) => setFormData({ ...formData, project_manager_phone: e.target.value })} 
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="phone" className="form-label">שם וטלפון נוסף</label>
           <input 
             type="text" 
             className="form-control" 
@@ -229,47 +260,39 @@ function AddNewProject({ userInfo }) {
             onChange={handleFileChange} 
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="productInput" className="form-label">{t('addNewProject.products')}</label>
-          <input 
-            type="text" 
-            className="form-control mb-2" 
-            id="productInput" 
-            value={productInput}
-            onChange={(e) => setProductInput(e.target.value)} 
-            list="productList"
-            placeholder={t('addNewProject.filter_products')}
-          />
-          <datalist id="productList">
-            {availableProducts.map((product, index) => (
-              <option key={index} value={product.name} />
-            ))}
-          </datalist>
-          <input 
-            type="text" 
-            className="form-control mb-2" 
-            id="priceInput" 
-            value={priceInput}
-            onChange={(e) => setPriceInput(e.target.value)} 
-            placeholder="מחיר ליחידה"
-          />
-          <button type="button" className="btn btn-primary mb-3" onClick={handleAddProduct}>{t('addNewProject.add_product')}</button>
-          <ul className="list-group">
-            {products.map((product, index) => (
-              <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
-                {product.name} - {product.price} ש"ח, מחיר ליחידה
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  value={product.price}
-                  onChange={(e) => handleProductPriceChange(e, index)}
-                  style={{ width: '70px', marginRight: '10px' }}
-                />
-                <button type="button" className="btn btn-danger btn-sm" onClick={() => handleRemoveProduct(product)}>&times;</button>
-              </li>
-            ))}
-          </ul>
-        </div>
+ 
+        <div className="col-md-12 p-2">
+                  <h5>פריטים</h5>
+                  {items.map((item, index) => (
+                    <div className="row" key={index}>
+                      <div className="col-md-3">
+                        <label>שם פריט</label>
+                        <input type="text" className="form-control" value={item.product_name} onChange={(e) => handleItemChange(index, 'product_name', e.target.value)} />
+                      </div>
+                      <div className="col-md-3">
+                        <label>מידה </label>
+                        <select className="form-control" value={item.type} onChange={(e) => handleItemChange(index, 'type', e.target.value)}>
+                          <option value="">בחר סוג</option>
+                          <option value="מטר אורך">מ.א</option>
+                          <option value="מטר רוחב">מ.ר</option>
+                        </select>
+                      </div>
+                      <div className="col-md-3">
+                        <label>יח'</label>
+                        <input type="number" className="form-control" value={item.quantity} onChange={(e) => handleItemChange(index, 'quantity', e.target.value)} />
+                      </div>
+                      <div className="col-md-3">
+                        <label>מחיר</label>
+                        <input type="text" className="form-control" value={item.price} onChange={(e) => handleItemChange(index, 'price', e.target.value)} />
+                      </div>
+                    </div>
+                  ))}
+                  {items.length < 10 && (
+                    <button type="button" className="btn btn-secondary mt-2" onClick={handleAddItem}>
+                      הוסף פריט
+                    </button>
+                  )}
+                </div>
         <button type="submit" className="btn btn-success">{t('addNewProject.submit')}</button>
       </form>
     </div>

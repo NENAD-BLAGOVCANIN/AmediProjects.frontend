@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { TaskPropType } from "../../lib/propTypes";
 import { faCalendar, faCircleCheck, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form } from "react-bootstrap";
 import UpdateAssigneeDropdown from "./UpdateAssigneeDropdown";
+
 
 const CreateTaskCard = ({
   showAddTaskCard,
@@ -27,13 +28,50 @@ const CreateTaskCard = ({
   handleHideAddTaskCard,
   handleSaveTask,
 }) => {
+  const [projects, setProjects] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedProjectId, setSelectedProjectId] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  useEffect(() => {
+ 
+    if (!dueDate) {
+      setDueDate(new Date().toISOString().split('T')[0]);
+    }
+  }, []);
+
+  // const handleSearchChange = (e) => {
+  //   const searchValue = e.target.value;
+  //   setSearchTerm(searchValue);
+
+  //   // Filter the projects based on the search input
+  //   const filtered = projects.filter(project =>
+  //     project.name.toLowerCase().includes(searchValue.toLowerCase())
+  //   );
+  //   setFilteredProjects(filtered);
+
+  //   // Show the dropdown when there are results
+  //   setShowDropdown(filtered.length > 0);
+  // };
+
+
+
+  const handleSaveTaskWithProject = () => {
+    handleSaveTask(selectedProjectId);
+  };
+
   return (
     <div
-      className={`task-card mb-3 ${
-        showAddTaskCard || tasks.length === 0 ? "" : "d-none"
-      }`}
+      className={`task-card mb-3 ${showAddTaskCard || tasks.length === 0 ? "" : "d-none"}`}
     >
       <div>
+        {/* Project Selection */}
+        <div className="d-flex align-items-center pt-3">
+
+        </div>
+
+        {/* Task Name */}
         <div className="d-flex align-items-center pb-3">
           <FontAwesomeIcon
             icon={faCircleCheck}
@@ -51,14 +89,25 @@ const CreateTaskCard = ({
             />
           </div>
         </div>
-
+  {/* Description */}
+  <div className="mt-3">
+          <label className="form-label" htmlFor="description">פרטי המשימה</label>
+          <textarea
+            id="description"
+            className="form-control bg-gray-light mb-2"
+            placeholder="הכנס פרטי משימה"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        {/* Due Date */}
         <div className="d-flex align-items-center pb-3">
           <FontAwesomeIcon
             icon={faCalendar}
             className="text-muted medium pe-2"
           />
           <div className="w-100">
-            <label className="form-label" htmlFor="dueDate">תאריך יעד</label>
+            <label className="form-label" htmlFor="dueDate">תאריך תחילת עבודה</label>
             <input
               id="dueDate"
               type="date"
@@ -69,6 +118,7 @@ const CreateTaskCard = ({
           </div>
         </div>
 
+        {/* Email */}
         <div className="d-flex align-items-center pb-3">
           <FontAwesomeIcon
             icon={faEnvelope}
@@ -87,6 +137,7 @@ const CreateTaskCard = ({
           </div>
         </div>
 
+        {/* Phone */}
         <div className="d-flex align-items-center pb-3">
           <FontAwesomeIcon
             icon={faPhone}
@@ -105,6 +156,7 @@ const CreateTaskCard = ({
           </div>
         </div>
 
+        {/* Assignee Dropdown */}
         <div className="d-flex align-items-center pb-3">
           <FontAwesomeIcon
             icon={faCircleCheck}
@@ -120,6 +172,7 @@ const CreateTaskCard = ({
           </div>
         </div>
 
+        {/* Status */}
         <div className="d-flex align-items-center mt-5">
           <label className="form-label pe-3" htmlFor="statusSelect">סטטוס</label>
           <Form className="m-0 w-50">
@@ -128,8 +181,7 @@ const CreateTaskCard = ({
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
               >
-                <option value="todo">תחילת עבודה</option>
-                <option value="in_progress">בעבודה</option>
+                <option value="in_progress">עבודה</option>
                 <option value="on_hold">הקפאה</option>
                 <option value="done">הסתיים</option>
               </Form.Select>
@@ -137,16 +189,9 @@ const CreateTaskCard = ({
           </Form>
         </div>
 
-        <div className="mt-3">
-          <label className="form-label" htmlFor="description">פרטי המשימה</label>
-          <textarea
-            id="description"
-            className="form-control bg-gray-light mb-2"
-            placeholder="הכנס פרטי משימה"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
+      
+
+        {/* Action Buttons */}
         <div className="d-flex justify-content-end w-100">
           <div className="pe-1">
             <button
@@ -159,13 +204,35 @@ const CreateTaskCard = ({
           <div className="ps-1">
             <button
               className="btn btn-primary"
-              onClick={() => handleSaveTask()}
+              onClick={handleSaveTaskWithProject}
             >
               שמירה
             </button>
           </div>
         </div>
       </div>
+
+      {/* Styles for autocomplete dropdown */}
+      <style>{`
+        .autocomplete-dropdown {
+          max-height: 150px;
+          overflow-y: auto;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          position: absolute;
+          background-color: white;
+          width: 100%;
+          z-index: 1000;
+          margin-top: 5px;
+        }
+        .autocomplete-item {
+          padding: 8px;
+          cursor: pointer;
+        }
+        .autocomplete-item:hover {
+          background-color: #f0f0f0;
+        }
+      `}</style>
     </div>
   );
 };

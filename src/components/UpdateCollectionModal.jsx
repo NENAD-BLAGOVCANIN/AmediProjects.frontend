@@ -46,7 +46,6 @@ function UpdateCollectionModal({ show, onHide, currentCollection, setCollections
             setDetails2(currentCollection.details_2 || '');
             setCall2Created(currentCollection.call_2_created || '');
             setCollectedAmount(currentCollection.collected_amount || '');
-            setRemainingAmountToCollect(currentCollection.remaining_amount_to_collect || '');
             setCompanyName(currentCollection.company_name || '');
             setCollectionContact(currentCollection.collection_contact || '');
             setCumulativeOffset(currentCollection.cumulative_offset || '');
@@ -76,7 +75,7 @@ function UpdateCollectionModal({ show, onHide, currentCollection, setCollections
             details_2: details2,
             call_2_created: call2Created,
             collected_amount: collectedAmount,
-            remaining_amount_to_collect: remainingAmountToCollect,
+      
             company_name: companyName,
             cumulative_offset: cumulativeOffset,
             offset_instead_of_guarantee: offsetInsteadOfGuarantee,
@@ -153,11 +152,7 @@ function UpdateCollectionModal({ show, onHide, currentCollection, setCollections
                         <label>{t('email')}</label>
                         <input type="email" className='form-control' placeholder={t('email')} value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
-                    <div className='col-md-6 p-2'>
-                        <label>{t('last_execution_date')}</label>
-                        <input type="date" className='form-control' placeholder={t('last_execution_date')} value={lastExecutionDate || ''} onChange={(e) => setLastExecutionDate(e.target.value)} />
-                        {errors.last_execution_date && <div className="text-danger small">{errors.last_execution_date.join(', ')}</div>}
-                    </div>
+
                     <div className='col-md-6 p-2'>
                         <label>{t('agreed_payment_date')}</label>
                         <input type="date" className='form-control' placeholder={t('agreed_payment_date')} value={agreedPaymentDate || ''} onChange={(e) => setAgreedPaymentDate(e.target.value)} />
@@ -209,15 +204,16 @@ function UpdateCollectionModal({ show, onHide, currentCollection, setCollections
                         {errors.call_2_created && <div className="text-danger small">{errors.call_2_created.join(', ')}</div>}
                     </div>
                     <div className='col-md-6 p-2'>
+                        <label>{t('last_execution_date')}</label>
+                        <input type="date" className='form-control' placeholder={t('last_execution_date')} value={lastExecutionDate || ''} onChange={(e) => setLastExecutionDate(e.target.value)} />
+                        {errors.last_execution_date && <div className="text-danger small">{errors.last_execution_date.join(', ')}</div>}
+                    </div>
+                    <div className='col-md-6 p-2'>
                         <label>{t('collected_amount')}</label>
                         <input type="number" className='form-control' placeholder={t('collected_amount')} value={collectedAmount} onChange={(e) => setCollectedAmount(e.target.value)} />
                         {errors.collected_amount && <div className="text-danger small">{errors.collected_amount.join(', ')}</div>}
                     </div>
-                    <div className='col-md-6 p-2'>
-                        <label>{t('remaining_amount_to_collect')}</label>
-                        <input type="number" className='form-control' placeholder={t('remaining_amount_to_collect')} value={remainingAmountToCollect} onChange={(e) => setRemainingAmountToCollect(e.target.value)} />
-                        {errors.remaining_amount_to_collect && <div className="text-danger small">{errors.remaining_amount_to_collect.join(', ')}</div>}
-                    </div>
+
                     <div className='col-md-6 p-2'>
                         <label>{t('cumulative_offset')}</label>
                         <input type="text" className='form-control' placeholder={t('cumulative_offset')} value={cumulativeOffset} onChange={(e) => setCumulativeOffset(e.target.value)} />

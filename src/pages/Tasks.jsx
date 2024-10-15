@@ -5,16 +5,11 @@ import { getTasks, saveTask } from '../api/tasks';
 import TaskModal from '../components/Tasks/TaskModal';
 import { getUsers } from '../api/user'; // Updated import
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 import { faEllipsis, faListCheck, faPlus, faTable, faTimeline } from '@fortawesome/free-solid-svg-icons';
-import profileImagePlaceholder from '../assets/img/profile.svg';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Board from '../components/Tasks/Board';
 import BoardByDay from '../components/Tasks/calendar';
-import TasksTimelineCalender from '../components/Tasks/calendar';
-import List from '../components/Tasks/List';
-import { useTranslation } from 'react-i18next';
 
 function Tasks() {
     const [tasks, setTasks] = useState([]);
@@ -22,6 +17,7 @@ function Tasks() {
     const [showTasksModal, setShowTasksModal] = useState(false);
     const [showAddTaskCard, setShowAddTaskCard] = useState(false);
     const [projectMembers, setProjectMembers] = useState([]);
+    const [selectedTaskableId, setSelectedTaskableId] = useState(''); // Add this state
 
     useEffect(() => {
         const fetchMembers = async () => {
@@ -58,18 +54,11 @@ function Tasks() {
                             selectedTask={selectedTask} setSelectedTask={setSelectedTask}
                             showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
                             showAddTaskCard={showAddTaskCard} setShowAddTaskCard={setShowAddTaskCard}
+                            setSelectedTaskableId={setSelectedTaskableId} // Pass the function here
                         />
                     </Tab>
                     <Tab eventKey="timeline" title={<><FontAwesomeIcon icon={faTimeline} /><span className='p-2'>יומן</span></>}>
                         <BoardByDay
-                            tasks={tasks} setTasks={setTasks}
-                            selectedTask={selectedTask} setSelectedTask={setSelectedTask}
-                            showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
-                            showAddTaskCard={showAddTaskCard} setShowAddTaskCard={setShowAddTaskCard}
-                        />
-                    </Tab>
-                    <Tab eventKey="list" title={<><FontAwesomeIcon icon={faListCheck} /><span className='p-2'>רשימה</span></>}>
-                        <List className='p-2'
                             tasks={tasks} setTasks={setTasks}
                             selectedTask={selectedTask} setSelectedTask={setSelectedTask}
                             showTasksModal={showTasksModal} setShowTasksModal={setShowTasksModal}
@@ -87,6 +76,8 @@ function Tasks() {
                     setTasks={setTasks}
                     projectMembers={projectMembers}
                     setProjectMembers={setProjectMembers}
+                    setSelectedTaskableId={setSelectedTaskableId} // Pass it to CreateTaskCard
+
                 />
             </div>
         </>

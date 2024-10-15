@@ -8,6 +8,7 @@ import NewNotifications from '../../components/Home/NewNotifications';
 import Calendar from 'react-calendar';
 import EmployeePerformance from '../../components/Home/EmployeePerformance';
 import PlaningTable from "../../components/planner/planingTable";
+import ProductionTable from "../../components/planner/productionTable";
 import AddNewMeasuring from '../../components/planner/addNewMeasuring';
 import AddNewPlaning from '../../components/planner/addNewPlaning';
 import MeasuringTable from '../../components/planner/measuringTable';
@@ -98,7 +99,7 @@ function Home() {
     };
 
     return (
-        <div dir="rtl" className="container">
+        <div dir="rtl" className="container-fluid">
             <div className='pt-3'>
                 <h3 className='mt-3 fw-500'>{t('greeting.welcome')}, {userInfo && userInfo.name.split(" ")[0]}!</h3>
             </div>
@@ -108,31 +109,13 @@ function Home() {
                         <PlaningTable />
                     </div>
                 </div>
-                <div className="col-md-4">
+            <div className="row pt-3">
+                <div className="col-md-12">
                     <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <h6 className='bold mb-3'>{t('card_title.late_tasks')}</h6>
-                        {tasks.length === 0 ? (
-                            <p className='py-5 text-center'>You have no late tasks 😊</p>
-                        ) : (
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th>Task</th>
-                                        <th>Due Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {tasks.map(task => (
-                                        <tr key={task.id} onClick={() => handleTaskClick(task)}>
-                                            <td>{task.subject}</td>
-                                            <td>{new Date(task.due_date).toLocaleDateString()}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        )}
+                        <ProductionTable />
                     </div>
                 </div>
+
                 <div className="col-md-4">
                     <div className="bg-white rounded p-3 mt-3 shadow-sm">
                         <h6 className='bold mb-3'>{t('card_title.my_calendar')}</h6>
@@ -170,24 +153,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            {showTasksModal && selectedTask && (
-                <TaskModal
-                    showTasksModal={showTasksModal}
-                    setShowTasksModal={setShowTasksModal}
-                    selectedTask={selectedTask}
-                    setSelectedTask={setSelectedTask}
-                    tasks={tasks}
-                    setTasks={setTasks}
-                />
-            )}
-            {showDayTasksModal && (
-                <DayTasksModal
-                    showDayTasksModal={showDayTasksModal}
-                    setShowDayTasksModal={setShowDayTasksModal}
-                    tasksForDay={tasksForDay}
-                    handleTaskClick={handleTaskClick}
-                />
-            )}
+            </div>
         </div>
     );
 }

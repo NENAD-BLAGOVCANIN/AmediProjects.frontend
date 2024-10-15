@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
-import { TaskPropType } from "../../lib/propTypes";
+import { faEllipsisV ,faGripLines } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from 'react-i18next';
+import { TaskPropType } from "../../lib/propTypes";
 
-const TaskCard = ({ task, handleShowTaskModal, handleArchive }) => {
+const TaskCard = ({ task, handleShowTaskModal, handleArchive , dragHandleProps  }) => {
   const { t } = useTranslation();
 
   // Function to generate Google Calendar URL
@@ -30,57 +30,78 @@ const TaskCard = ({ task, handleShowTaskModal, handleArchive }) => {
     
     return `${baseUrl}?action=TEMPLATE&text=${subject}&details=${details}&sf=true&output=xml`;
   };
-
+  let clickTimeout;
+  // Handles opening the modal when clicking outside the dropdown
+  const handleTaskClick = (e) => {
+    clickTimeout = setTimeout(() => {
+      if (!e.target.closest(".dropdown-toggle")) {
+        handleShowTaskModal(task);
+      }
+    }, 200); // Delay in ms
+  };
+  const handleDragStart = () => {
+    clearTimeout(clickTimeout);
+  };
   return (
-    <div className="task-card mb-2">
-      <button
-        className="task-card-button"
-        onClick={() => handleShowTaskModal(task)}
-      >
-        <div className="px-1 d-flex align-items-start justify-content-between">
-          <div>
-            <FontAwesomeIcon
-              icon={faCircleCheck}
-              className="text-muted medium pe-2"
-            />
-            <span className="pe-2 medium">{task.subject}</span>
-          </div>
-          
+    <div className="task-card mb-2" style={{ padding: "6px", fontSize: "12px" }} onClick={handleTaskClick}>
+      <div className="d-flex align-items-center justify-content-between">
+        <button
+          className="task-card-button btn btn-link"
+          onClick={() => handleShowTaskModal(task)}
+          style={{ textDecoration: 'none', color: 'inherit', padding: 0 }}
+        >
+        <span className="very-small">
+          {task.subject && task.subject.length > 50 
+            ? `${task.subject.substring(0, 50)}...` 
+            : task.subject}
+        </span>
+        </button>
+        <div className="drag-handle" {...dragHandleProps}>
+          <FontAwesomeIcon icon={faGripLines} />
         </div>
-        <div className="pt-3">
-          <span className="small text-muted">
-            {task?.due_date
-              ? new Date(task.due_date).toDateString()
-              : "No due date"}
-          </span>
+        <div className="dropdown">
+          <button
+            className="btn btn-link dropdown-toggle"
+            type="button"
+            id={`dropdown-${task.id}`}
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            onClick={(e) => e.stopPropagation()} // Prevents modal from opening when clicking on the dropdown
+            style={{ textDecoration: 'none', color: 'inherit', fontSize: "12px" }}
+          >
+            <FontAwesomeIcon icon={faEllipsisV} />
+          </button>
+          <ul className="dropdown-menu dropdown-menu-end" aria-labelledby={`dropdown-${task.id}`}>
+            <li>
+              <a
+                className="dropdown-item"
+                href={generateGoogleCalendarUrl(task)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                הוסף ליומן של גוגל
+              </a>
+            </li>
+            <li>
+              <button
+                className="dropdown-item"
+                onClick={(e) => { e.stopPropagation(); handleArchive(task.id); }}
+              >
+                העבר לארכיון
+              </button>
+            </li>
+          </ul>
         </div>
-      </button>
-        <div className="d-flex justify-content-evenly  align-self-start">
-      <a
-        href={generateGoogleCalendarUrl(task)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="btn btn-primary m-2 bi bi-google "
-      >
-      
-        הוספה לגוגל
-      </a>
-      
-            <button
-              className="btn btn-sm btn-danger m-2  "
-              onClick={(e) => { e.stopPropagation(); handleArchive(task.id); }}
-            >
-              לארכיון
-            </button>
-          </div>
+      </div>
     </div>
   );
 };
 
 TaskCard.propTypes = {
-  task: TaskPropType,
+  task: TaskPropType.isRequired,
   handleShowTaskModal: PropTypes.func.isRequired,
-  handleArchive: PropTypes.func.isRequired, // Added handleArchive prop type
+  handleArchive: PropTypes.func.isRequired,
+  dragHandleProps: PropTypes.object,
 };
 
 export default TaskCard;

@@ -24,14 +24,8 @@ const getTasks = async () => {
   }
 };
 
-const saveTask = async (subject, description, due_date, taskable_type, taskable_id) => {
-  const data = {
-    subject,
-    description,
-    due_date,
-    taskable_type,
-    taskable_id,
-  };
+const saveTask = async (task) => {
+  const data = task;
 
   try {
     const token = localStorage.getItem("accessToken");

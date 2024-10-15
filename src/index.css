@@ -151,6 +151,9 @@ a {
   font-weight: 500 !important;
 }
 
+.very-small {
+  font-size: 12.5px !important;
+}
 .small {
   font-size: 15.5px !important;
 }
@@ -584,4 +587,45 @@ hr {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+
+.text-bg-warning {
+  background-color: #d6b3ff !important; /* Light purple */
+}
+
+.text-bg-danger {
+  background-color: #ff6961 !important; /* Red */
+}
+
+.text-bg-info {
+  background-color: #87cefa !important; /* Light blue */
+}
+
+
+
+.column {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  min-height: 500px;
+}
+
+.station-item {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.project-item {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.dragging {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px dashed #ccc;
 }

@@ -152,7 +152,12 @@ function Home() {
         setShowPdfModal(false);
         setShowAccountDetailsPdfModal(false);
     };
-
+    const handleNewbidClick = () => {
+        window.open('/pdfFormPage', '_blank');
+    };
+    const handleTotalBillClick = () => {
+        window.open('/BillingDetailsForm', '_blank');
+    };
     return (
         <div dir="rtl" className="container-fluid">
             <div className='pt-3'>
@@ -179,31 +184,7 @@ function Home() {
                         />
                     </div>
                 </div>
-                <div className="col-md-4">
-                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <h6 className='bold mb-3'>{t('card_title.late_tasks')}</h6>
-                        {tasks.length === 0 ? (
-                            <p className='py-5 text-center'>You have no late tasks 😊</p>
-                        ) : (
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th>Task</th>
-                                        <th>Due Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {tasks.map(task => (
-                                        <tr key={task.id} onClick={() => handleTaskClick(task)}>
-                                            <td>{task.subject}</td>
-                                            <td>{new Date(task.due_date).toLocaleDateString()}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        )}
-                    </div>
-                </div>
+
                 <div className="col-md-4">
                     <div className="bg-white rounded p-3 mt-3 shadow-sm">
                         <h5>סה"כ הכסף שיש לגבות</h5>
@@ -242,10 +223,10 @@ function Home() {
                 </div>
                 <div className="col-md-12">
                     <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <button className="btn btn-primary" onClick={() => setShowPdfModal(true)}>
+                        <button className="btn btn-primary" onClick={() => handleNewbidClick()}>
                             יצירת הצעת מחיר
                         </button>
-                        <button className="btn btn-secondary ml-3" onClick={() => setShowAccountDetailsPdfModal(true)}>
+                        <button className="btn btn-secondary ml-3" onClick={() => handleTotalBillClick()}>
                             יצירת פירוט חשבון
                         </button>
                     </div>

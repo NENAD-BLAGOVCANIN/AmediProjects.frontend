@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getBonusNameById } from '../../api/bonuses';
 
 function SummaryTable({ summaryDays, summaryInstallations, summaryPlanners }) {
     const [sortedData, setSortedData] = useState([]);
@@ -7,6 +8,8 @@ function SummaryTable({ summaryDays, summaryInstallations, summaryPlanners }) {
     const [filterType, setFilterType] = useState('All'); // State for filtering by type
     const [searchTerm, setSearchTerm] = useState(''); // State for search term
     const [sortConfig, setSortConfig] = useState({ key: 'created_at', direction: 'desc' }); // State for sorting
+    const [expandedRow, setExpandedRow] = useState(null); // State to track the expanded row
+    const [bonusNames, setBonusNames] = useState({}); // State to store bonus names
 
     useEffect(() => {
         // Combine all summaries into one array
@@ -52,6 +55,39 @@ function SummaryTable({ summaryDays, summaryInstallations, summaryPlanners }) {
         setSortedData(filteredData);
     }, [summaryDays, summaryInstallations, summaryPlanners, filterType, searchTerm, sortConfig]);
 
+    // Fetch and store bonus names when needed
+    useEffect(() => {
+        const fetchBonusNames = async () => {
+            const bonusesToFetch = new Set();
+
+            // Identify all bonus IDs that need to be fetched
+            sortedData.forEach(item => {
+                const bonuses = JSON.parse(item.bonuses || '{}');
+                Object.keys(bonuses).forEach(bonusId => {
+                    if (!bonusNames[bonusId]) {
+                        bonusesToFetch.add(bonusId);
+                    }
+                });
+            });
+
+            const bonusNamePromises = Array.from(bonusesToFetch).map(async bonusId => {
+                const name = await getBonusNameById(bonusId);
+                return { bonusId, name };
+            });
+
+            const resolvedBonuses = await Promise.all(bonusNamePromises);
+
+            // Update state with fetched bonus names
+            const newBonusNames = { ...bonusNames };
+            resolvedBonuses.forEach(({ bonusId, name }) => {
+                newBonusNames[bonusId] = name;
+            });
+            setBonusNames(newBonusNames);
+        };
+
+        fetchBonusNames();
+    }, [sortedData]);
+
     // Calculate the current items to display
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -71,6 +107,48 @@ function SummaryTable({ summaryDays, summaryInstallations, summaryPlanners }) {
         }
         setSortConfig({ key, direction });
         setCurrentPage(1); // Reset to first page when sorting changes
+    };
+
+    // Handle row click to toggle accordion
+    const toggleAccordion = (index) => {
+        setExpandedRow(expandedRow === index ? null : index);
+    };
+
+    // Render bonus list using fetched names
+    const renderBonusList = (bonuses) => {
+        const bonusEntries = Object.entries(bonuses || {});
+
+        return (
+            <ul>
+                {bonusEntries.map(([bonusId, quantity]) => {
+                    const bonusName = bonusNames[bonusId] || `Bonus ${bonusId}`;
+                    return (
+                        <li key={bonusId}>{bonusName}: {quantity}</li>
+                    );
+                })}
+            </ul>
+        );
+    };
+
+    // Render detailed information in accordion
+    const renderAccordionContent = (item) => {
+        const bonuses = JSON.parse(item.bonuses || '{}');
+
+        return (
+            <div className="accordion-content bg-light p-3">
+                <p><strong>שם הפרויקט:</strong> {item.project_name}</p>
+                <p><strong>תאריך:</strong> {item.date}</p>
+                <p><strong>שם העובד:</strong> {item.worker_name}</p>
+                <p><strong>עיר:</strong> {item.city}</p>
+                <p><strong>הערות:</strong> {item.notes}</p>
+                <p><strong>אספקה:</strong> {item.delivery}</p>
+                <p><strong>הערות לעובד:</strong> {item.employee_comments}</p>
+                <p><strong>בונוסים:</strong></p>
+                {renderBonusList(bonuses)}
+                <p><strong>נוצר בתאריך:</strong> {new Date(item.created_at).toLocaleString()}</p>
+                <p><strong>עודכן בתאריך:</strong> {new Date(item.updated_at).toLocaleString()}</p>
+            </div>
+        );
     };
 
     return (
@@ -93,7 +171,7 @@ function SummaryTable({ summaryDays, summaryInstallations, summaryPlanners }) {
 
             {/* Dropdown for filtering by summary type */}
             <div className="mb-3">
-                <label htmlFor="filterType">סינון לפי סיכומי יום</label>
+                <label htmlFor="filterType">סינון לפי סוג סיכום</label>
                 <select
                     id="filterType"
                     className="form-select"
@@ -126,11 +204,20 @@ function SummaryTable({ summaryDays, summaryInstallations, summaryPlanners }) {
                 </thead>
                 <tbody>
                     {currentItems.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.type}</td>
-                            <td>{item.title || item.project_name}</td>
-                            <td>{new Date(item.created_at).toLocaleDateString()}</td>
-                        </tr>
+                        <React.Fragment key={index}>
+                            <tr onClick={() => toggleAccordion(index)} style={{ cursor: 'pointer' }}>
+                                <td>{item.type}</td>
+                                <td>{item.title || item.project_name}</td>
+                                <td>{new Date(item.created_at).toLocaleDateString()}</td>
+                            </tr>
+                            {expandedRow === index && (
+                                <tr>
+                                    <td colSpan="3">
+                                        {renderAccordionContent(item)}
+                                    </td>
+                                </tr>
+                            )}
+                        </React.Fragment>
                     ))}
                 </tbody>
             </table>

@@ -138,7 +138,30 @@ export const updateArchiveStatus = async (id, data) => {
     }
   };
 
- 
+  export const updateCollectionStatus = async (id, data) => {
+    try {
+        const token = localStorage.getItem('accessToken');
+
+        const response = await fetch(`${apiUrl}/collections/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(data)
+        });
+
+        const responseData = await response.json();
+
+        if (response.ok) {
+            return responseData;
+        } else {
+            throw new Error(responseData.errors);
+        }
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};
 
 
 export { getCollections, saveCollection ,updateCollection, deleteCollection , getSumOfDebt  };

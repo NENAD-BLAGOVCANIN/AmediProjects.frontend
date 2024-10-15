@@ -38,7 +38,7 @@ function Projects() {
         <>
         <div>
             <div className='container-fluid'>
-                <h2 className='bold ps-2'>פרוייקטים שלי</h2>
+                <h2 className='bold ps-2'>פרוייקטים </h2>
                 <p className='text-muted mt-2 fw-500 ps-2 mb-5'>פרוייקטים קיימים</p>
               <div className="row">
                 <div className="col-12">

@@ -206,7 +206,7 @@ i18n
           "project_manager_mobile": "נייד מנהל פרוייקט",
           "accounting_manager_mobile": "נייד מנהל חשבונות",
           "email": "אימייל",
-          "last_execution_date": "תאריך ביצוע אחרון",
+          "last_execution_date": "תאריך גבייה אחרון",
           "agreed_payment_date": "מועד תשלום מוסכם",
           "contact_person": "איש קשר",
           "debt": "חוב",

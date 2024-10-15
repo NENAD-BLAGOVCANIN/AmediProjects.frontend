@@ -174,12 +174,12 @@ function DashboardProject() {
                         <UserTasksTable />
                     </div>
                 </div>
-                <div className="col-md-4">
+                {/* <div className="col-md-4">
                     <div className="bg-white rounded p-3 mt-3 shadow-sm">
                         <h6 className='bold mb-3'>{t('card_title.ceo_tasks')}</h6>
                         <p className='py-5 text-center'>You have no late tasks 😊</p>
                     </div>
-                </div>
+                </div> */}
                 {/* <div className="col-md-8">
                     <div className="bg-white rounded p-3 mt-3 shadow-sm">
                         <Line data={lineChartData} options={options} />

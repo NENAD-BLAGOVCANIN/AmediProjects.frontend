@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { faEllipsis, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { saveTask } from "../../api/tasks"; // Adjust this import path as necessary
+import { saveTask, updateTask } from "../../api/tasks"; // Adjust this import path as necessary
 import { getUsers } from "../../api/user"; // Adjust this import path as necessary
 import TaskCard from "./TaskCard";
-import CreateTaskCard from "./CreateTaskCard";
+import CreateTaskCalendar from "./CreateTaskCalendar";
 import moment from 'moment';
 import 'moment/locale/he'; // Import Hebrew locale
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 moment.locale('he'); // Set the locale to Hebrew
 
@@ -29,6 +30,9 @@ function BoardByDay({
   const [assignee, setAssignee] = useState(null); // State for selected assignee
   const [loading, setLoading] = useState(true); // Loading state to handle async data
 
+  // State to track the current week
+  const [currentWeekStart, setCurrentWeekStart] = useState(moment().startOf('week'));
+
   useEffect(() => {
     async function fetchUsers() {
       try {
@@ -40,9 +44,8 @@ function BoardByDay({
         setLoading(false); // Also stop loading in case of an error
       }
     }
-
     fetchUsers(); // Call the function to fetch users on component mount
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, [tasks]); // Empty dependency array ensures this runs only once on mount
 
   const handleShowTaskModal = (task) => {
     setSelectedTask(task);
@@ -58,8 +61,16 @@ function BoardByDay({
   };
 
   const handleSaveTask = async () => {
+    const  savedTask = {
+      subject: subject,
+      description: description,
+      due_date: dueDate,
+      phone: phone,
+      email: email,
+      assigned_to: assignee,
+    };
     try {
-      const newTask = await saveTask(subject, description, dueDate);
+      const newTask = await saveTask(savedTask);
       setTasks([newTask, ...tasks]);
       setShowAddTaskCard(false);
       setSubject("");
@@ -72,92 +83,184 @@ function BoardByDay({
     }
   };
 
+  // Categorize tasks for the selected week
   const categorizedTasks = {
-    beforeToday: tasks.filter(task => moment(task.due_date).isBefore(moment(), 'day')),
-    yesterday: tasks.filter(task => moment(task.due_date).isSame(moment().subtract(1, 'days'), 'day')),
-    today: tasks.filter(task => moment(task.due_date).isSame(moment(), 'day')),
-    tomorrow: tasks.filter(task => moment(task.due_date).isSame(moment().add(1, 'days'), 'day')),
-    dayAfterTomorrow: tasks.filter(task => moment(task.due_date).isSame(moment().add(2, 'days'), 'day')),
-    twoDaysAfterTomorrow: tasks.filter(task => moment(task.due_date).isSame(moment().add(3, 'days'), 'day')),
-    threeDaysAfterTomorrow: tasks.filter(task => moment(task.due_date).isSame(moment().add(4, 'days'), 'day')),
+    beforeToday: tasks.filter(task => moment(task.due_date).isBefore(currentWeekStart, 'day')),
+    yesterday: tasks.filter(task => moment(task.due_date).isSame(currentWeekStart.clone().subtract(1, 'days'), 'day')),
+    today: tasks.filter(task => moment(task.due_date).isSame(currentWeekStart, 'day')),
+    tomorrow: tasks.filter(task => moment(task.due_date).isSame(currentWeekStart.clone().add(1, 'days'), 'day')),
+    dayAfterTomorrow: tasks.filter(task => moment(task.due_date).isSame(currentWeekStart.clone().add(2, 'days'), 'day')),
+    twoDaysAfterTomorrow: tasks.filter(task => moment(task.due_date).isSame(currentWeekStart.clone().add(3, 'days'), 'day')),
+    threeDaysAfterTomorrow: tasks.filter(task => moment(task.due_date).isSame(currentWeekStart.clone().add(4, 'days'), 'day')),
   };
+
+  // Handle drag and drop
+  const onDragEnd = async (result) => {
+    if (!result.destination) return;
+
+    const { source, destination } = result;
+
+    if (source.droppableId === destination.droppableId && source.index === destination.index) {
+        return;
+    }
+
+    const draggedTask = tasks.find((task) => task.id === parseInt(result.draggableId));
+    if (!draggedTask) return;
+
+    let newDueDate;
+    switch (destination.droppableId) {
+        case 'beforeToday':
+            newDueDate = currentWeekStart.clone().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss');
+            break;
+        case 'yesterday':
+            newDueDate = currentWeekStart.clone().subtract(1, 'days').format('YYYY-MM-DD HH:mm:ss');
+            break;
+        case 'today':
+            newDueDate = currentWeekStart.format('YYYY-MM-DD HH:mm:ss');
+            break;
+        case 'tomorrow':
+            newDueDate = currentWeekStart.clone().add(1, 'days').format('YYYY-MM-DD HH:mm:ss');
+            break;
+        case 'dayAfterTomorrow':
+            newDueDate = currentWeekStart.clone().add(2, 'days').format('YYYY-MM-DD HH:mm:ss');
+            break;
+        case 'twoDaysAfterTomorrow':
+            newDueDate = currentWeekStart.clone().add(3, 'days').format('YYYY-MM-DD HH:mm:ss');
+            break;
+        case 'threeDaysAfterTomorrow':
+            newDueDate = currentWeekStart.clone().add(4, 'days').format('YYYY-MM-DD HH:mm:ss');
+            break;
+        default:
+            return;
+    }
+
+    const updatedTask = { ...draggedTask, due_date: newDueDate };
+
+    // Update the task in the backend
+    try {
+        await updateTask(updatedTask);
+        const updatedTasks = tasks.map((task) =>
+            task.id === updatedTask.id ? updatedTask : task
+        );
+        setTasks(updatedTasks);
+    } catch (error) {
+        console.error("Failed to update task:", error);
+    }
+};
+
+
+  
+  // Functions to navigate weeks
+  const goToPreviousWeek = () => {
+    setCurrentWeekStart(prev => prev.clone().subtract(1, 'week'));
+  };
+
+  const goToNextWeek = () => {
+    setCurrentWeekStart(prev => prev.clone().add(1, 'week'));
+  };
+
+  const renderColumn = (id, label, tasks) => (
+    <Droppable droppableId={id}>
+      {(provided) => (
+        <div
+          className="col-2 p-3"
+          {...provided.droppableProps}
+          ref={provided.innerRef}
+          style={{ borderRight: '1px solid #ddd' }}
+        >
+          <div className="d-flex justify-content-between">
+            <p className="mb-3 fw-500">
+              {label}
+              <span className="text-muted fw-400 medium px-2">{tasks.length}</span>
+            </p>
+          </div>
+          <div className={`bg-${tasks.length === 0 ? "gray py-5" : ""} w-100 rounded`}>
+            {tasks.map((task, index) => (
+              <Draggable key={task.id} draggableId={String(task.id)} index={index}>
+                {(provided, snapshot) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    className={snapshot.isDragging ? "dragging" : ""}
+                  >
+                    <TaskCard
+                      task={task}
+                      handleShowTaskModal={handleShowTaskModal}
+                      dragHandleProps={provided.dragHandleProps}
+                    />
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </div>
+        </div>
+      )}
+    </Droppable>
+  );
 
   // Define columns with labels that include day of the week and date in Hebrew
   const columns = [
-    { id: 'beforeToday', label: `משימות ישנות יותר`, tasks: categorizedTasks.beforeToday },
-    { id: 'yesterday', label: `${moment().subtract(1, 'days').format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.yesterday },
-    { id: 'today', label: `היום - ${moment().format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.today },
-    { id: 'tomorrow', label: `${moment().add(1, 'days').format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.tomorrow },
-    { id: 'dayAfterTomorrow', label: `${moment().add(2, 'days').format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.dayAfterTomorrow },
-    { id: 'twoDaysAfterTomorrow', label: `${moment().add(3, 'days').format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.twoDaysAfterTomorrow },
-    { id: 'threeDaysAfterTomorrow', label: `${moment().add(4, 'days').format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.threeDaysAfterTomorrow },
+    { id: 'beforeToday', label: `${currentWeekStart.clone().subtract(2, 'days').format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.beforeToday },
+    { id: 'yesterday', label: `${currentWeekStart.clone().subtract(1, 'days').format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.yesterday },
+    { id: 'today', label: `היום - ${currentWeekStart.format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.today },
+    { id: 'tomorrow', label: `${currentWeekStart.clone().add(1, 'days').format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.tomorrow },
+    { id: 'dayAfterTomorrow', label: `${currentWeekStart.clone().add(2, 'days').format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.dayAfterTomorrow },
+    { id: 'twoDaysAfterTomorrow', label: `${currentWeekStart.clone().add(3, 'days').format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.twoDaysAfterTomorrow },
+    { id: 'threeDaysAfterTomorrow', label: `${currentWeekStart.clone().add(4, 'days').format('dddd, DD/MM/YYYY')}`, tasks: categorizedTasks.threeDaysAfterTomorrow },
   ];
 
   return (
-    <div className="row">
-      {columns.map((column, index) => (
-        <div className="col-2 p-3" key={index} style={{ borderRight: '1px solid #ddd' }}>
-          <div className="d-flex justify-content-between">
-            <p className="mb-3 fw-500">
-              {column.label}
-              <span className="text-muted fw-400 medium px-2">{column.tasks.length}</span>
-            </p>
-            <div>
-              <button className="px-2 btn" onClick={handleShowAddTaskCard}>
-                <FontAwesomeIcon icon={faPlus} className="text-muted" />
-              </button>
-              <button className="px-2 btn">
-                <FontAwesomeIcon icon={faEllipsis} className="text-muted" />
-              </button>
-            </div>
-          </div>
-          <div className={`bg-${column.tasks.length === 0 ? "gray py-5" : ""} w-100 rounded`}>
-            {column.tasks.map((task) => (
-              <TaskCard
-                key={task.id}
-                task={task}
-                handleShowTaskModal={handleShowTaskModal}
-                dueDateFormatted={moment(task.due_date).format('dddd, DD/MM/YYYY')}
-              />
-            ))}
-          </div>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <div className="row">
+        <button
+          className="btn btn-primary py-2 rounded w-30 small"
+          onClick={handleShowAddTaskCard}
+          style={{ textDecoration: 'none',  fontSize: "12px" }}
+        >
+          <FontAwesomeIcon icon={faPlus} className="pe-2 small" />
+          הוסף משימה
+        </button>
+
+        <div className="d-flex justify-content-between mt-3">
+          <button className="btn btn-secondary" onClick={goToPreviousWeek}>
+            שבוע קודם
+          </button>
+          <button className="btn btn-secondary" onClick={goToNextWeek}>
+            שבוע הבא
+          </button>
         </div>
-      ))}
 
-      {!loading && (
-        <CreateTaskCard
-          showAddTaskCard={showAddTaskCard}
-          tasks={tasks}
-          subject={subject}
-          setSubject={setSubject}
-          dueDate={dueDate}
-          setDueDate={setDueDate}
-          email={email}
-          setEmail={setEmail}
-          phone={phone}
-          setPhone={setPhone}
-          description={description}
-          setDescription={setDescription}
-          assignee={assignee} // Pass the selected assignee
-          setAssignee={setAssignee} // Handler to set assignee
-          status={selectedTask ? selectedTask.status : ""}
-          setStatus={(newStatus) => setSelectedTask({ ...selectedTask, status: newStatus })}
-          projectMembers={projectMembers} // Pass the fetched users to CreateTaskCard
-          handleHideAddTaskCard={handleHideAddTaskCard}
-          handleSaveTask={handleSaveTask}
-        />
-      )}
-
-      {loading && <p>Loading...</p>}
-
-      <button
-        className="btn btn-primary py-2 rounded w-100 medium"
-        onClick={handleShowAddTaskCard}
-      >
-        <FontAwesomeIcon icon={faPlus} className="pe-2 medium" />
-        הוסף משימה
-      </button>
-    </div>
+        {!loading && (
+          <CreateTaskCalendar
+            showAddTaskCard={showAddTaskCard}
+            tasks={tasks}
+            subject={subject}
+            setSubject={setSubject}
+            dueDate={dueDate}
+            setDueDate={setDueDate}
+            email={email}
+            setEmail={setEmail}
+            phone={phone}
+            setPhone={setPhone}
+            description={description}
+            setDescription={setDescription}
+            assignee={assignee} // Pass the selected assignee
+            setAssignee={setAssignee} // Handler to set assignee
+            status={selectedTask ? selectedTask.status : ""}
+            setStatus={(newStatus) => setSelectedTask({ ...selectedTask, status: newStatus })}
+            projectMembers={projectMembers} // Pass the fetched users to CreateTaskCalendar
+            handleHideAddTaskCard={handleHideAddTaskCard}
+            handleSaveTask={handleSaveTask}
+          />
+        )}
+        {columns.map((column, index) => (
+          renderColumn(column.id, column.label, column.tasks)
+        ))}
+        {loading && <p>Loading...</p>}
+      </div>
+    </DragDropContext>
   );
 }
 

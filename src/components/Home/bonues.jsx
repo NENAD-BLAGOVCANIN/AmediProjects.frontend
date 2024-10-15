@@ -19,6 +19,7 @@ export default function BonusesForm() {
   const [delivery, setDelivery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState('');
+  const [isNewWorker, setIsNewWorker] = useState(false); // New state for toggling between select and input for worker name
   const navigate = useNavigate();
 
   const itemsPerPage = 10;
@@ -52,7 +53,7 @@ export default function BonusesForm() {
         project_name: projectName,
         date: date,
         worker_name: workerName,
-        bonuses: selectedBonuses,
+        bonuses: JSON.stringify(selectedBonuses),
         notes,
         city,
         employee_comments: employeeComments,
@@ -80,7 +81,7 @@ export default function BonusesForm() {
   };
 
   return (
-    <div dir="rtl" className='main-auth-page-container' style={{ backgroundColor: '#F3F3F5' }}>
+    <div dir="rtl" className='container-fluid' style={{ backgroundColor: '#F3F3F5' }}>
       <div className="card p-0 w-100 bg-transparent" style={{ maxWidth: 'unset', minHeight: '100vh' }}>
         <div className="row m-0">
           <div className="col-md-6 bg-white d-flex align-items-center" style={{ minHeight: '100vh' }}>
@@ -115,16 +116,49 @@ export default function BonusesForm() {
                 </div>
                 <div className='py-2'>
                   <label className='mb-2'>שם העובד</label>
-                  <select
-                    className="form-control"
-                    id="workerName"
-                    value={workerName}
-                    onChange={(e) => setWorkerName(e.target.value)}
-                  >
-                    <option value=''>בחר צוות</option>
-                    <option value=' נאגי וסמי'>נאג'י וסמי</option>
-                    <option value='הרמס'>הרמס</option>
-                  </select>
+                  {!isNewWorker ? (
+                    <>
+                      <select
+                        className="form-control"
+                        id="workerName"
+                        value={workerName}
+                        onChange={(e) => setWorkerName(e.target.value)}
+                      >
+                        <option value=''>בחר צוות</option>
+                        <option value='נאגי וסמי'>נאג'י וסמי</option>
+                        <option value='הרמס'>הרמס</option>
+                        <option value="איוב">איוב</option>
+                        <option value="יוסף">יוסף</option>
+                        <option value="ניסים">ניסים</option>
+                      </select>
+                      <button
+                        type="button"
+                        className='btn btn-link mt-2'
+                        onClick={() => setIsNewWorker(true)}
+                      >
+                        הכנס מתקין שלא ברשימה                     
+                        </button>
+                    </>
+                  ) : (
+                    <>
+                      <input
+                        type="text"
+                        name='newWorkerName'
+                        value={workerName}
+                        onChange={(e) => setWorkerName(e.target.value)}
+                        className='form-control bg-transparent py-3 border-0'
+                        style={{ backgroundColor: '#EBE9F9' }}
+                        placeholder='הכנס שם מתקין חדש'
+                      />
+                      <button
+                        type="button"
+                        className='btn btn-link mt-2'
+                        onClick={() => setIsNewWorker(false)}
+                      >
+                        חזרה לרשימת הצוותים
+                      </button>
+                    </>
+                  )}
                 </div>
                 <div className='py-2'>
                   <label className='mb-2'>הערות</label>
@@ -173,7 +207,7 @@ export default function BonusesForm() {
                 </div>
                 {/* Display selected bonuses */}
                 <div className='py-2'>
-                  <label className='mb-2'>בונוסים שנבחרו</label>
+                  <label className='mb-2'>מוצרים שנבחרו</label>
                   <ul>
                     {Object.entries(selectedBonuses).map(([bonusId, quantity]) => {
                       const bonus = bonuses.find(b => b.id === parseInt(bonusId));
@@ -196,7 +230,7 @@ export default function BonusesForm() {
               {/* Bonuses table */}
               <div className='w-100 px-4 m-auto d-block' style={{ maxWidth: 600 }}>
                 <div className='pt-3 pb-5'>
-                  <span className='py-3 h3 bold'>בונוסים</span>
+                  <span className='py-3 h3 bold'>מוצרים</span>
                 </div>
                 <div className='py-2'>
                   <input

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getCollections, updateArchiveStatus } from '../../api/collections';
+import { getCollections, updateArchiveStatus, updateCollection } from '../../api/collections'; // Assuming `updateCollection` will update fields
 import UpdateCollectionModal from '../UpdateCollectionModal';
 import CreateProjectModal from './CreateProjectModal';
-import MonthlyCollectionModal from './MonthlyCollectionModal'; // Import the MonthlyCollectionModal
+import MonthlyCollectionModal from './MonthlyCollectionModal';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,10 +14,11 @@ function ProjectAmountTable() {
   const [searchTerm, setSearchTerm] = useState('');
   const [showUpdateCollectionModal, setShowUpdateCollectionModal] = useState(false);
   const [showCreateProjectModal, setShowCreateProjectModal] = useState(false);
-  const [showMonthlyCollectionModal, setShowMonthlyCollectionModal] = useState(false); // State to control the MonthlyCollectionModal
+  const [showMonthlyCollectionModal, setShowMonthlyCollectionModal] = useState(false);
   const [currentCollection, setCurrentCollection] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [expandedRows, setExpandedRows] = useState({});
 
   useEffect(() => {
     fetchCollections();
@@ -49,7 +50,8 @@ function ProjectAmountTable() {
   };
 
   const handleShowMonthlyCollectionModal = (project) => {
-    setCurrentCollection(project);
+    console.log("Project selected for modal:", project);  // Log to check what project is passed
+    setCurrentCollection(project);  // Ensure the full project data is passed here
     setShowMonthlyCollectionModal(true);
   };
 
@@ -94,8 +96,26 @@ function ProjectAmountTable() {
   };
 
   const handleProjectCreated = () => {
-    fetchCollections(); // Refresh the table after the project is created
-    setShowCreateProjectModal(false); // Close the modal
+    fetchCollections();
+    setShowCreateProjectModal(false);
+  };
+
+  const toggleRowExpansion = (index) => {
+    setExpandedRows(prevState => ({
+      ...prevState,
+      [index]: !prevState[index]  // Toggle the expanded state
+    }));
+  };
+
+  // Handle checkbox change for have_problem
+  const handleProblemChange = async (project) => {
+    const updatedProject = { ...project, have_problem: project.have_problem === 1 ? 0 : 1 }; // Toggle the status
+    try {
+      await updateCollection(updatedProject); // Update the collection with the new have_problem status
+      fetchCollections(); // Refresh collections after update
+    } catch (error) {
+      console.error('Error updating have_problem status:', error);
+    }
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -136,61 +156,83 @@ function ProjectAmountTable() {
               <th>שם חברה</th>
               <th>מנהל פרוייקט</th>
               <th>שם פרוייקט</th>
-              <th>נייד מנהל פרוייקט</th>
-              <th>אחראי גבייה</th>
-              <th>אימייל</th>
-              <th>תנאי תשלום</th>
-              <th>נייד מנהל חשבונות</th>
-              <th>תאריך הוצאת חשבונית אחרון</th>
-              <th>חוב</th>
               <th>תאריך גבייה אחרון</th>
-              <th>קיזוז מצטבר</th>
-              <th>עכבון 5%</th>
-              <th>קיזוז במקום ערבות</th>
-              <th>ערבות ביצוע עם תאריך סיום</th>
-              <th>אופן צורת תשלום</th>
-              <th>תאריך שליחת פירוט אחרון</th>
-              <th>תאריך הוצאת חשונות אחרון</th>
-              <th>תאריך תשלום עדיתי</th>
-              <th>תאריך תשלום מוסכם</th>
-              <th>עדכון גבייה חודשי</th> {/* Add column for the monthly collection */}
+              <th>עדכון גבייה חודשי</th>
             </tr>
           </thead>
           <tbody>
             {currentItems.map((project, index) => (
-              <tr key={index}>
-                <td>
-                  <button className="btn btn-secondary" onClick={(e) => { e.stopPropagation(); handleShowUpdateCollectionModal(project); }}>עריכה</button>
-                  <button className="btn btn-danger" onClick={(e) => { e.stopPropagation(); handleArchive(project.id); }}>סיום</button>
-                </td>
-                <td>{project.id}</td>
-                <td>{project.company_name}</td>
-                <td>{project.contact_person}</td>
-                <td>{project.project_name}</td>
-                <td>{project.project_manager_mobile}</td>
-                <td>{project.collection_contact}</td>
-                <td>{project.email}</td>
-                <td>{project.paymnet_plus}</td>
-                <td>{project.accounting_manager_mobile}</td>
-                <td>{project.last_invoice_issuance_date}</td>
-                <td>{project.debt}</td>
-                <td>{project.last_execution_date}</td>
-                {/* <td>{project.amount_collected_this_month}</td> */}
-                <td>{project.cumulative_offset}</td>
-                <td>{project.retention_5}</td>
-                <td>{project.offset_instead_of_guarantee}</td>
-                <td>{project.Offset_instead_of_guarantee_before_vat}</td>
-                <td>{project.payment_status}</td>
-                <td>{project.guarantee_end_date}</td>
-                <td>{project.Last_detail_sent_date}</td>
-                <td>{project.Last_invoice_issue_date}</td>
-                <td>{project.agreed_payment_date}</td>
-                <td>
-                  <button className="btn btn-info" onClick={(e) => { e.stopPropagation(); handleShowMonthlyCollectionModal(project); }}>
-                    עדכון גביה חודשי
-                  </button>
-                </td>
-              </tr>
+              <React.Fragment key={index}>
+                <tr onClick={() => toggleRowExpansion(index)} style={{ cursor: 'pointer' }}>
+                  <td>
+                    <button className="btn btn-secondary" onClick={(e) => { e.stopPropagation(); handleShowUpdateCollectionModal(project); }}>עריכה</button>
+                    <button className="btn btn-danger" onClick={(e) => { e.stopPropagation(); handleArchive(project.id); }}>סיום</button>
+                  </td>
+                  <td>{project.id}</td>
+                  <td>{project.company_name}</td>
+                  <td>{project.contact_person}</td>
+                  <td>{project.project_name}</td>
+                  <td>{project.last_execution_date}</td>
+                  <td>
+                    <button className="btn btn-info" onClick={(e) => { e.stopPropagation(); handleShowMonthlyCollectionModal(project); }}>
+                      עדכון גביה חודשי
+                    </button>
+                  </td>
+                </tr>
+
+                {expandedRows[index] && (
+  <tr>
+    <td colSpan="7">
+      <div className="p-3 bg-light">
+        <strong>פרטים נוספים:</strong>
+        <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
+          <li style={{ padding: '8px 0', borderBottom: '1px solid #ddd' }}>
+            <strong>נייד מנהל פרוייקט:</strong> {project.project_manager_mobile}
+          </li>
+          <li style={{ padding: '8px 0', borderBottom: '1px solid #ddd' }}>
+            <strong>אחראי גבייה:</strong> {project.collection_contact}
+          </li>
+          <li style={{ padding: '8px 0', borderBottom: '1px solid #ddd' }}>
+            <strong>אימייל:</strong> {project.email}
+          </li>
+          <li style={{ padding: '8px 0', borderBottom: '1px solid #ddd' }}>
+            <strong>תנאי תשלום:</strong> {project.paymnet_plus}
+          </li>
+          <li style={{ padding: '8px 0', borderBottom: '1px solid #ddd' }}>
+            <strong>נייד מנהל חשבונות:</strong> {project.accounting_manager_mobile}
+          </li>
+          <li style={{ padding: '8px 0', borderBottom: '1px solid #ddd' }}>
+            <strong>תאריך הוצאת חשבונית אחרון:</strong> {project.last_invoice_issuance_date}
+          </li>
+          <li style={{ padding: '8px 0', borderBottom: '1px solid #ddd' }}>
+            <strong>חוב:</strong> {project.debt}
+          </li>
+          <li style={{ padding: '8px 0', borderBottom: '1px solid #ddd' }}>
+            <strong>קיזוז מצטבר:</strong> {project.cumulative_offset}
+          </li>
+          <li style={{ padding: '8px 0', borderBottom: '1px solid #ddd' }}>
+            <strong>ערבות ביצוע עם תאריך סיום:</strong> {project.guarantee_end_date}
+          </li>
+          <li style={{ padding: '8px 0', borderBottom: '1px solid #ddd' }}>
+            <strong>תאריך תשלום מוסכם:</strong> {project.agreed_payment_date}
+          </li>
+          <li style={{ padding: '8px 0', borderBottom: '1px solid #ddd' }}>
+            <label>
+              <input
+                type="checkbox"
+                checked={project.have_problem === 1}
+                onChange={(e) => { e.stopPropagation(); handleProblemChange(project); }}
+              />
+              {' '}<strong>בעיה בפרוייקט</strong>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+)}
+
+              </React.Fragment>
             ))}
           </tbody>
         </table>
@@ -223,20 +265,20 @@ function ProjectAmountTable() {
           show={showUpdateCollectionModal} 
           onHide={() => { 
               setShowUpdateCollectionModal(false); 
-              fetchCollections(); // Refresh the table after closing the modal 
+              fetchCollections(); 
           }} 
           currentCollection={currentCollection} 
           setCurrentCollection={setCurrentCollection} 
           setCollections={setProjects} 
           collections={projects}
-          onSuccess={fetchCollections} // Pass the fetchCollections function as the success callback
+          onSuccess={fetchCollections}
         />
       )}
       {showCreateProjectModal && (
         <CreateProjectModal 
           show={showCreateProjectModal} 
           onHide={handleHideCreateProjectModal} 
-          onSuccess={handleProjectCreated} // Handle project creation and refresh the table
+          onSuccess={handleProjectCreated}
         />
       )}
       {showMonthlyCollectionModal && (
@@ -244,7 +286,8 @@ function ProjectAmountTable() {
           show={showMonthlyCollectionModal} 
           onHide={() => setShowMonthlyCollectionModal(false)} 
           projectId={currentCollection?.id} 
-          onSuccess={fetchCollections} // Refresh the table after updating the collection
+          existingCollection={currentCollection}  // Pass the full collection data here
+          onSuccess={fetchCollections}
         />
       )}
     </>

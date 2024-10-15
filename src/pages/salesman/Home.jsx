@@ -165,49 +165,6 @@ function Home() {
                 </div>
               
                 <div className="col-md-6">
-                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <h6 className='bold mb-3'>{t('card_title.late_tasks')}</h6>
-                        {tasks.length === 0 ? (
-                            <p className='py-5 text-center'>You have no late tasks 😊</p>
-                        ) : (
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th>Task</th>
-                                        <th>Due Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {tasks.map(task => (
-                                        <tr key={task.id} onClick={() => handleTaskClick(task)}>
-                                            <td>{task.subject}</td>
-                                            <td>{new Date(task.due_date).toLocaleDateString()}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        )}
-                    </div>
-                    <div className="bg-white rounded p-3 mt-3 shadow-sm">
-                        <h6 className='bold mb-3'>{t('card_title.my_calendar')}</h6>
-                        <Calendar
-                            onChange={onChange}
-                            value={value}
-                            className="w-100 border-0 px-4 my-4"
-                            tileContent={({ date, view }) => {
-                                if (view === 'month') {
-                                    const dayTasks = tasks.filter(task => {
-                                        const taskDate = new Date(task.due_date).toDateString();
-                                        return taskDate === date.toDateString();
-                                    });
-                                    return dayTasks.length > 0 ? <span className="dot"></span> : null;
-                                }
-                            }}
-                            onClickDay={handleDayClick}
-                        />
-                    </div>
-                </div>
-                <div className="col-md-6">
                     <div className="bg-white rounded p-3 shadow-sm">
                         <h6 className='bold mb-3'>{t('card_title.current_project')}</h6>
                         {myProjects.map((myProject) => (
